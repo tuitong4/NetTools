@@ -38,6 +38,7 @@ make & make install
 ./configure --prefix=/usr/local/python3 --with-openssl=/usr/local/openssl --enable-shared
 
 ``目标文件夹下有重名文件libpython3.7m.a 先将该文件重命名``
+
 mv /usr/local/python3/lib/python3.7/config-3.7m-x86_64-linux-gnu/libpython3.7m.a /usr/local/python3/lib/python3.7/config-3.7m-x86_64-linux-gnu/libpython3.7m.a.old
 
 cp libpython3.7m.a /usr/local/python3/lib/python3.7/config-3.7m-x86_64-linux-gnu/

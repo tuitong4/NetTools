@@ -1,8 +1,7 @@
 流式小批量写文件方式
 ===========================
 
-.. code-block:: python
-    :linenos:
+adsad ::
 
 	func writefilestream(filename string, content chan *[]byte, perm os.FileMode) error{
 		f, err := os.OpenFile(filename, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, perm)

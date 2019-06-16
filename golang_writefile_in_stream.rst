@@ -20,3 +20,43 @@
 		}
 		return err
 	}
+
+
+流式读取文件方式
+===========================
+
+::
+
+	const (
+		BUFSIZE = 16
+	)
+
+	func fileReaderGen(filename string) chan []byte {
+		fileReadChan := make(chan []byte, BUFSIZE)
+		go func() {
+			file, err := os.Open(filename)
+			if err != nil {
+				log.Fatal(err)
+			} else {
+				scan := bufio.NewScanner(file)
+				for scan.Scan() {
+					// Write to the channel we will return
+					// We additionally have to copy the content
+					// of the slice returned by scan.Bytes() into
+					// a new slice (using append()) before sending
+					// it to another go-routine since scan.Bytes()
+					// will re-use the slice it returned for
+					// subsequent scans, which will garble up data
+					// later if we don't put the content in a new one.
+					fileReadChan <- append([]byte(nil), scan.Bytes()...)
+				}
+				if scan.Err() != nil {
+					log.Fatal(scan.Err())
+				}
+				close(fileReadChan)
+				fmt.Println("Closed file reader channel")
+			}
+			file.Close()
+		}()
+	return fileReadChan
+}

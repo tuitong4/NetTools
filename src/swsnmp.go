@@ -23,6 +23,7 @@ var swVendor = map[string]*regexp.Regexp{
 	"NEXUS":  regexp.MustCompile("Cisco NX"),
 	"CISCO":  regexp.MustCompile("Cisco"),
 	"RUIJIE": regexp.MustCompile("Ruijie"),
+	"JUNNIPER": regexp.MustCompile("Juniper"),
 }
 
 func getVendor(host string, community string, port uint16) (version string) {

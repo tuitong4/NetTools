@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/md5"
 	"database/sql"
 	"encoding/hex"
 	"flag"
@@ -9,115 +10,107 @@ import (
 	"golang.org/x/gosnmp"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
+	"sync"
 	"time"
 )
 
 const (
 	lldpRemChassisID = "1.0.8802.1.1.2.1.4.1.1.5"
 	lldpRemPortID    = "1.0.8802.1.1.2.1.4.1.1.7"
-	lldpLocChassisID = "1.0.8802.1.1.2.1.3.2.0"
+	ifDescr          = "1.3.6.1.2.1.2.2.1.2"
 	lldpLocPortID    = "1.0.8802.1.1.2.1.3.7.1.3"
 )
+
+var unviewchar = regexp.MustCompile(`\s`)
 
 func main() {
 	flag.Usage = func() {
 		fmt.Printf("Usage:\n")
-		fmt.Printf("   %s [-community=<community>] host [oid]\n", filepath.Base(os.Args[0]))
-		//fmt.Printf("     host      - the host to walk/scan\n")
+		fmt.Printf("   %s [-community=<community>] -database=<database>\n", filepath.Base(os.Args[0]))
+		//fmt.Printf("           - the host to walk/scan\n")
 		//fmt.Printf("     oid       - the MIB/Oid defining a subtree of values\n\n")
 		flag.PrintDefaults()
 	}
 
+	var database string
 	var community string
-	flag.StringVar(&community, "community", "public", "the community string for device")
+
+	flag.StringVar(&database, "database", "", "the sqlite3 db file(with filepath).")
+	flag.StringVar(&community, "community", "360buy", "the community string for device")
 
 	flag.Parse()
 
-	if len(flag.Args()) < 1 {
-		flag.Usage()
-		os.Exit(1)
-	}
-	target := flag.Args()[0]
-	//var oid string
-	//if len(flag.Args()) > 1 {
-	//  oid = flag.Args()[1]
-	//}
 
-	conn := &gosnmp.GoSNMP{
-		Target:             target,
-		Port:               uint16(161),
-		Community:          community,
-		Version:            gosnmp.Version2c,
-		ExponentialTimeout: false,
-		Retries:            5,
-		Timeout:            time.Duration(3) * time.Second,
-		MaxRepetitions:     10,
-		//Logger:    log.New(os.Stdout, "", 0),
-	}
 
-	err := conn.Connect()
-	if err != nil {
-		fmt.Printf("ConnectFailed")
-		os.Exit(1)
-	}
-	defer conn.Conn.Close()
+	db, err := sql.Open("sqlite3", database)
 
-	remoteid, err := BulkRetrieveRemChassisID(conn, lldpRemChassisID)
-	if err != nil {
-		fmt.Printf("Failed Retrieved remote chassis id.")
-		os.Exit(1)
-	}
-
-	remoteport, err := BulkRetrievePortID(conn, lldpRemPortID)
-	if err != nil {
-		fmt.Printf("Failed Retrieved remote port id.")
-		os.Exit(1)
-	}
-
-	localport, err := BulkRetrievePortID(conn, lldpLocPortID)
-	if err != nil {
-		fmt.Printf("Failed Retrieved local port id.")
-		os.Exit(1)
-	}
-
-	localid, err := GetRetrieveLocalChassisID(conn, lldpLocChassisID)
-	if err != nil {
-		fmt.Printf("Failed Retrieved local chassis id.")
-		os.Exit(1)
-	}
-
-	db, err := sql.Open("sqlite3", "./lldp.db")
-	createtablesql := `CREATE TABLE lldpneighbour ("devmgt" TEXT NULL, "localid" TEXT NULL, "localport" TEXT NULL, "remoteid" TEXT NULL, "remoteport" TEXT NULL)`
-	_, err = db.Query(createtablesql)
 	if err != nil {
 		fmt.Printf("%v", err)
 		os.Exit(1)
 	}
-	lldpneighbour
-	for idx, remid := range remoteid {
-		err = WriteLLDPMsg(db, target, localid, localport[idx], remid, remoteport[idx])
+	db.SetMaxOpenConns(1)
+	defer db.Close()
+
+	_, err = db.Exec(`DROP TABLE IF EXISTS lldpneighbour`)
+	if err != nil {
+		fmt.Printf("%v", err)
+		os.Exit(1)
+	}
+
+	create_table := `CREATE TABLE lldpneighbour (code TEXT, devmgt TEXT, localportidx TEXT, localport TEXT, remoteid TEXT, remoteport TEXT);`
+	_, err = db.Exec(create_table)
+	if err != nil {
+		fmt.Printf("%v", err)
+		os.Exit(1)
+	}
+
+	//Scan All hosts that to be retrieved.
+	//rows, err := db.Query(`SELECT DISTINCT devmgt  FROM devices WHERE role="T0" and devmgt !="" and service NOT LIKE "%ACS%"`)
+	rows, err := db.Query(`SELECT DISTINCT devmgt  FROM devices WHERE devmgt = "172.19.1.234" or devmgt = "172.19.1.68"`)
+	if err != nil {
+		fmt.Printf("%v\n", err)
+		os.Exit(1)
+	}
+	defer rows.Close()
+
+	var devmgt sql.NullString
+
+	hosts := []string{}
+	for rows.Next() {
+		err = rows.Scan(&devmgt)
 		if err != nil {
-			fmt.Printf("%v.", err)
-			os.Exit(1)
+			fmt.Printf("%v", err)
+			continue
 		}
-		//fmt.Printf("%s\t%s\t%s\t%s\t%v\n", target, localid, localport[idx], remid, remoteport[idx])
+
+		if !devmgt.Valid {
+			continue
+		} else {
+			hosts = append(hosts, devmgt.String)
+		}
 	}
 
-}
+	//Init go concorote
+	maxThread := 500
+	threadchan := make(chan struct{}, maxThread)
+	wait := sync.WaitGroup{}
 
-func printValue(pdu gosnmp.SnmpPDU) error {
-	fmt.Printf("%s = ", pdu.Name)
-
-	switch pdu.Type {
-	case gosnmp.OctetString:
-		b := pdu.Value.([]byte)
-		fmt.Printf("STRING: %x\n", string(b))
-
-	default:
-		fmt.Printf("TYPE %d: %d\n", pdu.Type, gosnmp.ToBigInt(pdu.Value))
+	for _, host := range hosts {
+		wait.Add(1)
+		go func(target string) {
+			threadchan <- struct{}{}
+			err = RetrieveLLDP(target, community, db)
+			if err != nil {
+				fmt.Print(err)
+			}
+			<-threadchan
+			wait.Done()
+		}(host)
 	}
-	return nil
+
+	wait.Wait()
 }
 
 func BulkRetrieveRemChassisID(snmpd *gosnmp.GoSNMP, oid string) (reslut map[string]string, err error) {
@@ -135,7 +128,34 @@ func BulkRetrieveRemChassisID(snmpd *gosnmp.GoSNMP, oid string) (reslut map[stri
 
 		switch pdu.Type {
 		case gosnmp.OctetString:
-			reslut[index] = hex.EncodeToString(pdu.Value.([]byte))
+			h := hex.EncodeToString(pdu.Value.([]byte))
+			if len(h) == 12 {
+				reslut[index] = h
+			}
+		default:
+			reslut[index] = ""
+		}
+	}
+	return reslut, err
+}
+
+func BulkRetrieveLocalPortID(snmpd *gosnmp.GoSNMP, oid string) (reslut map[string]string, err error) {
+	reslut = make(map[string]string)
+	err = nil
+
+	resp, err := snmpd.BulkWalkAll(oid)
+	if err != nil {
+		err = fmt.Errorf("Walk Error: %v\n", err)
+		return reslut, err
+	}
+
+	for _, pdu := range resp {
+		parts := strings.Split(pdu.Name, ".")
+		index := parts[len(parts)-1]
+
+		switch pdu.Type {
+		case gosnmp.OctetString:
+			reslut[index] = string(pdu.Value.([]byte))
 
 		default:
 			reslut[index] = ""
@@ -144,7 +164,7 @@ func BulkRetrieveRemChassisID(snmpd *gosnmp.GoSNMP, oid string) (reslut map[stri
 	return reslut, err
 }
 
-func BulkRetrievePortID(snmpd *gosnmp.GoSNMP, oid string) (reslut map[string]string, err error) {
+func BulkRetrieveRemPortID(snmpd *gosnmp.GoSNMP, oid string) (reslut map[string]string, err error) {
 	reslut = make(map[string]string)
 	err = nil
 
@@ -169,37 +189,95 @@ func BulkRetrievePortID(snmpd *gosnmp.GoSNMP, oid string) (reslut map[string]str
 	return reslut, err
 }
 
-func GetRetrieveLocalChassisID(snmpd *gosnmp.GoSNMP, oid string) (reslut string, err error) {
-	reslut = ""
+func BulkRetrievePortDescr(snmpd *gosnmp.GoSNMP, oid string) (reslut map[string]string, err error) {
+	reslut = make(map[string]string)
 	err = nil
-	_resp, err := snmpd.Get([]string{oid})
+
+	resp, err := snmpd.BulkWalkAll(oid)
 	if err != nil {
 		err = fmt.Errorf("Walk Error: %v\n", err)
 		return reslut, err
 	}
 
-	resp := _resp.Variables[0]
+	for _, pdu := range resp {
+		parts := strings.Split(pdu.Name, ".")
+		index := parts[len(parts)-1]
 
-	switch resp.Type {
-	case gosnmp.OctetString:
-		reslut = hex.EncodeToString(resp.Value.([]byte))
+		switch pdu.Type {
+		case gosnmp.OctetString:
+			v := string(pdu.Value.([]byte))
+			reslut[v] = index
 
-	default:
-		reslut = ""
+		default:
+			continue
+		}
 	}
 	return reslut, err
 }
 
-func WriteLLDPMsg(db *sql.DB, target, localid, localport, remoteid, remoteport string) error {
+func WriteLLDPMsg(db *sql.Tx, target, localportidx, localport, remoteid, remoteport string) error {
 	//Table name lldpneighbour
-	stmt, err := db.Prepare(`INSERT INTO lldpneighbour VALUES (?, ?, ?, ?, ?)`)
-	if err != nil {
-		return err
-	}
-	_, err = stmt.Exec(target, localid, localport, remoteid, remoteport)
+	md5 := md5.New()
+	md5.Write([]byte(target + localportidx + localport + remoteid + remoteport))
+	encode_s := hex.EncodeToString(md5.Sum(nil))
+	_, err := db.Exec(`INSERT INTO lldpneighbour (code, devmgt, localportidx, localport, remoteid, remoteport) VALUES (?, ?, ?, ?, ?, ?)`, encode_s, target, localportidx, localport, remoteid, remoteport)
+	return err
+}
 
-	if err != nil {
-		return err
+func RetrieveLLDP(target, community string, db *sql.DB) error {
+	conn := &gosnmp.GoSNMP{
+		Target:         target,
+		Port:           uint16(161),
+		Community:      community,
+		Version:        gosnmp.Version2c,
+		Retries:        1,
+		Timeout:        time.Duration(3) * time.Second,
+		MaxRepetitions: 10,
+		//Logger:    log.New(os.Stdout, "", 0),
 	}
+	err := conn.Connect()
+	if err != nil {
+		return fmt.Errorf("[%s]ConnectFailed.\n", target)
+	}
+	defer conn.Conn.Close()
+
+	remoteid, err := BulkRetrieveRemChassisID(conn, lldpRemChassisID)
+	if err != nil {
+		return fmt.Errorf("[%s]Failed Retrieved remote chassis id.\n", target)
+	}
+
+	remoteport, err := BulkRetrieveRemPortID(conn, lldpRemPortID)
+	if err != nil {
+		return fmt.Errorf("[%s]Failed Retrieved remote port id.\n", target)
+	}
+
+	localport, err := BulkRetrieveLocalPortID(conn, lldpLocPortID)
+	if err != nil {
+		return fmt.Errorf("[%s]Failed Retrieved local port id.\n", target)
+	}
+
+	localportdescr, err := BulkRetrievePortDescr(conn, ifDescr)
+	if err != nil {
+		return fmt.Errorf("[%s]Failed Retrieved port descr.\n", target)
+	}
+
+	tx, err := db.Begin()
+	if err != nil {
+		return nil
+	}
+
+	for idx, remid := range remoteid {
+		rport := remoteport[idx]
+		if unviewchar.MatchString(rport) {
+			fmt.Println(rport)
+			continue
+		}
+		err = WriteLLDPMsg(tx, target, localportdescr[rport], localport[idx], remid, rport)
+		if err != nil {
+			tx.Rollback()
+			return fmt.Errorf("[%s]%v. Rollbacked.\n", target, err)
+		}
+	}
+	tx.Commit()
 	return nil
 }

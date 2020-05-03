@@ -3,22 +3,15 @@ package ping
 import (
 	"github.com/go-ini/ini"
 	"local.lc/log"
-	"time"
 )
 
-type GlobalSetting struct {
-	MaxProcess int
-	LocalMode  bool
+type ControllerSetting struct {
+	SchedulerURL string `ini:"scheduler_url"` // url for scheclduler
 }
 
-type ControllerSetting struct {
-	ControllerAddress      string
-	RefreshTaskListTimeMin time.Duration
-	RepeatTimes            int
-}
 type ListenSetting struct {
-	Host string
-	Port string
+	Host string `ini:"host"`
+	Port string `ini:"port"`
 }
 
 type KafkaSetting struct {
@@ -33,57 +26,91 @@ type KafkaSetting struct {
 }
 
 type AgentSetting struct {
-	SchedulerURL       string `ini:"scheduler_url"`
-	AgentID            int    `ini:"agent_id"`
-	AgentGroup         string `ini:"agent_group"`
-	PubIPAddrCmd       string `ini:"pub_ip_addr_cmd"`
-	MaxRoutineCount    int
-	PingCount          int
-	TimeOutMs          int
-	RefreshTaskTimeMin time.Duration
-	WorkSleepTimeSec   time.Duration
+	AgentID            string `ini:"agent_id"`
+	GroupID            string `ini:"group_id"`
+	Location           string `ini:"location"`  //Agent所在的位置，可以是机房、省份等等
+	WorkerType         string `ini:"work_type"` //worker的类型，支持ping(icmp)，tcpping(tcp), trace(mtr) ,当前只支持ICMP的ping
+	Reserved           bool   `ini:"reserved"`
+	KeepaliveTimeSec   int64  `ini:"keepalived_time_sec"`
+	RunningLocally     bool   `ini:"running_locally"`       // true:locally, false: controled by controller.
+	TaskRefreshTimeSec int64  `ini:"task_refresh_time_sec"` //在locally运行模式下，主动刷新任务列表的时间
+	TaskListFile       string `ini:"task_list_file"`        //在locally运行模式下，主动读取的任务列表文件
+	TaskListApi        string `ini:"task_list_api"`         //在locally运行模式下，主动读取的任务列表API，优先从文件中读，当TaskListFile为空时候，才从api中读取
+}
+
+type LoggerSetting struct {
+	LogFile    string `ini:"log_file"`
+	LogLevel   string `ini:"log_level"`
+	MaxSize    string `ini:"max_size"`
+	ExpireDays int64  `ini:"expire_days"`
+	Format     string `ini:"format"`
 }
 
 type AgentConfig struct {
-	Global     GlobalSetting
 	Controller ControllerSetting
 	Listen     ListenSetting
 	Kafka      KafkaSetting
 	Agent      AgentSetting
+	PingConfig PingSetting
+	Logger     LoggerSetting
 }
 
-func InitPingConfig(configFile string) (err error) {
+func InitAgentConfig(configFile string) (*AgentConfig, error) {
 	var cfg *ini.File
-	cfg, err = ini.Load(configFile)
+	cfg, err := ini.Load(configFile)
 	if err != nil {
 		log.Error("Read config file error: " + configFile)
-		return err
+		return nil, err
 	}
+
 	cfg.NameMapper = ini.TitleUnderscore
 
-	PingConfig := new(AgentConfig)
+	AgentConfig := new(AgentConfig)
 
-	err = cfg.Section("global").MapTo(&PingConfig.Global)
+	err = cfg.Section("listen").MapTo(&AgentConfig.Listen)
 	if err != nil {
-		return err
+		return nil, err
+	}
+	err = cfg.Section("controller").MapTo(&AgentConfig.Controller)
+	if err != nil {
+		return nil, err
+	}
+	err = cfg.Section("agent").MapTo(&AgentConfig.Agent)
+	if err != nil {
+		return nil, err
+	}
+	err = cfg.Section("kafka").MapTo(&AgentConfig.Kafka)
+	if err != nil {
+		return nil, err
+	}
+	err = cfg.Section("logging").MapTo(&AgentConfig.Logger)
+	if err != nil {
+		return nil, err
 	}
 
-	err = cfg.Section("listen").MapTo(&PingConfig.Listen)
+	ping_raw_setting := new(PingRawSetting)
+	err = cfg.Section("icmpping").MapTo(&ping_raw_setting)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	err = cfg.Section("controller").MapTo(&PingConfig.Controller)
+	ping_source_ip := ping_raw_setting.SourceIP
+
+	src_ips, err := convertStringToMap(ping_source_ip)
 	if err != nil {
-		return err
-	}
-	err = cfg.Section("agent").MapTo(&PingConfig.Agent)
-	if err != nil {
-		return err
-	}
-	err = cfg.Section("kafka").MapTo(&PingConfig.Kafka)
-	if err != nil {
-		return err
+		return nil, err
 	}
 
-	return nil
+	AgentConfig.PingConfig = PingSetting{
+		SourceIP:        src_ips,
+		DefaultIP:       ping_raw_setting.DefaultIP,
+		DefaultNetType:  ping_raw_setting.DefaultNetType,
+		PingCount:       ping_raw_setting.PingCount,
+		TimeOutMs:       ping_raw_setting.TimeOutMs,
+		WorkInterval:    ping_raw_setting.WorkInterval,
+		MaxRoutineCount: ping_raw_setting.MaxRoutineCount,
+		SrcBind:         ping_raw_setting.SrcBind,
+		PingMode:        ping_raw_setting.PingMode,
+	}
+
+	return AgentConfig, nil
 }

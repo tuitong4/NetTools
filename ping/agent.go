@@ -5,88 +5,191 @@ import (
 	"crypto/md5"
 	"encoding/json"
 	"fmt"
+	"github.com/hprose/hprose-golang/rpc"
 	"io/ioutil"
 	"local.lc/log"
 	"net/http"
-	"sync"
+	"os"
+	"os/signal"
 	"time"
 )
 
-type PingResult struct {
-	Src        string  `json:"src"`
-	Dst        string  `json:"dst"`
-	RTT        float64 `json:"rtt"`
-	PacketLoss int     `json:"packetLoss"`
-	Timestamp  int64   `json:"timestamp"`
-	Agent      int     `json:"agent"`
-}
-
-type TaskUpdateSource struct {
-	Location string
-	Type     string
-}
-
 type AgentService struct {
-	UpdateTaskList func(data *TargetData) error
+	UpdateTaskList       func(data []*TargetIPAddress) error
 	UpdateReservedStatus func(reserved bool) error
 }
 
-type PingAgent struct {
-	pingResultChannel chan *PingResult // PingWorker -> Kafka
-	//taskChannel        chan *PingTask // TaskList -> PingWorker
-	LocalIP        string
-	AgentID        int
-	TaskList       []string //pull from scheduler by Hprose
-	TaskListLocker sync.RWMutex
-	//Producers          []sarama.AsyncProducer
-	PingCount          int           // How many times should work Ping for a dstIP
-	TimeOutMs          time.Duration // timeout for ping
-	WorkInterval       time.Duration // Interval of each round of ping, in second.
-	MaxRoutineCount    int           // how many goroutine the agent should keep
-	RefreshTaskTimeMin time.Duration
-	//wg                 sync.WaitGroup
-	TaskVersion      string           // Current task's version, used to compare the new task and current task's diifrent.
-	TaskUpdateSource TaskUpdateSource // The location to pull task data, a filename with path or a url responese the task data.
+type Worker interface {
+	Stop() error
+	Start() error
+	SetTaskList([]*TargetIPAddress) error
+	SetWriter() error
 }
 
-func (a *PingAgent) doPing(ipaddr string, idx int, timestamp int64) {
-	target := &Target{
-		DstIP:     ipaddr,
-		TimeoutMs: a.TimeOutMs,
-		Count:     a.PingCount,
-	}
+type AgentBroker struct {
+	Config      *AgentConfig
+	Worker      Worker
+	session     *ControllerService //Session to connect to Controller
+	taskVersion string
+	stopSignal  chan struct{}
+}
 
-	result, err := Pinger(target, idx)
-	if err != nil {
-		log.Error("Ping Error : DstIP:%s.", target.DstIP)
-		return
+type ControllerService struct {
+	HandleAgentKeepalive func(agent *Agent) error
+	AgentUnRegister      func(agent *Agent) error
+}
+
+func NewAgentBroker(config *AgentConfig) (*AgentBroker, error) {
+	agent := new(AgentBroker)
+	agent.Config = config
+
+	if config.Agent.RunningLocally {
+		agent.session = initControllerRpc(config.Controller.SchedulerURL)
+	}else{
+		agent.session = nil
 	}
-	pg := new(PingResult)
-	pg.Src = a.LocalIP
-	pg.Dst = result.DstIP
-	pg.PacketLoss = result.PacketLoss
-	pg.RTT = float64(result.AvgRTT) / float64(time.Millisecond)
-	pg.Timestamp = timestamp //时间戳不同于数据包实际发送的时间
-	pg.Agent = a.AgentID
-	a.pingResultChannel <- pg
+	agent.taskVersion = ""
+	agent.stopSignal = make(chan struct{})
+
+	switch config.Agent.WorkerType {
+	case "ping":
+		ping_agent, err := NewPingAgent(config)
+		if err != nil {
+			return nil, err
+		}
+		if err := agent.workerRegister(ping_agent); err != nil {
+			return nil, err
+		}
+
+	//TODO : Add more supported workers type here.
+
+	default:
+		return nil, fmt.Errorf("Unsupported worker type '%s'.", config.Agent.WorkerType)
+	}
+	return agent, nil
 }
 
 /*
-* 用于解析API数据的结构体
-* 实际使用中要根据返回值处理json格式
- */
-type TargetData struct {
-	Targets []TargetIPAddress `json:"data"`
-	Version string `json:"version"`
+	初始化对Agnet的RPC调用
+*/
+func initControllerRpc(url string) *ControllerService {
+	c := rpc.NewHTTPClient(url)
+	var ctl_service *ControllerService
+	c.UseService(&ctl_service)
+	return ctl_service
 }
 
-type TargetIPAddress struct {
-	Location string `json:"location"`
-	NetType string `json:"nettype"`
-	IP string `json:"ip"`
+/*
+	发送keepalived数据
+*/
+func (a *AgentBroker) keepalived() {
+
+	//避免发送keepalived报文后，Agent的接收端还没启动完毕，控制器下发任务的时候会导致失败。所以第一次发送报文延后一段时间。
+
+	time.Sleep(10 * time.Second)
+
+	for {
+		agent := &Agent{
+			AgentID:          a.Config.Agent.AgentID,
+			GroupID:          a.Config.Agent.GroupID,
+			AgentIP:          a.Config.Listen.Host,
+			Reserve:          a.Config.Agent.Reserved,
+			KeepaliveTimeSec: a.Config.Agent.KeepaliveTimeSec,
+			LastSeen:         0,
+			Port:             a.Config.Listen.Port,
+		}
+
+		err := a.session.HandleAgentKeepalive(agent)
+
+		if err != nil {
+			log.Error("Send keeepalived packet failed. error: %v.", err)
+		}
+
+		time.Sleep(time.Duration(a.Config.Agent.KeepaliveTimeSec) * time.Second)
+	}
 }
 
-func (a *PingAgent) getTargetIPAddressFromFile(filename string) ([]string, error) {
+/*
+	取消注册
+*/
+func (a *AgentBroker) Unregister() error {
+	if a.Config.Agent.RunningLocally {
+		return nil
+	}
+	agent := &Agent{
+		AgentID:          a.Config.Agent.AgentID,
+		GroupID:          a.Config.Agent.GroupID,
+		AgentIP:          a.Config.Listen.Host,
+		Reserve:          a.Config.Agent.Reserved,
+		KeepaliveTimeSec: a.Config.Agent.KeepaliveTimeSec,
+		LastSeen:         0,
+		Port:             a.Config.Listen.Port,
+	}
+
+	err := a.session.AgentUnRegister(agent)
+
+	if err != nil {
+		log.Error("Bad event happened while unregistring. error: %v.", err)
+	}
+	return err
+}
+
+/*
+	更新当前Agent的Reserve状态
+*/
+func (a *AgentBroker) UpdateReservedStatus(reserved bool) error {
+	prev_reserved := a.Config.Agent.Reserved
+	if prev_reserved == reserved {
+		log.Warn("Reserved status not seted because status are same.")
+		return nil
+	}
+
+	if reserved {
+		a.Config.Agent.Reserved = reserved
+		return a.stopWorker()
+	}
+
+	if !reserved {
+		a.Config.Agent.Reserved = reserved
+		return a.startWorker()
+	}
+
+	return nil
+}
+
+/*
+	停止Worker
+*/
+func (a *AgentBroker) stopWorker() error {
+	return a.Worker.Stop()
+}
+
+/*
+	启动Worker
+*/
+func (a *AgentBroker) startWorker() error {
+	return a.Worker.Start()
+}
+
+/*
+	设置worker的任务列表
+*/
+func (a *AgentBroker) UpdateTaskList(targets []*TargetIPAddress) error {
+	return a.Worker.SetTaskList(targets)
+}
+
+/*
+	Worker注册
+*/
+func (a *AgentBroker) workerRegister(w Worker) error {
+	a.Worker = w
+	return nil
+}
+
+/*
+	从文件中读取worker的任务目标地址信息，格式参照TargetData
+*/
+func (a *AgentBroker) getTargetIPAddressFromFile(filename string) ([]*TargetIPAddress, error) {
 	//实际使用中要根据返回值处理json格式
 	doc, err := ioutil.ReadFile(filename)
 	if err != nil {
@@ -94,24 +197,25 @@ func (a *PingAgent) getTargetIPAddressFromFile(filename string) ([]string, error
 	}
 
 	hash_code := fmt.Sprintf("%x", md5.Sum(doc))
-	if hash_code == a.TaskVersion {
+
+	if hash_code == a.taskVersion {
 		return nil, nil
 	}
 
-	var j = &TargetData{}
+	log.Info("Found changed section in '%s'.", a.Config.Agent.TaskListFile)
+	var j = new(TargetData)
 	if err := json.NewDecoder(bytes.NewReader(doc)).Decode(j); err != nil {
 		return nil, err
 	}
 
-	target_ips := []string{}
-	for _, target := range j.Targets {
-		target_ips = append(target_ips, target.IP)
-	}
-
-	return target_ips, nil
+	a.taskVersion = hash_code
+	return j.Targets, nil
 }
 
-func (a *PingAgent) getTargetIPAddressFromApi(url string) ([]string, error) {
+/*
+	从api中读取worker的任务目标地址信息
+*/
+func (a *AgentBroker) getTargetIPAddressFromApi(url string) ([]*TargetIPAddress, error) {
 	//实际使用中要根据返回值处理json格式
 	resp, err := http.Get(url)
 	if err != nil {
@@ -126,75 +230,126 @@ func (a *PingAgent) getTargetIPAddressFromApi(url string) ([]string, error) {
 	}
 
 	hash_code := fmt.Sprintf("%x", md5.Sum(buf.Bytes()))
-	if hash_code == a.TaskVersion {
+	if hash_code == a.taskVersion {
 		return nil, nil
 	}
 
+	log.Info("Found changed section in '%s'.", a.Config.Agent.TaskListApi)
 	var j = &TargetData{}
 	if err := json.NewDecoder(resp.Body).Decode(j); err != nil {
 		return nil, err
 	}
 
-	target_ips := []string{}
-	for _, target := range j.Targets {
-		target_ips = append(target_ips, target.IP)
-	}
-
-	return target_ips, nil
+	a.taskVersion = hash_code
+	return j.Targets, nil
 }
 
-func (a *PingAgent) Writer() {
-	var pg *PingResult
-	for {
-		pg = <-a.pingResultChannel
-		fmt.Println(pg)
-	}
-}
+/*
+	主动读取任务列表,并设置worker的任务列表
+*/
 
-func (a *PingAgent) TaskResfresh() {
+func (a *AgentBroker) getTaskListLocally() {
 	var err error
-	var tasklist []string
-
 	for {
-		// Add a shift time to avoid 'Tasklist' Lock.
-		time.Sleep(a.RefreshTaskTimeMin*time.Second + 10*time.Millisecond)
-		if a.TaskUpdateSource.Type == "file" {
-			tasklist, err = a.getTargetIPAddressFromFile(a.TaskUpdateSource.Location)
-		} else if a.TaskUpdateSource.Type == "http" {
-			tasklist, err = a.getTargetIPAddressFromApi(a.TaskUpdateSource.Location)
-
-		} else {
-			log.Warn("Unsupported update type: '%s'", a.TaskUpdateSource.Type)
-			continue
-		}
-		if err != nil {
-			log.Error("Failed to get task data. %v", err)
-			continue
+		t := []*TargetIPAddress{}
+		if a.Config.Agent.TaskListFile != "" {
+			t, err = a.getTargetIPAddressFromFile(a.Config.Agent.TaskListFile)
+			if err != nil {
+				log.Error("Failed to read tasklist from file, error :%v", err)
+			}
+		}else if a.Config.Agent.TaskListApi != "" {
+			t, err = a.getTargetIPAddressFromApi(a.Config.Agent.TaskListApi)
+			if err != nil {
+				log.Error("Failed to read tasklist from api, error :%v", err)
+			}
 		}
 
-		if tasklist != nil {
-			a.TaskListLocker.Lock()
-			a.TaskList = tasklist
-			a.TaskListLocker.Unlock()
+		if len(t) != 0 {
+			log.Info("Setting task list.")
+			if err := a.Worker.SetTaskList(t); err != nil {
+				log.Error("Failed to set task list, error :%v", err)
+			}
 		}
+		time.Sleep(time.Duration(a.Config.Agent.TaskRefreshTimeSec) * time.Second)
 	}
 }
 
-func (a *PingAgent) Run() {
-	// Init Writer to write pingResult to remote.
-	go a.Writer()
+func (a *AgentBroker) Stop(){
+	a.stopSignal <- struct{}{}
+}
 
-	// Update task periodicly
-	go a.TaskResfresh()
+/*
+	停止agent
+ */
+func (a *AgentBroker) stop() {
+	<-a.stopSignal
 
-	// Batch ping worker
-	for {
-		timestamp := time.Now().Unix()
-		go func() {
-			for idx, ipaddr := range a.TaskList {
-				go a.doPing(ipaddr, idx, timestamp)
-			}
-		}()
-		time.Sleep(time.Millisecond * a.TimeOutMs)
+	if err := a.stopWorker(); err != nil {
+		log.Error("Failed to stop the worker process. error: %v.", err)
+	}
+
+	//Send unregister signal to controller
+	if err := a.Unregister(); err != nil {
+		log.Error("Failed to unregister the agent on scheduler, exit directly. error: %v.", err)
+	}
+
+	log.Info("Agent exiting.")
+	//等待worker完成退出后，在退出主进程
+	time.Sleep(time.Second * 5)
+	os.Exit(0)
+}
+
+func (a *AgentBroker) captureOsInterruptSignal() {
+	signal_ch := make(chan os.Signal, 1)
+	signal.Notify(signal_ch, os.Interrupt)
+	go func() {
+		<-signal_ch
+		log.Warn("Captured os interupt signal.")
+		a.stopSignal <- struct{}{}
+	}()
+}
+
+func (a *AgentBroker) Run() {
+	defer func() {
+		err := recover()
+		if err != nil {
+			log.Error("Agent running err!")
+			a.Run()
+		}
+	}()
+
+
+	if a.Config.Agent.RunningLocally {
+		go a.captureOsInterruptSignal()
+
+		// 启动Worker
+		if err := a.startWorker(); err != nil {
+			log.Error("%v", err)
+			return
+		}
+
+		go a.getTaskListLocally()
+
+		log.Info("[ Agent Broker ] Running Locally.")
+		// 阻塞至收到结束信号
+		a.stop()
+
+	} else {
+		go a.captureOsInterruptSignal()
+		go a.stop()
+		go a.keepalived()
+
+		// 启动Worker
+		if err := a.startWorker(); err != nil {
+			log.Error("%v", err)
+			return
+		}
+
+		//启动RPC服务器
+		service := rpc.NewHTTPService()
+		service.AddFunction("UpdateTaskList", a.UpdateTaskList)
+		service.AddFunction("UpdateReservedStatus", a.UpdateReservedStatus)
+		log.Info("[Scheduler(Hprose) start ] Listen port: %s", a.Config.Listen.Port)
+		_ = http.ListenAndServe(":"+a.Config.Listen.Port, service)
 	}
 }

@@ -86,7 +86,7 @@ func NewPingAgent(config *AgentConfig) (*PingAgent, error) {
 func (a *PingAgent) doPing(target *PingTarget, idx int, timestamp int64) {
 	result, err := a.Pinger(target, idx)
 	if err != nil {
-		log.Error("Ping Error : DstIP:%s. %v", target.DstIP, err)
+		log.Errorf("Ping Error : DstIP:%s. %v", target.DstIP, err)
 		return
 	}
 	pg := new(PingResult)
@@ -228,7 +228,7 @@ func (a *PingAgent) Run() {
 	for {
 		//读取时间
 		<-ticker.C
-
+		fmt.Println("Epoch runing!")
 		timestamp := time.Now().Unix()
 		go func() {
 			for idx, ipaddr := range a.TaskList {
@@ -241,6 +241,8 @@ func (a *PingAgent) Run() {
 		case <-a.stopSignal:
 			log.Info("Ping will stop for received interupt signal.")
 			return
+		default:
+			continue
 		}
 	}
 }
@@ -334,7 +336,7 @@ func (a *PingAgent) Pinger(target *PingTarget, xid int) (*PingResponse, error) {
 		buf := make([]byte, 1024)
 		_, err = conn.Read(buf)
 		if err != nil {
-			log.Debug("Read timeouts")
+			//log.Debug("Read timeouts")
 			break
 		}
 

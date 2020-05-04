@@ -84,7 +84,7 @@ func (s *Scheduler) Run() {
 	service := rpc.NewHTTPService()
 	service.AddFunction("HandleAgentKeepalive", s.HandleAgentKeepalive)
 	service.AddFunction("AgentUnRegister", s.AgentUnRegister)
-	log.Info("[Scheduler(Hprose) start ] Listen port: %s", s.Config.Listen.Port)
+	log.Infof("[Scheduler(Hprose) start ] Listen port: %s", s.Config.Listen.Port)
 	_ = http.ListenAndServe(":"+s.Config.Listen.Port, service)
 }
 
@@ -155,7 +155,7 @@ func (s *Scheduler) delAgentFromGroup(a *Agent) {
 	}
 	if agent_in_group {
 		s.AgentGroups[group_id] = append(s.AgentGroups[group_id][:agent_index], s.AgentGroups[group_id][agent_index+1:]...)
-		log.Info("Group '%s' removed an agent '%s.", group_id, a.AgentID)
+		log.Infof("Group '%s' removed an agent '%s.", group_id, a.AgentID)
 	}
 }
 
@@ -170,7 +170,7 @@ func (s *Scheduler) addAgentToGroup(a *Agent) {
 func (s *Scheduler) AgentRegister(a *Agent) error {
 	if _, agent_exist := s.Agents[a.AgentID]; !agent_exist {
 		s.Agents[a.AgentID] = a
-		log.Info("Agent '%s' registered.", a.AgentID)
+		log.Infof("Agent '%s' registered.", a.AgentID)
 
 		//保留的Agent不加入到组中，当做备份
 		if a.Reserve {
@@ -178,7 +178,7 @@ func (s *Scheduler) AgentRegister(a *Agent) error {
 		}
 		if _, group_exist := s.AgentGroups[a.GroupID]; !group_exist {
 			s.AgentGroups[a.GroupID] = []string{a.AgentID}
-			log.Info("Group '%s' adds a new agent '%s.", a.GroupID, a.AgentID)
+			log.Infof("Group '%s' adds a new agent '%s.", a.GroupID, a.AgentID)
 		} else {
 			agent_in_group := false
 			for _, agent_id := range s.AgentGroups[a.GroupID] {
@@ -189,7 +189,7 @@ func (s *Scheduler) AgentRegister(a *Agent) error {
 			}
 			if !agent_in_group {
 				s.AgentGroups[a.GroupID] = append(s.AgentGroups[a.GroupID], a.AgentID)
-				log.Info("Group '%s' adds a new agent '%s.", a.GroupID, a.AgentID)
+				log.Infof("Group '%s' adds a new agent '%s.", a.GroupID, a.AgentID)
 			}
 		}
 	}
@@ -203,7 +203,7 @@ func (s *Scheduler) AgentRegister(a *Agent) error {
 func (s *Scheduler) AgentUnRegister(a *Agent) error {
 	if _, agent_exist := s.Agents[a.AgentID]; agent_exist {
 		delete(s.Agents, a.AgentID)
-		log.Info("Agent '%s' unregistered.", a.AgentID)
+		log.Infof("Agent '%s' unregistered.", a.AgentID)
 		s.delAgentFromGroup(a)
 	}
 	return nil
@@ -236,7 +236,7 @@ func (s *Scheduler) HandleAgentKeepalive(a *Agent) error {
 	}
 	err := s.AgentRegister(a)
 	if err != nil {
-		log.Error("Regsiter is failed for '%s', errors: %v.", a.AgentID, err)
+		log.Errorf("Regsiter is failed for '%s', errors: %v.", a.AgentID, err)
 		return err
 	}
 
@@ -269,13 +269,13 @@ func (s *Scheduler) taskAdjustmentWhenAgentRemoved(a *Agent) error {
 			agent_service := initAgentRpc(reserved_agent)
 			err := s.setAgentReservedStatus(reserved_agent, agent_service)
 			if err != nil {
-				log.Error("Failed update agent's status. errors: %v", err)
+				log.Errorf("Failed update agent's status. errors: %v", err)
 				return err
 			}
 
 			err = s.setAgentTask(reserved_agent, agent_service)
 			if err != nil {
-				log.Error("Failed update agent's task. errors: %v", err)
+				log.Errorf("Failed update agent's task. errors: %v", err)
 				return err
 			}
 		} else {
@@ -292,7 +292,7 @@ func (s *Scheduler) taskAdjustmentWhenAgentRemoved(a *Agent) error {
 					agent_service := initAgentRpc(agent)
 					err := s.setAgentTask(agent, agent_service)
 					if err != nil {
-						log.Error("Failed update agent's task. errors: %v", err)
+						log.Errorf("Failed update agent's task. errors: %v", err)
 					}
 				}(agent)
 
@@ -327,7 +327,7 @@ func (s *Scheduler) taskAdjustmentWhenAgentAdded(a *Agent) error {
 			agent_service := initAgentRpc(agent)
 			err := s.setAgentTask(agent, agent_service)
 			if err != nil {
-				log.Error("Failed update agent's task. errors: %v", err)
+				log.Errorf("Failed update agent's task. errors: %v", err)
 			}
 		}(agent)
 		start_idx += assign_count[idx]
@@ -348,12 +348,12 @@ func (s *Scheduler) initTaskAssignment(data map[string][]*TargetIPAddress) {
 	for group, targets := range data {
 		agent_count := len(s.AgentGroups[group])
 		if agent_count < 1 {
-			log.Error("Count of agent belong to '%s' is less one. Assignment skipped.", group)
+			log.Errorf("Count of agent belong to '%s' is less one. Assignment skipped.", group)
 			continue
 		}
 		target_count := len(targets)
 		if target_count < 1 {
-			log.Error("Count of target belong to '%s' is less one. Assignment skipped.", group)
+			log.Errorf("Count of target belong to '%s' is less one. Assignment skipped.", group)
 			continue
 		}
 
@@ -369,7 +369,7 @@ func (s *Scheduler) initTaskAssignment(data map[string][]*TargetIPAddress) {
 				agent_service := initAgentRpc(agent)
 				err := s.setAgentTask(agent, agent_service)
 				if err != nil {
-					log.Error("Failed update agent's task. errors: %v", err)
+					log.Errorf("Failed update agent's task. errors: %v", err)
 				}
 			}(agent)
 
@@ -387,7 +387,7 @@ func (s *Scheduler) setAgentTask(a *Agent, srv *AgentService) error {
 	}
 	err := srv.UpdateTaskList(s.TaskList[a.AgentID])
 	if err != nil {
-		log.Error("Failed to set agent '%s''s tasklist. ", a.AgentID)
+		log.Errorf("Failed to set agent '%s''s tasklist. ", a.AgentID)
 		return err
 	}
 	return nil
@@ -405,10 +405,10 @@ func (s *Scheduler) setAllAgentsTask() error {
 		agent_serivce := initAgentRpc(agent)
 		err := agent_serivce.UpdateTaskList(task_list)
 		if err != nil {
-			log.Error("Failed update agnet '%s''s task list. errors: %v", agent_id, err)
+			log.Errorf("Failed update agnet '%s''s task list. errors: %v", agent_id, err)
 			continue
 		}
-		log.Info("Update '%s''s task successfully.", agent_id)
+		log.Infof("Update '%s''s task successfully.", agent_id)
 	}
 	return nil
 }
@@ -419,7 +419,7 @@ func (s *Scheduler) setAllAgentsTask() error {
 func (s *Scheduler) setAgentReservedStatus(a *Agent, srv *AgentService) error {
 	err := srv.UpdateTaskList(s.TaskList[a.AgentID])
 	if err != nil {
-		log.Error("Failed to set agent '%s''s task list. ", a.AgentID)
+		log.Errorf("Failed to set agent '%s''s task list. ", a.AgentID)
 		return err
 	}
 	return nil
@@ -460,12 +460,12 @@ func (s *Scheduler) getTaskListLocally() {
 		if s.Config.Scheduler.TaskListFile != "" {
 			t, err = s.getTargetIPAddressFromFile(s.Config.Scheduler.TaskListFile)
 			if err != nil {
-				log.Error("Failed to read tasklist from file, error :%v", err)
+				log.Errorf("Failed to read tasklist from file, error :%v", err)
 			}
 		} else if s.Config.Scheduler.TaskListApi != "" {
 			t, err = s.getTargetIPAddressFromApi(s.Config.Scheduler.TaskListApi)
 			if err != nil {
-				log.Error("Failed to read tasklist from api, error :%v", err)
+				log.Errorf("Failed to read tasklist from api, error :%v", err)
 			}
 		}
 		if len(t.Targets) != 0 {
@@ -475,7 +475,7 @@ func (s *Scheduler) getTaskListLocally() {
 			}
 			result, err := classify(t.Targets, category)
 			if err != nil {
-				log.Error("Failed to classify targets, error :%v", err)
+				log.Errorf("Failed to classify targets, error :%v", err)
 				continue
 			}
 

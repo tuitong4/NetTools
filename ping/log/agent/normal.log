@@ -1,0 +1,8 @@
+Agent-2020/05/04 23:45:01 /Users/heizi/go/src/ping/ping_agent.go:251: Start to run ping worker.
+Agent-2020/05/04 23:45:01 /Users/heizi/go/src/ping/agent.go:333: [ Agent Broker ] Running Locally.
+Agent-2020/05/04 23:45:01 /Users/heizi/go/src/ping/agent.go:205: Found changed section in '/Users/heizi/GolandProjects/NetTools/ping/config/targets.json'.
+Agent-2020/05/04 23:45:01 /Users/heizi/go/src/ping/agent.go:268: Setting task list.
+Agent-2020/05/04 23:45:01 /Users/heizi/go/src/ping/ping_agent.go:188: Target list was updated.
+Agent-2020/05/04 23:45:45 /Users/heizi/go/src/ping/agent.go:307: Captured os interupt signal.
+Agent-2020/05/04 23:45:46 /Users/heizi/go/src/ping/ping_agent.go:242: Ping will stop for received interupt signal.
+Agent-2020/05/04 23:45:46 /Users/heizi/go/src/ping/agent.go:296: Agent exiting.

@@ -102,7 +102,7 @@ func (a *AgentBroker) keepalived() {
 		err := a.session.HandleAgentKeepalive(agent)
 
 		if err != nil {
-			log.Error("Send keeepalived packet failed. error: %v.", err)
+			log.Errorf("Send keeepalived packet failed. error: %v.", err)
 		}
 
 		time.Sleep(time.Duration(a.Config.Agent.KeepaliveTimeSec) * time.Second)
@@ -129,7 +129,7 @@ func (a *AgentBroker) Unregister() error {
 	err := a.session.AgentUnRegister(agent)
 
 	if err != nil {
-		log.Error("Bad event happened while unregistring. error: %v.", err)
+		log.Errorf("Bad event happened while unregistring. error: %v.", err)
 	}
 	return err
 }
@@ -202,7 +202,7 @@ func (a *AgentBroker) getTargetIPAddressFromFile(filename string) ([]*TargetIPAd
 		return nil, nil
 	}
 
-	log.Info("Found changed section in '%s'.", a.Config.Agent.TaskListFile)
+	log.Infof("Found changed section in '%s'.", a.Config.Agent.TaskListFile)
 	var j = new(TargetData)
 	if err := json.NewDecoder(bytes.NewReader(doc)).Decode(j); err != nil {
 		return nil, err
@@ -234,7 +234,7 @@ func (a *AgentBroker) getTargetIPAddressFromApi(url string) ([]*TargetIPAddress,
 		return nil, nil
 	}
 
-	log.Info("Found changed section in '%s'.", a.Config.Agent.TaskListApi)
+	log.Infof("Found changed section in '%s'.", a.Config.Agent.TaskListApi)
 	var j = &TargetData{}
 	if err := json.NewDecoder(resp.Body).Decode(j); err != nil {
 		return nil, err
@@ -255,19 +255,19 @@ func (a *AgentBroker) getTaskListLocally() {
 		if a.Config.Agent.TaskListFile != "" {
 			t, err = a.getTargetIPAddressFromFile(a.Config.Agent.TaskListFile)
 			if err != nil {
-				log.Error("Failed to read tasklist from file, error :%v", err)
+				log.Errorf("Failed to read tasklist from file, error :%v", err)
 			}
 		}else if a.Config.Agent.TaskListApi != "" {
 			t, err = a.getTargetIPAddressFromApi(a.Config.Agent.TaskListApi)
 			if err != nil {
-				log.Error("Failed to read tasklist from api, error :%v", err)
+				log.Errorf("Failed to read tasklist from api, error :%v", err)
 			}
 		}
 
 		if len(t) != 0 {
 			log.Info("Setting task list.")
 			if err := a.Worker.SetTaskList(t); err != nil {
-				log.Error("Failed to set task list, error :%v", err)
+				log.Errorf("Failed to set task list, error :%v", err)
 			}
 		}
 		time.Sleep(time.Duration(a.Config.Agent.TaskRefreshTimeSec) * time.Second)
@@ -285,12 +285,12 @@ func (a *AgentBroker) stop() {
 	<-a.stopSignal
 
 	if err := a.stopWorker(); err != nil {
-		log.Error("Failed to stop the worker process. error: %v.", err)
+		log.Errorf("Failed to stop the worker process. error: %v.", err)
 	}
 
 	//Send unregister signal to controller
 	if err := a.Unregister(); err != nil {
-		log.Error("Failed to unregister the agent on scheduler, exit directly. error: %v.", err)
+		log.Errorf("Failed to unregister the agent on scheduler, exit directly. error: %v.", err)
 	}
 
 	log.Info("Agent exiting.")
@@ -324,7 +324,7 @@ func (a *AgentBroker) Run() {
 
 		// 启动Worker
 		if err := a.startWorker(); err != nil {
-			log.Error("%v", err)
+			log.Errorf("%v", err)
 			return
 		}
 
@@ -341,7 +341,7 @@ func (a *AgentBroker) Run() {
 
 		// 启动Worker
 		if err := a.startWorker(); err != nil {
-			log.Error("%v", err)
+			log.Errorf("%v", err)
 			return
 		}
 
@@ -349,7 +349,7 @@ func (a *AgentBroker) Run() {
 		service := rpc.NewHTTPService()
 		service.AddFunction("UpdateTaskList", a.UpdateTaskList)
 		service.AddFunction("UpdateReservedStatus", a.UpdateReservedStatus)
-		log.Info("[Scheduler(Hprose) start ] Listen port: %s", a.Config.Listen.Port)
+		log.Infof("[Scheduler(Hprose) start ] Listen port: %s", a.Config.Listen.Port)
 		_ = http.ListenAndServe(":"+a.Config.Listen.Port, service)
 	}
 }

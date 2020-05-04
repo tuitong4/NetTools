@@ -7,6 +7,10 @@ require (
 	github.com/hprose/hprose-golang v2.0.5+incompatible
 )
 
-require local.lc/log v0.0.0
+require (
+	github.com/smartystreets/goconvey v1.6.4 // indirect
+	gopkg.in/ini.v1 v1.55.0 // indirect
+	local.lc/log v0.0.0
+)
 
-replace local.lc/log => ./vendor/local.lc/log
+replace local.lc/log => ./vendor/local.lc/llog

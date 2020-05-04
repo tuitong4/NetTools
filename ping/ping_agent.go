@@ -12,7 +12,7 @@ import (
 )
 
 type PingResult struct {
-	Src         string  `json:"src"`
+	Src         string  `json:"utils"`
 	Dst         string  `json:"dst"`
 	RTT         float64 `json:"rtt"`
 	PacketLoss  int     `json:"packetLoss"`
@@ -324,7 +324,7 @@ func (a *PingAgent) Pinger(target *PingTarget, xid int) (*PingResponse, error) {
 			return nil, errors.New(errMsg)
 		}
 		_, err = conn.Write(bs)
-		//log.Debug("%s ICMP count %d,send time %s,src %s", logHeader, target.Count-i, time.Now(), target.SrcIP)
+		//log.Debug("%s ICMP count %d,send time %s,utils %s", logHeader, target.Count-i, time.Now(), target.SrcIP)
 		if err != nil {
 			errMsg := fmt.Sprintf("%s<0x%0x> ICMP conn write err! %s.", target.DstIP, xid, err.Error())
 			return nil, errors.New(errMsg)
@@ -349,13 +349,13 @@ func (a *PingAgent) Pinger(target *PingTarget, xid int) (*PingResponse, error) {
 		case ICMPv4EchoReply:
 			if a.SrcBind { //check sourc ip equal to speified.
 				if h.Src.String() != target.DstIP || h.Dst.String() != target.SrcIP {
-					//log.Debug("%s mistake receiving: src m: %s, dst: %s, src_in_ip: %s, dst_in_ip: %s, id: %d, the wrong id: %d\n",
+					//log.Debug("%s mistake receiving: utils m: %s, dst: %s, src_in_ip: %s, dst_in_ip: %s, id: %d, the wrong id: %d\n",
 					//	logHeader, target.SrcIP, target.DstIP, h.Dst.String(), h.Src.String(), xid, msg.Body.(*ICMPEcho).ID)
 					continue
 				}
 			} else { //skipp check source ip opton
 				if h.Src.String() != target.DstIP {
-					//log.Debug("%s mistake receiving: src m: %s, dst: %s, src_in_ip: %s, dst_in_ip: %s, id: %d, the wrong id: %d\n",
+					//log.Debug("%s mistake receiving: utils m: %s, dst: %s, src_in_ip: %s, dst_in_ip: %s, id: %d, the wrong id: %d\n",
 					//	logHeader, target.SrcIP, target.DstIP, h.Dst.String(), h.Src.String(), xid, msg.Body.(*ICMPEcho).ID)
 					continue
 				}

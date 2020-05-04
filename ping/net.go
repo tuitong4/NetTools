@@ -8,6 +8,7 @@ import (
 	"runtime"
 	"syscall"
 	"time"
+	"unsafe"
 )
 
 const (
@@ -42,6 +43,18 @@ var (
 
 	nativeEndian binary.ByteOrder
 )
+
+// init parameter 'nativeEndian' base on your arch.
+func init() {
+	i := uint32(1)
+	b := (*[4]byte)(unsafe.Pointer(&i))
+	if b[0] == 1 {
+		nativeEndian = binary.LittleEndian
+	} else {
+		nativeEndian = binary.BigEndian
+	}
+}
+
 
 // A Header represents an IPv4 header.
 type Header struct {

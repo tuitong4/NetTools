@@ -37,12 +37,13 @@ type PingAgent struct {
 	Location          string // Agent's location, such as datacenter, province.
 	AgentID           string
 	SrcBind           bool
-	PingMode          int           // 0：不设定ping的源地址；1：均分目标到同一个组下的所有源IP地址上；2：不同组的源IP都去ping相同的目标
-	TaskList          []*PingTarget //pull from scheduler by Hprose
+	PingMode          int    // 0：不设定ping的源地址；1：均分目标到同一个组下的所有源IP地址上；2：不同组的源IP都去ping相同的目标
+	TaskList          []*PingTarget
 	TaskListLocker    sync.RWMutex
 	PingCount         int           // How many times should work Ping for a dstIP
 	TimeOutMs         time.Duration // timeout for ping
-	WorkInterval      time.Duration // Interval of each round of ping, in second.
+	EpochIntervalSec  time.Duration // 每一轮ping的间隔时间，用于循环地ping目标地址。
+	PingIntervalMs    time.Duration // 一次ping任务中每个目标地址ping的间隔，当PingCount大于1时候有效。
 	MaxRoutineCount   int           // how many goroutine the agent should keep
 	taskVersion       string        // Current task's version, used to compare the new task and current task's diifrent. TaskUpdateSource TaskUpdateSource // The location to pull task data, a filename with path or a url responese the task data.
 	stopSignal        chan struct{} // signal to stop de agent worker
@@ -62,7 +63,8 @@ func NewPingAgent(config *AgentConfig) (*PingAgent, error) {
 	agent.PingCount = config.PingConfig.PingCount
 	agent.TimeOutMs = time.Duration(config.PingConfig.TimeOutMs)
 	agent.MaxRoutineCount = config.PingConfig.MaxRoutineCount
-	agent.WorkInterval = time.Duration(config.PingConfig.WorkInterval)
+	agent.EpochIntervalSec = time.Duration(config.PingConfig.EpochIntervalSec)
+	agent.PingIntervalMs = time.Duration(config.PingConfig.PingIntervalMs)
 
 	agent.pingResultChannel = make(chan *PingResult, 10000)
 	agent.taskVersion = ""
@@ -92,7 +94,7 @@ func (a *PingAgent) doPing(target *PingTarget, idx int, timestamp int64) {
 	pg.Dst = target.DstIP
 	pg.PacketLoss = result.PacketLoss
 	pg.RTT = float64(result.AvgRTT) / float64(time.Millisecond)
-	pg.Timestamp = timestamp //时间戳不同于数据包实际发送的时间
+	pg.Timestamp = timestamp // 注意，时间戳与数据包实际发送的时间不会一致，要稍稍早于发送时间
 	pg.Agent = a.AgentID
 	pg.DstNetType = target.DstNetType
 	pg.DstLocation = target.DstLocation
@@ -220,12 +222,12 @@ func (a *PingAgent) Run() {
 	go a.Writer()
 
 	// init interval ticker
-	ticker := time.NewTicker(time.Second * a.WorkInterval)
-
-	// Batch ping
+	ticker := time.NewTicker(time.Second * a.EpochIntervalSec)
+	defer ticker.Stop()
+	// start epoch ping
 	for {
 		//读取时间
-		<- ticker.C
+		<-ticker.C
 
 		timestamp := time.Now().Unix()
 		go func() {
@@ -281,6 +283,7 @@ func (a *PingAgent) Pinger(target *PingTarget, xid int) (*PingResponse, error) {
 	var conn net.Conn
 	var err error
 	rttSum := time.Duration(0)
+
 	if srcBind {
 		laddr := net.IPAddr{IP: net.ParseIP(target.SrcIP)}
 		raddr, _ := net.ResolveIPAddr("ip", target.DstIP)
@@ -288,11 +291,13 @@ func (a *PingAgent) Pinger(target *PingTarget, xid int) (*PingResponse, error) {
 	} else {
 		conn, err = net.Dial("ip4:icmp", target.DstIP)
 	}
+	defer conn.Close()
+
 	if err != nil {
 		errMsg := fmt.Sprintf("%s<0x%0x> Dial icmp error! %s.", target.DstIP, xid, err.Error())
 		return nil, errors.New(errMsg)
 	}
-	defer conn.Close()
+
 	pr := new(PingResponse)
 	pr.Timestamp = time.Now().Unix() * 1000
 	pr.MaxRTT = time.Duration(0)
@@ -300,7 +305,7 @@ func (a *PingAgent) Pinger(target *PingTarget, xid int) (*PingResponse, error) {
 
 	for i := a.PingCount; i > 0; i-- {
 		if i != a.PingCount {
-			time.Sleep(time.Duration(a.WorkInterval) * time.Millisecond)
+			time.Sleep(time.Duration(a.PingIntervalMs) * time.Millisecond)
 		}
 		msg := &ICMPMessage{
 			Type: ICMPv4EchoRequest,
@@ -329,7 +334,7 @@ func (a *PingAgent) Pinger(target *PingTarget, xid int) (*PingResponse, error) {
 		buf := make([]byte, 1024)
 		_, err = conn.Read(buf)
 		if err != nil {
-			//log.Debug("%s Read timeouts", logHeader)
+			log.Debug("Read timeouts")
 			break
 		}
 
@@ -342,13 +347,13 @@ func (a *PingAgent) Pinger(target *PingTarget, xid int) (*PingResponse, error) {
 		}
 		switch bufmsg.Type {
 		case ICMPv4EchoReply:
-			if a.SrcBind { //make sure src ip
+			if a.SrcBind { //check sourc ip equal to speified.
 				if h.Src.String() != target.DstIP || h.Dst.String() != target.SrcIP {
 					//log.Debug("%s mistake receiving: src m: %s, dst: %s, src_in_ip: %s, dst_in_ip: %s, id: %d, the wrong id: %d\n",
 					//	logHeader, target.SrcIP, target.DstIP, h.Dst.String(), h.Src.String(), xid, msg.Body.(*ICMPEcho).ID)
 					continue
 				}
-			} else { //do not know src ip
+			} else { //skipp check source ip opton
 				if h.Src.String() != target.DstIP {
 					//log.Debug("%s mistake receiving: src m: %s, dst: %s, src_in_ip: %s, dst_in_ip: %s, id: %d, the wrong id: %d\n",
 					//	logHeader, target.SrcIP, target.DstIP, h.Dst.String(), h.Src.String(), xid, msg.Body.(*ICMPEcho).ID)

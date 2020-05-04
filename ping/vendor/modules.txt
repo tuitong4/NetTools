@@ -1,7 +1,7 @@
 # github.com/go-ini/ini v1.55.0
 github.com/go-ini/ini
 # github.com/gorilla/mux v1.7.4
-github.com/gorilla/mux
+#github.com/gorilla/mux
 # github.com/hprose/hprose-golang v2.0.5+incompatible
 github.com/hprose/hprose-golang/io
 github.com/hprose/hprose-golang/rpc

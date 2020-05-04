@@ -1,5 +1,5 @@
 package ping
-
+/*
 import (
 	"fmt"
 	"testing"
@@ -25,3 +25,5 @@ func TestAgentRuning(t *testing.T){
 	s.Run()
 	return
 }
+
+*/

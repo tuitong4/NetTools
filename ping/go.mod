@@ -4,7 +4,6 @@ go 1.13
 
 require (
 	github.com/go-ini/ini v1.55.0
-	github.com/gorilla/mux v1.7.4
 	github.com/hprose/hprose-golang v2.0.5+incompatible
 )
 

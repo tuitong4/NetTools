@@ -78,8 +78,8 @@ type Args struct {
 var args = &Args{}
 
 func initflag() {
-	flag.BoolVar(&args.agent, "a", true, `Run as a agent.`)
-	flag.BoolVar(&args.scheduler, "s", false, `Run as a scheduler.`)
+	flag.BoolVar(&args.agent, "a", true, `Run as an agent.`)
+	flag.BoolVar(&args.scheduler, "s", false, `Run as an scheduler.`)
 	flag.StringVar(&args.configfile, "c", "config/config.conf", `Configuration filename.`)
 	flag.Parse()
 }

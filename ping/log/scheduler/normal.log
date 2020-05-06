@@ -1,0 +1,307 @@
+Scheduler-2020/05/05 12:29:53 /Users/heizi/go/src/ping/scheduler.go:87: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 12:29:53 /Users/heizi/go/src/ping/scheduler.go:474: No avalible category to classify.
+Scheduler-2020/05/05 12:30:53 /Users/heizi/go/src/ping/scheduler.go:474: No avalible category to classify.
+Scheduler-2020/05/05 12:31:53 /Users/heizi/go/src/ping/scheduler.go:474: No avalible category to classify.
+Scheduler-2020/05/05 12:32:53 /Users/heizi/go/src/ping/scheduler.go:474: No avalible category to classify.
+Scheduler-2020/05/05 12:33:54 /Users/heizi/go/src/ping/scheduler.go:474: No avalible category to classify.
+Scheduler-2020/05/05 12:34:04 /Users/heizi/go/src/ping/scheduler.go:173: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 12:34:54 /Users/heizi/go/src/ping/scheduler.go:474: No avalible category to classify.
+Scheduler-2020/05/05 12:35:54 /Users/heizi/go/src/ping/scheduler.go:474: No avalible category to classify.
+Scheduler-2020/05/05 12:36:09 /Users/heizi/go/src/ping/scheduler.go:206: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/05 12:36:40 /Users/heizi/go/src/ping/scheduler.go:173: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 12:36:40 /Users/heizi/go/src/ping/scheduler.go:181: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/05 12:37:35 /Users/heizi/go/src/ping/scheduler.go:206: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/05 12:37:35 /Users/heizi/go/src/ping/scheduler.go:158: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/05 12:37:54 /Users/heizi/go/src/ping/scheduler.go:351: Count of agent belong to 'datacenter01' is less one. Assignment skipped.
+Scheduler-2020/05/05 12:38:54 /Users/heizi/go/src/ping/scheduler.go:351: Count of agent belong to 'datacenter01' is less one. Assignment skipped.
+Scheduler-2020/05/05 12:39:54 /Users/heizi/go/src/ping/scheduler.go:351: Count of agent belong to 'datacenter01' is less one. Assignment skipped.
+Scheduler-2020/05/05 13:28:27 /Users/heizi/go/src/ping/scheduler.go:87: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 13:28:27 /Users/heizi/go/src/ping/scheduler.go:498: No avalible category to classify.
+Scheduler-2020/05/05 13:29:05 /Users/heizi/go/src/ping/scheduler.go:184: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 13:29:05 /Users/heizi/go/src/ping/scheduler.go:193: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 13:34:36 /Users/heizi/go/src/ping/scheduler.go:87: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 13:34:36 /Users/heizi/go/src/ping/scheduler.go:501: No avalible category to classify.
+Scheduler-2020/05/05 13:34:45 /Users/heizi/go/src/ping/scheduler.go:184: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 13:34:45 /Users/heizi/go/src/ping/scheduler.go:193: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 13:35:36 /Users/heizi/go/src/ping/scheduler.go:403: Set '%!s(MISSING)''s task list successfully.
+Scheduler-2020/05/05 13:36:36 /Users/heizi/go/src/ping/scheduler.go:403: Set '%!s(MISSING)''s task list successfully.
+Scheduler-2020/05/05 13:37:36 /Users/heizi/go/src/ping/scheduler.go:403: Set '%!s(MISSING)''s task list successfully.
+Scheduler-2020/05/05 13:38:36 /Users/heizi/go/src/ping/scheduler.go:403: Set '%!s(MISSING)''s task list successfully.
+Scheduler-2020/05/05 13:39:10 /Users/heizi/go/src/ping/scheduler.go:87: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 13:39:10 /Users/heizi/go/src/ping/scheduler.go:508: No avalible category to classify.
+Scheduler-2020/05/05 13:39:16 /Users/heizi/go/src/ping/scheduler.go:184: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 13:39:16 /Users/heizi/go/src/ping/scheduler.go:193: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 13:40:10 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:41:10 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:42:10 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:43:10 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:44:10 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:45:10 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:46:10 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:47:10 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:48:10 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:49:10 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:50:10 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:51:10 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:52:10 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:53:05 /Users/heizi/go/src/ping/scheduler.go:87: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 13:53:06 /Users/heizi/go/src/ping/scheduler.go:184: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 13:53:06 /Users/heizi/go/src/ping/scheduler.go:193: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 13:54:05 /Users/heizi/go/src/ping/scheduler.go:520: No avalible category to classify.
+Scheduler-2020/05/05 13:55:05 /Users/heizi/go/src/ping/scheduler.go:520: No avalible category to classify.
+Scheduler-2020/05/05 13:56:05 /Users/heizi/go/src/ping/scheduler.go:520: No avalible category to classify.
+Scheduler-2020/05/05 13:57:08 /Users/heizi/go/src/ping/scheduler.go:87: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 13:57:16 /Users/heizi/go/src/ping/scheduler.go:184: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 13:57:16 /Users/heizi/go/src/ping/scheduler.go:193: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 13:57:18 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:57:28 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:57:38 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:57:48 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:57:58 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:58:08 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:58:18 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:58:28 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:58:38 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:58:48 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:58:58 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:59:08 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:59:18 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:59:28 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:59:38 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:59:48 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 13:59:58 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:00:08 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:00:18 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:00:28 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:00:38 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:00:48 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:00:58 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:01:08 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:01:18 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:01:28 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:01:38 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:01:50 /Users/heizi/go/src/ping/scheduler.go:87: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 14:01:56 /Users/heizi/go/src/ping/scheduler.go:184: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 14:01:56 /Users/heizi/go/src/ping/scheduler.go:193: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 14:02:00 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:02:10 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:02:20 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:02:30 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:02:40 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:02:50 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:03:00 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:03:10 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:03:20 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:03:30 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:03:40 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:03:50 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:04:00 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:04:10 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:04:20 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:04:30 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:04:40 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:04:50 /Users/heizi/go/src/ping/scheduler.go:410: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:04:55 /Users/heizi/go/src/ping/scheduler.go:87: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 14:04:56 /Users/heizi/go/src/ping/scheduler.go:189: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 14:04:56 /Users/heizi/go/src/ping/scheduler.go:198: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 14:05:05 /Users/heizi/go/src/ping/scheduler.go:415: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:12:45 /Users/heizi/go/src/ping/scheduler.go:225: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/05 14:12:45 /Users/heizi/go/src/ping/scheduler.go:166: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/05 14:12:45 /Users/heizi/go/src/ping/scheduler.go:172: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/05 14:12:46 /Users/heizi/go/src/ping/scheduler.go:189: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 14:12:46 /Users/heizi/go/src/ping/scheduler.go:198: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 14:12:46 /Users/heizi/go/src/ping/scheduler.go:365: Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 14:12:55 /Users/heizi/go/src/ping/scheduler.go:225: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/05 14:12:55 /Users/heizi/go/src/ping/scheduler.go:166: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/05 14:12:55 /Users/heizi/go/src/ping/scheduler.go:172: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/05 14:13:10 /Users/heizi/go/src/ping/scheduler.go:189: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 14:13:10 /Users/heizi/go/src/ping/scheduler.go:198: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 15:17:20 /Users/heizi/go/src/ping/scheduler.go:87: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 15:17:22 /Users/heizi/go/src/ping/scheduler.go:226: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 15:17:22 /Users/heizi/go/src/ping/scheduler.go:235: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 15:17:22 /Users/heizi/go/src/ping/scheduler.go:383: No task list is sfound for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/05 15:17:22 /Users/heizi/go/src/ping/scheduler.go:412: Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 15:18:20 /Users/heizi/go/src/ping/scheduler.go:262: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/05 15:18:20 /Users/heizi/go/src/ping/scheduler.go:199: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/05 15:18:20 /Users/heizi/go/src/ping/scheduler.go:205: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/05 15:18:22 /Users/heizi/go/src/ping/scheduler.go:226: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 15:18:22 /Users/heizi/go/src/ping/scheduler.go:235: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 15:18:22 /Users/heizi/go/src/ping/scheduler.go:412: Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 15:19:20 /Users/heizi/go/src/ping/scheduler.go:262: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/05 15:19:20 /Users/heizi/go/src/ping/scheduler.go:199: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/05 15:19:20 /Users/heizi/go/src/ping/scheduler.go:205: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/05 15:19:48 /Users/heizi/go/src/ping/scheduler.go:226: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 15:19:48 /Users/heizi/go/src/ping/scheduler.go:235: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 15:19:48 /Users/heizi/go/src/ping/scheduler.go:383: No task list is sfound for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/05 15:39:01 /Users/heizi/go/src/ping/scheduler.go:87: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 15:39:08 /Users/heizi/go/src/ping/scheduler.go:226: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 15:39:08 /Users/heizi/go/src/ping/scheduler.go:235: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 15:39:08 /Users/heizi/go/src/ping/scheduler.go:383: No task list is sfound for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/05 15:39:08 /Users/heizi/go/src/ping/scheduler.go:412: Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 15:55:08 /Users/heizi/go/src/ping/scheduler.go:262: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/05 15:55:08 /Users/heizi/go/src/ping/scheduler.go:199: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/05 15:55:08 /Users/heizi/go/src/ping/scheduler.go:205: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/05 15:55:09 /Users/heizi/go/src/ping/scheduler.go:226: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 15:55:09 /Users/heizi/go/src/ping/scheduler.go:235: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 15:55:09 /Users/heizi/go/src/ping/scheduler.go:412: Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 15:56:01 /Users/heizi/go/src/ping/scheduler.go:262: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/05 15:56:01 /Users/heizi/go/src/ping/scheduler.go:199: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/05 15:56:01 /Users/heizi/go/src/ping/scheduler.go:205: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/05 15:57:50 /Users/heizi/go/src/ping/scheduler.go:226: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 15:57:50 /Users/heizi/go/src/ping/scheduler.go:235: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 15:57:50 /Users/heizi/go/src/ping/scheduler.go:383: No task list is sfound for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/05 16:04:30 /Users/heizi/go/src/ping/scheduler.go:262: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/05 16:04:30 /Users/heizi/go/src/ping/scheduler.go:199: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/05 16:04:30 /Users/heizi/go/src/ping/scheduler.go:205: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/05 16:04:30 /Users/heizi/go/src/ping/scheduler.go:226: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 16:04:30 /Users/heizi/go/src/ping/scheduler.go:235: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 16:04:30 /Users/heizi/go/src/ping/scheduler.go:383: No task list is sfound for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/05 16:05:01 /Users/heizi/go/src/ping/scheduler.go:262: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/05 16:05:01 /Users/heizi/go/src/ping/scheduler.go:199: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/05 16:05:01 /Users/heizi/go/src/ping/scheduler.go:205: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/05 16:18:12 /Users/heizi/go/src/ping/scheduler.go:226: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 16:18:12 /Users/heizi/go/src/ping/scheduler.go:235: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 16:18:12 /Users/heizi/go/src/ping/scheduler.go:383: No task list is sfound for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/05 16:25:00 /Users/heizi/go/src/ping/scheduler.go:87: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 16:25:02 /Users/heizi/go/src/ping/scheduler.go:226: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 16:25:02 /Users/heizi/go/src/ping/scheduler.go:235: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 16:25:02 /Users/heizi/go/src/ping/scheduler.go:383: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/05 16:25:02 /Users/heizi/go/src/ping/scheduler.go:413: Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 16:26:27 /Users/heizi/go/src/ping/scheduler.go:262: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/05 16:26:27 /Users/heizi/go/src/ping/scheduler.go:199: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/05 16:26:27 /Users/heizi/go/src/ping/scheduler.go:205: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/05 16:27:12 /Users/heizi/go/src/ping/scheduler.go:226: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 16:27:12 /Users/heizi/go/src/ping/scheduler.go:235: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 16:27:12 /Users/heizi/go/src/ping/scheduler.go:413: Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 16:51:39 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 16:51:42 /Users/heizi/go/src/ping/scheduler.go:229: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 16:51:42 /Users/heizi/go/src/ping/scheduler.go:238: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 16:51:42 /Users/heizi/go/src/ping/scheduler.go:307: Task will not be update for group 'datacenter01' when new agent 'dc-dsadwjalnfaosiqw-01' added, because shceduler is starting.
+Scheduler-2020/05/05 16:51:49 /Users/heizi/go/src/ping/scheduler.go:467: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 16:55:31 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 16:55:32 /Users/heizi/go/src/ping/scheduler.go:229: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 16:55:32 /Users/heizi/go/src/ping/scheduler.go:238: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 16:55:32 /Users/heizi/go/src/ping/scheduler.go:307: Task will not be updated for group 'datacenter01' when agent 'dc-dsadwjalnfaosiqw-01' added, while shceduler is starting.
+Scheduler-2020/05/05 16:55:41 /Users/heizi/go/src/ping/scheduler.go:467: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 16:58:06 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 16:58:12 /Users/heizi/go/src/ping/scheduler.go:229: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 16:58:12 /Users/heizi/go/src/ping/scheduler.go:238: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 16:58:12 /Users/heizi/go/src/ping/scheduler.go:307: Task will not be updated for group 'datacenter01' when agent 'dc-dsadwjalnfaosiqw-01' added, while shceduler is starting.
+Scheduler-2020/05/05 16:58:17 /Users/heizi/go/src/ping/scheduler.go:468: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 17:06:27 /Users/heizi/go/src/ping/scheduler.go:265: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/05 17:06:27 /Users/heizi/go/src/ping/scheduler.go:202: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/05 17:06:27 /Users/heizi/go/src/ping/scheduler.go:208: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/05 17:06:54 /Users/heizi/go/src/ping/scheduler.go:229: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 17:06:54 /Users/heizi/go/src/ping/scheduler.go:238: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 17:06:54 /Users/heizi/go/src/ping/scheduler.go:420: Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 17:10:37 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 17:10:44 /Users/heizi/go/src/ping/scheduler.go:229: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 17:10:44 /Users/heizi/go/src/ping/scheduler.go:238: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 17:10:44 /Users/heizi/go/src/ping/scheduler.go:307: Task will not be updated for group 'datacenter01' when agent 'dc-dsadwjalnfaosiqw-01' added, while shceduler is starting.
+Scheduler-2020/05/05 17:10:47 /Users/heizi/go/src/ping/scheduler.go:468: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 17:13:46 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 17:13:54 /Users/heizi/go/src/ping/scheduler.go:229: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 17:13:54 /Users/heizi/go/src/ping/scheduler.go:238: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 17:13:54 /Users/heizi/go/src/ping/scheduler.go:307: Task will not be updated for group 'datacenter01' when agent 'dc-dsadwjalnfaosiqw-01' added, while shceduler is starting.
+Scheduler-2020/05/05 17:15:13 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 17:15:17 /Users/heizi/go/src/ping/scheduler.go:229: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 17:15:17 /Users/heizi/go/src/ping/scheduler.go:238: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 17:15:17 /Users/heizi/go/src/ping/scheduler.go:307: Task will not be updated for group 'datacenter01' when agent 'dc-dsadwjalnfaosiqw-01' added, while shceduler is starting.
+Scheduler-2020/05/05 17:15:23 /Users/heizi/go/src/ping/scheduler.go:469: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 17:16:10 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 17:16:17 /Users/heizi/go/src/ping/scheduler.go:229: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 17:16:17 /Users/heizi/go/src/ping/scheduler.go:238: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 17:16:17 /Users/heizi/go/src/ping/scheduler.go:307: Task will not be updated for group 'datacenter01' when agent 'dc-dsadwjalnfaosiqw-01' added, while shceduler is starting.
+Scheduler-2020/05/05 17:16:20 /Users/heizi/go/src/ping/scheduler.go:469: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 17:17:42 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 17:17:47 /Users/heizi/go/src/ping/scheduler.go:229: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 17:17:47 /Users/heizi/go/src/ping/scheduler.go:238: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 17:17:47 /Users/heizi/go/src/ping/scheduler.go:307: Task will not be updated for group 'datacenter01' when agent 'dc-dsadwjalnfaosiqw-01' added, while shceduler is starting.
+Scheduler-2020/05/05 17:17:52 /Users/heizi/go/src/ping/scheduler.go:469: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 17:18:39 /Users/heizi/go/src/ping/scheduler.go:265: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/05 17:18:39 /Users/heizi/go/src/ping/scheduler.go:202: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/05 17:18:39 /Users/heizi/go/src/ping/scheduler.go:208: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/05 22:32:43 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 22:32:53 /Users/heizi/go/src/ping/scheduler.go:594: No avalible category to classify.
+Scheduler-2020/05/05 22:33:09 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 22:33:09 /Users/heizi/go/src/ping/scheduler.go:242: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 22:33:09 /Users/heizi/go/src/ping/scheduler.go:312: Task will not be updated for group 'datacenter01' when agent 'dc-dsadwjalnfaosiqw-01' added, while shceduler is starting.
+Scheduler-2020/05/05 22:36:00 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 22:36:10 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 22:36:10 /Users/heizi/go/src/ping/scheduler.go:242: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 22:36:10 /Users/heizi/go/src/ping/scheduler.go:312: Task will not be updated for group 'datacenter01' when agent 'dc-dsadwjalnfaosiqw-01' added, while shceduler is starting.
+Scheduler-2020/05/05 22:36:10 /Users/heizi/go/src/ping/scheduler.go:480: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 22:37:07 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 22:37:10 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 22:37:10 /Users/heizi/go/src/ping/scheduler.go:242: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 22:37:10 /Users/heizi/go/src/ping/scheduler.go:312: Task will not be updated for group 'datacenter01' when agent 'dc-dsadwjalnfaosiqw-01' added, while shceduler is starting.
+Scheduler-2020/05/05 22:37:17 /Users/heizi/go/src/ping/scheduler.go:480: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 22:41:50 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-02' registered.
+Scheduler-2020/05/05 22:41:50 /Users/heizi/go/src/ping/scheduler.go:255: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-02'.
+Scheduler-2020/05/05 22:41:50 /Users/heizi/go/src/ping/scheduler.go:431: Set 'dc-dsadwjalnfaosiqw-02''s task list successfully.
+Scheduler-2020/05/05 22:41:50 /Users/heizi/go/src/ping/scheduler.go:431: Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 22:48:34 /Users/heizi/go/src/ping/scheduler.go:271: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/05 22:48:34 /Users/heizi/go/src/ping/scheduler.go:203: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/05 22:49:33 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 22:49:40 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-02' registered.
+Scheduler-2020/05/05 22:49:40 /Users/heizi/go/src/ping/scheduler.go:242: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-02'.
+Scheduler-2020/05/05 22:49:40 /Users/heizi/go/src/ping/scheduler.go:312: Task will not be updated for group 'datacenter01' when agent 'dc-dsadwjalnfaosiqw-02' added, while shceduler is starting.
+Scheduler-2020/05/05 22:49:43 /Users/heizi/go/src/ping/scheduler.go:483: [initAssignment] Set 'dc-dsadwjalnfaosiqw-02''s task list successfully.
+Scheduler-2020/05/05 22:58:49 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 22:58:50 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-02' registered.
+Scheduler-2020/05/05 22:58:50 /Users/heizi/go/src/ping/scheduler.go:242: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-02'.
+Scheduler-2020/05/05 22:58:50 /Users/heizi/go/src/ping/scheduler.go:312: Task will not be updated for group 'datacenter01' when agent 'dc-dsadwjalnfaosiqw-02' added, while shceduler is starting.
+Scheduler-2020/05/05 22:58:59 /Users/heizi/go/src/ping/scheduler.go:485: [initAssignment] Set 'dc-dsadwjalnfaosiqw-02''s task list successfully.
+Scheduler-2020/05/05 22:59:11 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 22:59:11 /Users/heizi/go/src/ping/scheduler.go:255: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 22:59:11 /Users/heizi/go/src/ping/scheduler.go:397: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/05 22:59:11 /Users/heizi/go/src/ping/scheduler.go:436: Set 'dc-dsadwjalnfaosiqw-02''s task list successfully.
+Scheduler-2020/05/05 22:59:11 /Users/heizi/go/src/ping/scheduler.go:436: Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 22:59:35 /Users/heizi/go/src/ping/scheduler.go:271: Agent 'dc-dsadwjalnfaosiqw-02' unregistered.
+Scheduler-2020/05/05 22:59:35 /Users/heizi/go/src/ping/scheduler.go:203: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-02.
+Scheduler-2020/05/05 23:00:24 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-02' registered.
+Scheduler-2020/05/05 23:00:24 /Users/heizi/go/src/ping/scheduler.go:255: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-02'.
+Scheduler-2020/05/05 23:00:24 /Users/heizi/go/src/ping/scheduler.go:397: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-02' is added.
+Scheduler-2020/05/05 23:00:24 /Users/heizi/go/src/ping/scheduler.go:436: Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 23:00:24 /Users/heizi/go/src/ping/scheduler.go:436: Set 'dc-dsadwjalnfaosiqw-02''s task list successfully.
+Scheduler-2020/05/05 23:16:36 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 23:16:42 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 23:16:42 /Users/heizi/go/src/ping/scheduler.go:242: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 23:16:42 /Users/heizi/go/src/ping/scheduler.go:313: Task will not be updated for group 'datacenter01' when agent 'dc-dsadwjalnfaosiqw-01' added, while shceduler is starting.
+Scheduler-2020/05/05 23:16:44 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-02' registered.
+Scheduler-2020/05/05 23:16:44 /Users/heizi/go/src/ping/scheduler.go:255: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-02'.
+Scheduler-2020/05/05 23:16:44 /Users/heizi/go/src/ping/scheduler.go:313: Task will not be updated for group 'datacenter01' when agent 'dc-dsadwjalnfaosiqw-02' added, while shceduler is starting.
+Scheduler-2020/05/05 23:16:46 /Users/heizi/go/src/ping/scheduler.go:486: [initAssignment] Set 'dc-dsadwjalnfaosiqw-02''s task list successfully.
+Scheduler-2020/05/05 23:16:46 /Users/heizi/go/src/ping/scheduler.go:486: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 23:17:56 /Users/heizi/go/src/ping/scheduler.go:271: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/05 23:17:56 /Users/heizi/go/src/ping/scheduler.go:203: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/05 23:17:56 /Users/heizi/go/src/ping/scheduler.go:325: Ajusting task list to group 'datacenter01' for agent 'dc-dsadwjalnfaosiqw-01' is removed.
+Scheduler-2020/05/05 23:17:56 /Users/heizi/go/src/ping/scheduler.go:381: Set 'dc-dsadwjalnfaosiqw-02''s task list successfully.
+Scheduler-2020/05/05 23:18:45 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 23:18:45 /Users/heizi/go/src/ping/scheduler.go:255: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 23:18:45 /Users/heizi/go/src/ping/scheduler.go:398: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/05 23:18:45 /Users/heizi/go/src/ping/scheduler.go:437: Set 'dc-dsadwjalnfaosiqw-02''s task list successfully.
+Scheduler-2020/05/05 23:18:45 /Users/heizi/go/src/ping/scheduler.go:437: Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 23:19:09 /Users/heizi/go/src/ping/scheduler.go:271: Agent 'dc-dsadwjalnfaosiqw-02' unregistered.
+Scheduler-2020/05/05 23:19:09 /Users/heizi/go/src/ping/scheduler.go:203: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-02.
+Scheduler-2020/05/05 23:19:09 /Users/heizi/go/src/ping/scheduler.go:325: Ajusting task list to group 'datacenter01' for agent 'dc-dsadwjalnfaosiqw-02' is removed.
+Scheduler-2020/05/05 23:19:09 /Users/heizi/go/src/ping/scheduler.go:381: Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 23:20:30 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-02' registered.
+Scheduler-2020/05/05 23:20:30 /Users/heizi/go/src/ping/scheduler.go:235: Agent 'dc-dsadwjalnfaosiqw-02''s is reserved, will act as a standy agent.
+Scheduler-2020/05/05 23:20:36 /Users/heizi/go/src/ping/scheduler.go:271: Agent 'dc-dsadwjalnfaosiqw-02' unregistered.
+Scheduler-2020/05/05 23:20:36 /Users/heizi/go/src/ping/scheduler.go:325: Ajusting task list to group 'datacenter01' for agent 'dc-dsadwjalnfaosiqw-02' is removed.
+Scheduler-2020/05/05 23:20:40 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-02' registered.
+Scheduler-2020/05/05 23:20:40 /Users/heizi/go/src/ping/scheduler.go:235: Agent 'dc-dsadwjalnfaosiqw-02''s is reserved, will act as a standy agent.
+Scheduler-2020/05/05 23:21:25 /Users/heizi/go/src/ping/scheduler.go:271: Agent 'dc-dsadwjalnfaosiqw-02' unregistered.
+Scheduler-2020/05/05 23:21:25 /Users/heizi/go/src/ping/scheduler.go:325: Ajusting task list to group 'datacenter01' for agent 'dc-dsadwjalnfaosiqw-02' is removed.
+Scheduler-2020/05/05 23:23:21 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/05 23:23:25 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/05 23:23:25 /Users/heizi/go/src/ping/scheduler.go:242: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/05 23:23:25 /Users/heizi/go/src/ping/scheduler.go:313: Task will not be updated for group 'datacenter01' when agent 'dc-dsadwjalnfaosiqw-01' added, while shceduler is starting.
+Scheduler-2020/05/05 23:23:31 /Users/heizi/go/src/ping/scheduler.go:489: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/05 23:23:51 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-02' registered.
+Scheduler-2020/05/05 23:23:51 /Users/heizi/go/src/ping/scheduler.go:235: Agent 'dc-dsadwjalnfaosiqw-02''s is reserved, will act as a standy agent.
+Scheduler-2020/05/05 23:24:20 /Users/heizi/go/src/ping/scheduler.go:271: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/05 23:24:20 /Users/heizi/go/src/ping/scheduler.go:203: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/05 23:24:20 /Users/heizi/go/src/ping/scheduler.go:211: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/05 23:24:20 /Users/heizi/go/src/ping/scheduler.go:328: Ajusting task list to group 'datacenter01' for agent 'dc-dsadwjalnfaosiqw-01' is removed.

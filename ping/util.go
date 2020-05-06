@@ -74,7 +74,7 @@ func convertStringToMap(s string) (map[string][]string, error){
 /*
 	分类函数，将目标地址按一定的规则分配到不同的Agent组上。该函数需要根据业务规则自定义.
 */
-func classify(data []*TargetIPAddress, category []string) ( map[string][]*TargetIPAddress, error) {
+func classify(data []*TargetIPAddress, category []string) (map[string][]*TargetIPAddress, error) {
 	m := make(map[string][]*TargetIPAddress)
 	for _, c := range category{
 		m[c] = data

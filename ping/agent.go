@@ -32,6 +32,7 @@ type AgentBroker struct {
 	session     *ControllerService //Session to connect to Controller
 	taskVersion string
 	stopSignal  chan struct{}
+	stopKeepalived chan struct{}
 }
 
 type ControllerService struct {
@@ -43,13 +44,14 @@ func NewAgentBroker(config *AgentConfig) (*AgentBroker, error) {
 	agent := new(AgentBroker)
 	agent.Config = config
 
-	if config.Agent.RunningLocally {
+	if !config.Agent.RunningLocally {
 		agent.session = initControllerRpc(config.Controller.SchedulerURL)
 	}else{
 		agent.session = nil
 	}
 	agent.taskVersion = ""
 	agent.stopSignal = make(chan struct{})
+	agent.stopKeepalived = make(chan struct{})
 
 	switch config.Agent.WorkerType {
 	case "ping":
@@ -106,6 +108,13 @@ func (a *AgentBroker) keepalived() {
 		}
 
 		time.Sleep(time.Duration(a.Config.Agent.KeepaliveTimeSec) * time.Second)
+
+		select {
+		case <-a.stopKeepalived:
+			return
+		default:
+			continue
+		}
 	}
 }
 
@@ -175,6 +184,7 @@ func (a *AgentBroker) startWorker() error {
 	设置worker的任务列表
 */
 func (a *AgentBroker) UpdateTaskList(targets []*TargetIPAddress) error {
+	fmt.Println("Start to Set Task: ", targets)
 	return a.Worker.SetTaskList(targets)
 }
 
@@ -189,7 +199,7 @@ func (a *AgentBroker) workerRegister(w Worker) error {
 /*
 	从文件中读取worker的任务目标地址信息，格式参照TargetData
 */
-func (a *AgentBroker) getTargetIPAddressFromFile(filename string) ([]*TargetIPAddress, error) {
+func (a *AgentBroker) getTargetFromFile(filename string) ([]*TargetIPAddress, error) {
 	//实际使用中要根据返回值处理json格式
 	doc, err := ioutil.ReadFile(filename)
 	if err != nil {
@@ -209,13 +219,15 @@ func (a *AgentBroker) getTargetIPAddressFromFile(filename string) ([]*TargetIPAd
 	}
 
 	a.taskVersion = hash_code
+	j.Version = hash_code
+
 	return j.Targets, nil
 }
 
 /*
 	从api中读取worker的任务目标地址信息
 */
-func (a *AgentBroker) getTargetIPAddressFromApi(url string) ([]*TargetIPAddress, error) {
+func (a *AgentBroker) getTargetFromApi(url string) ([]*TargetIPAddress, error) {
 	//实际使用中要根据返回值处理json格式
 	resp, err := http.Get(url)
 	if err != nil {
@@ -241,6 +253,8 @@ func (a *AgentBroker) getTargetIPAddressFromApi(url string) ([]*TargetIPAddress,
 	}
 
 	a.taskVersion = hash_code
+	j.Version = hash_code
+
 	return j.Targets, nil
 }
 
@@ -253,12 +267,12 @@ func (a *AgentBroker) getTaskListLocally() {
 	for {
 		t := []*TargetIPAddress{}
 		if a.Config.Agent.TaskListFile != "" {
-			t, err = a.getTargetIPAddressFromFile(a.Config.Agent.TaskListFile)
+			t, err = a.getTargetFromFile(a.Config.Agent.TaskListFile)
 			if err != nil {
 				log.Errorf("Failed to read tasklist from file, error :%v", err)
 			}
 		}else if a.Config.Agent.TaskListApi != "" {
-			t, err = a.getTargetIPAddressFromApi(a.Config.Agent.TaskListApi)
+			t, err = a.getTargetFromApi(a.Config.Agent.TaskListApi)
 			if err != nil {
 				log.Errorf("Failed to read tasklist from api, error :%v", err)
 			}
@@ -283,6 +297,8 @@ func (a *AgentBroker) Stop(){
  */
 func (a *AgentBroker) stop() {
 	<-a.stopSignal
+
+	a.stopKeepalived <- struct{}{}
 
 	if err := a.stopWorker(); err != nil {
 		log.Errorf("Failed to stop the worker process. error: %v.", err)

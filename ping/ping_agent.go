@@ -121,7 +121,7 @@ func (a *PingAgent) SetTaskList(targets []*TargetIPAddress) error {
 	total_targets := len(targets)
 
 	if total_targets <= 0 {
-		log.Warn("Set Tasklist continued for targets length is 0.")
+		log.Warn("Set Task list skipped for targets length is 0.")
 		return nil
 	}
 

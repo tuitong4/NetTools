@@ -1,0 +1,36 @@
+Agent-2020/05/05 22:40:33 /Users/heizi/go/src/ping/ping_agent.go:251: Start to run ping worker.
+Agent-2020/05/05 22:40:33 /Users/heizi/go/src/ping/agent.go:368: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/05/05 22:40:40 /Users/heizi/go/src/ping/ping_agent.go:251: Start to run ping worker.
+Agent-2020/05/05 22:40:40 /Users/heizi/go/src/ping/agent.go:368: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/05/05 22:41:40 /Users/heizi/go/src/ping/ping_agent.go:251: Start to run ping worker.
+Agent-2020/05/05 22:41:40 /Users/heizi/go/src/ping/agent.go:368: [Scheduler(Hprose) start ] Listen port: 1295
+Agent-2020/05/05 22:41:50 /Users/heizi/go/src/ping/ping_agent.go:188: Target list was updated.
+Agent-2020/05/05 22:49:30 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/05 22:49:43 /Users/heizi/go/src/ping/ping_agent.go:188: Target list was updated.
+Agent-2020/05/05 22:58:59 /Users/heizi/go/src/ping/ping_agent.go:188: Target list was updated.
+Agent-2020/05/05 22:59:11 /Users/heizi/go/src/ping/ping_agent.go:188: Target list was updated.
+Agent-2020/05/05 22:59:28 /Users/heizi/go/src/ping/agent.go:323: Captured os interupt signal.
+Agent-2020/05/05 22:59:35 /Users/heizi/go/src/ping/ping_agent.go:242: Ping will stop for received interupt signal.
+Agent-2020/05/05 22:59:35 /Users/heizi/go/src/ping/agent.go:312: Agent exiting.
+Agent-2020/05/05 23:00:14 /Users/heizi/go/src/ping/ping_agent.go:251: Start to run ping worker.
+Agent-2020/05/05 23:00:14 /Users/heizi/go/src/ping/agent.go:368: [Scheduler(Hprose) start ] Listen port: 1295
+Agent-2020/05/05 23:00:24 /Users/heizi/go/src/ping/ping_agent.go:188: Target list was updated.
+Agent-2020/05/05 23:16:34 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/05 23:16:46 /Users/heizi/go/src/ping/ping_agent.go:188: Target list was updated.
+Agent-2020/05/05 23:17:56 /Users/heizi/go/src/ping/ping_agent.go:188: Target list was updated.
+Agent-2020/05/05 23:18:45 /Users/heizi/go/src/ping/ping_agent.go:188: Target list was updated.
+Agent-2020/05/05 23:19:04 /Users/heizi/go/src/ping/agent.go:323: Captured os interupt signal.
+Agent-2020/05/05 23:19:09 /Users/heizi/go/src/ping/ping_agent.go:242: Ping will stop for received interupt signal.
+Agent-2020/05/05 23:19:09 /Users/heizi/go/src/ping/agent.go:312: Agent exiting.
+Agent-2020/05/05 23:20:20 /Users/heizi/go/src/ping/ping_agent.go:251: Start to run ping worker.
+Agent-2020/05/05 23:20:20 /Users/heizi/go/src/ping/agent.go:368: [Scheduler(Hprose) start ] Listen port: 1295
+Agent-2020/05/05 23:21:12 /Users/heizi/go/src/ping/agent.go:323: Captured os interupt signal.
+Agent-2020/05/05 23:21:25 /Users/heizi/go/src/ping/ping_agent.go:242: Ping will stop for received interupt signal.
+Agent-2020/05/05 23:21:25 /Users/heizi/go/src/ping/agent.go:312: Agent exiting.
+Agent-2020/05/05 23:23:41 /Users/heizi/go/src/ping/ping_agent.go:251: Start to run ping worker.
+Agent-2020/05/05 23:23:41 /Users/heizi/go/src/ping/agent.go:368: [Scheduler(Hprose) start ] Listen port: 1295
+Agent-2020/05/05 23:47:06 /Users/heizi/go/src/ping/agent.go:323: Captured os interupt signal.
+Agent-2020/05/05 23:47:16 /Users/heizi/go/src/ping/ping_agent.go:242: Ping will stop for received interupt signal.
+Agent-2020/05/05 23:47:16 /Users/heizi/go/src/ping/agent.go:141: Bad event happened while unregistring. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/05 23:47:16 /Users/heizi/go/src/ping/agent.go:309: Failed to unregister the agent on scheduler, exit directly. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/05 23:47:16 /Users/heizi/go/src/ping/agent.go:312: Agent exiting.

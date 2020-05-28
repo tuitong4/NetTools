@@ -1,11 +1,6 @@
 package ping
 
-import (
-	"fmt"
-	"testing"
-)
-
-func TestInitPingSchedulerConfig(t *testing.T){
+/*func TestInitPingSchedulerConfig(t *testing.T){
 	cfgfile := "./config/scheduler_config.conf"
 	config, err := InitSchedulerConfig(cfgfile)
 	if err != nil{
@@ -14,4 +9,4 @@ func TestInitPingSchedulerConfig(t *testing.T){
 	}
 	fmt.Println("Scheduler: ", config)
 	return
-}
+}*/

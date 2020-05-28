@@ -1,10 +1,6 @@
 package ping
 
-import (
-	"fmt"
-	"testing"
-)
-
+/*
 func TestInitAgentConfig(t *testing.T){
 	cfgfile := "./config/agent_config.conf"
 	config, err := InitAgentConfig(cfgfile)
@@ -12,6 +8,8 @@ func TestInitAgentConfig(t *testing.T){
 		fmt.Println(err)
 		return
 	}
-	fmt.Println("AgentConfig: ", config.PingConfig.SourceIP["CU"][1])
+	fmt.Println("AgentConfig: ", config.PingConfig.SourceIP["CU"])
 	return
 }
+
+*/

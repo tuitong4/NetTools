@@ -2,6 +2,7 @@ package ping
 
 import (
 	"fmt"
+	"github.com/hprose/hprose-golang/rpc"
 	"strings"
 )
 
@@ -81,3 +82,34 @@ func classify(data []*TargetIPAddress, category []string) (map[string][]*TargetI
 	}
 	return m, nil
 }
+
+
+/*
+	初始化对Agnet的RPC调用
+*/
+func initAgentRpc(a *Agent) *AgentService {
+	uri := fmt.Sprintf("http://%s:%s", a.agentIP, a.port)
+	c := rpc.NewHTTPClient(uri)
+	var agent_service *AgentService
+	c.UseService(&agent_service)
+	return agent_service
+}
+
+
+/*
+	从slice中删除元素
+ */
+
+func delItemFromSilce(slice []string, item string) []string{
+	index := 0
+	for idx, val := range slice{
+		if val == item{
+			index = idx
+			break
+		}
+	}
+	slice = append(slice[:index], slice[index+1:]...)
+	return  slice
+}
+
+

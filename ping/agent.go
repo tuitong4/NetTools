@@ -19,7 +19,7 @@ type AgentService struct {
 	UpdateReservedStatus func(reserved bool) error
 }
 
-type Worker interface {
+type worker interface {
 	Stop() error
 	Start() error
 	SetTaskList([]*TargetIPAddress) error
@@ -27,8 +27,8 @@ type Worker interface {
 }
 
 type AgentBroker struct {
-	Config      *AgentConfig
-	Worker      Worker
+	config      *AgentConfig
+	worker      worker
 	session     *ControllerService //Session to connect to Controller
 	taskVersion string
 	stopSignal  chan struct{}
@@ -42,7 +42,7 @@ type ControllerService struct {
 
 func NewAgentBroker(config *AgentConfig) (*AgentBroker, error) {
 	agent := new(AgentBroker)
-	agent.Config = config
+	agent.config = config
 
 	if !config.Agent.RunningLocally {
 		agent.session = initControllerRpc(config.Controller.SchedulerURL)
@@ -92,13 +92,15 @@ func (a *AgentBroker) keepalived() {
 
 	for {
 		agent := &Agent{
-			AgentID:          a.Config.Agent.AgentID,
-			GroupID:          a.Config.Agent.GroupID,
-			AgentIP:          a.Config.Listen.Host,
-			Reserve:          a.Config.Agent.Reserved,
-			KeepaliveTimeSec: a.Config.Agent.KeepaliveTimeSec,
-			LastSeen:         0,
-			Port:             a.Config.Listen.Port,
+			agentID:          a.config.Agent.AgentID,
+			groupID:          a.config.Agent.GroupID,
+			agentIP:          a.config.Listen.Host,
+			reserve:          a.config.Agent.Reserved,
+			keepaliveTimeSec: a.config.Agent.KeepaliveTimeSec,
+			lastSeen:         0,
+			port:             a.config.Listen.Port,
+			standbyGroup:     a.config.Agent.StandyGroup,
+			globalStandyGroup:a.config.Agent.GlobalStandyGroup,
 		}
 
 		err := a.session.HandleAgentKeepalive(agent)
@@ -107,7 +109,7 @@ func (a *AgentBroker) keepalived() {
 			log.Errorf("Send keeepalived packet failed. error: %v.", err)
 		}
 
-		time.Sleep(time.Duration(a.Config.Agent.KeepaliveTimeSec) * time.Second)
+		time.Sleep(time.Duration(a.config.Agent.KeepaliveTimeSec) * time.Second)
 
 		select {
 		case <-a.stopKeepalived:
@@ -122,17 +124,19 @@ func (a *AgentBroker) keepalived() {
 	取消注册
 */
 func (a *AgentBroker) Unregister() error {
-	if a.Config.Agent.RunningLocally {
+	if a.config.Agent.RunningLocally {
 		return nil
 	}
 	agent := &Agent{
-		AgentID:          a.Config.Agent.AgentID,
-		GroupID:          a.Config.Agent.GroupID,
-		AgentIP:          a.Config.Listen.Host,
-		Reserve:          a.Config.Agent.Reserved,
-		KeepaliveTimeSec: a.Config.Agent.KeepaliveTimeSec,
-		LastSeen:         0,
-		Port:             a.Config.Listen.Port,
+		agentID:          a.config.Agent.AgentID,
+		groupID:          a.config.Agent.GroupID,
+		agentIP:          a.config.Listen.Host,
+		reserve:          a.config.Agent.Reserved,
+		keepaliveTimeSec: a.config.Agent.KeepaliveTimeSec,
+		lastSeen:         0,
+		port:             a.config.Listen.Port,
+		standbyGroup:     a.config.Agent.StandyGroup,
+		globalStandyGroup:a.config.Agent.GlobalStandyGroup,
 	}
 
 	err := a.session.AgentUnRegister(agent)
@@ -147,37 +151,37 @@ func (a *AgentBroker) Unregister() error {
 	更新当前Agent的Reserve状态
 */
 func (a *AgentBroker) UpdateReservedStatus(reserved bool) error {
-	prev_reserved := a.Config.Agent.Reserved
+	prev_reserved := a.config.Agent.Reserved
 	if prev_reserved == reserved {
 		log.Warn("Reserved status not seted because status are same.")
 		return nil
 	}
 
 	if reserved {
-		a.Config.Agent.Reserved = reserved
-		return a.stopWorker()
+		a.config.Agent.Reserved = reserved
+		return a.stopworker()
 	}
 
 	if !reserved {
-		a.Config.Agent.Reserved = reserved
-		return a.startWorker()
+		a.config.Agent.Reserved = reserved
+		return a.startworker()
 	}
 
 	return nil
 }
 
 /*
-	停止Worker
+	停止worker
 */
-func (a *AgentBroker) stopWorker() error {
-	return a.Worker.Stop()
+func (a *AgentBroker) stopworker() error {
+	return a.worker.Stop()
 }
 
 /*
-	启动Worker
+	启动worker
 */
-func (a *AgentBroker) startWorker() error {
-	return a.Worker.Start()
+func (a *AgentBroker) startworker() error {
+	return a.worker.Start()
 }
 
 /*
@@ -185,14 +189,14 @@ func (a *AgentBroker) startWorker() error {
 */
 func (a *AgentBroker) UpdateTaskList(targets []*TargetIPAddress) error {
 	fmt.Println("Start to Set Task: ", targets)
-	return a.Worker.SetTaskList(targets)
+	return a.worker.SetTaskList(targets)
 }
 
 /*
-	Worker注册
+	worker注册
 */
-func (a *AgentBroker) workerRegister(w Worker) error {
-	a.Worker = w
+func (a *AgentBroker) workerRegister(w worker) error {
+	a.worker = w
 	return nil
 }
 
@@ -212,7 +216,7 @@ func (a *AgentBroker) getTargetFromFile(filename string) ([]*TargetIPAddress, er
 		return nil, nil
 	}
 
-	log.Infof("Found changed section in '%s'.", a.Config.Agent.TaskListFile)
+	log.Infof("Found changed section in '%s'.", a.config.Agent.TaskListFile)
 	var j = new(TargetData)
 	if err := json.NewDecoder(bytes.NewReader(doc)).Decode(j); err != nil {
 		return nil, err
@@ -246,7 +250,7 @@ func (a *AgentBroker) getTargetFromApi(url string) ([]*TargetIPAddress, error) {
 		return nil, nil
 	}
 
-	log.Infof("Found changed section in '%s'.", a.Config.Agent.TaskListApi)
+	log.Infof("Found changed section in '%s'.", a.config.Agent.TaskListApi)
 	var j = &TargetData{}
 	if err := json.NewDecoder(resp.Body).Decode(j); err != nil {
 		return nil, err
@@ -266,13 +270,13 @@ func (a *AgentBroker) getTaskListLocally() {
 	var err error
 	for {
 		t := []*TargetIPAddress{}
-		if a.Config.Agent.TaskListFile != "" {
-			t, err = a.getTargetFromFile(a.Config.Agent.TaskListFile)
+		if a.config.Agent.TaskListFile != "" {
+			t, err = a.getTargetFromFile(a.config.Agent.TaskListFile)
 			if err != nil {
 				log.Errorf("Failed to read tasklist from file, error :%v", err)
 			}
-		}else if a.Config.Agent.TaskListApi != "" {
-			t, err = a.getTargetFromApi(a.Config.Agent.TaskListApi)
+		}else if a.config.Agent.TaskListApi != "" {
+			t, err = a.getTargetFromApi(a.config.Agent.TaskListApi)
 			if err != nil {
 				log.Errorf("Failed to read tasklist from api, error :%v", err)
 			}
@@ -280,11 +284,11 @@ func (a *AgentBroker) getTaskListLocally() {
 
 		if len(t) != 0 {
 			log.Info("Setting task list.")
-			if err := a.Worker.SetTaskList(t); err != nil {
+			if err := a.worker.SetTaskList(t); err != nil {
 				log.Errorf("Failed to set task list, error :%v", err)
 			}
 		}
-		time.Sleep(time.Duration(a.Config.Agent.TaskRefreshTimeSec) * time.Second)
+		time.Sleep(time.Duration(a.config.Agent.TaskRefreshTimeSec) * time.Second)
 	}
 }
 
@@ -300,7 +304,7 @@ func (a *AgentBroker) stop() {
 
 	a.stopKeepalived <- struct{}{}
 
-	if err := a.stopWorker(); err != nil {
+	if err := a.stopworker(); err != nil {
 		log.Errorf("Failed to stop the worker process. error: %v.", err)
 	}
 
@@ -335,11 +339,11 @@ func (a *AgentBroker) Run() {
 	}()
 
 
-	if a.Config.Agent.RunningLocally {
+	if a.config.Agent.RunningLocally {
 		go a.captureOsInterruptSignal()
 
-		// 启动Worker
-		if err := a.startWorker(); err != nil {
+		// 启动worker
+		if err := a.startworker(); err != nil {
 			log.Errorf("%v", err)
 			return
 		}
@@ -355,8 +359,8 @@ func (a *AgentBroker) Run() {
 		go a.stop()
 		go a.keepalived()
 
-		// 启动Worker
-		if err := a.startWorker(); err != nil {
+		// 启动worker
+		if err := a.startworker(); err != nil {
 			log.Errorf("%v", err)
 			return
 		}
@@ -365,7 +369,7 @@ func (a *AgentBroker) Run() {
 		service := rpc.NewHTTPService()
 		service.AddFunction("UpdateTaskList", a.UpdateTaskList)
 		service.AddFunction("UpdateReservedStatus", a.UpdateReservedStatus)
-		log.Infof("[Scheduler(Hprose) start ] Listen port: %s", a.Config.Listen.Port)
-		_ = http.ListenAndServe(":"+a.Config.Listen.Port, service)
+		log.Infof("[Scheduler(Hprose) start ] Listen port: %s", a.config.Listen.Port)
+		_ = http.ListenAndServe(":"+a.config.Listen.Port, service)
 	}
 }

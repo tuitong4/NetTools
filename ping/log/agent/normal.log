@@ -200,3 +200,50 @@ Agent-2020/05/05 23:23:31 /Users/heizi/go/src/ping/ping_agent.go:188: Target lis
 Agent-2020/05/05 23:24:08 /Users/heizi/go/src/ping/agent.go:323: Captured os interupt signal.
 Agent-2020/05/05 23:24:20 /Users/heizi/go/src/ping/ping_agent.go:242: Ping will stop for received interupt signal.
 Agent-2020/05/05 23:24:20 /Users/heizi/go/src/ping/agent.go:312: Agent exiting.
+Agent-2020/05/06 22:48:36 /Users/heizi/go/src/ping/ping_agent.go:251: Start to run ping worker.
+Agent-2020/05/06 22:48:36 /Users/heizi/go/src/ping/agent.go:368: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/05/06 22:54:47 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 22:54:57 /Users/heizi/go/src/ping/ping_agent.go:188: Target list was updated.
+Agent-2020/05/06 22:55:15 /Users/heizi/go/src/ping/agent.go:323: Captured os interupt signal.
+Agent-2020/05/06 22:55:22 /Users/heizi/go/src/ping/ping_agent.go:242: Ping will stop for received interupt signal.
+Agent-2020/05/06 22:55:22 /Users/heizi/go/src/ping/agent.go:312: Agent exiting.
+Agent-2020/05/06 22:56:24 /Users/heizi/go/src/ping/ping_agent.go:251: Start to run ping worker.
+Agent-2020/05/06 22:56:24 /Users/heizi/go/src/ping/agent.go:368: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/05/06 22:56:34 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: runtime error: invalid memory address or nil pointer dereference.
+Agent-2020/05/06 23:00:48 /Users/heizi/go/src/ping/agent.go:323: Captured os interupt signal.
+Agent-2020/05/06 23:00:59 /Users/heizi/go/src/ping/ping_agent.go:242: Ping will stop for received interupt signal.
+Agent-2020/05/06 23:00:59 /Users/heizi/go/src/ping/agent.go:312: Agent exiting.
+Agent-2020/05/06 23:01:28 /Users/heizi/go/src/ping/ping_agent.go:251: Start to run ping worker.
+Agent-2020/05/06 23:01:28 /Users/heizi/go/src/ping/agent.go:368: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/05/06 23:01:38 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: runtime error: invalid memory address or nil pointer dereference.
+Agent-2020/05/06 23:01:48 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: runtime error: invalid memory address or nil pointer dereference.
+Agent-2020/05/06 23:02:24 /Users/heizi/go/src/ping/agent.go:323: Captured os interupt signal.
+Agent-2020/05/06 23:02:33 /Users/heizi/go/src/ping/ping_agent.go:242: Ping will stop for received interupt signal.
+Agent-2020/05/06 23:02:33 /Users/heizi/go/src/ping/agent.go:312: Agent exiting.
+Agent-2020/05/06 23:02:42 /Users/heizi/go/src/ping/ping_agent.go:251: Start to run ping worker.
+Agent-2020/05/06 23:02:42 /Users/heizi/go/src/ping/agent.go:368: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/05/06 23:02:52 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: runtime error: invalid memory address or nil pointer dereference.
+Agent-2020/05/06 23:22:23 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:22:35 /Users/heizi/go/src/ping/ping_agent.go:188: Target list was updated.
+Agent-2020/05/06 23:22:47 /Users/heizi/go/src/ping/agent.go:323: Captured os interupt signal.
+Agent-2020/05/06 23:22:57 /Users/heizi/go/src/ping/ping_agent.go:242: Ping will stop for received interupt signal.
+Agent-2020/05/06 23:22:57 /Users/heizi/go/src/ping/agent.go:312: Agent exiting.
+Agent-2020/05/06 23:26:17 /Users/heizi/go/src/ping/ping_agent.go:251: Start to run ping worker.
+Agent-2020/05/06 23:26:17 /Users/heizi/go/src/ping/agent.go:368: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/05/06 23:27:28 /Users/heizi/go/src/ping/agent.go:323: Captured os interupt signal.
+Agent-2020/05/06 23:27:42 /Users/heizi/go/src/ping/ping_agent.go:242: Ping will stop for received interupt signal.
+Agent-2020/05/06 23:27:42 /Users/heizi/go/src/ping/agent.go:312: Agent exiting.
+Agent-2020/05/06 23:33:40 /Users/heizi/go/src/ping/ping_agent.go:251: Start to run ping worker.
+Agent-2020/05/06 23:33:40 /Users/heizi/go/src/ping/agent.go:368: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/05/06 23:35:05 /Users/heizi/go/src/ping/ping_agent.go:188: Target list was updated.
+Agent-2020/05/06 23:35:47 /Users/heizi/go/src/ping/agent.go:323: Captured os interupt signal.
+Agent-2020/05/06 23:35:55 /Users/heizi/go/src/ping/ping_agent.go:242: Ping will stop for received interupt signal.
+Agent-2020/05/06 23:35:55 /Users/heizi/go/src/ping/agent.go:312: Agent exiting.
+Agent-2020/05/06 23:36:15 /Users/heizi/go/src/ping/ping_agent.go:251: Start to run ping worker.
+Agent-2020/05/06 23:36:15 /Users/heizi/go/src/ping/agent.go:368: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/05/06 23:36:25 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: runtime error: invalid memory address or nil pointer dereference.
+Agent-2020/05/06 23:38:04 /Users/heizi/go/src/ping/agent.go:323: Captured os interupt signal.
+Agent-2020/05/06 23:38:10 /Users/heizi/go/src/ping/ping_agent.go:242: Ping will stop for received interupt signal.
+Agent-2020/05/06 23:38:10 /Users/heizi/go/src/ping/agent.go:141: Bad event happened while unregistring. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:38:10 /Users/heizi/go/src/ping/agent.go:309: Failed to unregister the agent on scheduler, exit directly. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:38:10 /Users/heizi/go/src/ping/agent.go:312: Agent exiting.

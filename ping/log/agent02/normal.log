@@ -34,3 +34,43 @@ Agent-2020/05/05 23:47:16 /Users/heizi/go/src/ping/ping_agent.go:242: Ping will 
 Agent-2020/05/05 23:47:16 /Users/heizi/go/src/ping/agent.go:141: Bad event happened while unregistring. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
 Agent-2020/05/05 23:47:16 /Users/heizi/go/src/ping/agent.go:309: Failed to unregister the agent on scheduler, exit directly. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
 Agent-2020/05/05 23:47:16 /Users/heizi/go/src/ping/agent.go:312: Agent exiting.
+Agent-2020/05/06 22:48:41 /Users/heizi/go/src/ping/ping_agent.go:251: Start to run ping worker.
+Agent-2020/05/06 22:48:41 /Users/heizi/go/src/ping/agent.go:368: [Scheduler(Hprose) start ] Listen port: 1295
+Agent-2020/05/06 23:11:41 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:22:22 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:26:02 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:28:42 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: EOF.
+Agent-2020/05/06 23:28:52 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:29:02 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:29:12 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:29:22 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:29:32 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:29:42 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:29:52 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:30:02 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:30:12 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:30:22 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:30:32 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:30:42 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:30:52 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:31:02 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:31:12 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:31:22 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:31:32 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:31:42 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:31:52 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:32:02 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:32:12 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:32:22 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:32:32 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:32:42 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:32:52 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:33:02 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:33:12 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:33:22 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:38:02 /Users/heizi/go/src/ping/agent.go:107: Send keeepalived packet failed. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:38:06 /Users/heizi/go/src/ping/agent.go:323: Captured os interupt signal.
+Agent-2020/05/06 23:38:16 /Users/heizi/go/src/ping/ping_agent.go:242: Ping will stop for received interupt signal.
+Agent-2020/05/06 23:38:16 /Users/heizi/go/src/ping/agent.go:141: Bad event happened while unregistring. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:38:16 /Users/heizi/go/src/ping/agent.go:309: Failed to unregister the agent on scheduler, exit directly. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
+Agent-2020/05/06 23:38:16 /Users/heizi/go/src/ping/agent.go:312: Agent exiting.

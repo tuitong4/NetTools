@@ -305,3 +305,450 @@ Scheduler-2020/05/05 23:24:20 /Users/heizi/go/src/ping/scheduler.go:271: Agent '
 Scheduler-2020/05/05 23:24:20 /Users/heizi/go/src/ping/scheduler.go:203: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
 Scheduler-2020/05/05 23:24:20 /Users/heizi/go/src/ping/scheduler.go:211: Group 'datacenter01' is deleted for no agent in group any more.
 Scheduler-2020/05/05 23:24:20 /Users/heizi/go/src/ping/scheduler.go:328: Ajusting task list to group 'datacenter01' for agent 'dc-dsadwjalnfaosiqw-01' is removed.
+Scheduler-2020/05/06 22:48:16 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/06 22:48:26 /Users/heizi/go/src/ping/scheduler.go:615: No avalible category to classify.
+Scheduler-2020/05/06 22:48:46 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/06 22:48:46 /Users/heizi/go/src/ping/scheduler.go:242: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/06 22:48:46 /Users/heizi/go/src/ping/scheduler.go:314: Task will not be updated for group 'datacenter01' when agent 'dc-dsadwjalnfaosiqw-01' added, while shceduler is starting.
+Scheduler-2020/05/06 22:48:51 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-02' registered.
+Scheduler-2020/05/06 22:48:51 /Users/heizi/go/src/ping/scheduler.go:235: Agent 'dc-dsadwjalnfaosiqw-02''s is reserved, will act as a standy agent.
+Scheduler-2020/05/06 22:48:51 /Users/heizi/go/src/ping/scheduler.go:314: Task will not be updated for group 'datacenter01' when agent 'dc-dsadwjalnfaosiqw-02' added, while shceduler is starting.
+Scheduler-2020/05/06 22:54:47 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/06 22:54:51 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 22:54:51 /Users/heizi/go/src/ping/scheduler.go:234: Agent 'dc-dsadwjalnfaosiqw-02' registered.
+Scheduler-2020/05/06 22:54:51 /Users/heizi/go/src/ping/scheduler.go:238: Agent 'dc-dsadwjalnfaosiqw-02''s is reserved, will act as a standy agent.
+Scheduler-2020/05/06 22:54:57 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 22:54:57 /Users/heizi/go/src/ping/scheduler.go:234: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/06 22:54:57 /Users/heizi/go/src/ping/scheduler.go:245: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/06 22:54:57 /Users/heizi/go/src/ping/scheduler.go:408: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 22:54:57 /Users/heizi/go/src/ping/scheduler.go:417: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 22:54:57 /Users/heizi/go/src/ping/scheduler.go:447: Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/06 22:55:22 /Users/heizi/go/src/ping/scheduler.go:274: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/06 22:55:22 /Users/heizi/go/src/ping/scheduler.go:203: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/06 22:55:22 /Users/heizi/go/src/ping/scheduler.go:211: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/06 22:55:22 /Users/heizi/go/src/ping/scheduler.go:328: Ajusting task list to group 'datacenter01' for agent 'dc-dsadwjalnfaosiqw-01' is removed.
+Scheduler-2020/05/06 22:56:34 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 22:56:34 /Users/heizi/go/src/ping/scheduler.go:234: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/06 22:56:34 /Users/heizi/go/src/ping/scheduler.go:245: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/06 22:56:34 /Users/heizi/go/src/ping/scheduler.go:408: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 22:56:34 /Users/heizi/go/src/ping/scheduler.go:417: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:00:59 /Users/heizi/go/src/ping/scheduler.go:274: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/06 23:00:59 /Users/heizi/go/src/ping/scheduler.go:203: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/06 23:00:59 /Users/heizi/go/src/ping/scheduler.go:211: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/06 23:00:59 /Users/heizi/go/src/ping/scheduler.go:328: Ajusting task list to group 'datacenter01' for agent 'dc-dsadwjalnfaosiqw-01' is removed.
+Scheduler-2020/05/06 23:01:38 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:01:38 /Users/heizi/go/src/ping/scheduler.go:234: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/06 23:01:38 /Users/heizi/go/src/ping/scheduler.go:245: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/06 23:01:38 /Users/heizi/go/src/ping/scheduler.go:408: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:01:38 /Users/heizi/go/src/ping/scheduler.go:417: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:01:47 /Users/heizi/go/src/ping/scheduler.go:274: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/06 23:01:47 /Users/heizi/go/src/ping/scheduler.go:203: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/06 23:01:47 /Users/heizi/go/src/ping/scheduler.go:211: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/06 23:01:47 /Users/heizi/go/src/ping/scheduler.go:328: Ajusting task list to group 'datacenter01' for agent 'dc-dsadwjalnfaosiqw-01' is removed.
+Scheduler-2020/05/06 23:01:48 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:01:48 /Users/heizi/go/src/ping/scheduler.go:234: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/06 23:01:48 /Users/heizi/go/src/ping/scheduler.go:245: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/06 23:01:48 /Users/heizi/go/src/ping/scheduler.go:408: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:01:48 /Users/heizi/go/src/ping/scheduler.go:417: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:02:33 /Users/heizi/go/src/ping/scheduler.go:274: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/06 23:02:33 /Users/heizi/go/src/ping/scheduler.go:203: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/06 23:02:33 /Users/heizi/go/src/ping/scheduler.go:211: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/06 23:02:33 /Users/heizi/go/src/ping/scheduler.go:328: Ajusting task list to group 'datacenter01' for agent 'dc-dsadwjalnfaosiqw-01' is removed.
+Scheduler-2020/05/06 23:02:52 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:02:52 /Users/heizi/go/src/ping/scheduler.go:234: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/06 23:02:52 /Users/heizi/go/src/ping/scheduler.go:245: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/06 23:02:52 /Users/heizi/go/src/ping/scheduler.go:408: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:02:52 /Users/heizi/go/src/ping/scheduler.go:417: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:04:28 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/06 23:04:31 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:04:32 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:04:32 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:04:32 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:04:32 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:04:41 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:04:42 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:04:42 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:04:42 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:04:42 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:04:51 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:04:52 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:04:52 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:04:52 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:04:52 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:05:01 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:05:02 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:05:02 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:05:02 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:05:02 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:05:11 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:05:12 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:05:12 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:05:12 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:05:12 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:05:21 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:05:22 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:05:22 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:05:22 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:05:22 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:05:31 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:05:32 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:05:32 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:05:32 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:05:32 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:05:41 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:05:42 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:05:42 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:05:42 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:05:42 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:05:51 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:05:53 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:05:53 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:05:53 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:05:53 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:06:01 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:06:03 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:06:03 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:06:03 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:06:03 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:06:11 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:06:13 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:06:13 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:06:13 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:06:13 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:06:21 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:06:23 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:06:23 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:06:23 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:06:23 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:06:31 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:06:33 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:06:33 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:06:33 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:06:33 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:06:41 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:06:43 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:06:43 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:06:43 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:06:43 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:06:51 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:06:53 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:06:53 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:06:53 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:06:53 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:07:01 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:07:03 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:07:03 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:07:03 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:07:03 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:07:11 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:07:13 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:07:13 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:07:13 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:07:13 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:07:21 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:07:23 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:07:23 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:07:23 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:07:23 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:07:31 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:07:33 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:07:33 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:07:33 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:07:33 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:07:41 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:07:43 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:07:43 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:07:43 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:07:43 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:07:51 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:07:53 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:07:53 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:07:53 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:07:53 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:08:01 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:08:03 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:08:03 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:08:03 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:08:03 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:08:11 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:08:13 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:08:13 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:08:13 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:08:13 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:08:21 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:08:23 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:08:23 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:08:23 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:08:23 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:08:31 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:08:33 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:08:33 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:08:33 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:08:33 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:08:41 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:08:43 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:08:43 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:08:43 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:08:43 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:08:51 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:08:53 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:08:53 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:08:53 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:08:53 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:09:01 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:09:03 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:09:03 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:09:03 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:09:03 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:09:11 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:09:13 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:09:13 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:09:13 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:09:13 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:09:21 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:09:23 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:09:23 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:09:23 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:09:23 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:09:31 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:09:33 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:09:33 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:09:33 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:09:33 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:09:41 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:09:43 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:09:43 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:09:43 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:09:43 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:09:51 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:09:53 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:09:53 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:09:53 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:09:53 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:10:01 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:10:03 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:10:03 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:10:03 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:10:03 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:10:11 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:10:13 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:10:13 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:10:13 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:10:13 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:10:21 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:10:23 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:10:23 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:10:23 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:10:23 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:10:31 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:10:33 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:10:33 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:10:33 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:10:33 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:10:41 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:10:43 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:10:43 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:10:43 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:10:43 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:10:51 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:10:53 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:10:53 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:10:53 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:10:53 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:11:01 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:11:03 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:11:03 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:11:03 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:11:03 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:11:11 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:11:13 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:11:13 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:11:13 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:11:13 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:11:21 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:11:23 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:11:23 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:11:23 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:11:23 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:11:31 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:11:33 /Users/heizi/go/src/ping/scheduler.go:227: Register is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:11:33 /Users/heizi/go/src/ping/scheduler.go:409: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:11:33 /Users/heizi/go/src/ping/scheduler.go:418: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/05/06 23:11:33 /Users/heizi/go/src/ping/scheduler.go:426: Agent 'No avalible category to classify.' is running without task, for classfied failed. error:%!v(MISSING).
+Scheduler-2020/05/06 23:11:42 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/06 23:11:42 /Users/heizi/go/src/ping/scheduler.go:612: No avalible category to classify.
+Scheduler-2020/05/06 23:11:43 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:11:51 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:11:53 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:12:01 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:12:03 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:12:12 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:12:13 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:12:22 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:12:23 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:12:32 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:12:33 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:12:42 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:12:43 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:12:52 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:12:53 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:13:02 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:13:03 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:13:12 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:13:13 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:13:22 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:13:23 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:13:32 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:13:33 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:13:42 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:13:43 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:13:52 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:13:53 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:14:02 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:14:03 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:14:12 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:14:13 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:14:22 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:14:23 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:14:32 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:14:33 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:14:42 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:14:43 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:14:52 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:14:53 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:15:02 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:15:03 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:15:12 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:15:13 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:15:22 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:15:23 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:15:32 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:15:33 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:15:42 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:15:43 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:15:52 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:15:53 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:16:02 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:16:03 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:16:12 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:16:13 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:16:22 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:16:23 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:16:32 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:16:33 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:16:42 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:16:43 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:16:52 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:16:53 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:17:02 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:17:03 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:17:12 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:17:13 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:17:22 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:17:23 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:17:32 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:17:33 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:17:42 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:17:43 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:17:52 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:17:53 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:18:02 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:18:03 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:18:12 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:18:13 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:18:22 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:18:23 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:18:32 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:18:33 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:18:42 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:18:43 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:18:52 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:18:53 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:19:02 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:19:03 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:19:12 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:19:13 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:19:22 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:19:23 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:19:32 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:19:33 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:19:42 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:19:43 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:19:52 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:19:53 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:20:02 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:20:03 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:20:12 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:20:13 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:20:22 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:20:23 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:20:32 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:20:33 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:20:42 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:20:43 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:20:52 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:20:53 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:21:02 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:21:03 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:21:12 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:21:13 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:21:22 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:21:23 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:21:32 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:21:33 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:21:42 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:21:43 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:21:52 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:21:53 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:22:02 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:22:03 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:22:12 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-02' while scheduler is starting!
+Scheduler-2020/05/06 23:22:13 /Users/heizi/go/src/ping/scheduler.go:300: Keepalived packet is skipped for agent 'dc-dsadwjalnfaosiqw-01' while scheduler is starting!
+Scheduler-2020/05/06 23:22:25 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/06 23:22:32 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-02' registered.
+Scheduler-2020/05/06 23:22:32 /Users/heizi/go/src/ping/scheduler.go:235: Agent 'dc-dsadwjalnfaosiqw-02''s is reserved, will act as a standy agent.
+Scheduler-2020/05/06 23:22:33 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/06 23:22:33 /Users/heizi/go/src/ping/scheduler.go:242: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/06 23:22:33 /Users/heizi/go/src/ping/scheduler.go:406: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:22:33 /Users/heizi/go/src/ping/scheduler.go:417: Task ajustment for agent 'dc-dsadwjalnfaosiqw-01' is skipped  while scheduler is starting!
+Scheduler-2020/05/06 23:22:35 /Users/heizi/go/src/ping/scheduler.go:500: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/06 23:22:57 /Users/heizi/go/src/ping/scheduler.go:271: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/06 23:22:57 /Users/heizi/go/src/ping/scheduler.go:203: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/06 23:22:57 /Users/heizi/go/src/ping/scheduler.go:211: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/06 23:22:57 /Users/heizi/go/src/ping/scheduler.go:326: Ajusting task list to group 'datacenter01' for agent 'dc-dsadwjalnfaosiqw-01' is removed.
+Scheduler-2020/05/06 23:26:08 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/06 23:26:12 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-02' registered.
+Scheduler-2020/05/06 23:26:12 /Users/heizi/go/src/ping/scheduler.go:235: Agent 'dc-dsadwjalnfaosiqw-02''s is reserved, will act as a standy agent.
+Scheduler-2020/05/06 23:26:18 /Users/heizi/go/src/ping/scheduler.go:616: No avalible category to classify.
+Scheduler-2020/05/06 23:26:27 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/06 23:26:27 /Users/heizi/go/src/ping/scheduler.go:242: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/06 23:26:27 /Users/heizi/go/src/ping/scheduler.go:406: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:26:27 /Users/heizi/go/src/ping/scheduler.go:417: Task ajustment for agent 'dc-dsadwjalnfaosiqw-01' is skipped  while scheduler is starting!
+Scheduler-2020/05/06 23:27:42 /Users/heizi/go/src/ping/scheduler.go:271: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/06 23:27:42 /Users/heizi/go/src/ping/scheduler.go:203: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/06 23:27:42 /Users/heizi/go/src/ping/scheduler.go:211: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/06 23:27:42 /Users/heizi/go/src/ping/scheduler.go:326: Ajusting task list to group 'datacenter01' for agent 'dc-dsadwjalnfaosiqw-01' is removed.
+Scheduler-2020/05/06 23:33:31 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/06 23:33:32 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-02' registered.
+Scheduler-2020/05/06 23:33:32 /Users/heizi/go/src/ping/scheduler.go:235: Agent 'dc-dsadwjalnfaosiqw-02''s is reserved, will act as a standy agent.
+Scheduler-2020/05/06 23:33:41 /Users/heizi/go/src/ping/scheduler.go:616: No avalible category to classify.
+Scheduler-2020/05/06 23:33:50 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/06 23:33:50 /Users/heizi/go/src/ping/scheduler.go:242: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/06 23:33:50 /Users/heizi/go/src/ping/scheduler.go:406: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:33:50 /Users/heizi/go/src/ping/scheduler.go:417: Task ajustment for agent 'dc-dsadwjalnfaosiqw-01' is skipped  while scheduler is starting!
+Scheduler-2020/05/06 23:34:55 /Users/heizi/go/src/ping/scheduler.go:89: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/05/06 23:35:00 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/06 23:35:00 /Users/heizi/go/src/ping/scheduler.go:242: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/06 23:35:00 /Users/heizi/go/src/ping/scheduler.go:406: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:35:00 /Users/heizi/go/src/ping/scheduler.go:417: Task ajustment for agent 'dc-dsadwjalnfaosiqw-01' is skipped  while scheduler is starting!
+Scheduler-2020/05/06 23:35:02 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-02' registered.
+Scheduler-2020/05/06 23:35:02 /Users/heizi/go/src/ping/scheduler.go:235: Agent 'dc-dsadwjalnfaosiqw-02''s is reserved, will act as a standy agent.
+Scheduler-2020/05/06 23:35:05 /Users/heizi/go/src/ping/scheduler.go:500: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/05/06 23:35:55 /Users/heizi/go/src/ping/scheduler.go:271: Agent 'dc-dsadwjalnfaosiqw-01' unregistered.
+Scheduler-2020/05/06 23:35:55 /Users/heizi/go/src/ping/scheduler.go:203: Group 'datacenter01' removed an agent 'dc-dsadwjalnfaosiqw-01.
+Scheduler-2020/05/06 23:35:55 /Users/heizi/go/src/ping/scheduler.go:211: Group 'datacenter01' is deleted for no agent in group any more.
+Scheduler-2020/05/06 23:35:55 /Users/heizi/go/src/ping/scheduler.go:326: Ajusting task list to group 'datacenter01' for agent 'dc-dsadwjalnfaosiqw-01' is removed.
+Scheduler-2020/05/06 23:36:25 /Users/heizi/go/src/ping/scheduler.go:231: Agent 'dc-dsadwjalnfaosiqw-01' registered.
+Scheduler-2020/05/06 23:36:25 /Users/heizi/go/src/ping/scheduler.go:242: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
+Scheduler-2020/05/06 23:36:25 /Users/heizi/go/src/ping/scheduler.go:406: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
+Scheduler-2020/05/06 23:36:25 /Users/heizi/go/src/ping/scheduler.go:421: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.

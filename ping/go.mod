@@ -13,4 +13,4 @@ require (
 	local.lc/log v0.0.0
 )
 
-replace local.lc/log => ./vendor/local.lc/llog
+replace local.lc/log => ./vendor/local.lc/log

@@ -113,7 +113,7 @@ func Run(){
 			return
 		}
 
-		scheduler.Run()
+		scheduler.run()
 
 	}else if args.agent{
 		config, err := InitAgentConfig(args.configfile)

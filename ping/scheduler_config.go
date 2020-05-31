@@ -10,7 +10,7 @@ type SchedulerSetting struct {
 	TaskListApi        string `ini:"task_list_api"`
 	TaskRefreshTimeSec int64  `ini:"task_refresh_time_sec"`
 	SplitTask          bool   `ini:"split_task"`
-	AgentTimeoutSec    int64  `ini:"agent_timeout_sec"`
+	//AgentTimeoutSec    int64  `ini:"agent_timeout_sec"`
 }
 type SchedulerConfig struct {
 	Listen    ListenSetting

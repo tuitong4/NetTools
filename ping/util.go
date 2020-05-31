@@ -72,17 +72,6 @@ func convertStringToMap(s string) (map[string][]string, error){
 	return m, nil
 }
 
-/*
-	分类函数，将目标地址按一定的规则分配到不同的Agent组上。该函数需要根据业务规则自定义.
-*/
-func classify(data []*TargetIPAddress, category []string) (map[string][]*TargetIPAddress, error) {
-	m := make(map[string][]*TargetIPAddress)
-	for _, c := range category{
-		m[c] = data
-	}
-	return m, nil
-}
-
 
 /*
 	初始化对Agnet的RPC调用
@@ -113,3 +102,14 @@ func delItemFromSilce(slice []string, item string) []string{
 }
 
 
+/*
+	分类函数，将目标地址按一定的规则分配到不同的Agent组上。该函数需要根据业务规则自定义.
+	返回值将是group和TargetIPAddress的map数据类型
+*/
+func classify(data []*TargetIPAddress, category []string) (map[string][]*TargetIPAddress, error) {
+	m := make(map[string][]*TargetIPAddress)
+	for _, c := range category{
+		m[c] = data
+	}
+	return m, nil
+}

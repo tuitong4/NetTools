@@ -95,7 +95,7 @@ func (a *AgentBroker) keepalived() {
 			agentID:          a.config.Agent.AgentID,
 			groupID:          a.config.Agent.GroupID,
 			agentIP:          a.config.Listen.Host,
-			reserve:          a.config.Agent.Reserved,
+			reserved:          a.config.Agent.Reserved,
 			keepaliveTimeSec: a.config.Agent.KeepaliveTimeSec,
 			lastSeen:         0,
 			port:             a.config.Listen.Port,
@@ -131,7 +131,7 @@ func (a *AgentBroker) Unregister() error {
 		agentID:          a.config.Agent.AgentID,
 		groupID:          a.config.Agent.GroupID,
 		agentIP:          a.config.Listen.Host,
-		reserve:          a.config.Agent.Reserved,
+		reserved:          a.config.Agent.Reserved,
 		keepaliveTimeSec: a.config.Agent.KeepaliveTimeSec,
 		lastSeen:         0,
 		port:             a.config.Listen.Port,
@@ -148,7 +148,7 @@ func (a *AgentBroker) Unregister() error {
 }
 
 /*
-	更新当前Agent的Reserve状态
+	更新当前Agent的Reserved状态
 */
 func (a *AgentBroker) UpdateReservedStatus(reserved bool) error {
 	prev_reserved := a.config.Agent.Reserved

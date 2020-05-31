@@ -30,8 +30,8 @@ func TestSchedulerRuning(t *testing.T){
 		agentID:           "agent_01",
 		groupID:           "group_01",
 		agentIP:           "",
-		reserve:           false,
-		keepaliveTimeSec:  1000,
+		reserved:          false,
+		keepaliveTimeSec:  10,
 		lastSeen:          0,
 		port:              "6379",
 		standbyGroup:      "group_02",
@@ -42,8 +42,8 @@ func TestSchedulerRuning(t *testing.T){
 		agentID:           "agent_02",
 		groupID:           "group_01",
 		agentIP:           "",
-		reserve:           false,
-		keepaliveTimeSec:  1000,
+		reserved:          false,
+		keepaliveTimeSec:  10,
 		lastSeen:          0,
 		port:              "6379",
 		standbyGroup:      "group_02",
@@ -54,8 +54,8 @@ func TestSchedulerRuning(t *testing.T){
 		agentID:           "agent_03",
 		groupID:           "group_01",
 		agentIP:           "",
-		reserve:           true,
-		keepaliveTimeSec:  1000,
+		reserved:          true,
+		keepaliveTimeSec:  10,
 		lastSeen:          0,
 		port:              "6379",
 		standbyGroup:      "group_02",
@@ -66,8 +66,8 @@ func TestSchedulerRuning(t *testing.T){
 		agentID:           "agent_04",
 		groupID:           "group_02",
 		agentIP:           "",
-		reserve:           false,
-		keepaliveTimeSec:  1000,
+		reserved:          false,
+		keepaliveTimeSec:  10,
 		lastSeen:          0,
 		port:              "6379",
 		standbyGroup:      "group_01",
@@ -78,8 +78,8 @@ func TestSchedulerRuning(t *testing.T){
 		agentID:           "agent_05",
 		groupID:           "group_02",
 		agentIP:           "",
-		reserve:           false,
-		keepaliveTimeSec:  1000,
+		reserved:          false,
+		keepaliveTimeSec:  10,
 		lastSeen:          0,
 		port:              "6379",
 		standbyGroup:      "group_01",
@@ -90,12 +90,24 @@ func TestSchedulerRuning(t *testing.T){
 		agentID:           "agent_06",
 		groupID:           "group_02",
 		agentIP:           "",
-		reserve:           true,
-		keepaliveTimeSec:  1000,
+		reserved:          true,
+		keepaliveTimeSec:  10,
 		lastSeen:          0,
 		port:              "6379",
 		standbyGroup:      "group_01",
-		globalStandyGroup: false,
+		globalStandyGroup: true,
+	}
+
+	agent_07 := &Agent{
+		agentID:           "agent_07",
+		groupID:           "group_03",
+		agentIP:           "",
+		reserved:          false,
+		keepaliveTimeSec:  10,
+		lastSeen:          0,
+		port:              "6379",
+		standbyGroup:      "",
+		globalStandyGroup: true,
 	}
 
 	agents := []*Agent{
@@ -105,6 +117,7 @@ func TestSchedulerRuning(t *testing.T){
 		agent_04,
 		agent_05,
 		agent_06,
+		agent_07,
 	}
 
 	fmt.Println("Mock agent register.")
@@ -113,14 +126,42 @@ func TestSchedulerRuning(t *testing.T){
 		//time.Sleep(time.Second * 3)
 	}
 
-	time.Sleep( time.Second * 5)
+	time.Sleep( time.Second * 3)
 
 	fmt.Println("Unregister agent")
 	s.AgentUnregisterHandler(agent_01)
-	time.Sleep(3000)
 
 	s.AgentUnregisterHandler(agent_02)
-	time.Sleep(3000)
+
+	s.AgentUnregisterHandler(agent_03)
+
+	s.AgentUnregisterHandler(agent_04)
+
+	s.AgentUnregisterHandler(agent_05)
+
+	s.AgentUnregisterHandler(agent_06)
+
+	//s.AgentUnregisterHandler(agent_07)
+
+	time.Sleep(2000000)
+
+	fmt.Println("Register agent")
+	agents = []*Agent{
+		agent_03,
+		agent_06,
+		agent_04,
+		agent_01,
+		agent_02,
+		agent_05,
+		agent_07,
+	}
+
+	for _, agent := range agents{
+		s.AgentKeepaliveHandler(agent)
+		time.Sleep(time.Second * 1)
+	}
+
+	time.Sleep(2000000)
 
 	signal_ch := make(chan os.Signal, 1)
 	signal.Notify(signal_ch, os.Interrupt)

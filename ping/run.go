@@ -14,7 +14,7 @@ func InitAgentBroker(config *AgentConfig) (*AgentBroker, error){
 }
 
 func InitScheduler(config *SchedulerConfig) (*Scheduler, error){
-	return NewSheduler(config)
+	return NewScheduler(config)
 }
 
 

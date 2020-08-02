@@ -11,7 +11,9 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"strings"
 	"time"
+	"github.com/Shopify/sarama"
 )
 
 type AgentService struct {
@@ -95,7 +97,7 @@ func (a *AgentBroker) keepalived() {
 			agentID:          a.config.Agent.AgentID,
 			groupID:          a.config.Agent.GroupID,
 			agentIP:          a.config.Listen.Host,
-			reserved:          a.config.Agent.Reserved,
+			reserved:         a.config.Agent.Reserved,
 			keepaliveTimeSec: a.config.Agent.KeepaliveTimeSec,
 			lastSeen:         0,
 			port:             a.config.Listen.Port,
@@ -159,12 +161,12 @@ func (a *AgentBroker) UpdateReservedStatus(reserved bool) error {
 
 	if reserved {
 		a.config.Agent.Reserved = reserved
-		return a.stopworker()
+		return a.stopWorker()
 	}
 
 	if !reserved {
 		a.config.Agent.Reserved = reserved
-		return a.startworker()
+		return a.startWorker()
 	}
 
 	return nil
@@ -173,14 +175,14 @@ func (a *AgentBroker) UpdateReservedStatus(reserved bool) error {
 /*
 	停止worker
 */
-func (a *AgentBroker) stopworker() error {
+func (a *AgentBroker) stopWorker() error {
 	return a.worker.Stop()
 }
 
 /*
 	启动worker
 */
-func (a *AgentBroker) startworker() error {
+func (a *AgentBroker) startWorker() error {
 	return a.worker.Start()
 }
 
@@ -304,7 +306,7 @@ func (a *AgentBroker) stop() {
 
 	a.stopKeepalived <- struct{}{}
 
-	if err := a.stopworker(); err != nil {
+	if err := a.stopWorker(); err != nil {
 		log.Errorf("Failed to stop the worker process. error: %v.", err)
 	}
 
@@ -343,7 +345,7 @@ func (a *AgentBroker) Run() {
 		go a.captureOsInterruptSignal()
 
 		// 启动worker
-		if err := a.startworker(); err != nil {
+		if err := a.startWorker(); err != nil {
 			log.Errorf("%v", err)
 			return
 		}
@@ -360,7 +362,7 @@ func (a *AgentBroker) Run() {
 		go a.keepalived()
 
 		// 启动worker
-		if err := a.startworker(); err != nil {
+		if err := a.startWorker(); err != nil {
 			log.Errorf("%v", err)
 			return
 		}
@@ -372,4 +374,28 @@ func (a *AgentBroker) Run() {
 		log.Infof("[Scheduler(Hprose) start ] Listen port: %s", a.config.Listen.Port)
 		_ = http.ListenAndServe(":"+a.config.Listen.Port, service)
 	}
+}
+
+func newProducer() ([]sarama.AsyncProducer, error) {
+	var producers = make([]sarama.AsyncProducer, 0)
+	for i := 0; i < config.PingConfig.KafkaSetting.ProducerNum; i++ {
+		brokers := config.PingConfig.KafkaSetting.Brokers
+		kafkaConfig := sarama.NewConfig()
+		kafkaConfig.Producer.RequiredAcks = sarama.WaitForLocal
+		kafkaConfig.Producer.Return.Errors = false
+		kafkaConfig.Producer.Return.Successes = false
+		kafkaConfig.Producer.Flush.Messages = config.PingConfig.KafkaSetting.ProducerFlushMessages
+		kafkaConfig.Producer.Flush.Frequency = time.Millisecond * time.Duration(config.PingConfig.KafkaSetting.ProducerFlushFrequency)
+		kafkaConfig.Producer.Flush.MaxMessages = config.PingConfig.KafkaSetting.ProducerFlushMaxMessages
+		kafkaConfig.Producer.Timeout = time.Millisecond * time.Duration(config.PingConfig.KafkaSetting.ProducerTimeout)
+		producer, err := sarama.NewAsyncProducer(strings.Split(brokers, ","), kafkaConfig)
+		if err != nil {
+			log.Error(" Create kafka producer fail! ")
+			log.DetailError(err)
+			return producers, err
+		}
+		producers = append(producers, producer)
+	}
+
+	return producers, nil
 }

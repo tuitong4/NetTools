@@ -16,7 +16,7 @@ func TestSchedulerRuning(t *testing.T){
 		fmt.Println(err)
 		return
 	}
-	s, err := NewSheduler(config)
+	s, err := NewScheduler(config)
 	if err != nil{
 		fmt.Println(err)
 		return

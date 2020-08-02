@@ -14,3 +14,5 @@ require (
 )
 
 replace local.lc/log => ./vendor/local.lc/log
+
+replace github.com/Shopify/sarama => ./vendor/github.com/sarama/sarama

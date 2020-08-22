@@ -3,8 +3,10 @@ module ping
 go 1.13
 
 require (
+	github.com/Shopify/sarama v1.26.4
 	github.com/go-ini/ini v1.55.0
 	github.com/hprose/hprose-golang v2.0.5+incompatible
+
 )
 
 require (
@@ -14,5 +16,3 @@ require (
 )
 
 replace local.lc/log => ./vendor/local.lc/log
-
-replace github.com/Shopify/sarama => ./vendor/github.com/sarama/sarama

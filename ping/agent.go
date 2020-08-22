@@ -25,18 +25,33 @@ type worker interface {
 	Stop() error
 	Start() error
 	SetTaskList([]*TargetIPAddress) error
-	SetWriter() error
+	SetWriter([]sarama.AsyncProducer, string) error
 }
 
 type AgentBroker struct {
+	//配置信息
 	config      *AgentConfig
+
+	//工作进程，完成任务
 	worker      worker
+
+	//RPC会话，链接scheduler使用
 	session     *ControllerService //Session to connect to Controller
+
+	//记录从文件或者api中获取的任务版本信息。当从文件或者api中读取任务信息的时候，
+	//先校验taskVersion的版本是否一致，一致则不更新任务列表。不一致则更新
 	taskVersion string
+
+	//停止Agent的信号
 	stopSignal  chan struct{}
+
+	//停止和scheduler之间的心跳检测
 	stopKeepalived chan struct{}
 }
 
+/*
+	Scheduler侧的RPC操作函数
+ */
 type ControllerService struct {
 	HandleAgentKeepalive func(agent *Agent) error
 	AgentUnRegister      func(agent *Agent) error
@@ -74,7 +89,7 @@ func NewAgentBroker(config *AgentConfig) (*AgentBroker, error) {
 }
 
 /*
-	初始化对Agnet的RPC调用
+	初始化对Agent的RPC调用
 */
 func initControllerRpc(url string) *ControllerService {
 	c := rpc.NewHTTPClient(url)
@@ -84,11 +99,11 @@ func initControllerRpc(url string) *ControllerService {
 }
 
 /*
-	发送keepalived数据
+	发送keepalive数据
 */
-func (a *AgentBroker) keepalived() {
+func (a *AgentBroker) keepalive() {
 
-	//避免发送keepalived报文后，Agent的接收端还没启动完毕，控制器下发任务的时候会导致失败。所以第一次发送报文延后一段时间。
+	//避免发送keepalive报文后，Agent的接收端还没启动完毕，控制器下发任务的时候会导致失败。所以第一次发送报文延后一段时间。
 
 	time.Sleep(10 * time.Second)
 
@@ -108,7 +123,7 @@ func (a *AgentBroker) keepalived() {
 		err := a.session.HandleAgentKeepalive(agent)
 
 		if err != nil {
-			log.Errorf("Send keeepalived packet failed. error: %v.", err)
+			log.Errorf("Send keepalive packet failed. error: %v.", err)
 		}
 
 		time.Sleep(time.Duration(a.config.Agent.KeepaliveTimeSec) * time.Second)
@@ -144,7 +159,7 @@ func (a *AgentBroker) Unregister() error {
 	err := a.session.AgentUnRegister(agent)
 
 	if err != nil {
-		log.Errorf("Bad event happened while unregistring. error: %v.", err)
+		log.Errorf("Something is occurred when agent is unregistering. error: %v.", err)
 	}
 	return err
 }
@@ -155,7 +170,7 @@ func (a *AgentBroker) Unregister() error {
 func (a *AgentBroker) UpdateReservedStatus(reserved bool) error {
 	prev_reserved := a.config.Agent.Reserved
 	if prev_reserved == reserved {
-		log.Warn("Reserved status not seted because status are same.")
+		log.Warn("Reserved status not be updated because status are same.")
 		return nil
 	}
 
@@ -301,7 +316,7 @@ func (a *AgentBroker) Stop(){
 /*
 	停止agent
  */
-func (a *AgentBroker) stop() {
+func (a *AgentBroker) waitStop() {
 	<-a.stopSignal
 
 	a.stopKeepalived <- struct{}{}
@@ -326,11 +341,12 @@ func (a *AgentBroker) captureOsInterruptSignal() {
 	signal.Notify(signal_ch, os.Interrupt)
 	go func() {
 		<-signal_ch
-		log.Warn("Captured os interupt signal.")
+		log.Warn("Captured os interrupt signal.")
 		a.stopSignal <- struct{}{}
 	}()
 }
 
+// TODO: 为了减少reserved状态无任务列表的时候worker空跑，后期要调整此种模式
 func (a *AgentBroker) Run() {
 	defer func() {
 		err := recover()
@@ -339,7 +355,6 @@ func (a *AgentBroker) Run() {
 			a.Run()
 		}
 	}()
-
 
 	if a.config.Agent.RunningLocally {
 		go a.captureOsInterruptSignal()
@@ -354,12 +369,12 @@ func (a *AgentBroker) Run() {
 
 		log.Info("[ Agent Broker ] Running Locally.")
 		// 阻塞至收到结束信号
-		a.stop()
+		a.waitStop()
 
 	} else {
 		go a.captureOsInterruptSignal()
-		go a.stop()
-		go a.keepalived()
+		go a.waitStop()
+		go a.keepalive()
 
 		// 启动worker
 		if err := a.startWorker(); err != nil {
@@ -376,26 +391,33 @@ func (a *AgentBroker) Run() {
 	}
 }
 
-func newProducer() ([]sarama.AsyncProducer, error) {
+func (a *AgentBroker) newProducer() ([]sarama.AsyncProducer, error) {
 	var producers = make([]sarama.AsyncProducer, 0)
-	for i := 0; i < config.PingConfig.KafkaSetting.ProducerNum; i++ {
-		brokers := config.PingConfig.KafkaSetting.Brokers
+	for i := 0; i < a.config.Kafka.ProducerNum; i++ {
+		brokers := a.config.Kafka.Brokers
 		kafkaConfig := sarama.NewConfig()
 		kafkaConfig.Producer.RequiredAcks = sarama.WaitForLocal
 		kafkaConfig.Producer.Return.Errors = false
 		kafkaConfig.Producer.Return.Successes = false
-		kafkaConfig.Producer.Flush.Messages = config.PingConfig.KafkaSetting.ProducerFlushMessages
-		kafkaConfig.Producer.Flush.Frequency = time.Millisecond * time.Duration(config.PingConfig.KafkaSetting.ProducerFlushFrequency)
-		kafkaConfig.Producer.Flush.MaxMessages = config.PingConfig.KafkaSetting.ProducerFlushMaxMessages
-		kafkaConfig.Producer.Timeout = time.Millisecond * time.Duration(config.PingConfig.KafkaSetting.ProducerTimeout)
+		kafkaConfig.Producer.Flush.Messages = a.config.Kafka.ProducerFlushMessages
+		kafkaConfig.Producer.Flush.Frequency = time.Millisecond * time.Duration(a.config.Kafka.ProducerFlushFrequency)
+		kafkaConfig.Producer.Flush.MaxMessages = a.config.Kafka.ProducerFlushMaxMessages
+		kafkaConfig.Producer.Timeout = time.Millisecond * time.Duration(a.config.Kafka.ProducerTimeout)
 		producer, err := sarama.NewAsyncProducer(strings.Split(brokers, ","), kafkaConfig)
 		if err != nil {
 			log.Error(" Create kafka producer fail! ")
-			log.DetailError(err)
 			return producers, err
 		}
 		producers = append(producers, producer)
 	}
 
 	return producers, nil
+}
+
+func (a *AgentBroker) setProducerForWorker() error{
+	kafka_producers, err := a.newProducer()
+	if err != nil{
+		return err
+	}
+	return a.worker.SetWriter(kafka_producers, a.config.Kafka.Topic)
 }

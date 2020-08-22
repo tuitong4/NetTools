@@ -38,31 +38,31 @@ type Job struct {
 
 type Agent struct {
 	//agentID，唯一标志一个agent。必须唯一
-	agentID           string
+	agentID string
 
 	//GroupID是指承当相同任务，或者是均分同一份任务的agent的组。
-	groupID           string
+	groupID string
 
 	//agent的IP地址，用于Scheduler和Agent通信
-	agentIP           string
+	agentIP string
 
 	//保留状态标志。设置为true时候，该agent充当agent所在的Group的备份节点。
 	//当该组中有其他agent不可用的时候，会启用reserved的agent。
-	reserved          bool
+	reserved bool
 
 	//agent发送心跳数据包的时间间隔
-	keepaliveTimeSec  int64
+	keepaliveTimeSec int64
 
 	//agent最近被Scheduler收到心跳的时间。该时间用于检测agent在Scheduler
 	//长时间没收到心跳的情况下，是不是超时
-	lastSeen          int64
+	lastSeen int64
 
 	//agent的端口用于Scheduler和Agent通信
-	port              string
+	port string
 
 	//该agent的Standbygroup。当agent所在的group，在Scheduler侧被删除的时候，
 	//将agent所在的group的任务转交给Standbygroup去执行。起基于group的备份作用。
-	standbyGroup      string
+	standbyGroup string
 
 	//声明自己是不是全局Standbygroup。如果是全局节点，在有group从Scheduler删除的时候
 	//将查找agent指定的Standbygroup， 如果找不到，则将任务调整至全局节点。
@@ -71,20 +71,20 @@ type Agent struct {
 
 type Scheduler struct {
 	//读写锁，
-	rwLock             sync.RWMutex
+	rwLock sync.RWMutex
 
 	//每个group的任务列表，都是TargetIPAddress类型的
-	taskList           map[string][]*TargetIPAddress // [agent_id] []*TargetIPAddress
+	taskList map[string][]*TargetIPAddress // [agent_id] []*TargetIPAddress
 
-	//有任务在运行的group和⑦对应的agent列表。当reserved状态的agent运行任务的时候，也会加入到该列表中
-	agentGroups        map[string][]string           // [group_id] [] agent_id
+	//有任务在运行的group和其对应的agent列表。当reserved状态的agent运行任务的时候，也会加入到该列表中
+	agentGroups map[string][]string // [group_id] [] agent_id
 
 	//agent列表
-	agents             map[string]*Agent             // [agent_id] *Agent
+	agents map[string]*Agent // [agent_id] *Agent
 
 	//group和其对应的备份(standby)group。在agent注册的时候通过选举得到。因为同一个group下的agent配置的
 	//备份(standby)group不一定一致,所以会优选同一个group内配置相同数目多的，相同则随机一个。
-	standbyGroups      map[string]string             // [agent_id] group_id
+	standbyGroups map[string]string // [agent_id] group_id
 
 	//全局备份(standby)group，在agent注册的时候通过选举得到。因为同一个group下的agent配置的
 	//全局备份(standby)group不一定一致。所以会优选同一个group内配置为true多的，相同则随机一个。
@@ -92,34 +92,34 @@ type Scheduler struct {
 
 	//记录standbygroup正在运行着的其他group的group名。相当于记录哪一些group的任务列表
 	//是在standbygroup运行的。
-	standbyGroupState  map[string][]string // [group_id] []group_id
+	standbyGroupState map[string][]string // [group_id] []group_id
 
 	//记录reservedAgent是否在运行任务，是则设置为true。否则设置为false
-	reservedAgentState map[string]bool     // [agent_id] bool
+	reservedAgentState map[string]bool // [agent_id] bool
 
 	//记录某一个group当前的被哪个group运行其任务。即对应的备份group是谁。
-	groupBackedUpBy    map[string]string   // [group_id] group_id
+	groupBackedUpBy map[string]string // [group_id] group_id
 
 	//Scheduler的配置
-	config             *SchedulerConfig
+	config *SchedulerConfig
 
 	//记录从文件或者api中获取的任务版本信息。当从文件或者api中读取任务信息的时候，
 	//先校验taskVersion的版本是否一致，一致则不更新任务列表。不一致则更新
-	taskVersion        string
+	taskVersion string
 
 	//停止Scheduler的信号
-	stopSignal         chan struct{}
+	stopSignal chan struct{}
 
 	//在Scheduler启动阶段。严格说是第一次从文件或者api中加载任务之前的这段时间。
 	//处于该时间，agent注册时候并不去拉取任务列表。减少频繁任务设置的过程。
-	starting           bool
+	starting bool
 
 	//工作队列。把每个操作都放入队列中，减少并发操作，避免频繁的加锁和解锁。
-	jobQueue           chan *Job
+	jobQueue chan *Job
 
 	//是否分割每个group的任务列表。如果为true，则任务列表将均分至group下所有的在运行任务的agent。
 	//如果为false，则所有agent的任务是一样的。
-	split              bool
+	split bool
 }
 
 func NewScheduler(config *SchedulerConfig) (*Scheduler, error) {
@@ -162,7 +162,7 @@ func (s *Scheduler) run() {
 		}
 	}()
 	go s.clearTimedOutAgent()
-	go s.resfreshTaskListHandler()
+	go s.refreshTaskListHandler()
 	go s.jobScheduler()
 	go s.stop()
 
@@ -183,7 +183,7 @@ func (s *Scheduler) test_run() {
 		}
 	}()
 	go s.clearTimedOutAgent()
-	go s.resfreshTaskListHandler()
+	go s.refreshTaskListHandler()
 	go s.jobScheduler()
 }
 
@@ -449,7 +449,7 @@ func (s *Scheduler) jobScheduler() {
 /*
 	周期性从指定位置获取任务列表
 */
-func (s *Scheduler) resfreshTaskListHandler() {
+func (s *Scheduler) refreshTaskListHandler() {
 	for {
 		s.jobQueue <- &Job{
 			action: TaskRefresh,
@@ -492,7 +492,7 @@ func (s *Scheduler) agentRegister(a *Agent) {
 	// 选举globalStandbyGroup
 	s.globalStandbyGroupVote("")
 
-	//TODO: 增加检查有无运行在standy的任务列表
+	//TODO: 增加检查有无运行在standby的任务列表
 	//保留的Agent不加入到组中，当做备份
 	if a.reserved {
 		log.Infof("Agent '%s' is reserved, it will act as an standby agent.", a.agentID)
@@ -532,13 +532,12 @@ func (s *Scheduler) agentUnRegister(a *Agent) {
 			s.delGroup(a.groupID)
 			log.Infof("There is no agent is active in group '%s', group has been deleted.", a.groupID)
 
-			//如果a.groupID是GlobalStandyGroup，则重新选举GlobalStandyGroup
+			//如果a.groupID是GlobalStandbyGroup，则重新选举GlobalStandbyGroup
 			if s.globalStandbyGroup == a.groupID {
 				log.Infof("Going to select the new global standby group while group '%s' is deleted.", a.groupID)
 				s.globalStandbyGroupVote("")
 			}
 		}
-
 		return
 	}
 
@@ -618,13 +617,11 @@ func (s *Scheduler) taskAssignmentPartial(group_id string, task []*TargetIPAddre
 	}
 
 	if s.split {
-		fmt.Println("IndexOutOf", len(tasklist), len(s.agentGroups[group_id]))
 		assign_count := divideEqually(len(tasklist), len(avalid_agents))
 
 		start_idx := 0
 		for idx, agent_id := range avalid_agents {
 			agent := s.agents[agent_id]
-			fmt.Println("IndexOutOf", start_idx, assign_count[idx], tasklist)
 			t := tasklist[start_idx:(start_idx + assign_count[idx])]
 
 			//go func(*Agent, []*TargetIPAddress) {
@@ -715,7 +712,7 @@ func (s *Scheduler) taskAdjustWhenStandbyGroupActive(active_group, inactive_grou
 }
 
 func (s *Scheduler) taskAdjustWhenStandbyGroupInactive(group_id string, withdraw bool) {
-	//判断是否要回撤在standby group上的任务，还是仅仅是移除standy状态。回撤需要调整任务列表
+	//判断是否要回撤在standby group上的任务，还是仅仅是移除standby状态。回撤需要调整任务列表
 	/*
 		if withdraw {
 			//重新调整standby group上运行的任务列表
@@ -724,7 +721,7 @@ func (s *Scheduler) taskAdjustWhenStandbyGroupInactive(group_id string, withdraw
 		}
 	*/
 	// 禁用一个已经运行在standby的group，需要将任务调整至全局备份节点上去
-	//检查全局备份节点存在与否，存在则调整任务到全局备份节点上去
+	// 检查全局备份节点存在与否，存在则调整任务到全局备份节点上去
 	if group_id == s.globalStandbyGroup {
 		//如果globalStandbyGroup是当前agent的所在的group，则重新选举globalStandbyGroup
 		log.Infof("Starting to select a new global standby group while current standby group '%s' will be removed.", group_id)
@@ -894,7 +891,7 @@ func (s *Scheduler) taskAdjustWhenAgentRemoved(a *Agent) {
 	//当且仅当agent所所在的group仅仅只剩该agent的时后，查找备份的group进行调整任务列表
 	if len(s.agentGroups[a.groupID]) == 1 {
 
-		// 如果agent运行在standy状态，则调整本standby的任务至其他group上
+		// 如果agent运行在standby状态，则调整本standby的任务至其他group上
 		/*
 			if s.isGroupRunningAsStandby(a.groupID) {
 				s.taskAdjustWhenStandbyGroupInactive(a.groupID, false)
@@ -903,7 +900,7 @@ func (s *Scheduler) taskAdjustWhenAgentRemoved(a *Agent) {
 			}
 		*/
 
-		//如果agent没有运行在standy状态，则调整本agent的任务调整至备用的group上
+		//如果agent没有运行在standby状态，则调整本agent的任务调整至备用的group上
 		standby_for_agent := s.standbyGroups[a.groupID]
 		if standby_for_agent != "" {
 			s.taskAdjustWhenStandbyGroupActive(standby_for_agent, a.groupID)
@@ -925,7 +922,7 @@ func (s *Scheduler) taskAdjustWhenAgentRemoved(a *Agent) {
 		log.Infof("Task is adjusted for the rest active agent of group '%s', while agent '%s' is removed.", a.groupID, a.agentID)
 		return
 	}
-	//当agnet既没有reserved的agent或者standy的group来接管agent的任务时候，忽略这部分任务
+	//当agnet既没有reserved的agent或者standby的group来接管agent的任务时候，忽略这部分任务
 	log.Infof("No reserved agent or standby group is found for '%s' when '%s' is removed.", a.agentID, a.agentID)
 }
 
@@ -1134,8 +1131,8 @@ func (s *Scheduler) getTaskListLocally() {
 }
 
 /*
-	选举给定的group的standyGroup.因为注册的时候可能同一个group下的agent的standyGroup不一定都一样。
-    选举原则：同一个group下的每个agent的standyGroup相同数最多的一个。如果存在相等，则随机一个。
+	选举给定的group的standbyGroup.因为注册的时候可能同一个group下的agent的standbyGroup不一定都一样。
+    选举原则：同一个group下的每个agent的standbyGroup相同数最多的一个。如果存在相等，则随机一个。
 */
 func (s *Scheduler) standbyGroupVote(group_id string) {
 	counter := make(map[string]int)

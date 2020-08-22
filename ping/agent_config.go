@@ -36,8 +36,8 @@ type AgentSetting struct {
 	TaskRefreshTimeSec int64  `ini:"task_refresh_time_sec"` //在locally运行模式下，主动刷新任务列表的时间
 	TaskListFile       string `ini:"task_list_file"`        //在locally运行模式下，主动读取的任务列表文件
 	TaskListApi        string `ini:"task_list_api"`         //在locally运行模式下，主动读取的任务列表API，优先从文件中读，当TaskListFile为空时候，才从api中读取
-	StandyGroup string `ini:"standy_group"` //指定的备份组，当整个组失效的时候切至备份组
-	GlobalStandyGroup bool `ini:"global_standy_group"` //充当全局的备份组，当其他组找不到备份组的时候，使用该备份组
+	StandyGroup string `ini:"standby_group"` //指定的备份组，当整个组失效的时候切至备份组
+	GlobalStandyGroup bool `ini:"global_standby_group"` //充当全局的备份组，当其他组找不到备份组的时候，使用该备份组
 }
 
 type LoggerSetting struct {

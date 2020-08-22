@@ -1,12 +1,12 @@
 package log
 
 import (
-"fmt"
-"io"
-"os"
-"runtime"
-"sync"
-"time"
+	"fmt"
+	"io"
+	"os"
+	"runtime"
+	"sync"
+	"time"
 )
 
 const (

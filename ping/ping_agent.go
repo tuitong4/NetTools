@@ -2,8 +2,10 @@ package ping
 
 import (
 	"bytes"
+	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/Shopify/sarama"
 	"local.lc/log"
 	"net"
 	"strings"
@@ -47,6 +49,7 @@ type PingAgent struct {
 	MaxRoutineCount   int           // how many goroutine the agent should keep
 	taskVersion       string        // Current task's version, used to compare the new task and current task's diifrent. TaskUpdateSource TaskUpdateSource // The location to pull task data, a filename with path or a url responese the task data.
 	stopSignal        chan struct{} // signal to stop de agent worker
+	writerHandlerFun   func() //ping结果处理函数，主用于将结果写到kafka或者打印输出
 }
 
 func NewPingAgent(config *AgentConfig) (*PingAgent, error) {
@@ -120,8 +123,15 @@ type TargetIPAddress struct {
 func (a *PingAgent) SetTaskList(targets []*TargetIPAddress) error {
 	total_targets := len(targets)
 
-	if total_targets <= 0 {
-		log.Warn("Set Task list skipped for targets length is 0.")
+	if total_targets == 0 {
+		log.Warn("Setting Task list is skipped for targets length is 0.")
+
+		//如果当前的任务列表不为空，则说明有任务在运行。
+		//将任务列表置空，避免任务持续在运行
+		a.TaskListLocker.Lock()
+		a.TaskList = make([]*PingTarget, 0)
+		a.TaskListLocker.Unlock()
+
 		return nil
 	}
 
@@ -132,7 +142,7 @@ func (a *PingAgent) SetTaskList(targets []*TargetIPAddress) error {
 		new_targets = make([]*PingTarget, len(targets))
 		for idx, ts := range targets {
 			new_targets[idx] = &PingTarget{
-				SrcIP:       a.DefaultIP, //使用默认的本地地址替代
+				SrcIP:       a.DefaultIP, //默认的本地地址作为源地址
 				DstIP:       ts.IP,
 				DstNetType:  ts.NetType,
 				DstLocation: ts.Location,
@@ -189,14 +199,48 @@ func (a *PingAgent) SetTaskList(targets []*TargetIPAddress) error {
 	return nil
 }
 
-func (a *PingAgent) SetWriter() error {
-	return nil
+/*
+	将结果数据写入kafka中
+ */
+func (a *PingAgent)sendToKafka(producers []sarama.AsyncProducer, topic string) {
+	log.Info("Kafka Producer Start work ,len=%d", len(producers))
+	//构造一个源地址和netType的关系映射
+	ip_net_type := make(map[string]string)
+	for net_type, source_ips := range a.SourceIP {
+		for _, ip := range source_ips {
+			ip_net_type[ip] = net_type
+		}
+	}
+	if a.DefaultIP != "" && a.DefaultNetType != "" {
+		ip_net_type[a.DefaultIP] = a.DefaultNetType
+	}
+
+	for _, producer := range producers {
+		go func() {
+			for {
+				item := <-a.pingResultChannel
+				item.SrcLocation = a.Location
+				//TODO：注意此处map的并发安全问题
+				item.SrcNetType = ip_net_type[item.Src]
+				value, err := json.Marshal(item)
+				if err != nil {
+					log.Errorf("Json marshal error when batch insert Ping result into kafka!, err: %v", err)
+					continue
+				}
+				producer.Input() <- &sarama.ProducerMessage{
+					Topic: topic,
+					Value: sarama.ByteEncoder(value),
+				}
+			}
+		}()
+	}
+
 }
 
 /*
-	ping结果的处理函数，可以打印、也可以写数据库.根据使用场景注册
+	设置ping agent对ping结果的处理方式，一种是写入kafka，一种是直接打印。此处为直接打印
 */
-func (a *PingAgent) Writer() {
+func (a *PingAgent)printer(){
 	//构造一个源地址和netType的关系映射
 	ip_net_type := make(map[string]string)
 	for net_type, source_ips := range a.SourceIP {
@@ -212,9 +256,28 @@ func (a *PingAgent) Writer() {
 		item.SrcLocation = a.Location
 		item.SrcNetType = ip_net_type[item.Src]
 
-		//Do something else
 		fmt.Println(item)
 	}
+}
+
+/*
+	设置ping agent对ping结果的处理方式，一种是写入kafka，一种是直接打印。此处为写kafka
+ */
+func (a *PingAgent) SetWriter(producers []sarama.AsyncProducer, topic string) error {
+	if len(producers) != 0{
+		kafka_sender := func(){a.sendToKafka(producers, topic)}
+		a.writerHandlerFun = kafka_sender
+	}else{
+		a.writerHandlerFun = a.printer
+	}
+	return nil
+}
+
+/*
+	ping结果的处理函数，可以打印、也可以写数据库.根据使用场景注册
+*/
+func (a *PingAgent) Writer() {
+	a.writerHandlerFun()
 }
 
 func (a *PingAgent) Run() {
@@ -228,7 +291,7 @@ func (a *PingAgent) Run() {
 	for {
 		//读取时间
 		<-ticker.C
-		fmt.Println("Epoch runing!")
+		fmt.Println("Epoch running!")
 		timestamp := time.Now().Unix()
 		go func() {
 			for idx, ipaddr := range a.TaskList {
@@ -239,11 +302,12 @@ func (a *PingAgent) Run() {
 		//Check signal channel
 		select {
 		case <-a.stopSignal:
-			log.Info("Ping will stop for received interupt signal.")
+			log.Info("Ping will stop for received interrupt signal.")
 			return
 		default:
 			continue
 		}
+
 	}
 }
 

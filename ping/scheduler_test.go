@@ -1,5 +1,6 @@
 package ping
 
+/*
 import (
 	"fmt"
 	"local.lc/log"
@@ -169,3 +170,4 @@ func TestSchedulerRuning(t *testing.T){
 	log.Warn("Captured a os interupt signal.")
 
 }
+*/

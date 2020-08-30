@@ -14,16 +14,16 @@ import (
 )
 
 type PingResult struct {
-	Src         string  `json:"utils"`
+	Src         string  `json:"src"`
 	Dst         string  `json:"dst"`
 	RTT         float64 `json:"rtt"`
 	PacketLoss  int     `json:"packetLoss"`
 	Timestamp   int64   `json:"timestamp"`
 	Agent       string  `json:"agent"`
-	DstNetType  string
-	SrcNetType  string
-	SrcLocation string
-	DstLocation string
+	DstNetType  string	`json:"dstNetType"`
+	SrcNetType  string  `json:"srcNetType"`
+	SrcLocation string  `json:"srcLocation"`
+	DstLocation string  `json:"dstLocation"`
 }
 
 type TaskUpdateSource struct {
@@ -89,7 +89,7 @@ func NewPingAgent(config *AgentConfig) (*PingAgent, error) {
 func (a *PingAgent) doPing(target *PingTarget, idx int, timestamp int64) {
 	result, err := a.Pinger(target, idx)
 	if err != nil {
-		log.Errorf("Ping Error : DstIP:%s. %v", target.DstIP, err)
+		log.Errorf("%v", err)
 		return
 	}
 	pg := new(PingResult)
@@ -203,7 +203,7 @@ func (a *PingAgent) SetTaskList(targets []*TargetIPAddress) error {
 	将结果数据写入kafka中
  */
 func (a *PingAgent)sendToKafka(producers []sarama.AsyncProducer, topic string) {
-	log.Info("Kafka Producer Start work ,len=%d", len(producers))
+	log.Infof("Kafka Producer Start work, producer number is %d", len(producers))
 	//构造一个源地址和netType的关系映射
 	ip_net_type := make(map[string]string)
 	for net_type, source_ips := range a.SourceIP {
@@ -229,12 +229,12 @@ func (a *PingAgent)sendToKafka(producers []sarama.AsyncProducer, topic string) {
 				}
 				producer.Input() <- &sarama.ProducerMessage{
 					Topic: topic,
+					Key: sarama.ByteEncoder(item.Dst), //根据目标IP地址写分区
 					Value: sarama.ByteEncoder(value),
 				}
 			}
 		}()
 	}
-
 }
 
 /*
@@ -295,6 +295,7 @@ func (a *PingAgent) Run() {
 		timestamp := time.Now().Unix()
 		go func() {
 			for idx, ipaddr := range a.TaskList {
+				//fmt.Println(idx, ipaddr)
 				go a.doPing(ipaddr, idx, timestamp)
 			}
 		}()
@@ -302,7 +303,7 @@ func (a *PingAgent) Run() {
 		//Check signal channel
 		select {
 		case <-a.stopSignal:
-			log.Info("Ping will stop for received interrupt signal.")
+			log.Info("Ping will to stop for received interrupt signal.")
 			return
 		default:
 			continue
@@ -357,12 +358,13 @@ func (a *PingAgent) Pinger(target *PingTarget, xid int) (*PingResponse, error) {
 	} else {
 		conn, err = net.Dial("ip4:icmp", target.DstIP)
 	}
-	defer conn.Close()
 
 	if err != nil {
 		errMsg := fmt.Sprintf("%s<0x%0x> Dial icmp error! %s.", target.DstIP, xid, err.Error())
 		return nil, errors.New(errMsg)
 	}
+
+	defer conn.Close()
 
 	pr := new(PingResponse)
 	pr.Timestamp = time.Now().Unix() * 1000

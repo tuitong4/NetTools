@@ -247,3 +247,199 @@ Agent-2020/05/06 23:38:10 /Users/heizi/go/src/ping/ping_agent.go:242: Ping will 
 Agent-2020/05/06 23:38:10 /Users/heizi/go/src/ping/agent.go:141: Bad event happened while unregistring. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
 Agent-2020/05/06 23:38:10 /Users/heizi/go/src/ping/agent.go:309: Failed to unregister the agent on scheduler, exit directly. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
 Agent-2020/05/06 23:38:10 /Users/heizi/go/src/ping/agent.go:312: Agent exiting.
+Agent-2020/08/23 00:00:42 /Users/heizi/go/src/ping/ping_agent.go:315: Start to run ping worker.
+Agent-2020/08/23 00:00:42 /Users/heizi/go/src/ping/agent.go:415: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/08/23 00:00:52 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 00:00:53 /Users/heizi/go/src/ping/agent.go:344: Captured os interrupt signal.
+Agent-2020/08/23 00:01:07 /Users/heizi/go/src/ping/ping_agent.go:305: Ping will stop for received interrupt signal.
+Agent-2020/08/23 00:01:07 /Users/heizi/go/src/ping/agent.go:162: Something is occurred when agent is unregistering. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 00:01:07 /Users/heizi/go/src/ping/agent.go:330: Failed to unregister the agent on scheduler, exit directly. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 00:01:07 /Users/heizi/go/src/ping/agent.go:333: Agent exiting.
+Agent-2020/08/23 00:04:51 /Users/heizi/go/src/ping/agent.go:351: Starting Agent Broker.
+Agent-2020/08/23 00:04:51 /Users/heizi/go/src/ping/ping_agent.go:315: Start to run ping worker.
+Agent-2020/08/23 00:04:51 /Users/heizi/go/src/ping/agent.go:416: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/08/23 00:05:01 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 00:05:02 /Users/heizi/go/src/ping/agent.go:344: Captured os interrupt signal.
+Agent-2020/08/23 00:05:16 /Users/heizi/go/src/ping/ping_agent.go:305: Ping will stop for received interrupt signal.
+Agent-2020/08/23 00:05:16 /Users/heizi/go/src/ping/agent.go:162: Something is occurred when agent is unregistering. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 00:05:16 /Users/heizi/go/src/ping/agent.go:330: Failed to unregister the agent on scheduler, exit directly. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 00:05:16 /Users/heizi/go/src/ping/agent.go:333: Agent exiting.
+Agent-2020/08/23 00:06:57 /Users/heizi/go/src/ping/agent.go:351: Starting Agent Broker.
+Agent-2020/08/23 00:06:57 /Users/heizi/go/src/ping/ping_agent.go:315: Start to run ping worker.
+Agent-2020/08/23 00:06:57 /Users/heizi/go/src/ping/agent.go:416: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/08/23 00:07:07 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 00:07:17 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 00:07:27 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 00:07:37 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 00:07:47 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 00:07:57 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 00:07:59 /Users/heizi/go/src/ping/agent.go:344: Captured os interrupt signal.
+Agent-2020/08/23 00:08:12 /Users/heizi/go/src/ping/ping_agent.go:305: Ping will stop for received interrupt signal.
+Agent-2020/08/23 00:08:12 /Users/heizi/go/src/ping/agent.go:162: Something is occurred when agent is unregistering. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 00:08:12 /Users/heizi/go/src/ping/agent.go:330: Failed to unregister the agent on scheduler, exit directly. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 00:08:12 /Users/heizi/go/src/ping/agent.go:333: Agent exiting.
+Agent-2020/08/23 14:37:24 /Users/heizi/go/src/ping/agent.go:351: Starting Agent Broker.
+Agent-2020/08/23 14:37:24 /Users/heizi/go/src/ping/ping_agent.go:315: Start to run ping worker.
+Agent-2020/08/23 14:37:24 /Users/heizi/go/src/ping/agent.go:385: [ Agent Broker ] Running Locally.
+Agent-2020/08/23 14:37:24 /Users/heizi/go/src/ping/agent.go:236: Found changed section in '/Users/heizi/GolandProjects/NetTools/ping/config/targets.json'.
+Agent-2020/08/23 14:37:24 /Users/heizi/go/src/ping/agent.go:303: Setting task list.
+Agent-2020/08/23 14:37:24 /Users/heizi/go/src/ping/ping_agent.go:198: Target list was updated.
+Agent-2020/08/23 14:42:59 /Users/heizi/go/src/ping/agent.go:351: Starting Agent Broker.
+Agent-2020/08/23 14:42:59 /Users/heizi/go/src/ping/ping_agent.go:316: Start to run ping worker.
+Agent-2020/08/23 14:42:59 /Users/heizi/go/src/ping/agent.go:385: [ Agent Broker ] Running Locally.
+Agent-2020/08/23 14:42:59 /Users/heizi/go/src/ping/agent.go:236: Found changed section in '/Users/heizi/GolandProjects/NetTools/ping/config/targets.json'.
+Agent-2020/08/23 14:42:59 /Users/heizi/go/src/ping/agent.go:303: Setting task list.
+Agent-2020/08/23 14:42:59 /Users/heizi/go/src/ping/ping_agent.go:198: Target list was updated.
+Agent-2020/08/23 14:44:52 /Users/heizi/go/src/ping/agent.go:351: Starting Agent Broker.
+Agent-2020/08/23 14:44:52 /Users/heizi/go/src/ping/ping_agent.go:316: Start to run ping worker.
+Agent-2020/08/23 14:44:52 /Users/heizi/go/src/ping/agent.go:385: [ Agent Broker ] Running Locally.
+Agent-2020/08/23 14:44:52 /Users/heizi/go/src/ping/agent.go:236: Found changed section in '/Users/heizi/GolandProjects/NetTools/ping/config/targets.json'.
+Agent-2020/08/23 14:44:52 /Users/heizi/go/src/ping/agent.go:303: Setting task list.
+Agent-2020/08/23 14:44:52 /Users/heizi/go/src/ping/ping_agent.go:198: Target list was updated.
+Agent-2020/08/23 14:45:38 /Users/heizi/go/src/ping/agent.go:344: Captured os interrupt signal.
+Agent-2020/08/23 15:03:00 /Users/heizi/go/src/ping/agent.go:354: Starting Agent Broker.
+Agent-2020/08/23 15:03:00 /Users/heizi/go/src/ping/ping_agent.go:315: Start to run ping worker.
+Agent-2020/08/23 15:03:00 /Users/heizi/go/src/ping/agent.go:388: [ Agent Broker ] Running Locally.
+Agent-2020/08/23 15:03:00 /Users/heizi/go/src/ping/agent.go:236: Target file md5 value is changed from '' to '70c0c33c10b36778082d401dd9e2382e'
+Agent-2020/08/23 15:03:00 /Users/heizi/go/src/ping/agent.go:237: Found changed section in '/Users/heizi/GolandProjects/NetTools/ping/config/targets.json'.
+Agent-2020/08/23 15:03:00 /Users/heizi/go/src/ping/agent.go:304: Setting task list.
+Agent-2020/08/23 15:03:00 /Users/heizi/go/src/ping/ping_agent.go:198: Target list was updated.
+Agent-2020/08/23 15:03:15 /Users/heizi/go/src/ping/agent.go:347: Captured os interrupt signal.
+Agent-2020/08/23 15:07:29 /Users/heizi/go/src/ping/agent.go:354: Starting Agent Broker.
+Agent-2020/08/23 15:07:29 /Users/heizi/go/src/ping/ping_agent.go:315: Start to run ping worker.
+Agent-2020/08/23 15:07:29 /Users/heizi/go/src/ping/agent.go:388: [ Agent Broker ] Running Locally.
+Agent-2020/08/23 15:07:29 /Users/heizi/go/src/ping/agent.go:236: Target file md5 value is changed from '' to '70c0c33c10b36778082d401dd9e2382e'
+Agent-2020/08/23 15:07:29 /Users/heizi/go/src/ping/agent.go:237: Found changed section in '/Users/heizi/GolandProjects/NetTools/ping/config/targets.json'.
+Agent-2020/08/23 15:07:29 /Users/heizi/go/src/ping/agent.go:304: Setting task list.
+Agent-2020/08/23 15:07:29 /Users/heizi/go/src/ping/ping_agent.go:198: Target list was updated.
+Agent-2020/08/23 15:07:37 /Users/heizi/go/src/ping/agent.go:347: Captured os interrupt signal.
+Agent-2020/08/23 15:07:37 /Users/heizi/go/src/ping/agent.go:322: Going to stop agent.
+Agent-2020/08/23 15:15:06 /Users/heizi/go/src/ping/agent.go:354: Starting Agent Broker.
+Agent-2020/08/23 15:15:06 /Users/heizi/go/src/ping/ping_agent.go:315: Start to run ping worker.
+Agent-2020/08/23 15:15:06 /Users/heizi/go/src/ping/agent.go:388: [ Agent Broker ] Running Locally.
+Agent-2020/08/23 15:15:06 /Users/heizi/go/src/ping/agent.go:236: Target file md5 value is changed from '' to '70c0c33c10b36778082d401dd9e2382e'
+Agent-2020/08/23 15:15:06 /Users/heizi/go/src/ping/agent.go:237: Found changed section in '/Users/heizi/GolandProjects/NetTools/ping/config/targets.json'.
+Agent-2020/08/23 15:15:06 /Users/heizi/go/src/ping/agent.go:304: Setting task list.
+Agent-2020/08/23 15:15:06 /Users/heizi/go/src/ping/ping_agent.go:198: Target list was updated.
+Agent-2020/08/23 15:15:13 /Users/heizi/go/src/ping/agent.go:347: Captured os interrupt signal.
+Agent-2020/08/23 15:15:13 /Users/heizi/go/src/ping/agent.go:322: Going to stop agent.
+Agent-2020/08/23 15:15:13 /Users/heizi/go/src/ping/agent.go:324: Send signal to stop keepalive
+Agent-2020/08/23 15:15:16 /Users/heizi/go/src/ping/ping_agent.go:305: Ping will to stop for received interrupt signal.
+Agent-2020/08/23 15:15:16 /Users/heizi/go/src/ping/agent.go:336: Agent exiting, waiting for 5 seconds.
+Agent-2020/08/23 15:33:17 /Users/heizi/go/src/ping/agent.go:352: Starting Agent Broker.
+Agent-2020/08/23 15:33:17 /Users/heizi/go/src/ping/ping_agent.go:316: Start to run ping worker.
+Agent-2020/08/23 15:33:17 /Users/heizi/go/src/ping/agent.go:383: [ Agent Broker ] Running Locally.
+Agent-2020/08/23 15:33:17 /Users/heizi/go/src/ping/agent.go:236: Target file md5 value is changed from '' to '70c0c33c10b36778082d401dd9e2382e'
+Agent-2020/08/23 15:33:17 /Users/heizi/go/src/ping/agent.go:237: Found changed section in '/Users/heizi/GolandProjects/NetTools/ping/config/targets.json'.
+Agent-2020/08/23 15:33:17 /Users/heizi/go/src/ping/agent.go:304: Setting task list.
+Agent-2020/08/23 15:33:17 /Users/heizi/go/src/ping/ping_agent.go:198: Target list was updated.
+Agent-2020/08/23 15:33:34 /Users/heizi/go/src/ping/agent.go:345: Captured os interrupt signal.
+Agent-2020/08/23 15:33:34 /Users/heizi/go/src/ping/agent.go:322: Going to stop agent.
+Agent-2020/08/23 15:33:34 /Users/heizi/go/src/ping/agent.go:324: Send signal to stop keepalive
+Agent-2020/08/23 15:33:37 /Users/heizi/go/src/ping/ping_agent.go:306: Ping will to stop for received interrupt signal.
+Agent-2020/08/23 15:33:37 /Users/heizi/go/src/ping/agent.go:334: Agent exiting, waiting for 5 seconds.
+Agent-2020/08/23 16:06:33 /Users/heizi/go/src/ping/agent.go:355: Starting Agent Broker.
+Agent-2020/08/23 16:06:33 /Users/heizi/go/src/ping/ping_agent.go:316: Start to run ping worker.
+Agent-2020/08/23 16:06:33 /Users/heizi/go/src/ping/agent.go:416: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/08/23 16:06:43 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:06:53 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:07:03 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:07:13 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:07:23 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:07:33 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:07:43 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:07:53 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:08:03 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:08:13 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:08:23 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:08:33 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:08:39 /Users/heizi/go/src/ping/agent.go:348: Captured os interrupt signal.
+Agent-2020/08/23 16:08:39 /Users/heizi/go/src/ping/agent.go:322: Going to stop agent.
+Agent-2020/08/23 16:08:43 /Users/heizi/go/src/ping/ping_agent.go:306: Ping will to stop for received interrupt signal.
+Agent-2020/08/23 16:08:43 /Users/heizi/go/src/ping/agent.go:133: keepalive is stopping.
+Agent-2020/08/23 16:08:43 /Users/heizi/go/src/ping/agent.go:163: Something is occurred when agent is unregistering. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:08:43 /Users/heizi/go/src/ping/agent.go:333: Failed to unregister the agent on scheduler, exit directly. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:08:43 /Users/heizi/go/src/ping/agent.go:337: Agent exiting, waiting for 5 seconds.
+Agent-2020/08/23 16:09:10 /Users/heizi/go/src/ping/agent.go:355: Starting Agent Broker.
+Agent-2020/08/23 16:09:10 /Users/heizi/go/src/ping/ping_agent.go:316: Start to run ping worker.
+Agent-2020/08/23 16:09:10 /Users/heizi/go/src/ping/agent.go:416: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/08/23 16:09:13 /Users/heizi/go/src/ping/agent.go:348: Captured os interrupt signal.
+Agent-2020/08/23 16:09:13 /Users/heizi/go/src/ping/agent.go:322: Going to stop agent.
+Agent-2020/08/23 16:09:15 /Users/heizi/go/src/ping/ping_agent.go:306: Ping will to stop for received interrupt signal.
+Agent-2020/08/23 16:09:20 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:09:25 /Users/heizi/go/src/ping/agent.go:355: Starting Agent Broker.
+Agent-2020/08/23 16:09:25 /Users/heizi/go/src/ping/ping_agent.go:316: Start to run ping worker.
+Agent-2020/08/23 16:09:25 /Users/heizi/go/src/ping/agent.go:416: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/08/23 16:09:30 /Users/heizi/go/src/ping/agent.go:133: keepalive is stopping.
+Agent-2020/08/23 16:09:30 /Users/heizi/go/src/ping/agent.go:163: Something is occurred when agent is unregistering. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:09:30 /Users/heizi/go/src/ping/agent.go:333: Failed to unregister the agent on scheduler, exit directly. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:09:30 /Users/heizi/go/src/ping/agent.go:337: Agent exiting, waiting for 5 seconds.
+Agent-2020/08/23 16:09:38 /Users/heizi/go/src/ping/agent.go:355: Starting Agent Broker.
+Agent-2020/08/23 16:09:38 /Users/heizi/go/src/ping/ping_agent.go:316: Start to run ping worker.
+Agent-2020/08/23 16:09:38 /Users/heizi/go/src/ping/agent.go:416: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/08/23 16:09:48 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:09:58 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:10:08 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:10:18 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:10:28 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:10:38 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:10:48 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:10:58 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:18:02 /Users/heizi/go/src/ping/agent.go:348: Captured os interrupt signal.
+Agent-2020/08/23 16:18:02 /Users/heizi/go/src/ping/agent.go:322: Going to stop agent.
+Agent-2020/08/23 16:18:03 /Users/heizi/go/src/ping/ping_agent.go:306: Ping will to stop for received interrupt signal.
+Agent-2020/08/23 16:18:08 /Users/heizi/go/src/ping/agent.go:133: keepalive is stopping.
+Agent-2020/08/23 16:18:08 /Users/heizi/go/src/ping/agent.go:337: Agent exiting, waiting for 5 seconds.
+Agent-2020/08/23 16:19:14 /Users/heizi/go/src/ping/agent.go:355: Starting Agent Broker.
+Agent-2020/08/23 16:19:14 /Users/heizi/go/src/ping/ping_agent.go:316: Start to run ping worker.
+Agent-2020/08/23 16:19:14 /Users/heizi/go/src/ping/agent.go:416: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/08/23 16:19:59 /Users/heizi/go/src/ping/agent.go:348: Captured os interrupt signal.
+Agent-2020/08/23 16:19:59 /Users/heizi/go/src/ping/agent.go:322: Going to stop agent.
+Agent-2020/08/23 16:20:04 /Users/heizi/go/src/ping/ping_agent.go:306: Ping will to stop for received interrupt signal.
+Agent-2020/08/23 16:20:04 /Users/heizi/go/src/ping/agent.go:133: keepalive is stopping.
+Agent-2020/08/23 16:20:04 /Users/heizi/go/src/ping/agent.go:337: Agent exiting, waiting for 5 seconds.
+Agent-2020/08/23 16:27:22 /Users/heizi/go/src/ping/agent.go:355: Starting Agent Broker.
+Agent-2020/08/23 16:27:22 /Users/heizi/go/src/ping/ping_agent.go:316: Start to run ping worker.
+Agent-2020/08/23 16:27:22 /Users/heizi/go/src/ping/agent.go:416: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/08/23 16:28:14 /Users/heizi/go/src/ping/agent.go:348: Captured os interrupt signal.
+Agent-2020/08/23 16:28:14 /Users/heizi/go/src/ping/agent.go:322: Going to stop agent.
+Agent-2020/08/23 16:28:17 /Users/heizi/go/src/ping/ping_agent.go:306: Ping will to stop for received interrupt signal.
+Agent-2020/08/23 16:28:22 /Users/heizi/go/src/ping/agent.go:133: keepalive is stopping.
+Agent-2020/08/23 16:28:22 /Users/heizi/go/src/ping/agent.go:337: Agent exiting, waiting for 5 seconds.
+Agent-2020/08/23 17:32:38 /Users/heizi/go/src/ping/agent.go:355: Starting Agent Broker.
+Agent-2020/08/23 17:32:38 /Users/heizi/go/src/ping/ping_agent.go:316: Start to run ping worker.
+Agent-2020/08/23 17:32:38 /Users/heizi/go/src/ping/agent.go:416: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/08/23 17:43:13 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 17:47:22 /Users/heizi/go/src/ping/agent.go:348: Captured os interrupt signal.
+Agent-2020/08/23 17:47:22 /Users/heizi/go/src/ping/agent.go:322: Going to stop agent.
+Agent-2020/08/23 17:47:23 /Users/heizi/go/src/ping/ping_agent.go:306: Ping will to stop for received interrupt signal.
+Agent-2020/08/23 17:47:23 /Users/heizi/go/src/ping/agent.go:133: keepalive is stopping.
+Agent-2020/08/23 17:47:23 /Users/heizi/go/src/ping/agent.go:337: Agent exiting, waiting for 5 seconds.
+Agent-2020/08/23 17:47:33 /Users/heizi/go/src/ping/agent.go:355: Starting Agent Broker.
+Agent-2020/08/23 17:47:33 /Users/heizi/go/src/ping/ping_agent.go:316: Start to run ping worker.
+Agent-2020/08/23 17:47:33 /Users/heizi/go/src/ping/agent.go:416: [Scheduler(Hprose) start ] Listen port: 1296
+Agent-2020/08/23 17:49:28 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 17:50:18 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 17:54:38 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 17:58:48 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 17:58:58 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 17:59:08 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 17:59:18 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 17:59:28 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 17:59:38 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 17:59:48 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 17:59:58 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 18:00:08 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 18:00:18 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 18:00:28 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 18:00:38 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 18:08:38 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 18:08:58 /Users/heizi/go/src/ping/ping_agent.go:198: Target list was updated.
+Agent-2020/08/23 18:09:18 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 18:09:19 /Users/heizi/go/src/ping/agent.go:348: Captured os interrupt signal.
+Agent-2020/08/23 18:09:19 /Users/heizi/go/src/ping/agent.go:322: Going to stop agent.
+Agent-2020/08/23 18:09:23 /Users/heizi/go/src/ping/ping_agent.go:306: Ping will to stop for received interrupt signal.
+Agent-2020/08/23 18:09:28 /Users/heizi/go/src/ping/agent.go:133: keepalive is stopping.
+Agent-2020/08/23 18:09:28 /Users/heizi/go/src/ping/agent.go:163: Something is occurred when agent is unregistering. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 18:09:28 /Users/heizi/go/src/ping/agent.go:333: Failed to unregister the agent on scheduler, exit directly. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 18:09:28 /Users/heizi/go/src/ping/agent.go:337: Agent exiting, waiting for 5 seconds.

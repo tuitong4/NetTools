@@ -5,6 +5,7 @@ import (
 	"crypto/md5"
 	"encoding/json"
 	"fmt"
+	"github.com/Shopify/sarama"
 	"github.com/hprose/hprose-golang/rpc"
 	"io/ioutil"
 	"local.lc/log"
@@ -13,7 +14,6 @@ import (
 	"os/signal"
 	"strings"
 	"time"
-	"github.com/Shopify/sarama"
 )
 
 type AgentService struct {
@@ -30,31 +30,31 @@ type worker interface {
 
 type AgentBroker struct {
 	//配置信息
-	config      *AgentConfig
+	config *AgentConfig
 
 	//工作进程，完成任务
-	worker      worker
+	worker worker
 
 	//RPC会话，链接scheduler使用
-	session     *ControllerService //Session to connect to Controller
+	session *ControllerService //Session to connect to Controller
 
 	//记录从文件或者api中获取的任务版本信息。当从文件或者api中读取任务信息的时候，
 	//先校验taskVersion的版本是否一致，一致则不更新任务列表。不一致则更新
 	taskVersion string
 
 	//停止Agent的信号
-	stopSignal  chan struct{}
+	stopSignal chan struct{}
 
 	//停止和scheduler之间的心跳检测
-	stopKeepalived chan struct{}
+	stopKeepalive chan struct{}
 }
 
 /*
 	Scheduler侧的RPC操作函数
- */
+*/
 type ControllerService struct {
-	HandleAgentKeepalive func(agent *Agent) error
-	AgentUnRegister      func(agent *Agent) error
+	HandleAgentKeepalive func(agent *Agent) error `name:"HandleAgentKeepalive"`
+	HandleAgentUnRegister func(agent *Agent) error `name:"HandleAgentUnRegister"`
 }
 
 func NewAgentBroker(config *AgentConfig) (*AgentBroker, error) {
@@ -63,12 +63,12 @@ func NewAgentBroker(config *AgentConfig) (*AgentBroker, error) {
 
 	if !config.Agent.RunningLocally {
 		agent.session = initControllerRpc(config.Controller.SchedulerURL)
-	}else{
+	} else {
 		agent.session = nil
 	}
 	agent.taskVersion = ""
 	agent.stopSignal = make(chan struct{})
-	agent.stopKeepalived = make(chan struct{})
+	agent.stopKeepalive = make(chan struct{})
 
 	switch config.Agent.WorkerType {
 	case "ping":
@@ -105,21 +105,21 @@ func (a *AgentBroker) keepalive() {
 
 	//避免发送keepalive报文后，Agent的接收端还没启动完毕，控制器下发任务的时候会导致失败。所以第一次发送报文延后一段时间。
 
-	time.Sleep(10 * time.Second)
+	time.Sleep(5 * time.Second)
 
 	for {
 		agent := &Agent{
-			agentID:          a.config.Agent.AgentID,
-			groupID:          a.config.Agent.GroupID,
-			agentIP:          a.config.Listen.Host,
-			reserved:         a.config.Agent.Reserved,
-			keepaliveTimeSec: a.config.Agent.KeepaliveTimeSec,
-			lastSeen:         0,
-			port:             a.config.Listen.Port,
-			standbyGroup:     a.config.Agent.StandyGroup,
-			globalStandyGroup:a.config.Agent.GlobalStandyGroup,
+			AgentID:           a.config.Agent.AgentID,
+			GroupID:           a.config.Agent.GroupID,
+			AgentIP:           a.config.Agent.AgentIP,
+			Reserved:          a.config.Agent.Reserved,
+			KeepaliveTimeSec:  a.config.Agent.KeepaliveTimeSec,
+			LastSeen:          0,
+			Port:              a.config.Listen.Port,
+			StandbyGroup:      a.config.Agent.StandbyGroup,
+			GlobalStandbyGroup: a.config.Agent.GlobalStandbyGroup,
 		}
-
+		fmt.Println(agent)
 		err := a.session.HandleAgentKeepalive(agent)
 
 		if err != nil {
@@ -129,7 +129,8 @@ func (a *AgentBroker) keepalive() {
 		time.Sleep(time.Duration(a.config.Agent.KeepaliveTimeSec) * time.Second)
 
 		select {
-		case <-a.stopKeepalived:
+		case <-a.stopKeepalive:
+			log.Info("keepalive is stopping.")
 			return
 		default:
 			continue
@@ -145,18 +146,18 @@ func (a *AgentBroker) Unregister() error {
 		return nil
 	}
 	agent := &Agent{
-		agentID:          a.config.Agent.AgentID,
-		groupID:          a.config.Agent.GroupID,
-		agentIP:          a.config.Listen.Host,
-		reserved:          a.config.Agent.Reserved,
-		keepaliveTimeSec: a.config.Agent.KeepaliveTimeSec,
-		lastSeen:         0,
-		port:             a.config.Listen.Port,
-		standbyGroup:     a.config.Agent.StandyGroup,
-		globalStandyGroup:a.config.Agent.GlobalStandyGroup,
+		AgentID:           a.config.Agent.AgentID,
+		GroupID:           a.config.Agent.GroupID,
+		AgentIP:           a.config.Agent.AgentIP,
+		Reserved:          a.config.Agent.Reserved,
+		KeepaliveTimeSec:  a.config.Agent.KeepaliveTimeSec,
+		LastSeen:          0,
+		Port:              a.config.Listen.Port,
+		StandbyGroup:      a.config.Agent.StandbyGroup,
+		GlobalStandbyGroup: a.config.Agent.GlobalStandbyGroup,
 	}
 
-	err := a.session.AgentUnRegister(agent)
+	err := a.session.HandleAgentUnRegister(agent)
 
 	if err != nil {
 		log.Errorf("Something is occurred when agent is unregistering. error: %v.", err)
@@ -232,7 +233,7 @@ func (a *AgentBroker) getTargetFromFile(filename string) ([]*TargetIPAddress, er
 	if hash_code == a.taskVersion {
 		return nil, nil
 	}
-
+	log.Debugf("Target file md5 value is changed from '%s' to '%s'", a.taskVersion, hash_code)
 	log.Infof("Found changed section in '%s'.", a.config.Agent.TaskListFile)
 	var j = new(TargetData)
 	if err := json.NewDecoder(bytes.NewReader(doc)).Decode(j); err != nil {
@@ -292,7 +293,7 @@ func (a *AgentBroker) getTaskListLocally() {
 			if err != nil {
 				log.Errorf("Failed to read tasklist from file, error :%v", err)
 			}
-		}else if a.config.Agent.TaskListApi != "" {
+		} else if a.config.Agent.TaskListApi != "" {
 			t, err = a.getTargetFromApi(a.config.Agent.TaskListApi)
 			if err != nil {
 				log.Errorf("Failed to read tasklist from api, error :%v", err)
@@ -309,28 +310,31 @@ func (a *AgentBroker) getTaskListLocally() {
 	}
 }
 
-func (a *AgentBroker) Stop(){
+func (a *AgentBroker) Stop() {
 	a.stopSignal <- struct{}{}
 }
 
 /*
 	停止agent
- */
+*/
 func (a *AgentBroker) waitStop() {
 	<-a.stopSignal
+	log.Debug("Going to stop agent.")
 
-	a.stopKeepalived <- struct{}{}
 
 	if err := a.stopWorker(); err != nil {
 		log.Errorf("Failed to stop the worker process. error: %v.", err)
 	}
 
-	//Send unregister signal to controller
-	if err := a.Unregister(); err != nil {
-		log.Errorf("Failed to unregister the agent on scheduler, exit directly. error: %v.", err)
+	if !a.config.Agent.RunningLocally{
+		a.stopKeepalive <- struct{}{}
+		//Send unregister signal to controller
+		if err := a.Unregister(); err != nil {
+			log.Errorf("Failed to unregister the agent on scheduler, exit directly. error: %v.", err)
+		}
 	}
 
-	log.Info("Agent exiting.")
+	log.Info("Agent exiting, waiting for 5 seconds.")
 	//等待worker完成退出后，在退出主进程
 	time.Sleep(time.Second * 5)
 	os.Exit(0)
@@ -338,7 +342,7 @@ func (a *AgentBroker) waitStop() {
 
 func (a *AgentBroker) captureOsInterruptSignal() {
 	signal_ch := make(chan os.Signal, 1)
-	signal.Notify(signal_ch, os.Interrupt)
+	signal.Notify(signal_ch, os.Interrupt, os.Kill)
 	go func() {
 		<-signal_ch
 		log.Warn("Captured os interrupt signal.")
@@ -348,6 +352,7 @@ func (a *AgentBroker) captureOsInterruptSignal() {
 
 // TODO: 为了减少reserved状态无任务列表的时候worker空跑，后期要调整此种模式
 func (a *AgentBroker) Run() {
+	log.Info("Starting Agent Broker.")
 	defer func() {
 		err := recover()
 		if err != nil {
@@ -358,6 +363,17 @@ func (a *AgentBroker) Run() {
 
 	if a.config.Agent.RunningLocally {
 		go a.captureOsInterruptSignal()
+
+		//准备输出环境
+		if err := a.setPrinterForWorker(); err != nil {
+			log.Errorf("%v", err)
+			return
+		}
+
+		//if err := a.setProducerForWorker(); err!= nil{
+		//	log.Errorf("%v", err)
+		//	return
+		//}
 
 		// 启动worker
 		if err := a.startWorker(); err != nil {
@@ -375,6 +391,17 @@ func (a *AgentBroker) Run() {
 		go a.captureOsInterruptSignal()
 		go a.waitStop()
 		go a.keepalive()
+
+		//准备输出环境
+		if err := a.setPrinterForWorker(); err != nil {
+			log.Errorf("%v", err)
+			return
+		}
+
+		//if err := a.setProducerForWorker(); err!= nil{
+		//	log.Errorf("%v", err)
+		//	return
+		//}
 
 		// 启动worker
 		if err := a.startWorker(); err != nil {
@@ -414,9 +441,13 @@ func (a *AgentBroker) newProducer() ([]sarama.AsyncProducer, error) {
 	return producers, nil
 }
 
-func (a *AgentBroker) setProducerForWorker() error{
+func (a *AgentBroker) setPrinterForWorker() error {
+	return a.worker.SetWriter(nil, "")
+}
+
+func (a *AgentBroker) setProducerForWorker() error {
 	kafka_producers, err := a.newProducer()
-	if err != nil{
+	if err != nil {
 		return err
 	}
 	return a.worker.SetWriter(kafka_producers, a.config.Kafka.Topic)

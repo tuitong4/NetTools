@@ -74,10 +74,10 @@ func convertStringToMap(s string) (map[string][]string, error){
 
 
 /*
-	初始化对Agnet的RPC调用
+	初始化对Agent的RPC调用
 */
 func initAgentRpc(a *Agent) *AgentService {
-	uri := fmt.Sprintf("http://%s:%s", a.agentIP, a.port)
+	uri := fmt.Sprintf("http://%s:%s", a.AgentIP, a.Port)
 	c := rpc.NewHTTPClient(uri)
 	var agent_service *AgentService
 	c.UseService(&agent_service)

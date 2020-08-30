@@ -1,4 +1,11 @@
 package ping
+
+import (
+	"fmt"
+	"testing"
+	"time"
+)
+
 /*
 import (
 	"fmt"
@@ -21,21 +28,25 @@ func TestNewAgentBroker(t *testing.T){
 	fmt.Println("Agent: ", agent.Config.Agent.AgentID)
 	return
 }
-
+*/
 func TestAgentRunning(t *testing.T){
 	cfgfile := "./config/agent_config.conf"
 	config, err := InitAgentConfig(cfgfile)
+
 	if err != nil{
 		fmt.Println(err)
 		return
 	}
-	fmt.Println("AgentRunning: ", config.PingConfig.WorkInterval)
+	fmt.Println("AgentRunning: ", config.PingConfig.PingIntervalMs)
 	agent, err := NewAgentBroker(config)
 	if err != nil{
 		fmt.Println(err)
 		return
 	}
-
+	//go func(){
+	//	<-agent.stopKeepalive
+	//	fmt.Println("Stop keepalive signal received.")
+	//}()
 	go func(){
 		time.Sleep(10*time.Second)
 		agent.Stop()
@@ -43,4 +54,3 @@ func TestAgentRunning(t *testing.T){
 	agent.Run()
 	return
 }
-*/

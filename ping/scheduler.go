@@ -38,35 +38,35 @@ type Job struct {
 
 type Agent struct {
 	//agentID，唯一标志一个agent。必须唯一
-	agentID string
+	AgentID string
 
 	//GroupID是指承当相同任务，或者是均分同一份任务的agent的组。
-	groupID string
+	GroupID string
 
 	//agent的IP地址，用于Scheduler和Agent通信
-	agentIP string
+	AgentIP string
 
 	//保留状态标志。设置为true时候，该agent充当agent所在的Group的备份节点。
 	//当该组中有其他agent不可用的时候，会启用reserved的agent。
-	reserved bool
+	Reserved bool
 
 	//agent发送心跳数据包的时间间隔
-	keepaliveTimeSec int64
+	KeepaliveTimeSec int64
 
 	//agent最近被Scheduler收到心跳的时间。该时间用于检测agent在Scheduler
 	//长时间没收到心跳的情况下，是不是超时
-	lastSeen int64
+	LastSeen int64
 
 	//agent的端口用于Scheduler和Agent通信
-	port string
+	Port string
 
 	//该agent的Standbygroup。当agent所在的group，在Scheduler侧被删除的时候，
 	//将agent所在的group的任务转交给Standbygroup去执行。起基于group的备份作用。
-	standbyGroup string
+	StandbyGroup string
 
 	//声明自己是不是全局Standbygroup。如果是全局节点，在有group从Scheduler删除的时候
 	//将查找agent指定的Standbygroup， 如果找不到，则将任务调整至全局节点。
-	globalStandyGroup bool
+	GlobalStandbyGroup bool
 }
 
 type Scheduler struct {
@@ -168,8 +168,8 @@ func (s *Scheduler) run() {
 
 	service := rpc.NewHTTPService()
 	service.AddFunction("HandleAgentKeepalive", s.AgentKeepaliveHandler)
-	service.AddFunction("AgentUnRegister", s.AgentUnregisterHandler)
-	log.Infof("[Scheduler(Hprose) start ] Listen port: %s", s.config.Listen.Port)
+	service.AddFunction("HandleAgentUnRegister", s.AgentUnregisterHandler)
+	log.Infof("[Scheduler(Hprose) starting ] Listen port: %s", s.config.Listen.Port)
 
 	_ = http.ListenAndServe(":"+s.config.Listen.Port, service)
 }
@@ -198,7 +198,7 @@ func (s *Scheduler) captureOsInterruptSignal() {
 }
 
 func (s *Scheduler) isAgentExist(a *Agent) bool {
-	if _, exist := s.agents[a.agentID]; exist {
+	if _, exist := s.agents[a.AgentID]; exist {
 		return true
 	}
 
@@ -206,9 +206,9 @@ func (s *Scheduler) isAgentExist(a *Agent) bool {
 }
 
 func (s *Scheduler) isAgentInGroup(a *Agent) (int, bool) {
-	group_id := a.groupID
+	group_id := a.GroupID
 	for idx, agent_id := range s.agentGroups[group_id] {
-		if agent_id == a.agentID {
+		if agent_id == a.AgentID {
 			return idx, true
 		}
 	}
@@ -234,7 +234,7 @@ func (s *Scheduler) isTaskListEmpty(group_id string) bool {
 }
 
 func (s *Scheduler) isReservedAgentActive(a *Agent) bool {
-	if state, exist := s.reservedAgentState[a.agentID]; exist {
+	if state, exist := s.reservedAgentState[a.AgentID]; exist {
 		return state
 	}
 	return false
@@ -252,19 +252,19 @@ func (s *Scheduler) addTask(group_id string, task []*TargetIPAddress) {
 }
 
 func (s *Scheduler) addAgentToGroup(a *Agent) {
-	s.agentGroups[a.groupID] = append(s.agentGroups[a.groupID], a.agentID)
+	s.agentGroups[a.GroupID] = append(s.agentGroups[a.GroupID], a.AgentID)
 }
 
 func (s *Scheduler) checkAndAddAgentToGroup(a *Agent) {
-	if s.isGroupExist(a.groupID) {
+	if s.isGroupExist(a.GroupID) {
 		s.addAgentToGroup(a)
 		return
 	}
-	s.agentGroups[a.groupID] = []string{a.agentID}
+	s.agentGroups[a.GroupID] = []string{a.AgentID}
 }
 
 func (s *Scheduler) enableReservedAgent(a *Agent) {
-	s.reservedAgentState[a.agentID] = true
+	s.reservedAgentState[a.AgentID] = true
 }
 
 func (s *Scheduler) enableStandbyGroup(standby_group, inactive_group string) {
@@ -280,16 +280,16 @@ func (s *Scheduler) delGroup(group_id string) {
 }
 
 func (s *Scheduler) delAgent(a *Agent) {
-	delete(s.agents, a.agentID)
+	delete(s.agents, a.AgentID)
 }
 
 func (s *Scheduler) addAgent(a *Agent) {
-	s.agents[a.agentID] = a
+	s.agents[a.AgentID] = a
 }
 
 func (s *Scheduler) delAgentFromGroup(a *Agent) {
 	if idx, exist := s.isAgentInGroup(a); exist {
-		group_id := a.groupID
+		group_id := a.GroupID
 		s.agentGroups[group_id] = append(s.agentGroups[group_id][:idx], s.agentGroups[group_id][idx+1:]...)
 	}
 }
@@ -299,16 +299,15 @@ func (s *Scheduler) delTask(group_id string) {
 }
 
 func (s *Scheduler) delActiveReserveAgent(a *Agent) {
-	delete(s.reservedAgentState, a.agentID)
+	delete(s.reservedAgentState, a.AgentID)
 }
 
 func (s *Scheduler) disableReserveAgent(a *Agent) {
-	s.reservedAgentState[a.agentID] = false
+	s.reservedAgentState[a.AgentID] = false
 }
 
 func (s *Scheduler) disableStandbyGroup(standby_group, group_id string) {
 	g, exist := s.standbyGroupState[standby_group]
-	fmt.Println("DEBUG, disableStandbyGroup", standby_group, group_id)
 	if exist && len(g) != 0 {
 		if group_id != "" {
 			s.standbyGroupState[standby_group] = delItemFromSilce(g, group_id)
@@ -352,11 +351,11 @@ func (s *Scheduler) getReservedAgent(a *Agent) string {
 	//只会返回第一个匹配的,且没有运行任务的reserved agent
 	var reserved_agents []string
 	for _, agent := range s.agents {
-		if a.agentID == agent.agentID {
+		if a.AgentID == agent.AgentID {
 			continue
 		}
-		if agent.reserved && (agent.groupID == a.groupID) {
-			reserved_agents = append(reserved_agents, agent.agentID)
+		if agent.Reserved && (agent.GroupID == a.GroupID) {
+			reserved_agents = append(reserved_agents, agent.AgentID)
 		}
 	}
 	for _, agent := range reserved_agents {
@@ -371,42 +370,46 @@ func (s *Scheduler) getReservedAgent(a *Agent) string {
 	处理客户端发起的注销请求
 */
 
-func (s *Scheduler) AgentUnregisterHandler(a *Agent) {
+func (s *Scheduler) AgentUnregisterHandler(a *Agent) error {
 	req := &Job{
 		action: AgentUnRegister,
 		agent:  a,
 	}
 	s.jobQueue <- req
+
+	return nil
 }
 
 /*
 	处理客户端的Keepalive报文
 */
-func (s *Scheduler) AgentKeepaliveHandler(a *Agent) {
-
+func (s *Scheduler) AgentKeepaliveHandler(a *Agent) error{
 	if s.isAgentExist(a) {
-		s.agents[a.agentID].lastSeen = time.Now().Unix()
+		s.agents[a.AgentID].LastSeen = time.Now().Unix()
 
-		if a.reserved != s.agents[a.agentID].reserved {
+		if a.Reserved != s.agents[a.AgentID].Reserved {
 			s.jobQueue <- &Job{
 				action: ReserveStatusChange,
 				agent:  a,
 			}
-
-			if a.reserved {
-				return
+			if a.Reserved {
+				return nil
 			}
 		}
-		return
+		return nil
 	}
 
-	s.jobQueue <- &Job{
-		action: AgentRegister,
-		agent:  a,
+	if !s.starting{
+		s.jobQueue <- &Job{
+			action: AgentRegister,
+			agent:  a,
+		}
+	}else{
+		log.Infof("Agent '%s' register is denied when scheduler is starting")
 	}
-
-	return
+	return nil
 }
+
 
 /*
 	Job调度器，基本上所有的任务都在通过Job调度器完成调度，也是通过Job调度器确保每个Job之间不会出现资源竞争
@@ -434,7 +437,7 @@ func (s *Scheduler) jobScheduler() {
 
 		case ReserveStatusChange:
 			//log.Infof("reserved status of agent '%s' is changed, go to adjust agent task.",  agent.agentID)
-			if agent.reserved {
+			if agent.Reserved {
 				s.taskAdjustWhenAgentAdded(agent)
 			} else {
 				s.taskAdjustWhenAgentRemoved(agent)
@@ -466,7 +469,7 @@ func (s *Scheduler) refreshTaskListHandler() {
 func (s *Scheduler) clearTimedOutAgent() {
 	for {
 		for _, agent := range s.agents {
-			if (time.Now().Unix() - agent.lastSeen) > agent.keepaliveTimeSec*3 {
+			if (time.Now().Unix() - agent.LastSeen) > agent.KeepaliveTimeSec*3 {
 				s.jobQueue <- &Job{
 					action: TimedOutAgentUnRegister,
 					agent:  agent,
@@ -481,30 +484,30 @@ func (s *Scheduler) clearTimedOutAgent() {
 	处理Agent注册
 */
 func (s *Scheduler) agentRegister(a *Agent) {
-	a.lastSeen = time.Now().Unix()
+	a.LastSeen = time.Now().Unix()
 
 	s.addAgent(a)
-	log.Infof("Agent '%s' is registered.", a.agentID)
+	log.Infof("Agent '%s' is registered.", a.AgentID)
 
 	// 选举standby Group.
-	s.standbyGroupVote(a.groupID)
+	s.standbyGroupVote(a.GroupID)
 
 	// 选举globalStandbyGroup
 	s.globalStandbyGroupVote("")
 
 	//TODO: 增加检查有无运行在standby的任务列表
 	//保留的Agent不加入到组中，当做备份
-	if a.reserved {
-		log.Infof("Agent '%s' is reserved, it will act as an standby agent.", a.agentID)
+	if a.Reserved {
+		log.Infof("Agent '%s' is reserved, it will act as an standby agent.", a.AgentID)
 		return
 	}
 
 	//将Agent加入到组中
-	log.Infof("Agent '%s' will be added to group '%s'.", a.agentID, a.groupID)
+	log.Infof("Agent '%s' will be added to group '%s'.", a.AgentID, a.GroupID)
 	s.checkAndAddAgentToGroup(a)
 
 	//调整任务列表
-	log.Infof("Going to adjust task of '%s' when '%s' is registered. ", a.agentID, a.agentID)
+	log.Infof("Going to adjust task of '%s' when '%s' is registered. ", a.AgentID, a.AgentID)
 	s.taskAdjustWhenAgentAdded(a)
 	return
 
@@ -516,38 +519,38 @@ func (s *Scheduler) agentRegister(a *Agent) {
 func (s *Scheduler) agentUnRegister(a *Agent) {
 	if s.isAgentExist(a) {
 		//调整任务列表
-		log.Infof("Going to adjust task of '%s' when '%s' unregisters. ", a.agentID, a.agentID)
+		log.Infof("Going to adjust task of '%s' when '%s' unregisters. ", a.AgentID, a.AgentID)
 		s.taskAdjustWhenAgentRemoved(a)
 
 		//注销Agent
 		s.delAgent(a)
-		log.Infof("Agent '%s' is unregistered.", a.agentID)
+		log.Infof("Agent '%s' is unregistered.", a.AgentID)
 
 		//从组中删除Agent
 		s.delAgentFromGroup(a)
-		log.Infof("Agent '%s' is deleted from group '%s'.", a.agentID, a.groupID)
+		log.Infof("Agent '%s' is deleted from group '%s'.", a.AgentID, a.GroupID)
 
 		//如果是组空了就删除组，避免后续的影响
-		if s.isGroupEmpty(a.groupID) {
-			s.delGroup(a.groupID)
-			log.Infof("There is no agent is active in group '%s', group has been deleted.", a.groupID)
+		if s.isGroupEmpty(a.GroupID) {
+			s.delGroup(a.GroupID)
+			log.Infof("There is no agent is active in group '%s', group has been deleted.", a.GroupID)
 
-			//如果a.groupID是GlobalStandbyGroup，则重新选举GlobalStandbyGroup
-			if s.globalStandbyGroup == a.groupID {
-				log.Infof("Going to select the new global standby group while group '%s' is deleted.", a.groupID)
+			//如果a.GroupID是GlobalStandbyGroup，则重新选举GlobalStandbyGroup
+			if s.globalStandbyGroup == a.GroupID {
+				log.Infof("Going to select the new global standby group while group '%s' is deleted.", a.GroupID)
 				s.globalStandbyGroupVote("")
 			}
 		}
 		return
 	}
 
-	log.Errorf("'%s' dose not exist while agent unregister.", a.agentID)
+	log.Errorf("'%s' dose not exist while agent unregister.", a.AgentID)
 	return
 }
 
 /*
 func (s *Scheduler) setAgentTask(a *Agent, task []*TargetIPAddress) {
-	fmt.Printf("Task of agent '%s' is '%v'\n", a.agentID, task)
+	fmt.Printf("Task of agent '%s' is '%v'\n", a.AgentID, task)
 }
 */
 
@@ -556,9 +559,9 @@ func (s *Scheduler) setAgentTask(a *Agent, task []*TargetIPAddress) {
 	err := sess.UpdateTaskList(task)
 
 	if err != nil {
-		log.Errorf("[initAssignment] Failed set agent %s's task. errors: %v", a.agentID, err)
+		log.Errorf("[initAssignment] Failed set agent %s's task. errors: %v", a.AgentID, err)
 	} else {
-		log.Infof("[initAssignment] Set '%s''s task list successfully.", a.agentID)
+		log.Infof("[initAssignment] Set '%s''s task list successfully.", a.AgentID)
 	}
 }
 
@@ -758,45 +761,45 @@ func (s *Scheduler) taskAdjustWhenAgentAdded(a *Agent) {
 	var task []*TargetIPAddress
 
 	// 检查有无运行在新增agent的group任务巡行在standby group中，有则禁用, 并回撤上面运行的任务列表
-	standby_group := s.groupIsBackedUpBy(a.groupID)
+	standby_group := s.groupIsBackedUpBy(a.GroupID)
 	if standby_group != "" {
-		log.Infof("Task of standby group '%s' will to be adjusted when '%s' is added.", standby_group, a.agentID)
+		log.Infof("Task of standby group '%s' will to be adjusted when '%s' is added.", standby_group, a.AgentID)
 		//重新调整standby组的任务列表，相当于回撤原先分配的任务列表
-		t := s.getTaskRunningOnGroup(standby_group, a.groupID)
+		t := s.getTaskRunningOnGroup(standby_group, a.GroupID)
 		if len(t) != 0 {
 			s.taskAssignment(standby_group, t)
-			log.Infof("Task of group '%s' is withdrawed from the standby group '%s'.", a.groupID, standby_group)
+			log.Infof("Task of group '%s' is withdrawed from the standby group '%s'.", a.GroupID, standby_group)
 		}
-		s.disableStandbyGroup(standby_group, a.groupID)
-		log.Infof("Group '%s' is deleted from standby group list of '%s'.", a.groupID, standby_group)
-		task = s.taskList[a.groupID]
+		s.disableStandbyGroup(standby_group, a.GroupID)
+		log.Infof("Group '%s' is deleted from standby group list of '%s'.", a.GroupID, standby_group)
+		task = s.taskList[a.GroupID]
 
-	} else if s.isGroupRunningAsStandby(a.groupID) { //检查agent所在的组是否运行在standby状态，是的话将要重新调整任务列表
+	} else if s.isGroupRunningAsStandby(a.GroupID) { //检查agent所在的组是否运行在standby状态，是的话将要重新调整任务列表
 		task = s.getTaskRunningOnGroup(standby_group, "")
 	}
 
 	if len(task) != 0 {
 		if s.split {
-			log.Infof("Task will be adjusted and reassigned to group '%s'.", a.groupID)
-			s.taskAssignment(a.groupID, task)
+			log.Infof("Task will be adjusted and reassigned to group '%s'.", a.GroupID)
+			s.taskAssignment(a.GroupID, task)
 		} else {
-			log.Infof("Task will be assigned to agent '%s'.", a.agentID)
+			log.Infof("Task will be assigned to agent '%s'.", a.AgentID)
 			s.setAgentTask(a, task)
 		}
 		return
 	}
 
 	//检查agent所在的组有无reserved状态的agent在运行
-	reserved_agent := s.getReservedAgentInGroup(a.groupID)
+	reserved_agent := s.getReservedAgentInGroup(a.GroupID)
 
 	if reserved_agent != "" {
 		reserved_agent_index, _ := s.isAgentInGroup(s.agents[reserved_agent])
-		reserved_agent_group := a.groupID
+		reserved_agent_group := a.GroupID
 		running_agents := s.agentGroups[reserved_agent_group]
 		task = s.getSpecAgentTask(len(running_agents), reserved_agent_index, s.taskList[reserved_agent_group])
 
 		//将该group下的reserved Agent更替为新加入的agent
-		s.agentGroups[a.groupID][reserved_agent_index] = a.agentID
+		s.agentGroups[a.GroupID][reserved_agent_index] = a.AgentID
 
 		//更新agent的reserved激活状态
 		s.delActiveReserveAgent(a)
@@ -806,42 +809,42 @@ func (s *Scheduler) taskAdjustWhenAgentAdded(a *Agent) {
 		return
 	}
 
-	task = s.taskList[a.groupID]
+	task = s.taskList[a.GroupID]
 	if len(task) == 0 {
 		if s.starting {
-			log.Warnf("Task adjustment for agent '%s' is skipped while task list is not ready.", a.agentID)
+			log.Warnf("Task adjustment for agent '%s' is skipped because task list is not ready.", a.AgentID)
 			return
 		}
 		//从TaskListFile或者TaskListApi中获取地址列表。此情况只会发生在一个group中的第一个agent加入的时候
-		log.Infof("There is no task is found for '%s', will to load task form file or api.", a.agentID)
+		log.Infof("There is no task is found for '%s', will to load task form file or api.", a.AgentID)
 		target, err := s.getTaskListForce()
 		if err != nil {
-			log.Infof("Failed to read targer when agent '%s' is added. Error: %v", a.agentID, err)
+			log.Infof("Failed to read targer when agent '%s' is added. Error: %v", a.AgentID, err)
 			return
 		}
 		tt, err := s.taskClassifier(target)
 		if err != nil {
-			log.Infof("No suitable task is found for '%s'. Error: %v", a.agentID, err)
+			log.Infof("No suitable task is found for '%s'. Error: %v", a.AgentID, err)
 			return
 		}
 
 		//重新为agent计算任务列表，因为是group中唯一的agent，任务全分配给该agent
-		task = tt[a.groupID]
+		task = tt[a.GroupID]
 
 		if len(task) == 0 {
-			log.Infof("No suitable task is found for '%s', no task in file or api about group '%s'.", a.agentID, a.groupID)
+			log.Infof("No suitable task is found for '%s', no task in file or api about group '%s'.", a.AgentID, a.GroupID)
 			return
 		}
 
-		s.addTask(a.groupID, task)
-		log.Infof("Task of group '%s' is added.", a.groupID)
+		s.addTask(a.GroupID, task)
+		log.Infof("Task of group '%s' is added.", a.GroupID)
 
 		s.setAgentTask(a, task)
 		return
 	}
 	//重新调整整个agent所在的group任务列表
 	if s.split {
-		s.taskAssignment(a.groupID, task)
+		s.taskAssignment(a.GroupID, task)
 	} else {
 		s.setAgentTask(a, task)
 	}
@@ -851,37 +854,37 @@ func (s *Scheduler) taskAdjustWhenAgentAdded(a *Agent) {
 func (s *Scheduler) taskAdjustWhenAgentRemoved(a *Agent) {
 	var task []*TargetIPAddress
 
-	if a.reserved {
+	if a.Reserved {
 		//当agent是处于于激活状态的reserved节点，更新状态
 		if s.isReservedAgentActive(a) {
 			//删除agent的reserved激活状态
 			s.delActiveReserveAgent(a)
-			log.Infof("The active reserved agent '%s' is deleted when agent unregistered.", a.agentID)
+			log.Infof("The active reserved agent '%s' is deleted when agent unregistered.", a.AgentID)
 		} else {
-			log.Infof("Agent '%s' is reserved agent without any task list, will not to adjust the task.", a.agentID)
+			log.Infof("Agent '%s' is reserved agent without any task list, will not to adjust the task.", a.AgentID)
 			return
 		}
 	}
 
 	//获取任务agent所在group的所有任务列表
-	t := s.getTaskRunningOnGroup(a.groupID, "")
+	t := s.getTaskRunningOnGroup(a.GroupID, "")
 
 	//检查是不是还有没有运行任务的reserved状态的agent，有则将agent的任务调整到reserved状态的agent上运行
 	new_reserved_agent := s.getReservedAgent(a)
 	if new_reserved_agent != "" {
-		agent_index, _ := s.isAgentInGroup(s.agents[a.agentID])
-		running_agents := s.agentGroups[a.groupID]
+		agent_index, _ := s.isAgentInGroup(s.agents[a.AgentID])
+		running_agents := s.agentGroups[a.GroupID]
 		task = s.getSpecAgentTask(len(running_agents), agent_index, t)
 
 		//将该group下的reserved Agent更替为新加入的agent
-		s.agentGroups[a.groupID][agent_index] = new_reserved_agent
-		log.Infof("The inactive reserved agent changed to active when agent '%s' is removed.", a.agentID)
-		fmt.Println("DEBUG:Setting:standbyGroupState", s.standbyGroupState[a.groupID])
-		fmt.Println("DEBUG:Setting:taskList", s.taskList[a.groupID])
-		fmt.Println("DEBUG:Setting:taskList", t)
-		fmt.Println("DEBUG:Setting:taskList", task)
+		s.agentGroups[a.GroupID][agent_index] = new_reserved_agent
+		log.Infof("The inactive reserved agent changed to active when agent '%s' is removed.", a.AgentID)
+		//fmt.Println("DEBUG:Setting:standbyGroupState", s.standbyGroupState[a.GroupID])
+		//fmt.Println("DEBUG:Setting:taskList", s.taskList[a.GroupID])
+		//fmt.Println("DEBUG:Setting:taskList", t)
+		//fmt.Println("DEBUG:Setting:taskList", task)
 		s.setAgentTask(s.agents[new_reserved_agent], task)
-		log.Infof("The task was sent to reserved agent '%s' when agent '%s' is removed.", new_reserved_agent, a.agentID)
+		log.Infof("The task was sent to reserved agent '%s' when agent '%s' is removed.", new_reserved_agent, a.AgentID)
 
 		s.enableReservedAgent(s.agents[new_reserved_agent])
 
@@ -889,41 +892,43 @@ func (s *Scheduler) taskAdjustWhenAgentRemoved(a *Agent) {
 	}
 
 	//当且仅当agent所所在的group仅仅只剩该agent的时后，查找备份的group进行调整任务列表
-	if len(s.agentGroups[a.groupID]) == 1 {
+	if len(s.agentGroups[a.GroupID]) == 1 {
 
 		// 如果agent运行在standby状态，则调整本standby的任务至其他group上
 		/*
-			if s.isGroupRunningAsStandby(a.groupID) {
-				s.taskAdjustWhenStandbyGroupInactive(a.groupID, false)
-				s.disableStandbyGroup(a.groupID, "")
+			if s.isGroupRunningAsStandby(a.GroupID) {
+				s.taskAdjustWhenStandbyGroupInactive(a.GroupID, false)
+				s.disableStandbyGroup(a.GroupID, "")
 				return
 			}
 		*/
 
 		//如果agent没有运行在standby状态，则调整本agent的任务调整至备用的group上
-		standby_for_agent := s.standbyGroups[a.groupID]
+		standby_for_agent := s.standbyGroups[a.GroupID]
 		if standby_for_agent != "" {
-			s.taskAdjustWhenStandbyGroupActive(standby_for_agent, a.groupID)
+			s.taskAdjustWhenStandbyGroupActive(standby_for_agent, a.GroupID)
 		} else {
-			s.taskAdjustWhenStandbyGroupInactive(a.groupID, false)
+			s.taskAdjustWhenStandbyGroupInactive(a.GroupID, false)
 		}
 		//清除StandbyGroup状态信息
-		s.disableStandbyGroup(a.groupID, "")
-		//log.Infof("There is no standby group for agent '%s', these task of agent will be ignored.", a.agentID)
+		s.disableStandbyGroup(a.GroupID, "")
+		//log.Infof("There is no standby group for agent '%s', these task of agent will be ignored.", a.AgentID)
 		return
 	}
+
 	//如果group中还有活跃的agent
-	if len(s.agentGroups[a.groupID]) > 1 {
+	if len(s.agentGroups[a.GroupID]) > 1 {
 		if !s.split {
-			log.Infof("Nothing to do on unsplit mode when agent '%s' is removed.", a.agentID)
+			log.Infof("Nothing to do on unsplit mode when agent '%s' is removed.", a.AgentID)
 			return
 		}
-		s.taskAssignmentPartial(a.groupID, t, a.agentID)
-		log.Infof("Task is adjusted for the rest active agent of group '%s', while agent '%s' is removed.", a.groupID, a.agentID)
+		s.taskAssignmentPartial(a.GroupID, t, a.AgentID)
+		log.Infof("Task is adjusted for the rest active agent of group '%s', while agent '%s' is removed.", a.GroupID, a.AgentID)
 		return
 	}
+
 	//当agnet既没有reserved的agent或者standby的group来接管agent的任务时候，忽略这部分任务
-	log.Infof("No reserved agent or standby group is found for '%s' when '%s' is removed.", a.agentID, a.agentID)
+	log.Infof("No reserved agent or standby group is found for '%s' when '%s' is removed.", a.AgentID, a.AgentID)
 }
 
 /*
@@ -1098,24 +1103,27 @@ func getTargetFromApiForce(url string) (*TargetData, error) {
 */
 func (s *Scheduler) getTaskListLocally() {
 	var err error
-
 	t := new(TargetData)
 	if s.config.Scheduler.TaskListFile != "" {
 		t, err = s.getTargetFromFile(s.config.Scheduler.TaskListFile)
 		if err != nil {
 			log.Errorf("Failed to read taskList from file, error :%v", err)
+			return
 		}
+
 	} else if s.config.Scheduler.TaskListApi != "" {
 		t, err = s.getTargetFromApi(s.config.Scheduler.TaskListApi)
 		if err != nil {
 			log.Errorf("Failed to read taskList from api, error :%v", err)
+			return
 		}
 	}
 
 	if t == nil {
+		log.Warn("No new targets were loaded!")
+		s.starting = false
 		return
 	}
-
 	if len(t.Targets) != 0 {
 		result, err := s.taskClassifier(t)
 		if err != nil {
@@ -1137,10 +1145,10 @@ func (s *Scheduler) getTaskListLocally() {
 func (s *Scheduler) standbyGroupVote(group_id string) {
 	counter := make(map[string]int)
 	for agent := range s.agents {
-		if s.agents[agent].groupID != group_id {
+		if s.agents[agent].GroupID != group_id {
 			continue
 		}
-		standby_group := s.agents[agent].standbyGroup
+		standby_group := s.agents[agent].StandbyGroup
 		if _, exist := counter[standby_group]; !exist {
 			counter[standby_group] = 1
 		} else {
@@ -1170,10 +1178,10 @@ func (s *Scheduler) standbyGroupVote(group_id string) {
 func (s *Scheduler) globalStandbyGroupVote(exclude_group string) {
 	counter := make(map[string]int)
 	for agent := range s.agents {
-		if !s.agents[agent].globalStandyGroup {
+		if !s.agents[agent].GlobalStandbyGroup {
 			continue
 		}
-		global_standby_group := s.agents[agent].groupID
+		global_standby_group := s.agents[agent].GroupID
 		if _, exist := counter[global_standby_group]; !exist {
 			counter[global_standby_group] = 1
 		} else {

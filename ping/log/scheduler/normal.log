@@ -752,3 +752,883 @@ Scheduler-2020/05/06 23:36:25 /Users/heizi/go/src/ping/scheduler.go:231: Agent '
 Scheduler-2020/05/06 23:36:25 /Users/heizi/go/src/ping/scheduler.go:242: Group 'datacenter01' adds a new agent 'dc-dsadwjalnfaosiqw-01'.
 Scheduler-2020/05/06 23:36:25 /Users/heizi/go/src/ping/scheduler.go:406: Ajusting task list to group 'datacenter01' for new agent 'dc-dsadwjalnfaosiqw-01' is added.
 Scheduler-2020/05/06 23:36:25 /Users/heizi/go/src/ping/scheduler.go:421: No task list is found for 'dc-dsadwjalnfaosiqw-01', will to load from file or api.
+Scheduler-2020/08/23 16:11:02 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/08/23 16:11:02 /Users/heizi/go/src/ping/scheduler.go:1122: no avalible category to classify
+Scheduler-2020/08/23 16:11:06 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:11:06 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:11:06 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:11:06 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:11:12 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:11:12 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:11:12 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:11:12 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:11:12 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:11:12 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:11:12 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:11:16 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:11:16 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:11:16 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:11:16 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:11:22 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:11:22 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:11:22 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:11:22 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:11:22 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:11:22 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:11:22 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:11:26 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:11:26 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:11:26 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:11:26 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:11:32 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:11:32 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:11:32 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:11:32 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:11:32 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:11:32 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:11:32 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:11:36 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:11:36 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:11:36 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:11:36 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:11:42 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:11:42 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:11:42 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:11:42 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:11:42 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:11:42 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:11:42 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:11:46 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:11:46 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:11:46 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:11:46 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:11:52 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:11:52 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:11:52 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:11:52 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:11:52 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:11:52 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:11:52 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:11:56 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:11:56 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:11:56 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:11:56 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:12:02 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:12:02 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:12:02 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:12:02 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:12:02 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:12:02 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:12:02 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:12:06 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:12:06 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:12:06 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:12:06 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:12:12 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:12:12 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:12:12 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:12:12 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:12:12 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:12:12 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:12:12 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:12:16 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:12:16 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:12:16 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:12:16 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:12:22 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:12:22 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:12:22 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:12:22 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:12:22 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:12:22 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:12:22 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:12:26 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:12:26 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:12:26 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:12:26 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:12:32 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:12:32 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:12:32 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:12:32 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:12:32 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:12:32 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:12:32 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:12:36 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:12:36 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:12:36 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:12:36 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:12:42 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:12:42 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:12:42 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:12:42 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:12:42 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:12:42 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:12:42 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:12:46 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:12:46 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:12:46 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:12:46 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:12:52 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:12:52 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:12:52 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:12:52 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:12:52 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:12:52 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:12:52 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:12:56 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:12:56 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:12:56 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:12:56 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:13:02 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:13:02 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:13:02 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:13:02 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:13:02 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:13:02 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:13:02 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:13:06 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:13:06 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:13:06 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:13:06 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:13:12 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:13:12 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:13:12 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:13:12 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:13:12 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:13:12 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:13:12 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:13:16 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:13:16 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:13:16 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:13:16 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:13:22 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:13:22 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:13:22 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:13:22 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:13:22 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:13:22 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:13:22 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:13:26 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:13:26 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:13:26 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:13:26 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:13:32 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:13:32 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:13:32 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:13:32 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:13:32 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:13:32 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:13:32 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:13:36 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:13:36 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:13:36 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:13:36 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:13:42 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:13:42 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:13:42 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:13:42 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:13:42 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:13:42 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:13:42 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:13:46 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:13:46 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:13:46 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:13:46 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:13:52 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:13:52 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:13:52 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:13:52 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:13:52 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:13:52 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:13:52 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:13:56 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:13:56 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:13:56 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:13:56 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:14:02 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:14:02 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:14:02 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:14:02 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:14:02 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:14:02 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:14:02 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:14:06 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:14:06 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:14:06 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:14:06 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:14:12 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:14:12 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:14:12 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:14:12 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:14:12 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:14:12 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:14:12 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:14:16 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:14:16 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:14:16 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:14:16 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:14:22 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:14:22 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:14:22 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:14:22 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:14:22 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:14:22 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:14:22 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:14:26 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:14:26 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:14:26 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:14:26 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:14:32 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:14:32 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:14:32 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:14:32 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:14:32 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:14:32 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:14:32 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:14:36 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:14:36 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:14:36 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:14:36 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:14:42 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:14:42 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:14:42 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:14:42 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:14:42 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:14:42 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:14:42 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:14:46 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:14:46 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:14:46 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:14:46 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:14:52 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:14:52 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:14:52 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:14:52 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:14:52 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:14:52 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:14:52 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:14:56 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:14:56 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:14:56 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:14:56 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:15:02 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:15:02 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:15:02 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:15:02 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:15:02 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:15:02 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:15:02 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:15:06 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:15:06 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:15:06 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:15:06 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:15:12 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:15:12 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:15:12 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:15:12 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:15:12 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:15:12 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:15:12 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:15:16 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:15:16 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:15:16 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:15:16 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:15:22 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:15:22 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:15:22 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:15:22 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:15:22 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:15:22 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:15:22 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:15:26 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:15:26 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:15:26 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:15:26 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:15:32 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:15:32 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:15:32 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:15:32 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:15:32 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:15:32 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:15:32 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:15:36 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:15:36 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:15:36 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:15:36 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:15:42 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:15:42 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:15:42 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:15:42 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:15:42 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:15:42 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:15:42 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:15:46 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:15:46 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:15:46 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:15:46 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:15:52 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:15:52 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:15:52 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:15:52 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:15:52 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:15:52 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:15:52 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:15:56 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:15:56 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:15:56 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:15:56 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:16:02 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:16:02 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:16:02 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:16:02 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:16:02 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:16:02 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:16:02 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:16:06 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:16:06 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:16:06 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:16:06 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:16:12 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:16:12 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:16:12 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:16:12 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:16:12 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:16:12 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:16:12 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:16:16 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:16:16 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:16:16 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:16:16 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:16:22 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:16:22 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:16:22 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:16:22 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:16:22 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:16:22 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:16:22 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:16:26 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:16:26 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:16:26 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:16:26 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:16:32 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:16:32 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:16:32 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:16:32 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:16:32 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:16:32 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:16:32 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:16:36 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:16:36 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:16:36 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:16:36 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:16:42 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:16:42 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:16:42 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:16:42 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:16:42 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:16:42 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:16:42 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:16:46 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:16:46 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:16:46 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:16:46 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:16:52 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:16:52 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:16:52 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:16:52 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:16:52 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:16:52 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:16:52 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:16:56 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:16:56 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:16:56 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:16:56 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:17:02 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:17:02 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:17:02 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:17:02 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:17:02 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:17:02 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:17:02 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:17:06 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:17:06 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:17:06 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:17:06 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:17:12 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:17:12 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:17:12 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:17:12 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:17:12 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:17:12 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:17:12 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:17:16 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:17:16 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:17:16 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:17:16 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:17:22 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:17:22 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:17:22 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:17:22 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:17:22 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:17:22 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:17:22 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:17:26 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:17:26 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:17:26 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:17:26 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:17:32 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:17:32 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:17:32 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:17:32 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:17:32 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:17:32 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:17:32 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:17:36 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:17:36 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:17:36 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:17:36 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:17:42 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:17:42 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:17:42 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:17:42 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:17:42 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:17:42 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:17:42 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:17:46 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:17:46 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:17:46 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:17:46 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:17:52 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:17:52 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:17:52 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:17:52 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:17:52 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:17:52 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:17:52 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:17:56 /Users/heizi/go/src/ping/scheduler.go:487: Agent '' is registered.
+Scheduler-2020/08/23 16:17:56 /Users/heizi/go/src/ping/scheduler.go:503: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:17:56 /Users/heizi/go/src/ping/scheduler.go:507: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:17:56 /Users/heizi/go/src/ping/scheduler.go:812: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:18:02 /Users/heizi/go/src/ping/scheduler.go:519: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:18:02 /Users/heizi/go/src/ping/scheduler.go:727: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:18:02 /Users/heizi/go/src/ping/scheduler.go:732: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:18:02 /Users/heizi/go/src/ping/scheduler.go:524: Agent '' is unregistered.
+Scheduler-2020/08/23 16:18:02 /Users/heizi/go/src/ping/scheduler.go:528: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:18:02 /Users/heizi/go/src/ping/scheduler.go:533: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:18:02 /Users/heizi/go/src/ping/scheduler.go:537: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:18:06 /Users/heizi/go/src/ping/scheduler.go:544: '' dose not exist while agent unregister.
+Scheduler-2020/08/23 16:18:08 /Users/heizi/go/src/ping/scheduler.go:544: '' dose not exist while agent unregister.
+Scheduler-2020/08/23 16:18:46 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/08/23 16:18:46 /Users/heizi/go/src/ping/scheduler.go:1121: no avalible category to classify
+Scheduler-2020/08/23 16:19:24 /Users/heizi/go/src/ping/scheduler.go:486: Agent '' is registered.
+Scheduler-2020/08/23 16:19:24 /Users/heizi/go/src/ping/scheduler.go:502: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:19:24 /Users/heizi/go/src/ping/scheduler.go:506: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:19:24 /Users/heizi/go/src/ping/scheduler.go:811: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:19:26 /Users/heizi/go/src/ping/scheduler.go:518: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:19:26 /Users/heizi/go/src/ping/scheduler.go:726: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:19:26 /Users/heizi/go/src/ping/scheduler.go:731: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:19:26 /Users/heizi/go/src/ping/scheduler.go:523: Agent '' is unregistered.
+Scheduler-2020/08/23 16:19:26 /Users/heizi/go/src/ping/scheduler.go:527: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:19:26 /Users/heizi/go/src/ping/scheduler.go:532: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:19:26 /Users/heizi/go/src/ping/scheduler.go:536: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:19:34 /Users/heizi/go/src/ping/scheduler.go:486: Agent '' is registered.
+Scheduler-2020/08/23 16:19:34 /Users/heizi/go/src/ping/scheduler.go:502: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:19:34 /Users/heizi/go/src/ping/scheduler.go:506: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:19:34 /Users/heizi/go/src/ping/scheduler.go:811: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:19:36 /Users/heizi/go/src/ping/scheduler.go:518: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:19:36 /Users/heizi/go/src/ping/scheduler.go:726: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:19:36 /Users/heizi/go/src/ping/scheduler.go:731: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:19:36 /Users/heizi/go/src/ping/scheduler.go:523: Agent '' is unregistered.
+Scheduler-2020/08/23 16:19:36 /Users/heizi/go/src/ping/scheduler.go:527: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:19:36 /Users/heizi/go/src/ping/scheduler.go:532: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:19:36 /Users/heizi/go/src/ping/scheduler.go:536: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:19:44 /Users/heizi/go/src/ping/scheduler.go:486: Agent '' is registered.
+Scheduler-2020/08/23 16:19:44 /Users/heizi/go/src/ping/scheduler.go:502: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:19:44 /Users/heizi/go/src/ping/scheduler.go:506: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:19:44 /Users/heizi/go/src/ping/scheduler.go:811: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:19:46 /Users/heizi/go/src/ping/scheduler.go:518: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:19:46 /Users/heizi/go/src/ping/scheduler.go:726: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:19:46 /Users/heizi/go/src/ping/scheduler.go:731: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:19:46 /Users/heizi/go/src/ping/scheduler.go:523: Agent '' is unregistered.
+Scheduler-2020/08/23 16:19:46 /Users/heizi/go/src/ping/scheduler.go:527: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:19:46 /Users/heizi/go/src/ping/scheduler.go:532: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:19:46 /Users/heizi/go/src/ping/scheduler.go:536: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:19:54 /Users/heizi/go/src/ping/scheduler.go:486: Agent '' is registered.
+Scheduler-2020/08/23 16:19:54 /Users/heizi/go/src/ping/scheduler.go:502: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:19:54 /Users/heizi/go/src/ping/scheduler.go:506: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:19:54 /Users/heizi/go/src/ping/scheduler.go:811: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:19:56 /Users/heizi/go/src/ping/scheduler.go:518: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:19:56 /Users/heizi/go/src/ping/scheduler.go:726: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:19:56 /Users/heizi/go/src/ping/scheduler.go:731: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:19:56 /Users/heizi/go/src/ping/scheduler.go:523: Agent '' is unregistered.
+Scheduler-2020/08/23 16:19:56 /Users/heizi/go/src/ping/scheduler.go:527: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:19:56 /Users/heizi/go/src/ping/scheduler.go:532: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:19:56 /Users/heizi/go/src/ping/scheduler.go:536: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:20:04 /Users/heizi/go/src/ping/scheduler.go:543: '' dose not exist while agent unregister.
+Scheduler-2020/08/23 16:27:09 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/08/23 16:27:09 /Users/heizi/go/src/ping/scheduler.go:1121: no avalible category to classify
+Scheduler-2020/08/23 16:27:32 /Users/heizi/go/src/ping/scheduler.go:486: Agent '' is registered.
+Scheduler-2020/08/23 16:27:32 /Users/heizi/go/src/ping/scheduler.go:502: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:27:32 /Users/heizi/go/src/ping/scheduler.go:506: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:27:32 /Users/heizi/go/src/ping/scheduler.go:811: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:27:39 /Users/heizi/go/src/ping/scheduler.go:518: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:27:39 /Users/heizi/go/src/ping/scheduler.go:726: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:27:39 /Users/heizi/go/src/ping/scheduler.go:731: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:27:39 /Users/heizi/go/src/ping/scheduler.go:523: Agent '' is unregistered.
+Scheduler-2020/08/23 16:27:39 /Users/heizi/go/src/ping/scheduler.go:527: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:27:39 /Users/heizi/go/src/ping/scheduler.go:532: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:27:39 /Users/heizi/go/src/ping/scheduler.go:536: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:27:42 /Users/heizi/go/src/ping/scheduler.go:486: Agent '' is registered.
+Scheduler-2020/08/23 16:27:42 /Users/heizi/go/src/ping/scheduler.go:502: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:27:42 /Users/heizi/go/src/ping/scheduler.go:506: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:27:42 /Users/heizi/go/src/ping/scheduler.go:811: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:27:49 /Users/heizi/go/src/ping/scheduler.go:518: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:27:49 /Users/heizi/go/src/ping/scheduler.go:726: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:27:49 /Users/heizi/go/src/ping/scheduler.go:731: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:27:49 /Users/heizi/go/src/ping/scheduler.go:523: Agent '' is unregistered.
+Scheduler-2020/08/23 16:27:49 /Users/heizi/go/src/ping/scheduler.go:527: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:27:49 /Users/heizi/go/src/ping/scheduler.go:532: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:27:49 /Users/heizi/go/src/ping/scheduler.go:536: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:27:52 /Users/heizi/go/src/ping/scheduler.go:486: Agent '' is registered.
+Scheduler-2020/08/23 16:27:52 /Users/heizi/go/src/ping/scheduler.go:502: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:27:52 /Users/heizi/go/src/ping/scheduler.go:506: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:27:52 /Users/heizi/go/src/ping/scheduler.go:811: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:27:59 /Users/heizi/go/src/ping/scheduler.go:518: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:27:59 /Users/heizi/go/src/ping/scheduler.go:726: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:27:59 /Users/heizi/go/src/ping/scheduler.go:731: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:27:59 /Users/heizi/go/src/ping/scheduler.go:523: Agent '' is unregistered.
+Scheduler-2020/08/23 16:27:59 /Users/heizi/go/src/ping/scheduler.go:527: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:27:59 /Users/heizi/go/src/ping/scheduler.go:532: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:27:59 /Users/heizi/go/src/ping/scheduler.go:536: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:28:02 /Users/heizi/go/src/ping/scheduler.go:486: Agent '' is registered.
+Scheduler-2020/08/23 16:28:02 /Users/heizi/go/src/ping/scheduler.go:502: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:28:02 /Users/heizi/go/src/ping/scheduler.go:506: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:28:02 /Users/heizi/go/src/ping/scheduler.go:811: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:28:09 /Users/heizi/go/src/ping/scheduler.go:518: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:28:09 /Users/heizi/go/src/ping/scheduler.go:726: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:28:09 /Users/heizi/go/src/ping/scheduler.go:731: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:28:09 /Users/heizi/go/src/ping/scheduler.go:523: Agent '' is unregistered.
+Scheduler-2020/08/23 16:28:09 /Users/heizi/go/src/ping/scheduler.go:527: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:28:09 /Users/heizi/go/src/ping/scheduler.go:532: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:28:09 /Users/heizi/go/src/ping/scheduler.go:536: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:28:12 /Users/heizi/go/src/ping/scheduler.go:486: Agent '' is registered.
+Scheduler-2020/08/23 16:28:12 /Users/heizi/go/src/ping/scheduler.go:502: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:28:12 /Users/heizi/go/src/ping/scheduler.go:506: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:28:12 /Users/heizi/go/src/ping/scheduler.go:811: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:28:19 /Users/heizi/go/src/ping/scheduler.go:518: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:28:19 /Users/heizi/go/src/ping/scheduler.go:726: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:28:19 /Users/heizi/go/src/ping/scheduler.go:731: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:28:19 /Users/heizi/go/src/ping/scheduler.go:523: Agent '' is unregistered.
+Scheduler-2020/08/23 16:28:19 /Users/heizi/go/src/ping/scheduler.go:527: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:28:19 /Users/heizi/go/src/ping/scheduler.go:532: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:28:19 /Users/heizi/go/src/ping/scheduler.go:536: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:28:22 /Users/heizi/go/src/ping/scheduler.go:543: '' dose not exist while agent unregister.
+Scheduler-2020/08/23 16:32:54 /Users/heizi/go/src/ping/scheduler.go:486: Agent '' is registered.
+Scheduler-2020/08/23 16:32:54 /Users/heizi/go/src/ping/scheduler.go:502: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:32:54 /Users/heizi/go/src/ping/scheduler.go:506: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:32:54 /Users/heizi/go/src/ping/scheduler.go:811: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:32:59 /Users/heizi/go/src/ping/scheduler.go:518: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:32:59 /Users/heizi/go/src/ping/scheduler.go:726: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:32:59 /Users/heizi/go/src/ping/scheduler.go:731: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:32:59 /Users/heizi/go/src/ping/scheduler.go:523: Agent '' is unregistered.
+Scheduler-2020/08/23 16:32:59 /Users/heizi/go/src/ping/scheduler.go:527: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:32:59 /Users/heizi/go/src/ping/scheduler.go:532: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:32:59 /Users/heizi/go/src/ping/scheduler.go:536: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:33:04 /Users/heizi/go/src/ping/scheduler.go:543: '' dose not exist while agent unregister.
+Scheduler-2020/08/23 16:33:33 /Users/heizi/go/src/ping/scheduler.go:486: Agent '' is registered.
+Scheduler-2020/08/23 16:33:33 /Users/heizi/go/src/ping/scheduler.go:502: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:33:33 /Users/heizi/go/src/ping/scheduler.go:506: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:33:33 /Users/heizi/go/src/ping/scheduler.go:811: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:33:39 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/08/23 16:33:39 /Users/heizi/go/src/ping/scheduler.go:1121: no avalible category to classify
+Scheduler-2020/08/23 16:33:43 /Users/heizi/go/src/ping/scheduler.go:543: '' dose not exist while agent unregister.
+Scheduler-2020/08/23 16:41:26 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) start ] Listen port: 1297
+Scheduler-2020/08/23 16:41:26 /Users/heizi/go/src/ping/scheduler.go:1124: no avalible category to classify
+Scheduler-2020/08/23 16:41:44 /Users/heizi/go/src/ping/scheduler.go:489: Agent '' is registered.
+Scheduler-2020/08/23 16:41:44 /Users/heizi/go/src/ping/scheduler.go:505: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:41:44 /Users/heizi/go/src/ping/scheduler.go:509: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:41:44 /Users/heizi/go/src/ping/scheduler.go:814: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:41:46 /Users/heizi/go/src/ping/scheduler.go:521: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:41:46 /Users/heizi/go/src/ping/scheduler.go:729: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:41:46 /Users/heizi/go/src/ping/scheduler.go:734: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:41:46 /Users/heizi/go/src/ping/scheduler.go:526: Agent '' is unregistered.
+Scheduler-2020/08/23 16:41:46 /Users/heizi/go/src/ping/scheduler.go:530: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:41:46 /Users/heizi/go/src/ping/scheduler.go:535: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:41:46 /Users/heizi/go/src/ping/scheduler.go:539: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:41:54 /Users/heizi/go/src/ping/scheduler.go:546: '' dose not exist while agent unregister.
+Scheduler-2020/08/23 16:50:43 /Users/heizi/go/src/ping/scheduler.go:489: Agent '' is registered.
+Scheduler-2020/08/23 16:50:43 /Users/heizi/go/src/ping/scheduler.go:505: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:50:43 /Users/heizi/go/src/ping/scheduler.go:509: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:50:43 /Users/heizi/go/src/ping/scheduler.go:814: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:50:46 /Users/heizi/go/src/ping/scheduler.go:521: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:50:46 /Users/heizi/go/src/ping/scheduler.go:729: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:50:46 /Users/heizi/go/src/ping/scheduler.go:734: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:50:46 /Users/heizi/go/src/ping/scheduler.go:526: Agent '' is unregistered.
+Scheduler-2020/08/23 16:50:46 /Users/heizi/go/src/ping/scheduler.go:530: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:50:46 /Users/heizi/go/src/ping/scheduler.go:535: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:50:46 /Users/heizi/go/src/ping/scheduler.go:539: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:57:47 /Users/heizi/go/src/ping/scheduler.go:489: Agent '' is registered.
+Scheduler-2020/08/23 16:57:47 /Users/heizi/go/src/ping/scheduler.go:505: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:57:47 /Users/heizi/go/src/ping/scheduler.go:509: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:57:47 /Users/heizi/go/src/ping/scheduler.go:814: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:57:56 /Users/heizi/go/src/ping/scheduler.go:521: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:57:56 /Users/heizi/go/src/ping/scheduler.go:729: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:57:56 /Users/heizi/go/src/ping/scheduler.go:734: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:57:56 /Users/heizi/go/src/ping/scheduler.go:526: Agent '' is unregistered.
+Scheduler-2020/08/23 16:57:56 /Users/heizi/go/src/ping/scheduler.go:530: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:57:56 /Users/heizi/go/src/ping/scheduler.go:535: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:57:56 /Users/heizi/go/src/ping/scheduler.go:539: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 16:58:42 /Users/heizi/go/src/ping/scheduler.go:489: Agent '' is registered.
+Scheduler-2020/08/23 16:58:42 /Users/heizi/go/src/ping/scheduler.go:505: Agent '' will be added to group ''.
+Scheduler-2020/08/23 16:58:42 /Users/heizi/go/src/ping/scheduler.go:509: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 16:58:42 /Users/heizi/go/src/ping/scheduler.go:814: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 16:58:46 /Users/heizi/go/src/ping/scheduler.go:521: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 16:58:46 /Users/heizi/go/src/ping/scheduler.go:729: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 16:58:46 /Users/heizi/go/src/ping/scheduler.go:734: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 16:58:46 /Users/heizi/go/src/ping/scheduler.go:526: Agent '' is unregistered.
+Scheduler-2020/08/23 16:58:46 /Users/heizi/go/src/ping/scheduler.go:530: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 16:58:46 /Users/heizi/go/src/ping/scheduler.go:535: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 16:58:46 /Users/heizi/go/src/ping/scheduler.go:539: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 17:00:38 /Users/heizi/go/src/ping/scheduler.go:489: Agent '' is registered.
+Scheduler-2020/08/23 17:00:38 /Users/heizi/go/src/ping/scheduler.go:505: Agent '' will be added to group ''.
+Scheduler-2020/08/23 17:00:38 /Users/heizi/go/src/ping/scheduler.go:509: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 17:00:38 /Users/heizi/go/src/ping/scheduler.go:814: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 17:00:46 /Users/heizi/go/src/ping/scheduler.go:521: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 17:00:46 /Users/heizi/go/src/ping/scheduler.go:729: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 17:00:46 /Users/heizi/go/src/ping/scheduler.go:734: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 17:00:46 /Users/heizi/go/src/ping/scheduler.go:526: Agent '' is unregistered.
+Scheduler-2020/08/23 17:00:46 /Users/heizi/go/src/ping/scheduler.go:530: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 17:00:46 /Users/heizi/go/src/ping/scheduler.go:535: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 17:00:46 /Users/heizi/go/src/ping/scheduler.go:539: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 17:04:55 /Users/heizi/go/src/ping/scheduler.go:489: Agent '' is registered.
+Scheduler-2020/08/23 17:04:55 /Users/heizi/go/src/ping/scheduler.go:505: Agent '' will be added to group ''.
+Scheduler-2020/08/23 17:04:55 /Users/heizi/go/src/ping/scheduler.go:509: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 17:04:55 /Users/heizi/go/src/ping/scheduler.go:814: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 17:04:56 /Users/heizi/go/src/ping/scheduler.go:521: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 17:04:56 /Users/heizi/go/src/ping/scheduler.go:729: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 17:04:56 /Users/heizi/go/src/ping/scheduler.go:734: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 17:04:56 /Users/heizi/go/src/ping/scheduler.go:526: Agent '' is unregistered.
+Scheduler-2020/08/23 17:04:56 /Users/heizi/go/src/ping/scheduler.go:530: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 17:04:56 /Users/heizi/go/src/ping/scheduler.go:535: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 17:04:56 /Users/heizi/go/src/ping/scheduler.go:539: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 17:05:04 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) starting ] Listen port: 1297
+Scheduler-2020/08/23 17:05:04 /Users/heizi/go/src/ping/scheduler.go:1124: no avalible category to classify
+Scheduler-2020/08/23 17:05:05 /Users/heizi/go/src/ping/scheduler.go:546: '' dose not exist while agent unregister.
+Scheduler-2020/08/23 17:05:24 /Users/heizi/go/src/ping/scheduler.go:489: Agent '' is registered.
+Scheduler-2020/08/23 17:05:24 /Users/heizi/go/src/ping/scheduler.go:505: Agent '' will be added to group ''.
+Scheduler-2020/08/23 17:05:24 /Users/heizi/go/src/ping/scheduler.go:509: Going to adjust task of '' when '' is registered. 
+Scheduler-2020/08/23 17:05:24 /Users/heizi/go/src/ping/scheduler.go:814: Task adjustment for agent '' is skipped while task list is not ready.
+Scheduler-2020/08/23 17:05:34 /Users/heizi/go/src/ping/scheduler.go:521: Going to adjust task of '' when '' unregisters. 
+Scheduler-2020/08/23 17:05:34 /Users/heizi/go/src/ping/scheduler.go:729: Starting to select a new global standby group while current standby group '' will be removed.
+Scheduler-2020/08/23 17:05:34 /Users/heizi/go/src/ping/scheduler.go:734: There is no global backup group any more, the task of '' will not be assign to any agent.
+Scheduler-2020/08/23 17:05:34 /Users/heizi/go/src/ping/scheduler.go:526: Agent '' is unregistered.
+Scheduler-2020/08/23 17:05:34 /Users/heizi/go/src/ping/scheduler.go:530: Agent '' is deleted from group ''.
+Scheduler-2020/08/23 17:05:34 /Users/heizi/go/src/ping/scheduler.go:535: There is no agent is active in group '', group has been deleted.
+Scheduler-2020/08/23 17:05:34 /Users/heizi/go/src/ping/scheduler.go:539: Going to select the new global standby group while group '' is deleted.
+Scheduler-2020/08/23 17:05:34 /Users/heizi/go/src/ping/scheduler.go:546: '' dose not exist while agent unregister.
+Scheduler-2020/08/23 17:32:35 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) starting ] Listen port: 1297
+Scheduler-2020/08/23 17:32:35 /Users/heizi/go/src/ping/scheduler.go:1124: no avalible category to classify
+Scheduler-2020/08/23 17:32:43 /Users/heizi/go/src/ping/scheduler.go:489: Agent 'dc-dsadwjalnfaosiqw-01' is registered.
+Scheduler-2020/08/23 17:32:43 /Users/heizi/go/src/ping/scheduler.go:505: Agent 'dc-dsadwjalnfaosiqw-01' will be added to group 'datacenter01'.
+Scheduler-2020/08/23 17:32:43 /Users/heizi/go/src/ping/scheduler.go:509: Going to adjust task of 'dc-dsadwjalnfaosiqw-01' when 'dc-dsadwjalnfaosiqw-01' is registered. 
+Scheduler-2020/08/23 17:32:43 /Users/heizi/go/src/ping/scheduler.go:814: Task adjustment for agent 'dc-dsadwjalnfaosiqw-01' is skipped while task list is not ready.
+Scheduler-2020/08/23 17:43:18 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) starting ] Listen port: 1297
+Scheduler-2020/08/23 17:43:18 /Users/heizi/go/src/ping/scheduler.go:1125: no avalible category to classify
+Scheduler-2020/08/23 17:43:23 /Users/heizi/go/src/ping/scheduler.go:490: Agent 'dc-dsadwjalnfaosiqw-01' is registered.
+Scheduler-2020/08/23 17:43:23 /Users/heizi/go/src/ping/scheduler.go:506: Agent 'dc-dsadwjalnfaosiqw-01' will be added to group 'datacenter01'.
+Scheduler-2020/08/23 17:43:23 /Users/heizi/go/src/ping/scheduler.go:510: Going to adjust task of 'dc-dsadwjalnfaosiqw-01' when 'dc-dsadwjalnfaosiqw-01' is registered. 
+Scheduler-2020/08/23 17:43:23 /Users/heizi/go/src/ping/scheduler.go:815: Task adjustment for agent 'dc-dsadwjalnfaosiqw-01' is skipped because task list is not ready.
+Scheduler-2020/08/23 17:45:32 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) starting ] Listen port: 1297
+Scheduler-2020/08/23 17:45:32 /Users/heizi/go/src/ping/scheduler.go:1123: no avalible category to classify
+Scheduler-2020/08/23 17:45:33 /Users/heizi/go/src/ping/scheduler.go:488: Agent 'dc-dsadwjalnfaosiqw-01' is registered.
+Scheduler-2020/08/23 17:45:33 /Users/heizi/go/src/ping/scheduler.go:504: Agent 'dc-dsadwjalnfaosiqw-01' will be added to group 'datacenter01'.
+Scheduler-2020/08/23 17:45:33 /Users/heizi/go/src/ping/scheduler.go:508: Going to adjust task of 'dc-dsadwjalnfaosiqw-01' when 'dc-dsadwjalnfaosiqw-01' is registered. 
+Scheduler-2020/08/23 17:45:33 /Users/heizi/go/src/ping/scheduler.go:813: Task adjustment for agent 'dc-dsadwjalnfaosiqw-01' is skipped because task list is not ready.
+Scheduler-2020/08/23 17:47:23 /Users/heizi/go/src/ping/scheduler.go:520: Going to adjust task of 'dc-dsadwjalnfaosiqw-01' when 'dc-dsadwjalnfaosiqw-01' unregisters. 
+Scheduler-2020/08/23 17:47:23 /Users/heizi/go/src/ping/scheduler.go:733: There is no global backup group any more, the task of 'datacenter01' will not be assign to any agent.
+Scheduler-2020/08/23 17:47:23 /Users/heizi/go/src/ping/scheduler.go:525: Agent 'dc-dsadwjalnfaosiqw-01' is unregistered.
+Scheduler-2020/08/23 17:47:23 /Users/heizi/go/src/ping/scheduler.go:529: Agent 'dc-dsadwjalnfaosiqw-01' is deleted from group 'datacenter01'.
+Scheduler-2020/08/23 17:47:23 /Users/heizi/go/src/ping/scheduler.go:534: There is no agent is active in group 'datacenter01', group has been deleted.
+Scheduler-2020/08/23 17:47:34 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) starting ] Listen port: 1297
+Scheduler-2020/08/23 17:47:34 /Users/heizi/go/src/ping/scheduler.go:1123: no avalible category to classify
+Scheduler-2020/08/23 17:47:38 /Users/heizi/go/src/ping/scheduler.go:488: Agent 'dc-dsadwjalnfaosiqw-01' is registered.
+Scheduler-2020/08/23 17:47:38 /Users/heizi/go/src/ping/scheduler.go:504: Agent 'dc-dsadwjalnfaosiqw-01' will be added to group 'datacenter01'.
+Scheduler-2020/08/23 17:47:38 /Users/heizi/go/src/ping/scheduler.go:508: Going to adjust task of 'dc-dsadwjalnfaosiqw-01' when 'dc-dsadwjalnfaosiqw-01' is registered. 
+Scheduler-2020/08/23 17:47:38 /Users/heizi/go/src/ping/scheduler.go:813: Task adjustment for agent 'dc-dsadwjalnfaosiqw-01' is skipped because task list is not ready.
+Scheduler-2020/08/23 17:47:44 /Users/heizi/go/src/ping/scheduler.go:1116: No targets were loaded!
+Scheduler-2020/08/23 17:47:54 /Users/heizi/go/src/ping/scheduler.go:1116: No targets were loaded!
+Scheduler-2020/08/23 17:48:04 /Users/heizi/go/src/ping/scheduler.go:1116: No targets were loaded!
+Scheduler-2020/08/23 17:48:14 /Users/heizi/go/src/ping/scheduler.go:1116: No targets were loaded!
+Scheduler-2020/08/23 17:48:24 /Users/heizi/go/src/ping/scheduler.go:1116: No targets were loaded!
+Scheduler-2020/08/23 17:48:34 /Users/heizi/go/src/ping/scheduler.go:1116: No targets were loaded!
+Scheduler-2020/08/23 17:48:44 /Users/heizi/go/src/ping/scheduler.go:1116: No targets were loaded!
+Scheduler-2020/08/23 17:48:53 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) starting ] Listen port: 1297
+Scheduler-2020/08/23 17:48:53 /Users/heizi/go/src/ping/scheduler.go:1123: no avalible category to classify
+Scheduler-2020/08/23 17:48:58 /Users/heizi/go/src/ping/scheduler.go:488: Agent 'dc-dsadwjalnfaosiqw-01' is registered.
+Scheduler-2020/08/23 17:48:58 /Users/heizi/go/src/ping/scheduler.go:504: Agent 'dc-dsadwjalnfaosiqw-01' will be added to group 'datacenter01'.
+Scheduler-2020/08/23 17:48:58 /Users/heizi/go/src/ping/scheduler.go:508: Going to adjust task of 'dc-dsadwjalnfaosiqw-01' when 'dc-dsadwjalnfaosiqw-01' is registered. 
+Scheduler-2020/08/23 17:48:58 /Users/heizi/go/src/ping/scheduler.go:813: Task adjustment for agent 'dc-dsadwjalnfaosiqw-01' is skipped because task list is not ready.
+Scheduler-2020/08/23 17:49:03 /Users/heizi/go/src/ping/scheduler.go:1116: No targets were loaded!
+Scheduler-2020/08/23 17:49:13 /Users/heizi/go/src/ping/scheduler.go:1116: No targets were loaded!
+Scheduler-2020/08/23 17:49:23 /Users/heizi/go/src/ping/scheduler.go:1116: No targets were loaded!
+Scheduler-2020/08/23 17:49:32 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) starting ] Listen port: 1297
+Scheduler-2020/08/23 17:49:32 /Users/heizi/go/src/ping/scheduler.go:1123: no avalible category to classify
+Scheduler-2020/08/23 17:49:38 /Users/heizi/go/src/ping/scheduler.go:488: Agent 'dc-dsadwjalnfaosiqw-01' is registered.
+Scheduler-2020/08/23 17:49:38 /Users/heizi/go/src/ping/scheduler.go:504: Agent 'dc-dsadwjalnfaosiqw-01' will be added to group 'datacenter01'.
+Scheduler-2020/08/23 17:49:38 /Users/heizi/go/src/ping/scheduler.go:508: Going to adjust task of 'dc-dsadwjalnfaosiqw-01' when 'dc-dsadwjalnfaosiqw-01' is registered. 
+Scheduler-2020/08/23 17:49:38 /Users/heizi/go/src/ping/scheduler.go:813: Task adjustment for agent 'dc-dsadwjalnfaosiqw-01' is skipped because task list is not ready.
+Scheduler-2020/08/23 17:49:42 /Users/heizi/go/src/ping/scheduler.go:1116: No targets were loaded!
+Scheduler-2020/08/23 17:49:52 /Users/heizi/go/src/ping/scheduler.go:1116: No targets were loaded!
+Scheduler-2020/08/23 17:50:02 /Users/heizi/go/src/ping/scheduler.go:1116: No targets were loaded!
+Scheduler-2020/08/23 17:50:12 /Users/heizi/go/src/ping/scheduler.go:1116: No targets were loaded!
+Scheduler-2020/08/23 17:50:18 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) starting ] Listen port: 1297
+Scheduler-2020/08/23 17:50:18 /Users/heizi/go/src/ping/scheduler.go:1124: no avalible category to classify
+Scheduler-2020/08/23 17:50:28 /Users/heizi/go/src/ping/scheduler.go:489: Agent 'dc-dsadwjalnfaosiqw-01' is registered.
+Scheduler-2020/08/23 17:50:28 /Users/heizi/go/src/ping/scheduler.go:505: Agent 'dc-dsadwjalnfaosiqw-01' will be added to group 'datacenter01'.
+Scheduler-2020/08/23 17:50:28 /Users/heizi/go/src/ping/scheduler.go:509: Going to adjust task of 'dc-dsadwjalnfaosiqw-01' when 'dc-dsadwjalnfaosiqw-01' is registered. 
+Scheduler-2020/08/23 17:50:28 /Users/heizi/go/src/ping/scheduler.go:814: Task adjustment for agent 'dc-dsadwjalnfaosiqw-01' is skipped because task list is not ready.
+Scheduler-2020/08/23 17:50:28 /Users/heizi/go/src/ping/scheduler.go:1117: No targets were loaded!
+Scheduler-2020/08/23 17:50:38 /Users/heizi/go/src/ping/scheduler.go:1117: No targets were loaded!
+Scheduler-2020/08/23 17:50:48 /Users/heizi/go/src/ping/scheduler.go:1117: No targets were loaded!
+Scheduler-2020/08/23 17:50:58 /Users/heizi/go/src/ping/scheduler.go:1117: No targets were loaded!
+Scheduler-2020/08/23 17:51:08 /Users/heizi/go/src/ping/scheduler.go:1117: No targets were loaded!
+Scheduler-2020/08/23 17:51:16 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) starting ] Listen port: 1297
+Scheduler-2020/08/23 17:51:16 /Users/heizi/go/src/ping/scheduler.go:1125: no avalible category to classify
+Scheduler-2020/08/23 17:51:18 /Users/heizi/go/src/ping/scheduler.go:490: Agent 'dc-dsadwjalnfaosiqw-01' is registered.
+Scheduler-2020/08/23 17:51:18 /Users/heizi/go/src/ping/scheduler.go:506: Agent 'dc-dsadwjalnfaosiqw-01' will be added to group 'datacenter01'.
+Scheduler-2020/08/23 17:51:18 /Users/heizi/go/src/ping/scheduler.go:510: Going to adjust task of 'dc-dsadwjalnfaosiqw-01' when 'dc-dsadwjalnfaosiqw-01' is registered. 
+Scheduler-2020/08/23 17:51:18 /Users/heizi/go/src/ping/scheduler.go:815: Task adjustment for agent 'dc-dsadwjalnfaosiqw-01' is skipped because task list is not ready.
+Scheduler-2020/08/23 17:51:26 /Users/heizi/go/src/ping/scheduler.go:1118: No targets were loaded!
+Scheduler-2020/08/23 17:51:36 /Users/heizi/go/src/ping/scheduler.go:1118: No targets were loaded!
+Scheduler-2020/08/23 17:51:46 /Users/heizi/go/src/ping/scheduler.go:1118: No targets were loaded!
+Scheduler-2020/08/23 17:51:56 /Users/heizi/go/src/ping/scheduler.go:1118: No targets were loaded!
+Scheduler-2020/08/23 17:52:06 /Users/heizi/go/src/ping/scheduler.go:1118: No targets were loaded!
+Scheduler-2020/08/23 17:52:16 /Users/heizi/go/src/ping/scheduler.go:1118: No targets were loaded!
+Scheduler-2020/08/23 17:52:26 /Users/heizi/go/src/ping/scheduler.go:1118: No targets were loaded!
+Scheduler-2020/08/23 17:52:36 /Users/heizi/go/src/ping/scheduler.go:1118: No targets were loaded!
+Scheduler-2020/08/23 17:52:43 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) starting ] Listen port: 1297
+Scheduler-2020/08/23 17:52:43 /Users/heizi/go/src/ping/scheduler.go:1127: no avalible category to classify
+Scheduler-2020/08/23 17:52:48 /Users/heizi/go/src/ping/scheduler.go:490: Agent 'dc-dsadwjalnfaosiqw-01' is registered.
+Scheduler-2020/08/23 17:52:48 /Users/heizi/go/src/ping/scheduler.go:506: Agent 'dc-dsadwjalnfaosiqw-01' will be added to group 'datacenter01'.
+Scheduler-2020/08/23 17:52:48 /Users/heizi/go/src/ping/scheduler.go:510: Going to adjust task of 'dc-dsadwjalnfaosiqw-01' when 'dc-dsadwjalnfaosiqw-01' is registered. 
+Scheduler-2020/08/23 17:52:48 /Users/heizi/go/src/ping/scheduler.go:815: Task adjustment for agent 'dc-dsadwjalnfaosiqw-01' is skipped because task list is not ready.
+Scheduler-2020/08/23 17:52:53 /Users/heizi/go/src/ping/scheduler.go:1120: No targets were loaded!
+Scheduler-2020/08/23 17:53:03 /Users/heizi/go/src/ping/scheduler.go:1120: No targets were loaded!
+Scheduler-2020/08/23 17:53:13 /Users/heizi/go/src/ping/scheduler.go:1120: No targets were loaded!
+Scheduler-2020/08/23 17:53:23 /Users/heizi/go/src/ping/scheduler.go:1120: No targets were loaded!
+Scheduler-2020/08/23 17:53:33 /Users/heizi/go/src/ping/scheduler.go:1120: No targets were loaded!
+Scheduler-2020/08/23 17:53:46 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) starting ] Listen port: 1297
+Scheduler-2020/08/23 17:53:46 /Users/heizi/go/src/ping/scheduler.go:1129: no avalible category to classify
+Scheduler-2020/08/23 17:53:48 /Users/heizi/go/src/ping/scheduler.go:490: Agent 'dc-dsadwjalnfaosiqw-01' is registered.
+Scheduler-2020/08/23 17:53:48 /Users/heizi/go/src/ping/scheduler.go:506: Agent 'dc-dsadwjalnfaosiqw-01' will be added to group 'datacenter01'.
+Scheduler-2020/08/23 17:53:48 /Users/heizi/go/src/ping/scheduler.go:510: Going to adjust task of 'dc-dsadwjalnfaosiqw-01' when 'dc-dsadwjalnfaosiqw-01' is registered. 
+Scheduler-2020/08/23 17:53:48 /Users/heizi/go/src/ping/scheduler.go:815: Task adjustment for agent 'dc-dsadwjalnfaosiqw-01' is skipped because task list is not ready.
+Scheduler-2020/08/23 17:53:56 /Users/heizi/go/src/ping/scheduler.go:1122: No targets were loaded!
+Scheduler-2020/08/23 17:54:06 /Users/heizi/go/src/ping/scheduler.go:1122: No targets were loaded!
+Scheduler-2020/08/23 17:54:16 /Users/heizi/go/src/ping/scheduler.go:1122: No targets were loaded!
+Scheduler-2020/08/23 17:54:26 /Users/heizi/go/src/ping/scheduler.go:1122: No targets were loaded!
+Scheduler-2020/08/23 17:54:36 /Users/heizi/go/src/ping/scheduler.go:1122: No targets were loaded!
+Scheduler-2020/08/23 17:54:41 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) starting ] Listen port: 1297
+Scheduler-2020/08/23 17:54:41 /Users/heizi/go/src/ping/scheduler.go:1130: no avalible category to classify
+Scheduler-2020/08/23 17:54:48 /Users/heizi/go/src/ping/scheduler.go:490: Agent 'dc-dsadwjalnfaosiqw-01' is registered.
+Scheduler-2020/08/23 17:54:48 /Users/heizi/go/src/ping/scheduler.go:506: Agent 'dc-dsadwjalnfaosiqw-01' will be added to group 'datacenter01'.
+Scheduler-2020/08/23 17:54:48 /Users/heizi/go/src/ping/scheduler.go:510: Going to adjust task of 'dc-dsadwjalnfaosiqw-01' when 'dc-dsadwjalnfaosiqw-01' is registered. 
+Scheduler-2020/08/23 17:54:48 /Users/heizi/go/src/ping/scheduler.go:815: Task adjustment for agent 'dc-dsadwjalnfaosiqw-01' is skipped because task list is not ready.
+Scheduler-2020/08/23 17:54:51 /Users/heizi/go/src/ping/scheduler.go:1123: No targets were loaded!
+Scheduler-2020/08/23 17:55:01 /Users/heizi/go/src/ping/scheduler.go:1123: No targets were loaded!
+Scheduler-2020/08/23 17:55:11 /Users/heizi/go/src/ping/scheduler.go:1123: No targets were loaded!
+Scheduler-2020/08/23 17:55:21 /Users/heizi/go/src/ping/scheduler.go:1123: No targets were loaded!
+Scheduler-2020/08/23 17:55:31 /Users/heizi/go/src/ping/scheduler.go:1123: No targets were loaded!
+Scheduler-2020/08/23 17:55:41 /Users/heizi/go/src/ping/scheduler.go:1123: No targets were loaded!
+Scheduler-2020/08/23 17:55:51 /Users/heizi/go/src/ping/scheduler.go:1123: No targets were loaded!
+Scheduler-2020/08/23 17:56:01 /Users/heizi/go/src/ping/scheduler.go:1123: No targets were loaded!
+Scheduler-2020/08/23 17:56:11 /Users/heizi/go/src/ping/scheduler.go:1123: No targets were loaded!
+Scheduler-2020/08/23 17:56:21 /Users/heizi/go/src/ping/scheduler.go:1123: No targets were loaded!
+Scheduler-2020/08/23 17:56:31 /Users/heizi/go/src/ping/scheduler.go:1123: No targets were loaded!
+Scheduler-2020/08/23 17:56:41 /Users/heizi/go/src/ping/scheduler.go:1123: No targets were loaded!
+Scheduler-2020/08/23 17:56:51 /Users/heizi/go/src/ping/scheduler.go:1123: No targets were loaded!
+Scheduler-2020/08/23 17:57:01 /Users/heizi/go/src/ping/scheduler.go:1123: No targets were loaded!
+Scheduler-2020/08/23 17:57:11 /Users/heizi/go/src/ping/scheduler.go:1123: No targets were loaded!
+Scheduler-2020/08/23 17:57:24 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) starting ] Listen port: 1297
+Scheduler-2020/08/23 17:57:24 /Users/heizi/go/src/ping/scheduler.go:1129: no avalible category to classify
+Scheduler-2020/08/23 17:57:28 /Users/heizi/go/src/ping/scheduler.go:490: Agent 'dc-dsadwjalnfaosiqw-01' is registered.
+Scheduler-2020/08/23 17:57:28 /Users/heizi/go/src/ping/scheduler.go:506: Agent 'dc-dsadwjalnfaosiqw-01' will be added to group 'datacenter01'.
+Scheduler-2020/08/23 17:57:28 /Users/heizi/go/src/ping/scheduler.go:510: Going to adjust task of 'dc-dsadwjalnfaosiqw-01' when 'dc-dsadwjalnfaosiqw-01' is registered. 
+Scheduler-2020/08/23 17:57:28 /Users/heizi/go/src/ping/scheduler.go:815: Task adjustment for agent 'dc-dsadwjalnfaosiqw-01' is skipped because task list is not ready.
+Scheduler-2020/08/23 17:57:34 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 17:57:44 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 17:57:54 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 17:58:05 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) starting ] Listen port: 1297
+Scheduler-2020/08/23 17:58:05 /Users/heizi/go/src/ping/scheduler.go:1129: no avalible category to classify
+Scheduler-2020/08/23 17:58:08 /Users/heizi/go/src/ping/scheduler.go:490: Agent 'dc-dsadwjalnfaosiqw-01' is registered.
+Scheduler-2020/08/23 17:58:08 /Users/heizi/go/src/ping/scheduler.go:506: Agent 'dc-dsadwjalnfaosiqw-01' will be added to group 'datacenter01'.
+Scheduler-2020/08/23 17:58:08 /Users/heizi/go/src/ping/scheduler.go:510: Going to adjust task of 'dc-dsadwjalnfaosiqw-01' when 'dc-dsadwjalnfaosiqw-01' is registered. 
+Scheduler-2020/08/23 17:58:08 /Users/heizi/go/src/ping/scheduler.go:815: Task adjustment for agent 'dc-dsadwjalnfaosiqw-01' is skipped because task list is not ready.
+Scheduler-2020/08/23 17:58:15 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 17:58:25 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 17:58:35 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:00:44 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) starting ] Listen port: 1297
+Scheduler-2020/08/23 18:00:44 /Users/heizi/go/src/ping/scheduler.go:1129: no avalible category to classify
+Scheduler-2020/08/23 18:00:48 /Users/heizi/go/src/ping/scheduler.go:490: Agent 'dc-dsadwjalnfaosiqw-01' is registered.
+Scheduler-2020/08/23 18:00:48 /Users/heizi/go/src/ping/scheduler.go:506: Agent 'dc-dsadwjalnfaosiqw-01' will be added to group 'datacenter01'.
+Scheduler-2020/08/23 18:00:48 /Users/heizi/go/src/ping/scheduler.go:510: Going to adjust task of 'dc-dsadwjalnfaosiqw-01' when 'dc-dsadwjalnfaosiqw-01' is registered. 
+Scheduler-2020/08/23 18:00:48 /Users/heizi/go/src/ping/scheduler.go:815: Task adjustment for agent 'dc-dsadwjalnfaosiqw-01' is skipped because task list is not ready.
+Scheduler-2020/08/23 18:00:54 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:01:04 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:01:14 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:01:24 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:01:34 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:01:44 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:01:54 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:02:04 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:02:14 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:02:24 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:02:34 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:02:44 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:02:54 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:03:04 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:03:14 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:03:24 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:03:34 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:03:44 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:03:54 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:04:04 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:04:14 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:04:24 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:04:34 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:04:44 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:04:54 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:05:04 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:05:14 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:05:24 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:05:34 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:05:44 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:05:54 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:06:04 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:06:14 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:06:24 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:06:34 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:06:44 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:06:54 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:07:04 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:07:14 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:07:24 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:07:34 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:07:44 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:07:54 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:08:04 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:08:14 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:08:24 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:08:34 /Users/heizi/go/src/ping/scheduler.go:1121: No new targets were loaded!
+Scheduler-2020/08/23 18:08:45 /Users/heizi/go/src/ping/scheduler.go:172: [Scheduler(Hprose) starting ] Listen port: 1297
+Scheduler-2020/08/23 18:08:45 /Users/heizi/go/src/ping/scheduler.go:1131: no avalible category to classify
+Scheduler-2020/08/23 18:08:48 /Users/heizi/go/src/ping/scheduler.go:408: Agent '%!s(MISSING)' register is dropped when scheduler is starting
+Scheduler-2020/08/23 18:08:55 /Users/heizi/go/src/ping/scheduler.go:1123: No new targets were loaded!
+Scheduler-2020/08/23 18:08:58 /Users/heizi/go/src/ping/scheduler.go:492: Agent 'dc-dsadwjalnfaosiqw-01' is registered.
+Scheduler-2020/08/23 18:08:58 /Users/heizi/go/src/ping/scheduler.go:508: Agent 'dc-dsadwjalnfaosiqw-01' will be added to group 'datacenter01'.
+Scheduler-2020/08/23 18:08:58 /Users/heizi/go/src/ping/scheduler.go:512: Going to adjust task of 'dc-dsadwjalnfaosiqw-01' when 'dc-dsadwjalnfaosiqw-01' is registered. 
+Scheduler-2020/08/23 18:08:58 /Users/heizi/go/src/ping/scheduler.go:821: There is no task is found for 'dc-dsadwjalnfaosiqw-01', will to load task form file or api.
+Scheduler-2020/08/23 18:08:58 /Users/heizi/go/src/ping/scheduler.go:842: Task of group 'datacenter01' is added.
+Scheduler-2020/08/23 18:08:58 /Users/heizi/go/src/ping/scheduler.go:566: [initAssignment] Set 'dc-dsadwjalnfaosiqw-01''s task list successfully.
+Scheduler-2020/08/23 18:09:05 /Users/heizi/go/src/ping/scheduler.go:1123: No new targets were loaded!
+Scheduler-2020/08/23 18:09:15 /Users/heizi/go/src/ping/scheduler.go:1123: No new targets were loaded!

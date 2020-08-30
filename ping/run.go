@@ -88,7 +88,7 @@ func Run(){
 	initflag()
 
 	if args.configfile == "" {
-		log.Error("Configration file should not be ''.")
+		log.Error("Configuration file should not be empty.")
 		return
 	}
 

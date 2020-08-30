@@ -74,3 +74,18 @@ Agent-2020/05/06 23:38:16 /Users/heizi/go/src/ping/ping_agent.go:242: Ping will 
 Agent-2020/05/06 23:38:16 /Users/heizi/go/src/ping/agent.go:141: Bad event happened while unregistring. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
 Agent-2020/05/06 23:38:16 /Users/heizi/go/src/ping/agent.go:309: Failed to unregister the agent on scheduler, exit directly. error: Post http://localhost:1297: dial tcp [::1]:1297: connect: connection refused.
 Agent-2020/05/06 23:38:16 /Users/heizi/go/src/ping/agent.go:312: Agent exiting.
+Agent-2020/08/23 16:09:46 /Users/heizi/go/src/ping/agent.go:355: Starting Agent Broker.
+Agent-2020/08/23 16:09:46 /Users/heizi/go/src/ping/ping_agent.go:316: Start to run ping worker.
+Agent-2020/08/23 16:09:46 /Users/heizi/go/src/ping/agent.go:416: [Scheduler(Hprose) start ] Listen port: 1295
+Agent-2020/08/23 16:09:56 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:10:06 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:10:16 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:10:26 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:10:36 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:10:46 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:10:56 /Users/heizi/go/src/ping/agent.go:126: Send keepalive packet failed. error: Post http://localhost:1297: dial tcp 127.0.0.1:1297: connect: connection refused.
+Agent-2020/08/23 16:18:05 /Users/heizi/go/src/ping/agent.go:348: Captured os interrupt signal.
+Agent-2020/08/23 16:18:05 /Users/heizi/go/src/ping/agent.go:322: Going to stop agent.
+Agent-2020/08/23 16:18:06 /Users/heizi/go/src/ping/ping_agent.go:306: Ping will to stop for received interrupt signal.
+Agent-2020/08/23 16:18:06 /Users/heizi/go/src/ping/agent.go:133: keepalive is stopping.
+Agent-2020/08/23 16:18:06 /Users/heizi/go/src/ping/agent.go:337: Agent exiting, waiting for 5 seconds.

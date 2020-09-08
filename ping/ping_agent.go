@@ -255,8 +255,7 @@ func (a *PingAgent)printer(){
 		item := <-a.pingResultChannel
 		item.SrcLocation = a.Location
 		item.SrcNetType = ip_net_type[item.Src]
-
-		fmt.Println(item)
+		//fmt.Println(item)
 	}
 }
 
@@ -291,7 +290,7 @@ func (a *PingAgent) Run() {
 	for {
 		//读取时间
 		<-ticker.C
-		fmt.Println("Epoch running!")
+		//fmt.Println("Epoch running!")
 		timestamp := time.Now().Unix()
 		go func() {
 			for idx, ipaddr := range a.TaskList {

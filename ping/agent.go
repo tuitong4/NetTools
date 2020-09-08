@@ -119,7 +119,7 @@ func (a *AgentBroker) keepalive() {
 			StandbyGroup:      a.config.Agent.StandbyGroup,
 			GlobalStandbyGroup: a.config.Agent.GlobalStandbyGroup,
 		}
-		fmt.Println(agent)
+
 		err := a.session.HandleAgentKeepalive(agent)
 
 		if err != nil {
@@ -206,7 +206,6 @@ func (a *AgentBroker) startWorker() error {
 	设置worker的任务列表
 */
 func (a *AgentBroker) UpdateTaskList(targets []*TargetIPAddress) error {
-	fmt.Println("Start to Set Task: ", targets)
 	return a.worker.SetTaskList(targets)
 }
 

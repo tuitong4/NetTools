@@ -1,14 +1,13 @@
 #!/bin/sh
 . /etc/rc.d/init.d/functions
 
-ORDER=$2
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DESC="Ping Agent"
 NAME=nwping-agent
-DAEMON='/usr/bin/nwping -c /etc/nwping/ping_agent.conf'
+DAEMON='/usr/bin/nwping -a -c /etc/nwping/ping_agent.conf'
 PIDFILE=/var/run/nwping/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
-USER=nobody
+USER=root
 LOCKFILE=/var/lock/nwping/$NAME.lock
 
 

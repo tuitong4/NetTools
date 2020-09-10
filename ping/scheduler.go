@@ -192,7 +192,7 @@ func (s *Scheduler) captureOsInterruptSignal() {
 	signal.Notify(signal_ch, os.Interrupt)
 	go func() {
 		<-signal_ch
-		log.Warn("Captured a os interupt signal.")
+		log.Warn("Captured a os interrupt signal.")
 		s.stopSignal <- struct{}{}
 	}()
 }
@@ -200,6 +200,7 @@ func (s *Scheduler) captureOsInterruptSignal() {
 func (s *Scheduler) isAgentExist(a *Agent) bool {
 	if _, exist := s.agents[a.AgentID]; exist {
 		return true
+
 	}
 
 	return false
@@ -405,7 +406,7 @@ func (s *Scheduler) AgentKeepaliveHandler(a *Agent) error{
 			agent:  a,
 		}
 	}else{
-		log.Infof("Agent '%s' register is denied when scheduler is starting")
+		log.Infof("Agent '%s' register is denied when scheduler is starting", a.AgentID)
 	}
 	return nil
 }
@@ -1120,7 +1121,7 @@ func (s *Scheduler) getTaskListLocally() {
 	}
 
 	if t == nil {
-		log.Warn("No new targets were loaded!")
+		//log.Warn("No new targets were loaded!")
 		s.starting = false
 		return
 	}

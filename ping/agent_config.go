@@ -33,7 +33,7 @@ type AgentSetting struct {
 	WorkerType         string `ini:"work_type"` //worker的类型，支持ping(icmp)，tcpping(tcp), trace(mtr) ,当前只支持ICMP的ping
 	Reserved           bool   `ini:"reserved"`
 	KeepaliveTimeSec   int64  `ini:"keepalive_time_sec"`
-	RunningLocally     bool   `ini:"running_locally"`       // true:locally, false: controled by controller.
+	RunningLocally     bool   `ini:"running_locally"`       // true:locally, false: control by controller.
 	TaskRefreshTimeSec int64  `ini:"task_refresh_time_sec"` //在locally运行模式下，主动刷新任务列表的时间
 	TaskListFile       string `ini:"task_list_file"`        //在locally运行模式下，主动读取的任务列表文件
 	TaskListApi        string `ini:"task_list_api"`         //在locally运行模式下，主动读取的任务列表API，优先从文件中读，当TaskListFile为空时候，才从api中读取
@@ -109,7 +109,7 @@ func InitAgentConfig(configFile string) (*AgentConfig, error) {
 		DefaultNetType:  ping_raw_setting.DefaultNetType,
 		PingCount:       ping_raw_setting.PingCount,
 		TimeOutMs:       ping_raw_setting.TimeOutMs,
-		EpochIntervalSec:    ping_raw_setting.EpochIntervalSec,
+		EpochIntervalSec:  ping_raw_setting.EpochIntervalSec,
 		PingIntervalMs:    ping_raw_setting.PingIntervalMs,
 		MaxRoutineCount: ping_raw_setting.MaxRoutineCount,
 		SrcBind:         ping_raw_setting.SrcBind,

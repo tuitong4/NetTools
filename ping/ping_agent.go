@@ -255,7 +255,7 @@ func (a *PingAgent)printer(){
 		item := <-a.pingResultChannel
 		item.SrcLocation = a.Location
 		item.SrcNetType = ip_net_type[item.Src]
-		//fmt.Println(item)
+		fmt.Println(item)
 	}
 }
 

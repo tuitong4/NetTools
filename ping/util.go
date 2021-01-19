@@ -89,7 +89,7 @@ func initAgentRpc(a *Agent) *AgentService {
 	从slice中删除元素
  */
 
-func delItemFromSilce(slice []string, item string) []string{
+func delItemFromSlice(slice []string, item string) []string{
 	index := 0
 	for idx, val := range slice{
 		if val == item{

@@ -6,7 +6,7 @@ import (
 )
 
 type ControllerSetting struct {
-	SchedulerURL string `ini:"scheduler_url"` // url for scheclduler
+	SchedulerURL string `ini:"scheduler_url"` // url for scheduler
 }
 
 type ListenSetting struct {

@@ -49,7 +49,7 @@ type PingAgent struct {
 	MaxRoutineCount   int           // how many goroutine the agent should keep
 	taskVersion       string        // Current task's version, used to compare the new task and current task's diifrent. TaskUpdateSource TaskUpdateSource // The location to pull task data, a filename with path or a url responese the task data.
 	stopSignal        chan struct{} // signal to stop de agent worker
-	writerHandlerFun   func() //ping结果处理函数，主用于将结果写到kafka或者打印输出
+	writerHandlerFunc   func() //ping结果处理函数，主用于将结果写到kafka或者打印输出
 }
 
 func NewPingAgent(config *AgentConfig) (*PingAgent, error) {
@@ -265,9 +265,9 @@ func (a *PingAgent)printer(){
 func (a *PingAgent) SetWriter(producers []sarama.AsyncProducer, topic string) error {
 	if len(producers) != 0{
 		kafka_sender := func(){a.sendToKafka(producers, topic)}
-		a.writerHandlerFun = kafka_sender
+		a.writerHandlerFunc = kafka_sender
 	}else{
-		a.writerHandlerFun = a.printer
+		a.writerHandlerFunc = a.printer
 	}
 	return nil
 }
@@ -276,7 +276,7 @@ func (a *PingAgent) SetWriter(producers []sarama.AsyncProducer, topic string) er
 	ping结果的处理函数，可以打印、也可以写数据库.根据使用场景注册
 */
 func (a *PingAgent) Writer() {
-	a.writerHandlerFun()
+	a.writerHandlerFunc()
 }
 
 func (a *PingAgent) Run() {

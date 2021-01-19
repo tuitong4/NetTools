@@ -311,7 +311,7 @@ func (s *Scheduler) disableStandbyGroup(standby_group, group_id string) {
 	g, exist := s.standbyGroupState[standby_group]
 	if exist && len(g) != 0 {
 		if group_id != "" {
-			s.standbyGroupState[standby_group] = delItemFromSilce(g, group_id)
+			s.standbyGroupState[standby_group] = delItemFromSlice(g, group_id)
 		} else {
 			s.standbyGroupState[standby_group] = []string{}
 		}
@@ -610,7 +610,7 @@ func (s *Scheduler) taskAssignmentPartial(group_id string, task []*TargetIPAddre
 		return
 	}
 	tmp_agents := s.agentGroups[group_id]
-	avalid_agents := delItemFromSilce(tmp_agents, exclude_agent)
+	avalid_agents := delItemFromSlice(tmp_agents, exclude_agent)
 
 	var tasklist []*TargetIPAddress
 

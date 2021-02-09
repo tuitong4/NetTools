@@ -12,7 +12,7 @@ const (
 	eventPktLossSummary = "PktLossSum"
 
 	//SrcLocation到相同DstNetType中异常DstLocation的占比
-	eventPktLossAbnormalPercent = "PktLossAbrPct"
+	eventPktLossAbnormalTargetsPercent = "PktLossAbrDstPct"
 
 	//NAT切换
 	eventNatSchedule = "NatSchedule"
@@ -73,10 +73,10 @@ func NewAbnormalRing(cap int) *AbnormalRing {
 	}
 }
 
-func (a *AbnormalRing) Next(){
+func (a *AbnormalRing) Next() {
 	if a.pos >= a.cap-1 {
 		a.pos = 0
-	}else{
+	} else {
 		a.pos += 1
 	}
 }
@@ -121,6 +121,9 @@ type NetQualityAnalyzer struct {
 	//给定srcLocation + srcNetType的所有targets的汇总丢包率
 	summaryLossThreshold float32
 
+	////给定srcLocation + srcNetType的所有targets的汇总延时
+	summaryDelayThreshold float32
+
 	//异常目标的占比，或者说异常阈值
 	abnormalTargetsThreshold float32
 
@@ -160,15 +163,15 @@ type NetQualityAnalyzer struct {
 	alarmMsgChannel chan *AlarmMsgValue
 }
 
-
-func NewNetQualityAnalyzer(analysisConfig AnalysisSetting, alarmConfig AlarmSetting) *NetQualityAnalyzer{
+func NewNetQualityAnalyzer(analysisConfig AnalysisSetting, alarmConfig AlarmSetting) *NetQualityAnalyzer {
 	return &NetQualityAnalyzer{
 		summaryLossThreshold:     analysisConfig.SummaryLossThreshold,
-		abnormalTargetsThreshold: analysisConfig.AbnormalTargetThreshold/100, //注意此处的数值范围的改变
+		summaryDelayThreshold:   analysisConfig.SummaryRttThreshold,
+		abnormalTargetsThreshold: analysisConfig.AbnormalTargetThreshold / 100, //注意此处的数值范围的改变
 		checkWindow:              analysisConfig.CheckWindow,
 		abnormalCount:            analysisConfig.AbnormalCount,
 		recoverCount:             analysisConfig.RecoverCount,
-		reAlarmInterval:          time.Duration(alarmConfig.ReAlarmInterval)*time.Second,
+		reAlarmInterval:          time.Duration(alarmConfig.ReAlarmInterval) * time.Second,
 		reAlarmPool:              make(map[string]bool),
 		abnormalPool:             make(map[string]*AbnormalRecord),
 		eventPool:                make(map[string]*Event),
@@ -209,7 +212,7 @@ func (a *NetQualityAnalyzer) computePacketLossThreshold(data []*InternetNetQuali
 
 		//统计维度：根据需要选择相应的字段组合出key，这里只选择事件源，源位置，源网络类型，目的网络类型4个
 		//如果SrcNetType是BGP，则认为目标都是BGP类型
-		key = eventPktLossAbnormalPercent + item.Value.SrcLocation + item.Value.SrcNetType
+		key = eventPktLossAbnormalTargetsPercent + item.Value.SrcLocation + item.Value.SrcNetType
 		if item.Value.SrcNetType == "BGP" || item.Value.SrcNetType == "bgp" {
 			key = key + item.Value.SrcNetType
 		} else {
@@ -220,7 +223,7 @@ func (a *NetQualityAnalyzer) computePacketLossThreshold(data []*InternetNetQuali
 		if _, ok := lossCounter[key]; !ok {
 			lossCounter[key] = &NetQualityStatistic{
 				timestamp:   item.Timestamp,
-				eventSource: eventPktLossAbnormalPercent,
+				eventSource: eventPktLossAbnormalTargetsPercent,
 				srcNetType:  item.Value.SrcNetType,
 				dstNetType:  item.Value.DstNetType,
 				srcLocation: item.Value.SrcLocation,
@@ -232,23 +235,25 @@ func (a *NetQualityAnalyzer) computePacketLossThreshold(data []*InternetNetQuali
 		}
 
 		//只处理丢包大于给定阈值的, 小于阈值的跳过
-		if item.Value.PacketLoss/float32(item.Value.Count)  < item.Value.LossThreshold {
+		lossPct := item.Value.PacketLoss/float32(item.Value.Count)
+		if lossPct < item.Value.LossThreshold {
 			lossCounter[key].totalCount += 1
 			continue
 		}
 
 		//增加指标技术
-		lossCounter[key].lossValue += item.Value.PacketLoss
-		lossCounter[key].rttValue += item.Value.Rtt
+		lossCounter[key].lossValue += lossPct
+		lossCounter[key].rttValue += item.Value.Rtt/float32(item.Value.Count)
 		//增加计数器
 		lossCounter[key].totalCount += 1
 		lossCounter[key].count += 1
 	}
 
 	//计算汇总丢包率
-
 	for key := range lossSummary {
 		if lossSummary[key].lossValue/float32(lossSummary[key].totalCount) > a.summaryLossThreshold {
+			//处理count计数器数据，默认为0，此处需要设置，避免后续计算出异常
+			lossSummary[key].count = lossSummary[key].totalCount
 			if _, ok := a.abnormalPool[key]; !ok {
 				d := NewAbnormalRing(a.checkWindow)
 				d.Append(lossSummary[key])
@@ -287,7 +292,7 @@ func (a *NetQualityAnalyzer) eventCheck() {
 		//更新update的中状态
 		if a.abnormalPool[key].updated {
 			a.abnormalPool[key].updated = false
-		}else {
+		} else {
 			//如果节点没有被更新过，则将指针指向下一位，相当于时间片前移
 			a.abnormalPool[key].data.Append(nil)
 		}
@@ -312,7 +317,7 @@ func (a *NetQualityAnalyzer) eventCheck() {
 				if latestNode == -1 {
 					latestNode = idx
 				}
-			} else if consecutive  {
+			} else if consecutive {
 				recoverCount += 1
 			}
 			//log.Debug("Args: ", idx,  abnormalCount, recoverCount, consecutive, latestNode, a.abnormalPool[key].data.data)
@@ -320,7 +325,7 @@ func (a *NetQualityAnalyzer) eventCheck() {
 			if recoverCount >= a.recoverCount {
 				//注意这里的时间统一的都是UTC时间, 取第一个满足的阈值的节点的时间作为事件的恢复时间
 				j := idx - 1
-				if j < 0{
+				if j < 0 {
 					j = a.abnormalPool[key].data.cap - 1
 				}
 				//log.Debug("Index: ", j, idx, a.abnormalPool[key].data)
@@ -452,24 +457,44 @@ type AlarmMsgValue struct {
 	Rtt         string
 	Duration    string
 	Recovered   bool
+	AbnormalCount int
+}
+
+type NatSchedulePlanValue struct {
+	SrcLocation string
+	DstLocation string
 }
 
 func (a *NetQualityAnalyzer) sendMsg() {
 	var buffer *bytes.Buffer
 	var err error = nil
+	var v *NatSchedulePlanValue
 	for {
 		alarm := <-a.alarmMsgChannel
+		log.Debug("Sending Alarm messages...")
+		buffer = new(bytes.Buffer)
 		switch alarm.EventSource {
-		case eventPktLossSummary, eventPktLossAbnormalPercent:
-			buffer = new(bytes.Buffer)
+		case eventPktLossSummary:
 			if !alarm.Recovered {
 				err = templatePktLossSummaryAlarm.Execute(buffer, alarm)
 			} else {
 				err = templatePktLossSummaryRecoverAlarm.Execute(buffer, alarm)
 			}
+
+		case eventPktLossAbnormalTargetsPercent:
+			if !alarm.Recovered {
+				err = templatePktLossAbnormalTargetsAlarm.Execute(buffer, alarm)
+			} else {
+				err = templatePktLossAbnormalTargetsRecoverAlarm.Execute(buffer, alarm)
+			}
+
 		case eventNatSchedule:
-			buffer = new(bytes.Buffer)
-			err = templateNatScheduleAlarm.Execute(buffer, alarm)
+			if _, ok := GlobalNatSchedulePlan[alarm.SrcLocation]; !ok{
+				v = &NatSchedulePlanValue{"XXX", "XXX"}
+			}else {
+				v = GlobalNatSchedulePlan[alarm.SrcLocation]
+			}
+			err = templateNatScheduleAlarm.Execute(buffer, v)
 
 		default:
 			continue
@@ -478,7 +503,7 @@ func (a *NetQualityAnalyzer) sendMsg() {
 		if err != nil {
 			log.Errorf("Failed to format the template string, error: %v", err)
 		} else {
-			go sendMessage(a.msgApi, buffer, alarmApiEventCode)
+			go sendMessageMock(a.msgApi, buffer, alarmApiEventCode)
 		}
 	}
 }
@@ -490,12 +515,12 @@ func (a *NetQualityAnalyzer) abnormalAlarm() {
 		startTime := event.eventStartTime.Local()
 		abnormalDuration := timeNow.Sub(startTime).Minutes()
 		strStartTime := startTime.Format(TimeYmdHmsFormat)
-		strPacketLoss := fmt.Sprintf("%.f", event.packetLoss) + "%"
-		strRtt := fmt.Sprintf("%.f", event.rtt)
+		strPacketLoss := fmt.Sprintf("%.f", event.packetLoss/float32(event.count)) + "%"
+		strRtt := fmt.Sprintf("%.f", event.rtt/float32(event.count))
 		strDuration := fmt.Sprintf("%.f", abnormalDuration)
 
 		a.alarmMsgChannel <- &AlarmMsgValue{
-			EventSource: event.source,
+			EventSource: event.eventSource,
 			SrcLocation: event.srcLocation,
 			SrcNetType:  event.srcNetType,
 			DstNetType:  event.dstNetType,
@@ -505,6 +530,7 @@ func (a *NetQualityAnalyzer) abnormalAlarm() {
 			Rtt:         strRtt,
 			Duration:    strDuration,
 			Recovered:   false,
+			AbnormalCount: event.eventCount,
 		}
 	}
 }
@@ -520,8 +546,8 @@ func (a *NetQualityAnalyzer) abnormalRecoverAlarm() {
 		strStartTime := startTime.Format(TimeYmdHmsFormat)
 		strEndTime := endTime.Format(TimeYmdHmsFormat)
 
-		strPacketLoss := fmt.Sprintf("%.f", event.packetLoss) + "%"
-		strRtt := fmt.Sprintf("%.f", event.rtt)
+		strPacketLoss := fmt.Sprintf("%.f", event.packetLoss/float32(event.count)) + "%"
+		strRtt := fmt.Sprintf("%.f", event.rtt/float32(event.count))
 		strDuration := fmt.Sprintf("%.f", abnormalDuration)
 
 		a.alarmMsgChannel <- &AlarmMsgValue{
@@ -535,6 +561,13 @@ func (a *NetQualityAnalyzer) abnormalRecoverAlarm() {
 			Rtt:         strRtt,
 			Duration:    strDuration,
 			Recovered:   true,
+			AbnormalCount: event.eventCount,
 		}
 	}
+}
+
+func (a *NetQualityAnalyzer) alarm() {
+	go a.abnormalAlarm()
+	go a.abnormalRecoverAlarm()
+	go a.sendMsg()
 }

@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"io/ioutil"
+	"local.lc/log"
 )
 
 func queryNetQualityDataMock(filename string) ([]*InternetNetQuality, error) {
@@ -18,3 +19,14 @@ func queryNetQualityDataMock(filename string) ([]*InternetNetQuality, error) {
 	return preTreatQualityData(*j), nil
 }
 
+func sendMessageMock(url string, data *bytes.Buffer, eventCode int) {
+
+	json_payload := &AlarmMessage{
+		AppName:   alarmApiAppName,
+		EventCode: eventCode,
+		SecretKey: alarmApiSecretKey,
+		Content:   data.String(),
+	}
+
+	log.Println("Alarm Message: ", json_payload)
+}

@@ -10,63 +10,59 @@ import (
 	"time"
 )
 
-var templateStringPktLossSummaryAlarm = `【公网网络故障通知】{{.SrcLocation}}-{{.SrcNetType}}出口网络质量下降通知
-故障现象：当前{{.SrcLocation}}-{{.SrcNetType}}出口网络质量下降，出口整体丢包率约{{.PacketLoss}}
-故障时间：{{.StartTime}} - 当前， 持续{{.Duration}}分钟
-影响范围：互联网访问{{.SrcLocation}}机房业务和{{.SrcLocation}}服务器主动访问互联网的请求会有超时，延时增大的情况
-解决进展：网络团队正在排查原因，恢复时间待定。如果2分钟内未恢复，网络团队将执行跨机房切换主动上网。各个业务请根据自身情况主动调整业务到其他机房
-故障原因：待定
-`
-
-var templateStringPktLossAlarm = `【公网网络故障通知】{{.SrcLocation}}-{{.SrcNetType}}出口网络质量下降通知
-故障现象：当前{{.SrcLocation}}-{{.SrcNetType}}出口网络质量下降，出口整体丢包率约{{.PacketLoss}}
-故障时间：{{.StartTime}} - 当前， 持续{{.Duration}}分钟
-影响范围：互联网访问{{.SrcLocation}}机房业务和{{.SrcLocation}}服务器主动访问互联网的请求会有超时，延时增大的情况
-解决进展：网络团队正在排查原因，恢复时间待定。如果2分钟内未恢复，网络团队将执行跨机房切换主动上网。各个业务请根据自身情况主动调整业务到其他机房
-故障原因：待定
-`
-
-var templateStringNatScheduleAlarm = `【{{.SrcLocation}}机房主动上网出口切换至{{.DstLocation}}机房通告】
-切换原因：因{{.SrcLocation}}机房出口网络质量下降，出口整体丢包率超过5%，且2分钟内未恢复。根据应急预案，现在将{{.SrcLocation}}机房主动上网流量切换至{{.DstLocation}}机房。
-切换时间：即刻执行
-切换影响：切换过程中{{.SrcLocation}}机房服务器主动访问互联网业务会完全中断1-10s左右；部分业务访问互联网延迟将增大。切换完成后，{{.SrcLocation}}机房访问互联网业务流量将走{{.DstLocation}}。有异常业务的请联系V消息：互联网网络值班，电话：18665910381
-----------以下内容请勿对外发布----------
-切换入口：
-`
-
-var templateStringPktLossSummaryRecoverAlarm = `【公网网络故障恢复通知】{{.SrcLocation}}-{{.SrcNetType}}出口网络质量下降通知
-故障现象：当前{{.SrcLocation}}-{{.SrcNetType}}出口网络质量下降，出口整体丢包率约{{.PacketLoss}}
-故障时间：{{.StartTime}} - {{.EndTime}}， 持续{{.Duration}}分钟
-影响范围：互联网访问{{.SrcLocation}}机房业务和{{.SrcLocation}}服务器主动访问互联网的请求会有超时，延时增大的情况
-解决进展：网络已经于 {{.EndTime}}恢复
-故障原因：待核实后反馈
-`
-
 var (
-	templatePktLossSummaryAlarm        *template.Template
-	templateNatScheduleAlarm           *template.Template
-	templatePktLossSummaryRecoverAlarm *template.Template
+	templatePktLossSummaryAlarm                *template.Template
+	templatePktLossAbnormalTargetsAlarm        *template.Template
+	templateNatScheduleAlarm                   *template.Template
+	templatePktLossSummaryRecoverAlarm         *template.Template
+	templatePktLossAbnormalTargetsRecoverAlarm *template.Template
 )
 
-func initAlarmMsgTemplate() error {
-	tmpl, err := template.New("templatePktLossSummaryAlarm").Parse(templateStringPktLossSummaryAlarm)
+func initAlarmMsgTemplate(alarmTemplate *AlarmTemplateSetting) error {
+	tmpl, err := template.New("templatePktLossSummaryAlarm").Parse(alarmTemplate.PacketLossSummaryAlarm)
 	if err != nil {
 		return err
 	}
 	templatePktLossSummaryAlarm = tmpl
 
-	tmpl, err = template.New("templateNatScheduleAlarm").Parse(templateStringNatScheduleAlarm)
+	tmpl, err = template.New("templatePktLossAbnormalTargetsAlarm").Parse(alarmTemplate.PacketLossAbnormalTargetsPercentAlarm)
+	if err != nil {
+		return err
+	}
+	templatePktLossAbnormalTargetsAlarm = tmpl
+
+	tmpl, err = template.New("templateNatScheduleAlarm").Parse(alarmTemplate.NatScheduleAlarm)
 	if err != nil {
 		return err
 	}
 	templateNatScheduleAlarm = tmpl
 
-	tmpl, err = template.New("templatePktLossSummaryRecoverAlarm").Parse(templateStringPktLossSummaryRecoverAlarm)
+	tmpl, err = template.New("templatePktLossSummaryRecoverAlarm").Parse(alarmTemplate.PacketLossSummaryRecover)
 	if err != nil {
 		return err
 	}
 	templatePktLossSummaryRecoverAlarm = tmpl
 
+	tmpl, err = template.New("templatePktLossAbrTargetsRecoverAlarm").Parse(alarmTemplate.PacketLossAbnormalTargetsPercentRecover)
+	if err != nil {
+		return err
+	}
+	templatePktLossAbnormalTargetsRecoverAlarm = tmpl
+
+	return nil
+}
+
+var GlobalNatSchedulePlan map[string]*NatSchedulePlanValue
+
+func initGlobalNatSchedulePlan(templateString string) error{
+	GlobalNatSchedulePlan = make(map[string]*NatSchedulePlanValue)
+	m, err := convertStringToMap(templateString)
+	if err != nil{
+		return  err
+	}
+	for src, dst := range m{
+		GlobalNatSchedulePlan[src] = &NatSchedulePlanValue{src, dst}
+	}
 	return nil
 }
 
@@ -88,6 +84,12 @@ var (
 	alarmApiEventCode int
 	alarmApiSecretKey string
 )
+
+func initAlarmApiParameter(alarmConfig *AlarmSetting) {
+	alarmApiAppName = alarmConfig.AlarmAPIAppName
+	alarmApiEventCode = alarmConfig.AlarmAPIEventCode
+	alarmApiSecretKey = alarmConfig.AlarmApiSecretKey
+}
 
 func sendMessage(url string, data *bytes.Buffer, eventCode int) {
 

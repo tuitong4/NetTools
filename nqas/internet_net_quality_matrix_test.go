@@ -1,10 +1,5 @@
 package nqas
 
-//import (
-//	"fmt"
-//	"testing"
-//)
-//
 //func TestLoadData(t *testing.T){
 //	dataFile := "./mock_data.json"
 //	d, err := queryNetQualityDataMock(dataFile)
@@ -16,4 +11,8 @@ package nqas
 //		fmt.Println(i)
 //		break
 //	}
+//}
+
+//func TestMaTrixRun(t *testing.T){
+//	MaTrixRun()
 //}

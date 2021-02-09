@@ -2,62 +2,11 @@ package nqas
 
 import (
 	"flag"
-	"fmt"
-	"io"
 	"local.lc/log"
-	"os"
-	"strings"
+	"sync"
+	"time"
 )
 
-func pathIsExist(path string) bool {
-	_, err := os.Stat(path)
-	if err != nil {
-		if os.IsExist(err) {
-			return true
-		}
-		return false
-	}
-	return true
-}
-
-func openLogFile(name string) (*os.File, error) {
-	if pathIsExist(name) {
-		return os.OpenFile(name, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
-	}
-
-	paths := strings.Split(name, "/")
-	if len(paths) == 0 {
-		return nil, fmt.Errorf("Invalied filename '%s'.", name)
-	}
-
-	will_to_be_created_path := ""
-	for _, dir := range paths[0 : len(paths)-1] {
-		will_to_be_created_path += dir + "/"
-		if !pathIsExist(will_to_be_created_path) {
-			if err := os.Mkdir(will_to_be_created_path, 0777); err != nil {
-				return nil, err
-			}
-			if err := os.Chmod(will_to_be_created_path, 0777); err != nil {
-				return nil, err
-			}
-		}
-	}
-
-	w, err := os.Create(name)
-	if err != nil {
-		return nil, err
-	}
-	if err := os.Chmod(name, 0666); err != nil {
-		return nil, err
-	}
-
-	return w, nil
-}
-
-func SetLogger(prefix string, output io.Writer) {
-	log.SetPrefix(prefix)
-	log.SetOutput(output)
-}
 
 type Args struct {
 	configFile string
@@ -70,17 +19,23 @@ func initFlag() {
 	flag.Parse()
 }
 
-func Run() {
+func MaTrixRun() {
 	initFlag()
+
+	//TODO: Remove this
+	args.configFile = "./config/internet_net_quality_matrix_config.conf"
+
 	if args.configFile == "" {
 		log.Error("Configuration file should not be empty.")
 		return
 	}
+
 	config, err := InitConfig(args.configFile)
 	if err != nil {
 		log.Error(err)
 		return
 	}
+
 
 	w, err := openLogFile(config.LoggerConfig.LogFile)
 	if err != nil {
@@ -88,9 +43,56 @@ func Run() {
 	}
 	defer w.Close()
 
-	SetLogger("matrix-", w)
+	SetLogger("MATRIX-", w)
 
 	//初始化全局变量
 	internetNetQualityDataSource = config.DruidConfig.DataSource
+	summaryLossThreshold = config.AnalysisConfig.SummaryLossThreshold
+	summaryDelayThreshold = config.AnalysisConfig.SummaryRttThreshold
 
+	initAlarmApiParameter(&config.AlarmConfig)
+	err = initAlarmMsgTemplate(&config.AlarmTemplate)
+	if err != nil {
+		log.Errorf("Init alarm template failed, error: %v", err)
+		return
+	}
+
+	err = initGlobalNatSchedulePlan(config.AlarmTemplate.NatSchedulePlanRaw)
+	if err != nil {
+		log.Errorf("Init nat schedule plan struct failed, error: %v", err)
+		return
+	}
+	s, err := NewAPIServer(config.APIServerConfig)
+	if err != nil {
+		log.Errorf("Init Api Server failed, error: %v", err)
+		return
+	}
+
+	//执行查询全局阈值查询
+	go func(){
+		ticker := time.NewTicker(time.Duration(24*time.Hour))
+		defer ticker.Stop()
+		l := sync.Mutex{}
+		for{
+			<- ticker.C
+			thresholds, err := getQualityThreshold(config.DruidConfig.DataSourceUrl)
+			if err != nil{
+				log.Errorf("Failed to get quality thresholds, error: %v", err)
+				continue
+			}
+			l.Lock()
+			GlobalThresholds = thresholds
+			l.Unlock()
+		}
+	}()
+
+	//初始化内置参数
+	s.qualityDataCache = nil
+	s.queryInterval = time.Duration(config.QueryConfig.Interval) * time.Second
+
+	//启动周期性的自动查询功能
+	go s.retrieveQualityDataAndAnalysisAuto(config)
+
+	//启动API Server
+	s.Run()
 }

@@ -414,7 +414,7 @@ func (a *PingAgent) Pinger(target *PingTarget, xid int) (*PingResponse, error) {
 		}
 		switch bufmsg.Type {
 		case ICMPv4EchoReply:
-			if a.SrcBind { //check sourc ip equal to speified.
+			if a.SrcBind { //check source ip equal to specified.
 				if h.Src.String() != target.DstIP || h.Dst.String() != target.SrcIP {
 					//log.Debug("%s mistake receiving: utils m: %s, dst: %s, src_in_ip: %s, dst_in_ip: %s, id: %d, the wrong id: %d\n",
 					//	logHeader, target.SrcIP, target.DstIP, h.Dst.String(), h.Src.String(), xid, msg.Body.(*ICMPEcho).ID)

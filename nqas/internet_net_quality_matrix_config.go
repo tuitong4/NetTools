@@ -11,7 +11,7 @@ type DruidSetting struct {
 }
 
 type QuerySetting struct {
-	Interval string `ini:"interval"`
+	Interval int `ini:"interval"`
 }
 
 type LoggerSetting struct {
@@ -23,17 +23,29 @@ type LoggerSetting struct {
 }
 
 type AnalysisSetting struct {
-	SummaryLossThreshold float32 `ini:"summary_loss_threshold"`
-	SummaryRttThreshold float32 `ini:"summary_rtt_threshold"`
+	SummaryLossThreshold    float32 `ini:"summary_loss_threshold"`
+	SummaryRttThreshold     float32 `ini:"summary_rtt_threshold"`
 	AbnormalTargetThreshold float32 `ini:"abnormal_target_threshold"`
-	CheckWindow int `ini:"check_window"`
-	AbnormalCount int `ini:"abnormal_count"`
-	RecoverCount int `ini:"recover_count"`
+	CheckWindow             int     `ini:"check_window"`
+	AbnormalCount           int     `ini:"abnormal_count"`
+	RecoverCount            int     `ini:"recover_count"`
 }
 
 type AlarmSetting struct {
-	ReAlarmInterval int `ini:"re_alarm_interval"`
-	AlarmAPI string `ini:"alarm_api"`
+	ReAlarmInterval   int    `ini:"re_alarm_interval"`
+	AlarmAPI          string `ini:"alarm_api"`
+	AlarmApiSecretKey string `ini:"alarm_api_secret_key"`
+	AlarmAPIEventCode int    `ini:"alarm_event_code"`
+	AlarmAPIAppName   string `ini:"alarm_app_name"`
+}
+
+type AlarmTemplateSetting struct {
+	PacketLossSummaryAlarm                  string `ini:"packet_loss_summary_alarm"`
+	PacketLossSummaryRecover                string `ini:"packet_loss_summary_recover"`
+	PacketLossAbnormalTargetsPercentAlarm   string `ini:"packet_loss_abnormal_target_alarm"`
+	PacketLossAbnormalTargetsPercentRecover string `ini:"packet_loss_abnormal_target_recover"`
+	NatScheduleAlarm                        string `ini:"nat_schedule_alarm"`
+	NatSchedulePlanRaw						string `ini:"nat_schedule_plan"`
 }
 
 type Configuration struct {
@@ -43,6 +55,7 @@ type Configuration struct {
 	LoggerConfig    LoggerSetting
 	AnalysisConfig  AnalysisSetting
 	AlarmConfig     AlarmSetting
+	AlarmTemplate   AlarmTemplateSetting
 }
 
 func InitConfig(configFile string) (*Configuration, error) {
@@ -73,6 +86,10 @@ func InitConfig(configFile string) (*Configuration, error) {
 		return nil, err
 	}
 	err = cfg.Section("alarm").MapTo(&config.AlarmConfig)
+	if err != nil {
+		return nil, err
+	}
+	err = cfg.Section("alarmtemplate").MapTo(&config.AlarmTemplate)
 	if err != nil {
 		return nil, err
 	}

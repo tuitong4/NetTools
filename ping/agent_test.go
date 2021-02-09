@@ -1,11 +1,5 @@
 package ping
 
-import (
-	"fmt"
-	"testing"
-	"time"
-)
-
 /*
 import (
 	"fmt"
@@ -29,28 +23,28 @@ func TestNewAgentBroker(t *testing.T){
 	return
 }
 */
-func TestAgentRunning(t *testing.T){
-	cfgfile := "./config/agent_config.conf"
-	config, err := InitAgentConfig(cfgfile)
-
-	if err != nil{
-		fmt.Println(err)
-		return
-	}
-	fmt.Println("AgentRunning: ", config.PingConfig.PingIntervalMs)
-	agent, err := NewAgentBroker(config)
-	if err != nil{
-		fmt.Println(err)
-		return
-	}
-	//go func(){
-	//	<-agent.stopKeepalive
-	//	fmt.Println("Stop keepalive signal received.")
-	//}()
-	go func(){
-		time.Sleep(10*time.Second)
-		agent.Stop()
-	}()
-	agent.Run()
-	return
-}
+//func TestAgentRunning(t *testing.T){
+//	cfgfile := "./config/agent_config.conf"
+//	config, err := InitAgentConfig(cfgfile)
+//
+//	if err != nil{
+//		fmt.Println(err)
+//		return
+//	}
+//	fmt.Println("AgentRunning: ", config.PingConfig.PingIntervalMs)
+//	agent, err := NewAgentBroker(config)
+//	if err != nil{
+//		fmt.Println(err)
+//		return
+//	}
+//	//go func(){
+//	//	<-agent.stopKeepalive
+//	//	fmt.Println("Stop keepalive signal received.")
+//	//}()
+//	go func(){
+//		time.Sleep(10*time.Second)
+//		agent.Stop()
+//	}()
+//	agent.Run()
+//	return
+//}

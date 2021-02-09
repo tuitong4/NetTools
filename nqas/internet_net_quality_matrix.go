@@ -8,7 +8,16 @@ import (
 	"time"
 )
 
-var internetNetQualityDataSource = "internet-net-quality"
+var (
+	//默认的druid数据源
+	internetNetQualityDataSource = "internet-net-quality"
+
+	//默认的汇总延时
+	summaryLossThreshold = float32(0.05)
+
+	//默认的汇总丢包
+	summaryDelayThreshold = float32(200.0)
+)
 
 type InternetNetQualityRespond struct {
 	Version   string `json:"version"`
@@ -62,6 +71,15 @@ func targetFilter(srcNetType, dstNetType, srcLocation, dstLocation string) *Filt
 	srcLocationFilter = createFilter("srcLocation", srcLocation)
 	dstLocationFilter = createFilter("dstLocation", dstLocation)
 	return FilterAnd(srcNetTypeFilter, dstNetTypeFilter, srcLocationFilter, dstLocationFilter)
+}
+
+func sourceFilter(srcNetType, srcLocation string) *Filter {
+	var srcNetTypeFilter *Filter
+	var srcLocationFilter *Filter
+
+	srcNetTypeFilter = createFilter("srcNetType", srcNetType)
+	srcLocationFilter = createFilter("srcLocation", srcLocation)
+	return FilterAnd(srcNetTypeFilter, srcLocationFilter)
 }
 
 func getInternetNetQualityResult(startTime, endTime time.Time, granularity Granlarity, dataSourceUrl, dataSource string, filter *Filter) ([]*InternetNetQualityRespond, error) {
@@ -229,12 +247,7 @@ func queryNetQualityData(query_timestamp int64, dataSourceUrl string) ([]*Intern
 }
 
 func queryNetQualityDataByTarget(startTime, endTime time.Time, srcNetType, dstNetType, srcLocation, dstLocation, dataSourceUrl string) ([]*InternetNetQuality, error) {
-	//最大查询时间不超过1天
-	if endTime.Sub(startTime) > 24*60*60 {
-		endTime = startTime.Add(24 * 60 * 60)
-	}
-
-	//该参数尽量改为全局const 变量，减少操作
+	//TODO:该参数尽量改为全局const 变量，减少操作
 	granularity := GranDuration{Type: "duration", Duration: "30000"}
 	filter := targetFilter(srcNetType, dstNetType, srcLocation, dstLocation)
 
@@ -246,4 +259,39 @@ func queryNetQualityDataByTarget(startTime, endTime time.Time, srcNetType, dstNe
 		return nil, err
 	}
 	return preTreatQualityData(data), nil
+}
+
+
+func queryNetQualityDataBySource(startTime, endTime time.Time, srcNetType, srcLocation, dataSourceUrl string) ([]*InternetNetQuality, error) {
+	//TODO:该参数尽量改为全局const 变量，减少操作
+	granularity := GranDuration{Type: "duration", Duration: "30000"}
+	filter := sourceFilter(srcNetType, srcLocation)
+
+	data, err := getInternetNetQualityResult(startTime,
+		endTime, granularity, internetNetQualityDataSource,
+		dataSourceUrl, filter)
+
+	if err != nil {
+		return nil, err
+	}
+
+	formattedData := make([]*InternetNetQuality, 0)
+	for _, d := range data {
+		formattedData = append(formattedData, &InternetNetQuality{
+			Timestamp: d.Timestamp,
+			Value: QualityValue{
+				SrcNetType:    d.Event.SrcNetType,
+				DstNetType:    d.Event.DstNetType,
+				SrcLocation:   d.Event.SrcLocation,
+				DstLocation:   d.Event.DstLocation,
+				Rtt:           d.Event.Rtt,
+				PacketLoss:    d.Event.PacketLoss,
+				Count:         d.Event.Count,
+				LossThreshold: summaryLossThreshold,
+				RttThreshold:  summaryDelayThreshold,
+			},
+		})
+	}
+
+	return formattedData, nil
 }

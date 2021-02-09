@@ -10,8 +10,11 @@ import (
 	"local.lc/log"
 	"net"
 	"os"
+	"os/signal"
 	"runtime/debug"
+	"strings"
 	"sync"
+	"syscall"
 	"time"
 )
 
@@ -26,11 +29,14 @@ type APIServer struct {
 	//配置内容
 	config APIServerSetting
 
-	//日志，不同于http请求的日志
-	log log.Logger
+	//记录程序日志，不同于http请求的日志
+	log *log.Logger
 
-	//缓存数据
+	//缓存数据，是经过json序列化过的
 	qualityDataCache []byte
+
+	//原始数据，没有见过序列化
+	qualityDataRaw []*InternetNetQuality
 
 	//缓存时间, 转换成时间戳，方便后续处理
 	cacheTime int
@@ -46,6 +52,10 @@ func NewAPIServer(config APIServerSetting) (*APIServer, error) {
 	var err error
 	api := new(APIServer)
 	api.config = config
+
+	//默认值，需要修改的话从外部修改
+	api.queryInterval = time.Duration(30 * time.Second)
+
 	api.i = iris.New()
 	iris.RegisterOnInterrupt(func() {
 		timeout := 5 * time.Second
@@ -69,7 +79,7 @@ func NewAPIServer(config APIServerSetting) (*APIServer, error) {
 	}
 
 	api.i.Use(iris_recover.New())
-	api.i.Use(iris_logger.New())
+	//api.i.Use(iris_logger.New())
 
 	api.i.RegisterView(iris.HTML("./html", ".html"))
 
@@ -77,28 +87,44 @@ func NewAPIServer(config APIServerSetting) (*APIServer, error) {
 }
 
 func (a *APIServer) Run() {
+	a.Stop()
+
+	//设置APIServer自身日志
+	l, err, closeLogFile := initLogger(a.config.LogFile, "APISERVER-")
+	if err != nil{
+		panic(err)
+	}
+	defer closeLogFile()
+	a.log = l
+
 	defer func() {
 		err := recover()
 		if err != nil {
-			log.Error("API server running error.")
-			log.Errorf("API Server running error: %v", err)
-			log.Errorf("API server running stack info: %s", string(debug.Stack()))
+			a.log.Error("API server running error.")
+			a.log.Errorf("API Server running error: %v", err)
+			a.log.Errorf("API server running stack info: %s", string(debug.Stack()))
 			os.Exit(2)
 		}
 	}()
-	log.Info("API Server is starting...")
+
+	//初始化日志记录，只能在此处初始化，否则defer close()在其他函数返回后执行
+	r, close := newRequestLogger(a.config.AccessLogFile)
+	defer close()
+	a.i.Use(r)
+
+	a.log.Info("API Server is starting...")
 	a.startAPI()
 }
 
 func (a *APIServer) startAPI() {
 	a.registerRoute()
 	err := a.i.Build()
-	if err != nil{
+	if err != nil {
 		a.log.Error(err)
 		return
 	}
 	err = iris.Listener(a.listener)(a.i)
-	if err != nil{
+	if err != nil {
 		a.log.Error(err)
 	}
 }
@@ -107,8 +133,9 @@ func (a *APIServer) registerRoute() {
 	//RootPage
 	a.i.Get("/", a.rootPageHandler)
 	apiRoutes := a.i.Party("/api")
-	apiRoutes.Post("/netquality", a.queryQualityDataByTimeHandler)
-	apiRoutes.Post("/netqualitydetail", a.queryQualityDataByTimeRangeHandler)
+	apiRoutes.Post("/netquality", a.queryQualityDataTotalHandler)
+	apiRoutes.Post("/netqualitydetail", a.queryQualityDataDetailHandler)
+	apiRoutes.Post("/netqualitysummay", a.queryQualityDataSummaryHandler)
 }
 
 func (a *APIServer) rootPageHandler(ctx iris.Context) {
@@ -129,7 +156,10 @@ type QualityDataResponse struct {
 	Data    []*InternetNetQuality `json:"data"`
 }
 
-func (a *APIServer) queryQualityDataByTimeHandler(ctx iris.Context) {
+/*
+	查询最近时刻时刻或者指定时刻的全量数据
+ */
+func (a *APIServer) queryQualityDataTotalHandler(ctx iris.Context) {
 	var t TimeStampFilterPayload
 	if err := ctx.ReadQuery(&t); err != nil {
 		respBody := &QualityDataResponse{500, "Query parameters is parsed failed!", nil}
@@ -169,7 +199,7 @@ func (a *APIServer) queryQualityDataByTimeHandler(ctx iris.Context) {
 
 }
 
-type TimeRangeFilterPayload struct {
+type QueryDetailDataFilter struct {
 	StartTime   int64  `json:"starttime"`
 	EndTime     int64  `json:"endtime"`
 	SrcNetType  string `json:"srcnettype"`
@@ -178,8 +208,11 @@ type TimeRangeFilterPayload struct {
 	DstLocation string `json:"dstlocation"`
 }
 
-func (a *APIServer) queryQualityDataByTimeRangeHandler(ctx iris.Context) {
-	var t TimeRangeFilterPayload
+/*
+	查询给定条件下，一段时间内的详细数据
+ */
+func (a *APIServer) queryQualityDataDetailHandler(ctx iris.Context) {
+	var t QueryDetailDataFilter
 	if err := ctx.ReadQuery(&t); err != nil {
 		respBody := &QualityDataResponse{500, "Query parameters is parsed failed!", nil}
 		d, err := json.Marshal(respBody)
@@ -196,11 +229,16 @@ func (a *APIServer) queryQualityDataByTimeRangeHandler(ctx iris.Context) {
 	//时间为0的时候，查询最新的数据。相当于客户端侧增量拉取数据
 	if t.StartTime <= 0 || t.EndTime <= 0 {
 		endTime = time.Now()
-		//可能有bug
-		startTime = endTime.Truncate(time.Duration(30 * time.Second))
+		//TODO:可能有bug
+		startTime = endTime.Add(-30 * time.Second)
 	} else {
 		endTime = time.Unix(t.EndTime, 0)
 		startTime = time.Unix(t.StartTime, 0)
+	}
+
+	//最大查询时间不超过1天
+	if endTime.Sub(startTime) > 24*60*60 {
+		endTime = startTime.Add(24 * 60 * 60)
 	}
 
 	data, err := queryNetQualityDataByTarget(
@@ -233,9 +271,70 @@ func (a *APIServer) queryQualityDataByTimeRangeHandler(ctx iris.Context) {
 	ctx.GzipResponseWriter().Write(d)
 }
 
+/*
+	查询给定条件下，查询一段时间的汇总数据
+ */
+func (a *APIServer) queryQualityDataSummaryHandler(ctx iris.Context){
+	var t QueryDetailDataFilter
+	if err := ctx.ReadQuery(&t); err != nil {
+		respBody := &QualityDataResponse{500, "Query parameters is parsed failed!", nil}
+		d, err := json.Marshal(respBody)
+		if err != nil {
+			a.log.Error(err)
+		}
+		//ctx.Write(d)
+		ctx.GzipResponseWriter().Write(d)
+		return
+	}
+
+	var startTime time.Time
+	var endTime time.Time
+
+	//时间为0的时候，查询最新的数据。相当于客户端侧增量拉取数据
+	if t.StartTime <= 0 || t.EndTime <= 0 {
+		endTime = time.Now()
+		startTime = endTime.Add(-30*time.Second)
+	} else {
+		endTime = time.Unix(t.EndTime, 0)
+		startTime = time.Unix(t.StartTime, 0)
+	}
+	//最大查询时间不超过1天，如果开始时间和结束事件相同，查询最近30s内的数据
+	if endTime.Sub(startTime) > 24*60*60 {
+		endTime = startTime.Add(24 * 60 * 60)
+	}
+
+	data, err := queryNetQualityDataBySource(
+		startTime,
+		endTime,
+		t.SrcNetType,
+		t.SrcLocation,
+		a.config.DataSourceUrl,
+	)
+	if err != nil {
+		errMsg := fmt.Sprintf("Retrieved quality data failed. error : %v", err)
+		respBody := &QualityDataResponse{500, errMsg, nil}
+		d, err := json.Marshal(respBody)
+		if err != nil {
+			a.log.Error(err)
+		}
+		//ctx.Write(d)
+		ctx.GzipResponseWriter().Write(d)
+		return
+	}
+
+	respBody := &QualityDataResponse{200, "", data}
+	d, err := json.Marshal(respBody)
+	if err != nil {
+		a.log.Error(err)
+	}
+	//ctx.Write(d)
+	ctx.GzipResponseWriter().Write(d)
+}
+
 func (a *APIServer) queryData() {
-	t := time.Now().Unix()
-	data, err := queryNetQualityData(t, a.config.DataSourceUrl)
+	//t := time.Now().Unix()
+	//data, err := queryNetQualityData(t, a.config.DataSourceUrl)
+	data, err := queryNetQualityDataMock("./mock_data.json")
 	var respBody *QualityDataResponse
 	if err != nil {
 		errMsg := fmt.Sprintf("Retrieved quality data failed. error : %v", err)
@@ -252,28 +351,109 @@ func (a *APIServer) queryData() {
 	l := sync.Mutex{}
 	l.Lock()
 	a.qualityDataCache = d
+	a.qualityDataRaw = data
 	l.Unlock()
 }
 
-func (a *APIServer) retrieveQualityDataAuto() {
+/*
+	周期性查询全量监控数据，然后分析告警。这里相当于把api接口和告警分析结合了起来
+	主要是避免数据多次查询，也是为了报警和和前端查询的结果一致。
+ */
+func (a *APIServer) retrieveQualityDataAndAnalysisAuto(config *Configuration) {
 	// init interval ticker
-	ticker := time.NewTicker(time.Second * a.queryInterval)
+	ticker := time.NewTicker(a.queryInterval)
 	defer ticker.Stop()
+
+	//初始化一个分析器
+	analyzer := NewNetQualityAnalyzer(config.AnalysisConfig, config.AlarmConfig)
+	analyzer.alarm()
+
 	for {
 		//读取时间
 		<-ticker.C
 		go func() {
 			a.queryData()
+			analyzer.computePacketLossThreshold(a.qualityDataRaw)
+			analyzer.eventCheck()
 		}()
 
 		//Check signal channel
 		select {
 		case <-a.stopSignal:
-			log.Info("Retrieve will to stop for received interrupt signal.")
+			a.log.Info("Retrieve will to stop for received interrupt signal.")
 			return
 		default:
 			continue
 		}
-
 	}
+}
+
+func (a *APIServer) Stop(){
+	go func() {
+		ch := make(chan os.Signal, 1)
+		signal.Notify(ch,
+			// kill -SIGINT XXXX 或 Ctrl+c
+			os.Interrupt,
+			syscall.SIGINT, // register that too, it should be ok
+			// os.Kill等同于syscall.Kill
+			os.Kill,
+			syscall.SIGKILL, // register that too, it should be ok
+			// kill -SIGTERM XXXX
+			syscall.SIGTERM,
+		)
+		select {
+		case <-ch:
+			a.stopSignal <- struct{}{}
+			log.Info("Server is shutdown...")
+			timeout := 5 * time.Second
+			ctx, cancel := native_context.WithTimeout(native_context.Background(), timeout)
+			defer cancel()
+			a.i.Shutdown(ctx)
+		}
+	}()
+}
+
+var excludeExtensions = [...]string{
+	".js",
+	".css",
+	".jpg",
+	".png",
+	".ico",
+	".svg",
+}
+
+func newRequestLogger(logfile string) (h iris.Handler, close func() error) {
+	close = func() error { return nil }
+	c := iris_logger.Config{
+		Status:  true,
+		IP:      true,
+		Method:  true,
+		Path:    true,
+		Columns: false,
+	}
+	logFile, err := openLogFile(logfile)
+	if err != nil{
+		panic(err)
+	}
+
+	close = func() error {
+		return logFile.Close()
+	}
+
+	c.LogFunc = func(now time.Time, latency time.Duration, status, ip, method, path string, message interface{}, headerMessage interface{}) {
+		output := fmt.Sprintf("%s %s %s %s %s\n", now.Format("2006/01/02 - 15:04:05"), status, ip, method, path)
+		logFile.Write([]byte(output))
+	}
+
+	c.AddSkipper(func(ctx iris.Context) bool {
+		path := ctx.Path()
+		for _, ext := range excludeExtensions {
+			if strings.HasSuffix(path, ext) {
+				return true
+			}
+		}
+		return false
+	})
+	h = iris_logger.New(c)
+	return
 }

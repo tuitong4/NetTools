@@ -19,7 +19,7 @@ func TestPinger(t *testing.T){
 		DstLocation:"Unknown",
 	}
 
-	r, err :=ping.Pinger(addr, 1)
+	r, err :=ping.NewPinger(addr, 1)
 	if err != nil{
 		fmt.Println(err)
 		return

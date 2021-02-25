@@ -230,10 +230,10 @@ func preTreatQualityData(data []*InternetNetQualityRespond) []*InternetNetQualit
 	return formattedData
 }
 
-func queryNetQualityData(query_timestamp int64, dataSourceUrl string) ([]*InternetNetQuality, error) {
+func queryNetQualityData(query_time time.Time, dataSourceUrl string) ([]*InternetNetQuality, error) {
 	//query_timestamp是本地时间，不是UTC0时间，不然会导致数据获取异常
-	startTime := time.Unix(query_timestamp-30, 0)
-	endTime := time.Unix(query_timestamp, 0)
+	startTime := query_time.Add(-30 * time.Second)
+	endTime := query_time
 	granularity := GranDuration{Type: "duration", Duration: "30000"}
 	data, err := getInternetNetQualityResult(startTime,
 		endTime, granularity, internetNetQualityDataSource,

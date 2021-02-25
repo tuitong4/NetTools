@@ -398,7 +398,7 @@ func (a *PingAgent) Pinger(target *PingTarget, xid int) (*PingResponse, error) {
 		}
 		_ = conn.SetReadDeadline(time.Now().Add(time.Duration(a.TimeOutMs) * time.Millisecond))
 
-		buf := make([]byte, 1024)
+		buf := make([]byte, 512)
 		_, err = conn.Read(buf)
 		if err != nil {
 			//log.Debug("Read timeouts")
@@ -407,6 +407,26 @@ func (a *PingAgent) Pinger(target *PingTarget, xid int) (*PingResponse, error) {
 
 		h, data, _ := ParseHeader(buf)
 		//log.Debug("%s Parse ICMP Message %s -> %s", logHeader, h.Src.String(), h.Dst.String())
+
+		if err != nil{
+			//Parse header failed
+			continue
+		}
+
+		//因icmp rawsocket特性，可能会接收到其他进程的icmp报文。避免报文错误，这里我们多读取一次
+		//数据，希望能读取到正确的数据包
+		if h.Src.String() != target.DstIP{
+			_, err = conn.Read(buf)
+			if err != nil {
+				break
+			}
+			h, data, err = ParseHeader(buf)
+			if err != nil{
+				continue
+			}
+
+		}
+
 		bufmsg, err := ParseICMPMessage(data)
 		if err != nil {
 			errMsg := fmt.Sprintf("%s<0x%0x> Parse ICMP Message error! %s.", target.DstIP, xid, err.Error())
@@ -459,3 +479,4 @@ func (a *PingAgent) Pinger(target *PingTarget, xid int) (*PingResponse, error) {
 	}
 	return pr, nil
 }
+

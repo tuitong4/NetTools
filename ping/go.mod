@@ -11,6 +11,7 @@ require (
 
 require (
 	github.com/smartystreets/goconvey v1.6.4 // indirect
+	golang.org/x/net v0.0.0-20200202094626-16171245cfb2
 	gopkg.in/ini.v1 v1.55.0 // indirect
 	local.lc/log v0.0.0
 )

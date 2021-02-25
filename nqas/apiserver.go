@@ -161,7 +161,7 @@ type QualityDataResponse struct {
  */
 func (a *APIServer) queryQualityDataTotalHandler(ctx iris.Context) {
 	var t TimeStampFilterPayload
-	if err := ctx.ReadQuery(&t); err != nil {
+	if err := ctx.ReadJSON(&t); err != nil {
 		respBody := &QualityDataResponse{500, "Query parameters is parsed failed!", nil}
 		d, err := json.Marshal(respBody)
 		if err != nil {
@@ -175,7 +175,7 @@ func (a *APIServer) queryQualityDataTotalHandler(ctx iris.Context) {
 	if t.TimeStamp <= 0 {
 		ctx.Write(a.qualityDataCache)
 	} else {
-		data, err := queryNetQualityData(t.TimeStamp, a.config.DataSourceUrl)
+		data, err := queryNetQualityData(time.Unix(t.TimeStamp, 0), a.config.DataSourceUrl)
 		if err != nil {
 			errMsg := fmt.Sprintf("Retrieved quality data failed. error : %v", err)
 			respBody := &QualityDataResponse{500, errMsg, nil}
@@ -213,7 +213,7 @@ type QueryDetailDataFilter struct {
  */
 func (a *APIServer) queryQualityDataDetailHandler(ctx iris.Context) {
 	var t QueryDetailDataFilter
-	if err := ctx.ReadQuery(&t); err != nil {
+	if err := ctx.ReadJSON(&t); err != nil {
 		respBody := &QualityDataResponse{500, "Query parameters is parsed failed!", nil}
 		d, err := json.Marshal(respBody)
 		if err != nil {
@@ -276,7 +276,7 @@ func (a *APIServer) queryQualityDataDetailHandler(ctx iris.Context) {
  */
 func (a *APIServer) queryQualityDataSummaryHandler(ctx iris.Context){
 	var t QueryDetailDataFilter
-	if err := ctx.ReadQuery(&t); err != nil {
+	if err := ctx.ReadJSON(&t); err != nil {
 		respBody := &QualityDataResponse{500, "Query parameters is parsed failed!", nil}
 		d, err := json.Marshal(respBody)
 		if err != nil {
@@ -332,9 +332,9 @@ func (a *APIServer) queryQualityDataSummaryHandler(ctx iris.Context){
 }
 
 func (a *APIServer) queryData() {
-	//t := time.Now().Unix()
-	//data, err := queryNetQualityData(t, a.config.DataSourceUrl)
-	data, err := queryNetQualityDataMock("./mock_data.json")
+	t := time.Now()
+	data, err := queryNetQualityData(t, a.config.DataSourceUrl)
+	//data, err := queryNetQualityDataMock("./mock_data.json")
 	var respBody *QualityDataResponse
 	if err != nil {
 		errMsg := fmt.Sprintf("Retrieved quality data failed. error : %v", err)

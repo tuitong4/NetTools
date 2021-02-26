@@ -471,7 +471,7 @@ func (a *NetQualityAnalyzer) sendMsg() {
 	var v *NatSchedulePlanValue
 	for {
 		alarm := <-a.alarmMsgChannel
-		log.Debug("Sending Alarm messages...")
+		//log.Debug("Sending Alarm messages...")
 		buffer = new(bytes.Buffer)
 		switch alarm.EventSource {
 		case eventPktLossSummary:

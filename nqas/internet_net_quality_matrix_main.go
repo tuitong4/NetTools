@@ -74,7 +74,6 @@ func MaTrixRun() {
 		defer ticker.Stop()
 		l := sync.Mutex{}
 		for{
-			<- ticker.C
 			thresholds, err := getQualityThreshold(config.DruidConfig.DataSourceUrl)
 			if err != nil{
 				log.Errorf("Failed to get quality thresholds, error: %v", err)
@@ -83,6 +82,8 @@ func MaTrixRun() {
 			l.Lock()
 			GlobalThresholds = thresholds
 			l.Unlock()
+
+			<- ticker.C
 		}
 	}()
 

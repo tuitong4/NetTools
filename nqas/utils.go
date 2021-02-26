@@ -69,7 +69,7 @@ func initLogger(logFile, prefix string) (*log.Logger, error, func() error){
 func convertStringToMap(s string) (map[string]string, error){
 	// Format of s is 'BJ03:BJ04;BJ04:BJ03'
 	m := make(map[string]string)
-	ss := strings.Split(s, ";")
+	ss := strings.Split(s, ",")
 	for _, section := range ss{
 		if section == ""{
 			continue

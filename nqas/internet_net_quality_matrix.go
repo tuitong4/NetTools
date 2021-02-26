@@ -115,6 +115,37 @@ func getInternetNetQualityResult(startTime, endTime time.Time, granularity Granl
 	return netQualityResults, nil
 }
 
+func getInternetNetQualityResultBySource(startTime, endTime time.Time, granularity Granlarity, dataSourceUrl, dataSource string, filter *Filter) ([]*InternetNetQualityRespond, error) {
+	dimSpec := []DimSpec{
+		"srcNetType",
+		"srcLocation",
+	}
+	query := &QueryGroupBy{
+		DataSource:  dataSource,
+		Intervals:   toTimeIntervals(startTime, endTime),
+		Granularity: granularity,
+		Dimensions:  dimSpec,
+		Filter:      filter,
+		Aggregations: []Aggregation{
+			AggLongSum("count", "count"),
+			AggDoubleSum("packetLoss", "packetLoss"),
+			AggDoubleSum("rtt", "rtt"),
+		},
+	}
+
+	resp, err := clientQuery(dataSourceUrl, query)
+	if err != nil {
+		return nil, err
+	}
+
+	netQualityResults := make([]*InternetNetQualityRespond, 0)
+	err = json.Unmarshal(resp, &netQualityResults)
+	if err != nil {
+		return nil, err
+	}
+	return netQualityResults, nil
+}
+
 type Thresholds struct {
 	loss map[string]float32
 	rtt  map[string]float32
@@ -129,7 +160,7 @@ func getQualityThreshold(dataSourceUrl string) (*Thresholds, error) {
 	endTime := time.Now()
 	//开始时间为当前时间前1周
 	startTime := endTime.Add(-7 * 24 * time.Hour)
-	granularity := Granlarity("week")
+	granularity := GranDuration{Type:"duration", Duration: "604800000"}
 	resp, err := getInternetNetQualityResult(startTime,
 		endTime,
 		granularity,
@@ -177,12 +208,12 @@ func getQualityThreshold(dataSourceUrl string) (*Thresholds, error) {
 		loss_val := loss_thresholds[key] / float32(key_counter[key])
 
 		if loss_val < default_loss_min {
-			loss_thresholds[key] = default_loss_min
+			loss_val = default_loss_min
+		}else if loss_val > default_loss_max{
+			loss_val = default_loss_max
 		}
 
-		if loss_val > default_loss_max {
-			loss_thresholds[key] = default_loss_max
-		}
+		loss_thresholds[key] = loss_val
 
 		rtt_thresholds[key] = rtt_thresholds[key] / float32(key_counter[key])
 	}
@@ -194,7 +225,6 @@ func getQualityThreshold(dataSourceUrl string) (*Thresholds, error) {
 }
 
 func preTreatQualityData(data []*InternetNetQualityRespond) []*InternetNetQuality {
-	//default values
 	//loss value should be in [0, 100]
 	lossThreshold := float32(10)
 	rttThreshold := float32(100.0)
@@ -236,8 +266,7 @@ func queryNetQualityData(query_time time.Time, dataSourceUrl string) ([]*Interne
 	endTime := query_time
 	granularity := GranDuration{Type: "duration", Duration: "30000"}
 	data, err := getInternetNetQualityResult(startTime,
-		endTime, granularity, internetNetQualityDataSource,
-		dataSourceUrl, nil)
+		endTime, granularity, dataSourceUrl, internetNetQualityDataSource,nil)
 
 	if err != nil {
 		return nil, err
@@ -252,8 +281,8 @@ func queryNetQualityDataByTarget(startTime, endTime time.Time, srcNetType, dstNe
 	filter := targetFilter(srcNetType, dstNetType, srcLocation, dstLocation)
 
 	data, err := getInternetNetQualityResult(startTime,
-		endTime, granularity, internetNetQualityDataSource,
-		dataSourceUrl, filter)
+		endTime, granularity, dataSourceUrl,
+		internetNetQualityDataSource, filter)
 
 	if err != nil {
 		return nil, err
@@ -267,9 +296,9 @@ func queryNetQualityDataBySource(startTime, endTime time.Time, srcNetType, srcLo
 	granularity := GranDuration{Type: "duration", Duration: "30000"}
 	filter := sourceFilter(srcNetType, srcLocation)
 
-	data, err := getInternetNetQualityResult(startTime,
-		endTime, granularity, internetNetQualityDataSource,
-		dataSourceUrl, filter)
+	data, err := getInternetNetQualityResultBySource(startTime,
+		endTime, granularity, dataSourceUrl,
+		internetNetQualityDataSource, filter)
 
 	if err != nil {
 		return nil, err

@@ -1,0 +1,2441 @@
+var quality_data = [{
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "上海",
+		"rtt": 542.1223,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "上海",
+		"rtt": 407.46484,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "上海",
+		"rtt": 515.0368,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "云南",
+		"rtt": 412.35394,
+		"packetLoss": 1200,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "云南",
+		"rtt": 1025.1016,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "云南",
+		"rtt": 894.1802,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "内蒙古",
+		"rtt": 504.79987,
+		"packetLoss": 800,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "内蒙古",
+		"rtt": 450.64777,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "内蒙古",
+		"rtt": 352.32532,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "北京",
+		"rtt": 71.916435,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "北京",
+		"rtt": 68.86461,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "北京",
+		"rtt": 71.61893,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "吉林",
+		"rtt": 482.89487,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "吉林",
+		"rtt": 295.24255,
+		"packetLoss": 0,
+		"count": 16,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "吉林",
+		"rtt": 267.237,
+		"packetLoss": 800,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "四川",
+		"rtt": 724.48956,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "四川",
+		"rtt": 821.57837,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "四川",
+		"rtt": 862.5941,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "天津",
+		"rtt": 151.5564,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "天津",
+		"rtt": 137.22247,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "天津",
+		"rtt": 99.69722,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "宁夏",
+		"rtt": 470.85815,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "宁夏",
+		"rtt": 425.75403,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "宁夏",
+		"rtt": 434.80066,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "安徽",
+		"rtt": 508.88034,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "安徽",
+		"rtt": 461.2915,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "安徽",
+		"rtt": 493.73206,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "山东",
+		"rtt": 283.32855,
+		"packetLoss": 800,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "山东",
+		"rtt": 368.31427,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "山东",
+		"rtt": 385.26218,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "山西",
+		"rtt": 608.927,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "山西",
+		"rtt": 331.25955,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "山西",
+		"rtt": 245.79594,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "广东",
+		"rtt": 783.2336,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "广东",
+		"rtt": 802.4239,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "广东",
+		"rtt": 775.84454,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "广西",
+		"rtt": 749.74915,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "广西",
+		"rtt": 1080.4479,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "广西",
+		"rtt": 897.01575,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "新疆",
+		"rtt": 921.6539,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "新疆",
+		"rtt": 1307.6986,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "新疆",
+		"rtt": 925.2307,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "江苏",
+		"rtt": 540.1944,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "江苏",
+		"rtt": 485.88617,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "江苏",
+		"rtt": 496.94626,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "江西",
+		"rtt": 593.73425,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "江西",
+		"rtt": 578.45496,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "江西",
+		"rtt": 517.7584,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "河北",
+		"rtt": 179.9091,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "河北",
+		"rtt": 265.05795,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "河北",
+		"rtt": 157.18756,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "河南",
+		"rtt": 365.1429,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "河南",
+		"rtt": 368.6615,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "河南",
+		"rtt": 356.85324,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "浙江",
+		"rtt": 683.88745,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "浙江",
+		"rtt": 591.0018,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "浙江",
+		"rtt": 582.854,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "海南",
+		"rtt": 1013.091,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "海南",
+		"rtt": 965.0195,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "海南",
+		"rtt": 929.43774,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "湖北",
+		"rtt": 547.66016,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "湖北",
+		"rtt": 473.2975,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "湖北",
+		"rtt": 455.19852,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "湖南",
+		"rtt": 577.1734,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "湖南",
+		"rtt": 695.318,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "湖南",
+		"rtt": 355.0995,
+		"packetLoss": 1200,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "甘肃",
+		"rtt": 611.79443,
+		"packetLoss": 300,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "甘肃",
+		"rtt": 600.42615,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "甘肃",
+		"rtt": 431.48834,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "福建",
+		"rtt": 895.1999,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "福建",
+		"rtt": 906.1981,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "福建",
+		"rtt": 622.21765,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "西藏",
+		"rtt": 1198.8293,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "西藏",
+		"rtt": 1175.3353,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "西藏",
+		"rtt": 1534.2988,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "贵州",
+		"rtt": 856.8147,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "贵州",
+		"rtt": 1090.5173,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "贵州",
+		"rtt": 973.8706,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "辽宁",
+		"rtt": 402.04483,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "辽宁",
+		"rtt": 419.5016,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "辽宁",
+		"rtt": 453.66595,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "重庆",
+		"rtt": 744.1605,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "重庆",
+		"rtt": 1053.561,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "重庆",
+		"rtt": 327.11984,
+		"packetLoss": 1200,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "陕西",
+		"rtt": 585.56335,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "陕西",
+		"rtt": 437.26996,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "陕西",
+		"rtt": 445.58157,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "青海",
+		"rtt": 601.63354,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "青海",
+		"rtt": 611.1958,
+		"packetLoss": 0,
+		"count": 16,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "青海",
+		"rtt": 311.3274,
+		"packetLoss": 0,
+		"count": 12,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ03",
+		"dstLocation": "黑龙江",
+		"rtt": 673.4583,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ03",
+		"dstLocation": "黑龙江",
+		"rtt": 510.01108,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ03",
+		"dstLocation": "黑龙江",
+		"rtt": 395.80902,
+		"packetLoss": 800,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "上海",
+		"rtt": 560.03827,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "上海",
+		"rtt": 458.60895,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "上海",
+		"rtt": 564.8167,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "云南",
+		"rtt": 444.8392,
+		"packetLoss": 1200,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "云南",
+		"rtt": 1060.9912,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "云南",
+		"rtt": 856.9512,
+		"packetLoss": 500,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "内蒙古",
+		"rtt": 274.4138,
+		"packetLoss": 800,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "内蒙古",
+		"rtt": 497.366,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "内蒙古",
+		"rtt": 409.87726,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "北京",
+		"rtt": 74.15043,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "北京",
+		"rtt": 153.01457,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "北京",
+		"rtt": 115.69231,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "吉林",
+		"rtt": 742.2473,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "吉林",
+		"rtt": 337.24603,
+		"packetLoss": 0,
+		"count": 16,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "吉林",
+		"rtt": 285.18884,
+		"packetLoss": 800,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "四川",
+		"rtt": 704.0368,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "四川",
+		"rtt": 870.88196,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "四川",
+		"rtt": 883.74304,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "天津",
+		"rtt": 121.37257,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "天津",
+		"rtt": 192.3958,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "天津",
+		"rtt": 154.81067,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "宁夏",
+		"rtt": 446.95422,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "宁夏",
+		"rtt": 539.7976,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "宁夏",
+		"rtt": 457.51895,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "安徽",
+		"rtt": 498.62222,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "安徽",
+		"rtt": 506.34296,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "安徽",
+		"rtt": 518.43365,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "山东",
+		"rtt": 296.4697,
+		"packetLoss": 800,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "山东",
+		"rtt": 423.125,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "山东",
+		"rtt": 432.78452,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "山西",
+		"rtt": 543.6294,
+		"packetLoss": 200,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "山西",
+		"rtt": 323.64478,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "山西",
+		"rtt": 246.74579,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "广东",
+		"rtt": 778.27924,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "广东",
+		"rtt": 856.0405,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "广东",
+		"rtt": 802.82086,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "广西",
+		"rtt": 718.7355,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "广西",
+		"rtt": 1210.9329,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "广西",
+		"rtt": 904.4926,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "新疆",
+		"rtt": 880.8975,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "新疆",
+		"rtt": 1476.2794,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "新疆",
+		"rtt": 991.1354,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "江苏",
+		"rtt": 546.30304,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "江苏",
+		"rtt": 540.5643,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "江苏",
+		"rtt": 569.5375,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "江西",
+		"rtt": 602.20746,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "江西",
+		"rtt": 609.51324,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "江西",
+		"rtt": 494.23322,
+		"packetLoss": 600,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "河北",
+		"rtt": 148.44327,
+		"packetLoss": 600,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "河北",
+		"rtt": 310.85333,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "河北",
+		"rtt": 193.29822,
+		"packetLoss": 500,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "河南",
+		"rtt": 380.8966,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "河南",
+		"rtt": 406.77744,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "河南",
+		"rtt": 438.01917,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "浙江",
+		"rtt": 708.7125,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "浙江",
+		"rtt": 632.0524,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "浙江",
+		"rtt": 583.0385,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "海南",
+		"rtt": 963.3816,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "海南",
+		"rtt": 1057.9651,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "海南",
+		"rtt": 981.8196,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "湖北",
+		"rtt": 518.0328,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "湖北",
+		"rtt": 493.44342,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "湖北",
+		"rtt": 482.59723,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "湖南",
+		"rtt": 566.4318,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "湖南",
+		"rtt": 733.9839,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "湖南",
+		"rtt": 368.96814,
+		"packetLoss": 1200,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "甘肃",
+		"rtt": 681.2282,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "甘肃",
+		"rtt": 642.6249,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "甘肃",
+		"rtt": 494.987,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "福建",
+		"rtt": 922.57697,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "福建",
+		"rtt": 824.0714,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "福建",
+		"rtt": 693.537,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "西藏",
+		"rtt": 1137.6531,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "西藏",
+		"rtt": 1281.588,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "西藏",
+		"rtt": 1514.9349,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "贵州",
+		"rtt": 872.0619,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "贵州",
+		"rtt": 1052.5997,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "贵州",
+		"rtt": 945.59344,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "辽宁",
+		"rtt": 350.2508,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "辽宁",
+		"rtt": 465.6248,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "辽宁",
+		"rtt": 470.19882,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "重庆",
+		"rtt": 734.13306,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "重庆",
+		"rtt": 949.924,
+		"packetLoss": 400,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "重庆",
+		"rtt": 358.67722,
+		"packetLoss": 1200,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "陕西",
+		"rtt": 557.78625,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "陕西",
+		"rtt": 494.63242,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "陕西",
+		"rtt": 459.64462,
+		"packetLoss": 100,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "青海",
+		"rtt": 639.4414,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "青海",
+		"rtt": 680.96735,
+		"packetLoss": 0,
+		"count": 16,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "青海",
+		"rtt": 293.751,
+		"packetLoss": 0,
+		"count": 12,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "电信",
+		"srcLocation": "BJ04",
+		"dstLocation": "黑龙江",
+		"rtt": 646.2803,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "移动",
+		"srcLocation": "BJ04",
+		"dstLocation": "黑龙江",
+		"rtt": 572.69476,
+		"packetLoss": 0,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}, {
+	"timestamp": "2020-09-17T16:49:00.000Z",
+	"value": {
+		"srcNetType": "BGP",
+		"dstNetType": "联通",
+		"srcLocation": "BJ04",
+		"dstLocation": "黑龙江",
+		"rtt": 410.62924,
+		"packetLoss": 800,
+		"count": 20,
+		"lossThreshold": 10,
+		"rttThreshold": 100
+	}
+}]
+
+export function setMapValue(map, keys, value){
+	var _map = map 
+	for (var i=0; i< keys.length; i++){
+		var key = keys[i]
+		if (i === keys.length - 1){
+			_map.set(key, value)
+			return
+		}
+
+		if (!_map.has(key)){
+			_map.set(key, new Map())
+		}
+		_map = _map.get(key)
+	}
+}
+
+
+export default {
+	quality_data,
+	setMapValue
+}

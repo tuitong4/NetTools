@@ -1,0 +1,78 @@
+
+MATRIX-2021/01/26 23:50:36 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:74: Listening on 0.0.0.0:8080
+MATRIX-2021/01/26 23:52:06 /Users/heizi/GolandProjects/NetTools/nqas/internet_net_quality_matrix_analysis.go:464: Sending Alarm messages...
+MATRIX-2021/01/26 23:52:06 /Users/heizi/GolandProjects/NetTools/nqas/internet_net_quality_matrix_analysis.go:464: Sending Alarm messages...
+MATRIX-2021/01/26 23:52:06 /Users/heizi/GolandProjects/NetTools/nqas/internet_net_quality_matrix_analysis.go:464: Sending Alarm messages...
+MATRIX-2021/01/26 23:52:06 /Users/heizi/GolandProjects/NetTools/nqas/mock.go:31: Alarm Message:  &{ 4  【公网网络故障通知】BJ03-BGP出口至部分地区网络质量下降通知
+故障现象：当前BJ03-BGP出口网络质量下降， 出口到3个省份异常。异常省份平均丢包率约28%
+故障时间：2020-09-18 00:49:00 - 当前， 持续188583分钟
+影响范围：互联网访问BJ03机房业务和BJ03服务器主动访问互联网的请求会有超时，延时增大的情况
+解决进展：网络团队正在排查原因，恢复时间待定。如果2分钟内未恢复，网络团队将执行跨机房切换主动上网。各个业务请根据自身情况主动调整业务到其他机房
+故障原因：待定
+}
+MATRIX-2021/01/26 23:52:06 /Users/heizi/GolandProjects/NetTools/nqas/mock.go:31: Alarm Message:  &{ 4  【公网网络故障通知】BJ04-BGP出口至部分地区网络质量下降通知
+故障现象：当前BJ04-BGP出口网络质量下降， 出口到3个省份异常。异常省份平均丢包率约28%
+故障时间：2020-09-18 00:49:00 - 当前， 持续188583分钟
+影响范围：互联网访问BJ04机房业务和BJ04服务器主动访问互联网的请求会有超时，延时增大的情况
+解决进展：网络团队正在排查原因，恢复时间待定。如果2分钟内未恢复，网络团队将执行跨机房切换主动上网。各个业务请根据自身情况主动调整业务到其他机房
+故障原因：待定
+}
+MATRIX-2021/01/26 23:52:06 /Users/heizi/GolandProjects/NetTools/nqas/internet_net_quality_matrix_analysis.go:464: Sending Alarm messages...
+MATRIX-2021/01/26 23:52:06 /Users/heizi/GolandProjects/NetTools/nqas/mock.go:31: Alarm Message:  &{ 4  【公网网络故障通知】BJ03-BGP出口网络质量下降通知
+故障现象：当前BJ03-BGP出口网络质量下降，出口整体丢包率约8%
+故障时间：2020-09-18 00:49:00 - 当前， 持续188583分钟
+影响范围：互联网访问BJ03机房业务和BJ03服务器主动访问互联网的请求会有超时，延时增大的情况
+解决进展：网络团队正在排查原因，恢复时间待定。如果2分钟内未恢复，网络团队将执行跨机房切换主动上网。各个业务请根据自身情况主动调整业务到其他机房
+故障原因：待定
+}
+MATRIX-2021/01/26 23:52:06 /Users/heizi/GolandProjects/NetTools/nqas/mock.go:31: Alarm Message:  &{ 4  【公网网络故障通知】BJ04-BGP出口网络质量下降通知
+故障现象：当前BJ04-BGP出口网络质量下降，出口整体丢包率约9%
+故障时间：2020-09-18 00:49:00 - 当前， 持续188583分钟
+影响范围：互联网访问BJ04机房业务和BJ04服务器主动访问互联网的请求会有超时，延时增大的情况
+解决进展：网络团队正在排查原因，恢复时间待定。如果2分钟内未恢复，网络团队将执行跨机房切换主动上网。各个业务请根据自身情况主动调整业务到其他机房
+故障原因：待定
+}
+MATRIX-2021/01/26 23:52:36 /Users/heizi/GolandProjects/NetTools/nqas/internet_net_quality_matrix_analysis.go:464: Sending Alarm messages...
+MATRIX-2021/01/26 23:52:36 /Users/heizi/GolandProjects/NetTools/nqas/internet_net_quality_matrix_analysis.go:489: Failed to format the template string, error: template: templateNatScheduleAlarm:1:54: executing "templateNatScheduleAlarm" at <.DstLocation>: can't evaluate field DstLocation in type *nqas.AlarmMsgValue
+MATRIX-2021/01/26 23:52:36 /Users/heizi/GolandProjects/NetTools/nqas/internet_net_quality_matrix_analysis.go:464: Sending Alarm messages...
+MATRIX-2021/01/26 23:52:36 /Users/heizi/GolandProjects/NetTools/nqas/internet_net_quality_matrix_analysis.go:489: Failed to format the template string, error: template: templateNatScheduleAlarm:1:54: executing "templateNatScheduleAlarm" at <.DstLocation>: can't evaluate field DstLocation in type *nqas.AlarmMsgValue
+MATRIX-2021/01/27 23:00:25 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:74: Listening on 0.0.0.0:8080
+MATRIX-2021/01/27 23:31:55 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:74: Listening on 0.0.0.0:8080
+MATRIX-2021/01/27 23:33:25 /Users/heizi/GolandProjects/NetTools/nqas/internet_net_quality_matrix_analysis.go:464: Sending Alarm messages...
+MATRIX-2021/01/27 23:33:25 /Users/heizi/GolandProjects/NetTools/nqas/internet_net_quality_matrix_analysis.go:464: Sending Alarm messages...
+MATRIX-2021/01/27 23:33:25 /Users/heizi/GolandProjects/NetTools/nqas/internet_net_quality_matrix_analysis.go:464: Sending Alarm messages...
+MATRIX-2021/01/27 23:33:25 /Users/heizi/GolandProjects/NetTools/nqas/mock.go:31: Alarm Message:  &{ 4  【公网网络故障通知】BJ03-BGP出口网络质量下降通知
+故障现象：当前BJ03-BGP出口网络质量下降，出口整体丢包率约8%
+故障时间：2020-09-18 00:49:00 - 当前， 持续190004分钟
+影响范围：互联网访问BJ03机房业务和BJ03服务器主动访问互联网的请求会有超时，延时增大的情况
+解决进展：网络团队正在排查原因，恢复时间待定。如果2分钟内未恢复，网络团队将执行跨机房切换主动上网。各个业务请根据自身情况主动调整业务到其他机房
+故障原因：待定
+}
+MATRIX-2021/01/27 23:33:25 /Users/heizi/GolandProjects/NetTools/nqas/mock.go:31: Alarm Message:  &{ 4  【公网网络故障通知】BJ03-BGP出口至部分地区网络质量下降通知
+故障现象：当前BJ03-BGP出口网络质量下降， 出口到3个省份异常。异常省份平均丢包率约28%
+故障时间：2020-09-18 00:49:00 - 当前， 持续190004分钟
+影响范围：互联网访问BJ03机房业务和BJ03服务器主动访问互联网的请求会有超时，延时增大的情况
+解决进展：网络团队正在排查原因，恢复时间待定。如果2分钟内未恢复，网络团队将执行跨机房切换主动上网。各个业务请根据自身情况主动调整业务到其他机房
+故障原因：待定
+}
+MATRIX-2021/01/27 23:33:25 /Users/heizi/GolandProjects/NetTools/nqas/internet_net_quality_matrix_analysis.go:464: Sending Alarm messages...
+MATRIX-2021/01/27 23:33:25 /Users/heizi/GolandProjects/NetTools/nqas/mock.go:31: Alarm Message:  &{ 4  【公网网络故障通知】BJ04-BGP出口至部分地区网络质量下降通知
+故障现象：当前BJ04-BGP出口网络质量下降， 出口到3个省份异常。异常省份平均丢包率约28%
+故障时间：2020-09-18 00:49:00 - 当前， 持续190004分钟
+影响范围：互联网访问BJ04机房业务和BJ04服务器主动访问互联网的请求会有超时，延时增大的情况
+解决进展：网络团队正在排查原因，恢复时间待定。如果2分钟内未恢复，网络团队将执行跨机房切换主动上网。各个业务请根据自身情况主动调整业务到其他机房
+故障原因：待定
+}
+MATRIX-2021/01/27 23:33:25 /Users/heizi/GolandProjects/NetTools/nqas/mock.go:31: Alarm Message:  &{ 4  【公网网络故障通知】BJ04-BGP出口网络质量下降通知
+故障现象：当前BJ04-BGP出口网络质量下降，出口整体丢包率约9%
+故障时间：2020-09-18 00:49:00 - 当前， 持续190004分钟
+影响范围：互联网访问BJ04机房业务和BJ04服务器主动访问互联网的请求会有超时，延时增大的情况
+解决进展：网络团队正在排查原因，恢复时间待定。如果2分钟内未恢复，网络团队将执行跨机房切换主动上网。各个业务请根据自身情况主动调整业务到其他机房
+故障原因：待定
+}
+MATRIX-2021/01/27 23:33:55 /Users/heizi/GolandProjects/NetTools/nqas/internet_net_quality_matrix_analysis.go:464: Sending Alarm messages...
+MATRIX-2021/01/27 23:33:55 /Users/heizi/GolandProjects/NetTools/nqas/internet_net_quality_matrix_analysis.go:489: Failed to format the template string, error: template: templateNatScheduleAlarm:1:54: executing "templateNatScheduleAlarm" at <.DstLocation>: can't evaluate field DstLocation in type *nqas.AlarmMsgValue
+MATRIX-2021/01/27 23:33:55 /Users/heizi/GolandProjects/NetTools/nqas/internet_net_quality_matrix_analysis.go:464: Sending Alarm messages...
+MATRIX-2021/01/27 23:33:55 /Users/heizi/GolandProjects/NetTools/nqas/internet_net_quality_matrix_analysis.go:489: Failed to format the template string, error: template: templateNatScheduleAlarm:1:54: executing "templateNatScheduleAlarm" at <.DstLocation>: can't evaluate field DstLocation in type *nqas.AlarmMsgValue
+MATRIX-2021/01/28 00:12:46 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:74: Listening on 0.0.0.0:8080
+MATRIX-2021/01/29 17:13:10 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:74: Listening on 0.0.0.0:8080

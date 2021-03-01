@@ -381,10 +381,14 @@ export default {
         return
       }
       datatime_iso = this.queryDateTime.toISOString()
-      this.$axios.post("/api", {'timestamp':datatime_iso})
+      this.$axios.post("/api/netquality", {'timestamp':datatime_iso})
       .then(function(response){
         data = response
-        formatQualityData(data)
+        if (data.code != 200){
+          alert(data.message)
+          return
+        }       
+        formatQualityData(data.data)
       })
 
     }

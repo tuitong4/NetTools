@@ -169,8 +169,16 @@ export default {
     // 	RttThreshold  float32 `json:"rttThreshold"`
     // }
 
-
-
+    var d = []
+    data.forEach(el => {
+      d.push({
+          "timestamp" : el.timestamp,
+          "packetLoss" : el.value.packetLoss/count,
+          "lossThreshold": el.value.lossThreshold,
+          "rtt": el.value.rtt/count
+      })
+    });
+    this.dataSets = d
     },
 
     formatLoss: function(data){
@@ -266,7 +274,7 @@ export default {
         return
       }
 
-      this.$axios.post("/netqualitydetail", {
+      this.$axios.post("/api/netqualitydetail", {
                                           'starttime': start_timestamp,
                                           'endtime': end_timestamp,
                                           'srcnettype': this.srcNetType,
@@ -275,7 +283,11 @@ export default {
                                           'dstlocation': this.dstLocation})
       .then(function(response){
         data = response
-        formatQualityData(data)
+        if (data.code != 200){
+          alert(data.message)
+          return
+        }
+        formatQualityData(data.data)
       })
 
     }

@@ -75,8 +75,7 @@
               :color="getDelayColor(val, idx)" 
               label 
               link 
-              href="http://www.baidu.com"
-              target="_blank"
+              @click="goToDetailPage(val)"
               class="fix-width">
                 {{ formatDelay(val) }}
               </v-chip>
@@ -115,6 +114,7 @@ export default {
     },
     disalbeAutoResfresh: false,
     queryDateTime:"",
+    autoResfreshTimer: null,
   }),
   methods:{
     formatQualityData: function(data){
@@ -301,8 +301,7 @@ export default {
         })
       })
       this.dataSets["headers"] = ["目标"].concat(data_headers)
-
-      console.log(this.dataSets)
+      //console.log(this.dataSets)
     },
 
     formatLoss: function(data){
@@ -371,6 +370,19 @@ export default {
         window.open(_href, "_blank")
       }      
     },
+    _queryData: function(timestamp){
+      //timestamp is unix time stamps
+      this.$axios.post("/api/netquality", {'timestamp':timestamp})
+      .then(function(response){
+        data = response
+        if (data.code != 200){
+          alert(data.message)
+          return
+        }       
+        formatQualityData(data.data)
+      })
+    },
+
     queryQualityData: function(){
       if (this.disalbeAutoResfresh){
         return
@@ -380,24 +392,37 @@ export default {
         alert("请输入查询时间")
         return
       }
-      datatime_iso = this.queryDateTime.toISOString()
-      this.$axios.post("/api/netquality", {'timestamp':datatime_iso})
-      .then(function(response){
-        data = response
-        if (data.code != 200){
-          alert(data.message)
-          return
-        }       
-        formatQualityData(data.data)
-      })
+      timestamp = parseInt(this.this.queryDateTime.getTime()/1000)
+      this._queryData(timestamp)
+    },
 
-    }
+    refreshQualityDataAuto:function(){
+      if(this.autoResfreshTimer != null) {
+        return
+      }
+      this.autoResfreshTimer = setInterval(() => {
+        //每30s查询最新数据，时间戳设置为0.API根据请求时间戳是0自动返回最新数据
+        this._queryData(0)
+      }, 30000) 
+    },
+
+    stopRefreshQualityData: function(){
+      clearInterval(this.autoResfreshTimer)
+      this.autoResfreshTimer = null
+  },
+},
+
+  mounted: function(){
+    //第一次加载
+    this._queryData(0)
+    //后续定时加载
+    this.refreshQualityDataAuto()
   },
 
-  created: function(){
-    this.formatQualityData(this.qualityData)
-  },
-
+  destroyed: function(){
+      //销毁计时器
+      this.stopRefreshQualiytData()
+  }
 }
 
 </script>

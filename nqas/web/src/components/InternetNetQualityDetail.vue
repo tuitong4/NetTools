@@ -145,7 +145,8 @@ export default {
     srcNetType:  "",
     dstNetType:  "",
     srcLocation: "",
-    dstLocation: ""
+    dstLocation: "",
+    autoResfreshTimer: null,
   }),
 
   methods:{
@@ -178,7 +179,7 @@ export default {
           "rtt": el.value.rtt/count
       })
     });
-    this.dataSets = d
+    return d
     },
 
     formatLoss: function(data){
@@ -195,42 +196,6 @@ export default {
       return data
     },
 
-    getLossColor: function(value, idx){
-      if (typeof(value) === "object"){
-        if (value.packetLoss > value.lossThreshold){
-          return "#fd5e53"
-        }else{
-          if (idx%2 === 0){
-            return "#b0eacd"
-          }else{
-            return "#7AD6A8"
-          }
-        }
-      }
-      return "defualt"
-    },
-
-    getDelayColor: function(value, idx){
-      if (typeof(value) === "object"){
-        if (value.rtt > value.rttThreshold){
-          return "#fd5e53"
-        }else{
-          if (idx%2 === 0){
-            return "#b0eacd"
-          }else{
-            return "#7AD6A8"
-          }
-        }
-      }
-      return "defualt"
-    },
-
-    createUrl: function(data){
-      if (typeof(value) === "object"){
-        return "/netqualitydetail?srcnettype=&dstnettype=&srclocation=&dstlocation=&starttime=&endtime=&"
-      }
-      return ""
-    },
     goToDetailPage: function(data){
       if (typeof(data) === "object"){
         
@@ -253,6 +218,25 @@ export default {
         window.open(_href, "_blank")
       }      
     },
+
+    _queryData:function(start_timestamp, end_timestamp){
+      this.$axios.post("/api/netqualitydetail", {
+                                          'starttime': start_timestamp,
+                                          'endtime': end_timestamp,
+                                          'srcnettype': this.srcNetType,
+                                          'dstnettype': this.dstNetType,
+                                          'srclocation': this.srcLocation,
+                                          'dstlocation': this.dstLocation})
+      .then(function(response){
+        data = response
+        if (data.code != 200){
+          alert(data.message)
+          return
+        }
+        return data.data
+      })
+    },
+
     queryQualityDataDetail: function(){
       if (this.disalbeAutoResfresh){
         return
@@ -273,23 +257,28 @@ export default {
         alert("起始事件小于结束时间，请重新选择！")
         return
       }
+      resp_data = this._queryData(start_timestamp, end_timestamp)
+      this.dataSets = this.formatQualityDetailData(resp_data)
+    },
 
-      this.$axios.post("/api/netqualitydetail", {
-                                          'starttime': start_timestamp,
-                                          'endtime': end_timestamp,
-                                          'srcnettype': this.srcNetType,
-                                          'dstnettype': this.dstNetType,
-                                          'srclocation': this.srcLocation,
-                                          'dstlocation': this.dstLocation})
-      .then(function(response){
-        data = response
-        if (data.code != 200){
-          alert(data.message)
+    resfreshQualityDataAuto:function(){
+      if(this.autoResfreshTimer != null) {
+        return
+      }
+      this.autoResfreshTimer = setInterval(() => {
+        //每30s查询最新数据，时间戳设置为0.API根据请求时间戳是0自动返回最新数据
+        //该方式为增量获取数据，不是全量拉取
+        data = this._queryData(0, 0)
+        //TODO: handle the data
+        if (data && data.length > 0){
           return
         }
-        formatQualityData(data.data)
-      })
-
+        //将增量拉取的数据追加到现有数据后，并移除最老的数据
+        for (i=0;i<data.length;i++){
+          this.dataSets.shift()
+          this.dataSets.push(data[i])
+        }
+      }, 30000);  
     }
   },
 

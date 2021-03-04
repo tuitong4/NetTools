@@ -40,7 +40,8 @@
         class="fill-height"
         fluid
       >
-      <netqualitymatrix v-bind:qualityData=qualityData></netqualitymatrix>
+      <!-- <netqualitymatrix v-bind:qualityData=qualityData></netqualitymatrix> -->
+      <netqualitymatrix></netqualitymatrix>
       </v-container>
     </v-main>
   </v-app>
@@ -48,7 +49,7 @@
 
 <script>
 import InternetNetQualityVue from './components/InternetNetQuality.vue'
-import quality_data from './utils/utils'
+//import quality_data from './utils/utils'
 
 export default {
   props: {
@@ -56,14 +57,11 @@ export default {
   },
   data: () => ({
     drawer: false,
-    qualityData: quality_data.quality_data
+    //qualityData: quality_data.quality_data
 
   }),
   components: {
     netqualitymatrix: InternetNetQualityVue
-  },
-  created: function(){
-    //console.log(this.qualityData)
   }
 }
 </script>

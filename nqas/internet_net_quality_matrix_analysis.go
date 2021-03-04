@@ -503,7 +503,7 @@ func (a *NetQualityAnalyzer) sendMsg() {
 		if err != nil {
 			log.Errorf("Failed to format the template string, error: %v", err)
 		} else {
-			go sendMessageMock(a.msgApi, buffer, alarmApiEventCode)
+			go sendMessage(a.msgApi, buffer, alarmApiEventCode)
 		}
 	}
 }
@@ -513,11 +513,11 @@ func (a *NetQualityAnalyzer) abnormalAlarm() {
 		event := <-a.abnormalAlarmChannel
 		timeNow := time.Now()
 		startTime := event.eventStartTime.Local()
-		abnormalDuration := timeNow.Sub(startTime).Minutes()
+		abnormalDuration := timeNow.Sub(startTime).Seconds()
 		strStartTime := startTime.Format(TimeYmdHmsFormat)
 		strPacketLoss := fmt.Sprintf("%.f", event.packetLoss/float32(event.count)) + "%"
 		strRtt := fmt.Sprintf("%.f", event.rtt/float32(event.count))
-		strDuration := fmt.Sprintf("%.f", abnormalDuration)
+		strDuration := fmt.Sprintf("%.1f", abnormalDuration/60)
 
 		a.alarmMsgChannel <- &AlarmMsgValue{
 			EventSource: event.eventSource,
@@ -541,14 +541,14 @@ func (a *NetQualityAnalyzer) abnormalRecoverAlarm() {
 		startTime := event.eventStartTime.Local()
 		endTime := event.eventEndTime.Local()
 
-		abnormalDuration := endTime.Sub(startTime).Minutes()
+		abnormalDuration := endTime.Sub(startTime).Seconds()
 
 		strStartTime := startTime.Format(TimeYmdHmsFormat)
 		strEndTime := endTime.Format(TimeYmdHmsFormat)
 
 		strPacketLoss := fmt.Sprintf("%.f", event.packetLoss/float32(event.count)) + "%"
 		strRtt := fmt.Sprintf("%.f", event.rtt/float32(event.count))
-		strDuration := fmt.Sprintf("%.f", abnormalDuration)
+		strDuration := fmt.Sprintf("%.1f", abnormalDuration/60)
 
 		a.alarmMsgChannel <- &AlarmMsgValue{
 			EventSource: event.eventSource,

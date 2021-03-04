@@ -23,7 +23,7 @@ func MaTrixRun() {
 	initFlag()
 
 	//TODO: Remove this
-	args.configFile = "./config/internet_net_quality_matrix_config.conf"
+	//args.configFile = "./config/internet_net_quality_matrix_config.conf"
 
 	if args.configFile == "" {
 		log.Error("Configuration file should not be empty.")
@@ -43,7 +43,7 @@ func MaTrixRun() {
 	}
 	defer w.Close()
 
-	SetLogger("MATRIX-", w)
+	SetLogger("", w)
 
 	//初始化全局变量
 	internetNetQualityDataSource = config.DruidConfig.DataSource

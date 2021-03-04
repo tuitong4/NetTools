@@ -3,11 +3,12 @@ package nqas
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"local.lc/log"
 	"net/http"
+	"net/url"
 	"text/template"
-	"time"
 )
 
 var (
@@ -91,34 +92,29 @@ func initAlarmApiParameter(alarmConfig *AlarmSetting) {
 	alarmApiSecretKey = alarmConfig.AlarmApiSecretKey
 }
 
-func sendMessage(url string, data *bytes.Buffer, eventCode int) {
+func sendMessage(alarmUrl string, data *bytes.Buffer, eventCode int) {
 
-	json_payload := &AlarmMessage{
-		AppName:   alarmApiAppName,
-		EventCode: eventCode,
-		SecretKey: alarmApiSecretKey,
-		Content:   data.String(),
+	u, err := url.Parse(alarmUrl)
+	if err != nil{
+		log.Errorf("Failed to parse the alarm url, error: %v")
+		return
 	}
 
-	payload, err := json.Marshal(json_payload)
+	queryParameter := u.Query()
+	queryParameter.Set("appName", alarmApiAppName)
+	queryParameter.Set("eventCode", fmt.Sprintf("%d", eventCode))
+	queryParameter.Set("secretKey", alarmApiSecretKey)
+	queryParameter.Set("content", data.String())
+
+	u.RawQuery = queryParameter.Encode()
+
+	resp, err := http.Get(u.String())
+
 	if err != nil {
-		log.Errorf("%v", err)
+		log.Errorf("Failed to connect to alarm api, error: %v", err)
+		return
 	}
-
-	req, err := http.NewRequest("POST", url, bytes.NewBuffer(payload))
-	defer req.Body.Close()
-	if err != nil {
-		log.Errorf("%v", err)
-	}
-
-	req.Header.Add("content-type", "application/json")
-	client := &http.Client{Timeout: 5 * time.Second}
-
-	resp, err := client.Do(req)
 	defer resp.Body.Close()
-	if err != nil {
-		log.Errorf("%v", err)
-	}
 
 	if resp.StatusCode != 200 {
 		log.Errorf("Http code '%d' is received from the server", resp.StatusCode)
@@ -133,9 +129,12 @@ func sendMessage(url string, data *bytes.Buffer, eventCode int) {
 	err = json.Unmarshal(result, &resp_smg)
 	if err != nil {
 		log.Errorf("Failed to Unmarshal the response message, error: %v", err)
+		return
 	}
 
 	if resp_smg.Code != 200 {
 		log.Errorf("Send alarm message failed, error: %s", resp_smg.Message)
+	}else{
+		log.Info("Send alarm message successfully!")
 	}
 }

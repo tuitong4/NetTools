@@ -41,14 +41,14 @@
         fluid
       >
       <!-- <netqualitymatrix v-bind:qualityData=qualityData></netqualitymatrix> -->
-      <netqualitymatrix></netqualitymatrix>
+      <netqualitydetail :querySummary=false></netqualitydetail>
       </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import InternetNetQualityVue from './components/InternetNetQuality.vue'
+import InternetNetQualityDetail from './components/InternetNetQualityDetail.vue'
 //import quality_data from './utils/utils'
 
 export default {
@@ -61,7 +61,7 @@ export default {
 
   }),
   components: {
-    netqualitymatrix: InternetNetQualityVue
+    netqualitydetail: InternetNetQualityDetail
   },
 }
 </script>

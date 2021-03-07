@@ -98,9 +98,6 @@
 import {setMapValue} from '../utils/utils'
 export default {
   name: 'InternetNetQuality',
-  props: {
-    qualityData: Array
-  },
   data:()=>({
     netTypeOrder: ["Any", "BGP", "电信", "联通", "移动", "Other"],
     srcLocationOrder: ["BJ03", "BJ04", "BJ05"],
@@ -384,10 +381,6 @@ export default {
     },
 
     queryQualityData: function(){
-      if (this.disalbeAutoResfresh){
-        return
-      }
-
       if (!this.queryDateTime){
         alert("请输入查询时间")
         return
@@ -402,6 +395,10 @@ export default {
       }
       this.autoResfreshTimer = setInterval(() => {
         //每30s查询最新数据，时间戳设置为0.API根据请求时间戳是0自动返回最新数据
+        //自动刷新被禁用则直接返回
+        if (this.disalbeAutoResfresh){
+          return
+        }
         this._queryData(0)
       }, 30000) 
     },

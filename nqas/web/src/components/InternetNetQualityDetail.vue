@@ -1,5 +1,17 @@
 </<template>
   <v-container>
+    <v-alert
+      v-model="alert"
+      border="left"
+      close-text="Close Alert"
+      color="deep-purple accent-4"
+      dark
+      dismissible
+    >
+    dasjdiowjioqjwn
+    dasnkdna
+    dsalnl
+ </v-alert>
     <v-row align="center" >
       <v-col>
         <v-menu
@@ -62,54 +74,7 @@
     </v-row>
 
     <v-divider></v-divider>
-
-    <table>
-      <colgroup>
-        <col v-for="(item, index) in dataSets.headers" :key="index" :style="{'width': index===0?'6em':'3em'}">
-      </colgroup>
-      <thead>
-        <tr>
-          <th class="vertical-text" v-for="header in dataSets.headers" :key="header">
-            {{ header }}
-          </th>
-        </tr>
-      </thead>
-      <tbody v-if="display === 'loss'">
-        <tr
-          v-for="(item, idx) in dataSets.data"
-          :key="item['dest']"
-        >
-          <td v-for="val in item" :key="item[val]" class="text-right">
-              <v-chip 
-              :color="getLossColor(val, idx)" 
-              label 
-              link 
-              @click="goToDetailPage(val)"
-              class="fix-width">
-                {{ formatLoss(val) }}
-              </v-chip>
-          </td>
-        </tr>
-      </tbody>
-      <tbody v-else class="text-right">
-        <tr
-          v-for="(item, idx) in dataSets.data"
-          :key="item.dest"
-        >
-          <td v-for="val in item" :key="item[val]" class="text-right">
-              <v-chip 
-              :color="getDelayColor(val, idx)" 
-              label 
-              link 
-              href="http://www.baidu.com"
-              target="_blank"
-              class="fix-width">
-                {{ formatDelay(val) }}
-              </v-chip>
-          </td>
-        </tr>
-      </tbody>
-    </table>    
+    <div id="chartcontainer"></div>   
   </v-container>
 </template>
 
@@ -123,13 +88,14 @@
 <script>
 
 import {setMapValue} from '../utils/utils'
+import {Chart} from '@antv/g2';
 export default {
   name: 'InternetNetQualityDetail',
   props: {
-    qualityData: Array
-  },
+    querySummary:Boolean
+    },
   data:()=>({
-    dataSets: {}, //Inluced Time Axis, Loss Vlaues, Rtt Values;
+    dataSets: [], //Inluced Time Axis, Loss Vlaues, Rtt Values;
     datetimePickerProps:{
       timeProps:{
         useSeconds: true,
@@ -147,6 +113,7 @@ export default {
     srcLocation: "",
     dstLocation: "",
     autoResfreshTimer: null,
+    chart : null,
   }),
 
   methods:{
@@ -196,39 +163,26 @@ export default {
       return data
     },
 
-    goToDetailPage: function(data){
-      if (typeof(data) === "object"){
-        
-        var _end_time = parseInt(new Date().getTime()/1000);
-        //时间间隔默认为12小时
-        var _start_time = _end_time - 43200
-
-        //针对不同的请求设置不同的请求连接
-        if (data.dstLocation==="Any" && data.dstNetType==="Any"){
-          var _href = `/netqualitysummary?srcnettype=${data.srcNetType}`
-        }else{
-          var _href = `/netqualitydetail?srcnettype=${data.srcNetType}`
-        }
-        _href = _href + `&dstnettype=${data.dstNetType}`
-        _href = _href + `&srclocation=${data.srcLocation}`
-        _href = _href + `&dstlocation=${data.dstLocation}`
-        _href = _href + `&starttime=${_start_time}`
-        _href = _href + `&endtime=${_end_time}`
-
-        window.open(_href, "_blank")
-      }      
-    },
-
     _queryData:function(start_timestamp, end_timestamp){
-      this.$axios.post("/api/netqualitydetail", {
-                                          'starttime': start_timestamp,
-                                          'endtime': end_timestamp,
-                                          'srcnettype': this.srcNetType,
-                                          'dstnettype': this.dstNetType,
-                                          'srclocation': this.srcLocation,
-                                          'dstlocation': this.dstLocation})
+      console.log(this.querySummary)
+      if (this.querySummary){
+        var apiUri = "/api/netqualitysummary"
+        var queryParameter = {'starttime': start_timestamp,
+                              'endtime': end_timestamp,
+                              'srcnettype': this.srcNetType,
+                              'srclocation': this.srcLocation}           
+      }else{
+        var apiUri = "/api/netqualitydetail"
+        var queryParameter = {'starttime': start_timestamp,
+                              'endtime': end_timestamp,
+                              'srcnettype': this.srcNetType,
+                              'dstnettype': this.dstNetType,
+                              'srclocation': this.srcLocation,
+                              'dstlocation': this.dstLocation}        
+      }
+      this.$axios.post(apiUri, queryParameter)
       .then(function(response){
-        data = response
+        var data = response
         if (data.code != 200){
           alert(data.message)
           return
@@ -257,20 +211,24 @@ export default {
         alert("起始事件小于结束时间，请重新选择！")
         return
       }
-      resp_data = this._queryData(start_timestamp, end_timestamp)
+      var resp_data = this._queryData(start_timestamp, end_timestamp)
       this.dataSets = this.formatQualityDetailData(resp_data)
     },
 
-    resfreshQualityDataAuto:function(){
+    refreshQualityDataAuto:function(){
       if(this.autoResfreshTimer != null) {
         return
       }
       this.autoResfreshTimer = setInterval(() => {
+        //自动刷新被禁用则直接返回
+        if (this.disalbeAutoResfresh){
+          return
+        }
         //每30s查询最新数据，时间戳设置为0.API根据请求时间戳是0自动返回最新数据
         //该方式为增量获取数据，不是全量拉取
-        data = this._queryData(0, 0)
+        var data = this._queryData(0, 0)
         //TODO: handle the data
-        if (data && data.length > 0){
+        if (!data || data.length === 0){
           return
         }
         //将增量拉取的数据追加到现有数据后，并移除最老的数据
@@ -278,13 +236,109 @@ export default {
           this.dataSets.shift()
           this.dataSets.push(data[i])
         }
+
+        //刷新图表
+        this.refreshChart()
+
       }, 30000);  
+    },
+
+    stopRefreshQualityData: function(){
+      clearInterval(this.autoResfreshTimer)
+      this.autoResfreshTimer = null
+    },
+
+    createChart: function(){
+      const chart = new Chart({
+        container:"chartcontainer",
+        autoFit: true,
+        height: '400px',
+      })
+
+      if (this.dataSets.length === 0 || !this.dataSets){
+        return
+      }
+      chart.data(this.dataSets)
+
+      chart.scale({
+        timestamp: {alias:'时间线', type: 'time', mask: 'MM/DD HH:mm:ss'},
+        packetLoss: {alias: '丢包率', min: 0, max: 100, tickInterval: 10, sync: true, nice: true},
+        rtt: {alias: '延时大小', min: 0, max: 500, tickInterval: 10, sync: true, nice: true},
+      })
+
+      chart.axis('timestamp', {grid: null})
+
+      chart.tooltip({showCrosshairs: true, shared: true})
+
+      var lossThreshold = this.dataSets[0]["lossThreshold"]
+      chart.annotation().line({
+        start: lossThreshold,
+        end: lossThreshold,
+        style: {stroke: '#ff4d4f', lineWidth: 1, lineDash: [3, 3]},
+        text: { position: 'start', 
+                style:{fill:'#8c8c8c', fontWeight:'normal'}, 
+                content: '丢包率阈值'+ lossThreshold.toString + '%',
+                offsetY: -5
+              }
+      })
+
+      chart.line()
+           .position('timestamp*packetLoss')
+           .color('#4FAAEB')
+           .shape('smooth')
+
+      chart.line()
+          .position('timestamp*rtt')
+          .color('#9AD681')
+          .shape('dash')
+          .shape('smooth')
+
+      chart.render()
+      this.chart = chart
+    }, 
+
+    refreshChart: function(){
+      if (this.dataSets){
+        this.chart.changeData(this.dataSets)
+      }
+    },
+
+    parseUrlAndQueryData: function(){
+      var queryString = window.location.search
+      var params = new URLSearchParams(queryString)
+      this.srcNetType = params.get("srcnettype")
+      this.dstNetType = params.get("dstnettype")
+      this.srcLocation = params.get("srclocation")
+      this.dstLocation = params.get("dstlocation")
+        
+      var start_timestamp = parseInt(params.get("starttime"))
+      var end_timestamp = parseInt(params.get("endtime"))
+      if (end_timestamp - start_timestamp > 43200){
+        alert("查询时间大于12小时，请重新指定查询时间!")
+        return
+      }
+      var resp_data = this._queryData(start_timestamp, end_timestamp)
+      if (!resp_data || resp_data.length === 0){
+        alert("查询返回数据为空！")
+        return
+      }
+      this.dataSets = this.formatQualityDetailData(resp_data)
     }
   },
 
-  created: function(){
-    this.formatQualityData(this.qualityData)
+  mounted: function(){
+    //首次加载
+    this.parseUrlAndQueryData()
+    this.createChart()
+
+    //定时加载
+    this.refreshQualityDataAuto()
   },
+
+  destroyed: function(){
+      //销毁计时器
+      this.stopRefreshQualityData()
+  }
 
 }
 

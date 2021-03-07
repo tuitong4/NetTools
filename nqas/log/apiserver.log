@@ -17,3 +17,106 @@ APISERVER-2021/01/28 00:12:46 /Users/heizi/GolandProjects/NetTools/nqas/apiserve
 APISERVER-2021/01/28 00:13:44 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:128: http: Server closed
 APISERVER-2021/01/29 17:13:10 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:115: API Server is starting...
 APISERVER-2021/01/29 17:13:30 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:128: http: Server closed
+APISERVER-2021/03/07 22:16:21 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:103: API server running error.
+APISERVER-2021/03/07 22:16:21 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:104: API Server running error: open : no such file or directory
+APISERVER-2021/03/07 22:16:21 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:105: API server running stack info: goroutine 37 [running]:
+runtime/debug.Stack(0xc0004b1f90, 0x17e385b, 0x1c)
+	/usr/local/go/src/runtime/debug/stack.go:24 +0x9d
+nqas.(*APIServer).Run.func1(0xc0004b23c0)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:105 +0x104
+panic(0x1715140, 0xc000253170)
+	/usr/local/go/src/runtime/panic.go:679 +0x1b2
+nqas.newRequestLogger(0x0, 0x0, 0x17d647c, 0xa)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:465 +0x2af
+nqas.(*APIServer).Run(0xc0004b23c0)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:111 +0x138
+nqas.TestAPIServer_Run(0xc00035e900)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver_test.go:25 +0x1f4
+testing.tRunner(0xc00035e900, 0x18296e8)
+	/usr/local/go/src/testing/testing.go:909 +0xc9
+created by testing.(*T).Run
+	/usr/local/go/src/testing/testing.go:960 +0x350
+2021/03/07 22:17:11 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:103: API server running error.
+2021/03/07 22:17:11 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:104: API Server running error: open : no such file or directory
+2021/03/07 22:17:11 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:105: API server running stack info: goroutine 7 [running]:
+runtime/debug.Stack(0xc0004c02d0, 0x17e3851, 0x1c)
+	/usr/local/go/src/runtime/debug/stack.go:24 +0x9d
+nqas.(*APIServer).Run.func1(0xc000428300)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:105 +0x104
+panic(0x1715140, 0xc000212cf0)
+	/usr/local/go/src/runtime/panic.go:679 +0x1b2
+nqas.newRequestLogger(0x0, 0x0, 0x0, 0x0)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:465 +0x2af
+nqas.(*APIServer).Run(0xc000428300)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:111 +0x12b
+nqas.TestAPIServer_Run(0xc0004bc700)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver_test.go:25 +0x1f4
+testing.tRunner(0xc0004bc700, 0x18296e0)
+	/usr/local/go/src/testing/testing.go:909 +0xc9
+created by testing.(*T).Run
+	/usr/local/go/src/testing/testing.go:960 +0x350
+2021/03/07 22:20:16 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:104: API server running error.
+2021/03/07 22:20:16 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:105: API Server running error: open : no such file or directory
+2021/03/07 22:20:16 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:106: API server running stack info: goroutine 6 [running]:
+runtime/debug.Stack(0xc0004b63c0, 0x17e3851, 0x1c)
+	/usr/local/go/src/runtime/debug/stack.go:24 +0x9d
+nqas.(*APIServer).Run.func1(0xc00042a300)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:106 +0x104
+panic(0x1715140, 0xc000210cf0)
+	/usr/local/go/src/runtime/panic.go:679 +0x1b2
+nqas.newRequestLogger(0x0, 0x0, 0x0, 0x0)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:466 +0x2af
+nqas.(*APIServer).Run(0xc00042a300)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:112 +0x12b
+nqas.TestAPIServer_Run(0xc0004b2700)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver_test.go:25 +0x1f4
+testing.tRunner(0xc0004b2700, 0x18296e0)
+	/usr/local/go/src/testing/testing.go:909 +0xc9
+created by testing.(*T).Run
+	/usr/local/go/src/testing/testing.go:960 +0x350
+2021/03/07 22:22:01 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:104: API server running error.
+2021/03/07 22:22:01 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:105: API Server running error: open : no such file or directory
+2021/03/07 22:22:01 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:106: API server running stack info: goroutine 6 [running]:
+runtime/debug.Stack(0xc0000d4550, 0x17e3851, 0x1c)
+	/usr/local/go/src/runtime/debug/stack.go:24 +0x9d
+nqas.(*APIServer).Run.func1(0xc0004ac3c0)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:106 +0x104
+panic(0x1715140, 0xc00024b050)
+	/usr/local/go/src/runtime/panic.go:679 +0x1b2
+nqas.newRequestLogger(0x0, 0x0, 0x0, 0x0)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:466 +0x2af
+nqas.(*APIServer).Run(0xc0004ac3c0)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:112 +0x12b
+nqas.TestAPIServer_Run(0xc0004c6900)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver_test.go:25 +0x1f4
+testing.tRunner(0xc0004c6900, 0x18296e0)
+	/usr/local/go/src/testing/testing.go:909 +0xc9
+created by testing.(*T).Run
+	/usr/local/go/src/testing/testing.go:960 +0x350
+2021/03/07 22:22:30 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:105: API server running error.
+2021/03/07 22:22:30 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:106: API Server running error: open : no such file or directory
+2021/03/07 22:22:30 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:107: API server running stack info: goroutine 5 [running]:
+runtime/debug.Stack(0xc0000ca410, 0x17e3871, 0x1c)
+	/usr/local/go/src/runtime/debug/stack.go:24 +0x9d
+nqas.(*APIServer).Run.func1(0xc0004aa3c0)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:107 +0x126
+panic(0x1715160, 0xc000229140)
+	/usr/local/go/src/runtime/panic.go:679 +0x1b2
+nqas.newRequestLogger(0x0, 0x0, 0x0, 0x0)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:467 +0x2af
+nqas.(*APIServer).Run(0xc0004aa3c0)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:113 +0x12b
+nqas.TestAPIServer_Run(0xc0004e6800)
+	/Users/heizi/GolandProjects/NetTools/nqas/apiserver_test.go:25 +0x1f4
+testing.tRunner(0xc0004e6800, 0x1829700)
+	/usr/local/go/src/testing/testing.go:909 +0xc9
+created by testing.(*T).Run
+	/usr/local/go/src/testing/testing.go:960 +0x350
+2021/03/07 22:25:47 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:116: API Server is starting...
+2021/03/07 22:25:47 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:124: favicon: file or directory /Users/heizi/GolandProjects/NetTools/nqas/favicon.ico not found: open /Users/heizi/GolandProjects/NetTools/nqas/favicon.ico: no such file or directory
+2021/03/07 22:27:41 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:116: API Server is starting...
+2021/03/07 22:33:42 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:129: http: Server closed
+2021/03/07 22:37:08 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:116: API Server is starting...
+2021/03/07 22:37:37 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:129: http: Server closed
+2021/03/07 22:37:53 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:116: API Server is starting...
+2021/03/07 22:41:34 /Users/heizi/GolandProjects/NetTools/nqas/apiserver.go:129: http: Server closed

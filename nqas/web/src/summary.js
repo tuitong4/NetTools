@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Summary from './Detail.vue'
+import Summary from './Summary.vue'
 import vuetify from './plugins/vuetify'
 import DatetimePicker from 'vuetify-datetime-picker'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'

@@ -96,7 +96,7 @@ func sendMessage(alarmUrl string, data *bytes.Buffer, eventCode int) {
 
 	u, err := url.Parse(alarmUrl)
 	if err != nil{
-		log.Errorf("Failed to parse the alarm url, error: %v")
+		log.Errorf("Failed to parse the alarm url, error: %v", err)
 		return
 	}
 

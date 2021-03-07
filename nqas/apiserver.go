@@ -90,11 +90,12 @@ func (a *APIServer) Run() {
 	a.Stop()
 
 	//设置APIServer自身日志
-	l, err, closeLogFile := initLogger(a.config.LogFile, "APISERVER-")
+	l, err, closeLogFile := initLogger(a.config.LogFile, "")
 	if err != nil{
 		panic(err)
 	}
 	defer closeLogFile()
+
 	a.log = l
 
 	defer func() {
@@ -107,7 +108,7 @@ func (a *APIServer) Run() {
 		}
 	}()
 
-	//初始化日志记录，只能在此处初始化，否则defer close()在其他函数返回后执行
+	//初始化日志记录，只能在此处初始化，否则defer close()将要在函数返回后执行，导致日志文件被关闭
 	r, close := newRequestLogger(a.config.AccessLogFile)
 	defer close()
 	a.i.Use(r)
@@ -130,8 +131,21 @@ func (a *APIServer) startAPI() {
 }
 
 func (a *APIServer) registerRoute() {
+	//Static files
+	a.i.HandleDir("/css", "./html/css")
+	a.i.HandleDir("/fonts", "./html/fonts")
+	a.i.HandleDir("/js", "./html/js")
+
+	//Favicon
+	a.i.Favicon("./html/favicon.ico")
+
 	//RootPage
 	a.i.Get("/", a.rootPageHandler)
+
+	//Views
+	a.i.Get("/netqualitysummary", a.detailPageHandler)
+	a.i.Get("/netqualitydetail", a.summaryPageHandler)
+
 	apiRoutes := a.i.Party("/api")
 	apiRoutes.Post("/netquality", a.queryQualityDataTotalHandler)
 	apiRoutes.Post("/netqualitydetail", a.queryQualityDataDetailHandler)
@@ -141,6 +155,22 @@ func (a *APIServer) registerRoute() {
 func (a *APIServer) rootPageHandler(ctx iris.Context) {
 	//err := ctx.ServeFile("index.html", false)
 	err := ctx.View("index.html")
+	if err != nil {
+		a.log.Error(err)
+	}
+}
+
+func (a *APIServer) detailPageHandler(ctx iris.Context) {
+	//err := ctx.ServeFile("index.html", false)
+	err := ctx.View("detail.html")
+	if err != nil {
+		a.log.Error(err)
+	}
+}
+
+func (a *APIServer) summaryPageHandler(ctx iris.Context) {
+	//err := ctx.ServeFile("index.html", false)
+	err := ctx.View("summary.html")
 	if err != nil {
 		a.log.Error(err)
 	}

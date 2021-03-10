@@ -166,7 +166,7 @@ type NetQualityAnalyzer struct {
 func NewNetQualityAnalyzer(analysisConfig AnalysisSetting, alarmConfig AlarmSetting) *NetQualityAnalyzer {
 	return &NetQualityAnalyzer{
 		summaryLossThreshold:     analysisConfig.SummaryLossThreshold,
-		summaryDelayThreshold:   analysisConfig.SummaryRttThreshold,
+		summaryDelayThreshold:    analysisConfig.SummaryRttThreshold,
 		abnormalTargetsThreshold: analysisConfig.AbnormalTargetThreshold / 100, //注意此处的数值范围的改变
 		checkWindow:              analysisConfig.CheckWindow,
 		abnormalCount:            analysisConfig.AbnormalCount,
@@ -235,7 +235,7 @@ func (a *NetQualityAnalyzer) computePacketLossThreshold(data []*InternetNetQuali
 		}
 
 		//只处理丢包大于给定阈值的, 小于阈值的跳过
-		lossPct := item.Value.PacketLoss/float32(item.Value.Count)
+		lossPct := item.Value.PacketLoss / float32(item.Value.Count)
 		if lossPct < item.Value.LossThreshold {
 			lossCounter[key].totalCount += 1
 			continue
@@ -243,7 +243,7 @@ func (a *NetQualityAnalyzer) computePacketLossThreshold(data []*InternetNetQuali
 
 		//增加指标技术
 		lossCounter[key].lossValue += lossPct
-		lossCounter[key].rttValue += item.Value.Rtt/float32(item.Value.Count)
+		lossCounter[key].rttValue += item.Value.Rtt / float32(item.Value.Count)
 		//增加计数器
 		lossCounter[key].totalCount += 1
 		lossCounter[key].count += 1
@@ -447,16 +447,16 @@ func (a *NetQualityAnalyzer) eventCheck() {
 }
 
 type AlarmMsgValue struct {
-	EventSource string
-	SrcLocation string
-	SrcNetType  string
-	DstNetType  string
-	StartTime   string
-	EndTime     string
-	PacketLoss  string
-	Rtt         string
-	Duration    string
-	Recovered   bool
+	EventSource   string
+	SrcLocation   string
+	SrcNetType    string
+	DstNetType    string
+	StartTime     string
+	EndTime       string
+	PacketLoss    string
+	Rtt           string
+	Duration      string
+	Recovered     bool
 	AbnormalCount int
 }
 
@@ -489,9 +489,9 @@ func (a *NetQualityAnalyzer) sendMsg() {
 			}
 
 		case eventNatSchedule:
-			if _, ok := GlobalNatSchedulePlan[alarm.SrcLocation]; !ok{
+			if _, ok := GlobalNatSchedulePlan[alarm.SrcLocation]; !ok {
 				v = &NatSchedulePlanValue{"XXX", "XXX"}
-			}else {
+			} else {
 				v = GlobalNatSchedulePlan[alarm.SrcLocation]
 			}
 			err = templateNatScheduleAlarm.Execute(buffer, v)
@@ -520,16 +520,16 @@ func (a *NetQualityAnalyzer) abnormalAlarm() {
 		strDuration := fmt.Sprintf("%.1f", abnormalDuration/60)
 
 		a.alarmMsgChannel <- &AlarmMsgValue{
-			EventSource: event.eventSource,
-			SrcLocation: event.srcLocation,
-			SrcNetType:  event.srcNetType,
-			DstNetType:  event.dstNetType,
-			StartTime:   strStartTime,
-			EndTime:     "",
-			PacketLoss:  strPacketLoss,
-			Rtt:         strRtt,
-			Duration:    strDuration,
-			Recovered:   false,
+			EventSource:   event.eventSource,
+			SrcLocation:   event.srcLocation,
+			SrcNetType:    event.srcNetType,
+			DstNetType:    event.dstNetType,
+			StartTime:     strStartTime,
+			EndTime:       "",
+			PacketLoss:    strPacketLoss,
+			Rtt:           strRtt,
+			Duration:      strDuration,
+			Recovered:     false,
 			AbnormalCount: event.eventCount,
 		}
 	}
@@ -551,16 +551,16 @@ func (a *NetQualityAnalyzer) abnormalRecoverAlarm() {
 		strDuration := fmt.Sprintf("%.1f", abnormalDuration/60)
 
 		a.alarmMsgChannel <- &AlarmMsgValue{
-			EventSource: event.eventSource,
-			SrcLocation: event.srcLocation,
-			SrcNetType:  event.srcNetType,
-			DstNetType:  event.dstNetType,
-			StartTime:   strStartTime,
-			EndTime:     strEndTime,
-			PacketLoss:  strPacketLoss,
-			Rtt:         strRtt,
-			Duration:    strDuration,
-			Recovered:   true,
+			EventSource:   event.eventSource,
+			SrcLocation:   event.srcLocation,
+			SrcNetType:    event.srcNetType,
+			DstNetType:    event.dstNetType,
+			StartTime:     strStartTime,
+			EndTime:       strEndTime,
+			PacketLoss:    strPacketLoss,
+			Rtt:           strRtt,
+			Duration:      strDuration,
+			Recovered:     true,
 			AbnormalCount: event.eventCount,
 		}
 	}

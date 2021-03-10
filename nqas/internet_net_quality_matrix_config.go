@@ -45,7 +45,7 @@ type AlarmTemplateSetting struct {
 	PacketLossAbnormalTargetsPercentAlarm   string `ini:"packet_loss_abnormal_target_alarm"`
 	PacketLossAbnormalTargetsPercentRecover string `ini:"packet_loss_abnormal_target_recover"`
 	NatScheduleAlarm                        string `ini:"nat_schedule_alarm"`
-	NatSchedulePlanRaw						string `ini:"nat_schedule_plan"`
+	NatSchedulePlanRaw                      string `ini:"nat_schedule_plan"`
 }
 
 type Configuration struct {

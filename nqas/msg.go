@@ -55,13 +55,13 @@ func initAlarmMsgTemplate(alarmTemplate *AlarmTemplateSetting) error {
 
 var GlobalNatSchedulePlan map[string]*NatSchedulePlanValue
 
-func initGlobalNatSchedulePlan(templateString string) error{
+func initGlobalNatSchedulePlan(templateString string) error {
 	GlobalNatSchedulePlan = make(map[string]*NatSchedulePlanValue)
 	m, err := convertStringToMap(templateString)
-	if err != nil{
-		return  err
+	if err != nil {
+		return err
 	}
-	for src, dst := range m{
+	for src, dst := range m {
 		GlobalNatSchedulePlan[src] = &NatSchedulePlanValue{src, dst}
 	}
 	return nil
@@ -95,7 +95,7 @@ func initAlarmApiParameter(alarmConfig *AlarmSetting) {
 func sendMessage(alarmUrl string, data *bytes.Buffer, eventCode int) {
 
 	u, err := url.Parse(alarmUrl)
-	if err != nil{
+	if err != nil {
 		log.Errorf("Failed to parse the alarm url, error: %v", err)
 		return
 	}
@@ -134,7 +134,7 @@ func sendMessage(alarmUrl string, data *bytes.Buffer, eventCode int) {
 
 	if resp_smg.Code != 200 {
 		log.Errorf("Send alarm message failed, error: %s", resp_smg.Message)
-	}else{
+	} else {
 		log.Info("Send alarm message successfully!")
 	}
 }

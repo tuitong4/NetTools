@@ -33,7 +33,19 @@ type InternetNetQualityRespond struct {
 	} `json:"event"`
 }
 
-type QualityValue struct {
+type HostQualityRespond struct {
+	Version   string `json:"version"`
+	Timestamp string `json:"timestamp"`
+	Event     struct {
+		Src        string  `json:"src"`
+		Dst        string  `json:"dst"`
+		Rtt        float32 `json:"rtt"`
+		PacketLoss float32 `json:"packetLoss"`
+		Count      int     `json:"count"`
+	} `json:"event"`
+}
+
+type NetQualityValue struct {
 	SrcNetType    string  `json:"srcNetType"`
 	DstNetType    string  `json:"dstNetType"`
 	SrcLocation   string  `json:"srcLocation"`
@@ -46,8 +58,21 @@ type QualityValue struct {
 }
 
 type InternetNetQuality struct {
-	Timestamp string       `json:"timestamp"`
-	Value     QualityValue `json:"value"`
+	Timestamp string          `json:"timestamp"`
+	Value     NetQualityValue `json:"value"`
+}
+
+type HostQualityValue struct {
+	Src        string  `json:"src"`
+	Dst        string  `json:"dst"`
+	Rtt        float32 `json:"rtt"`
+	PacketLoss float32 `json:"packetLoss"`
+	Count      int     `json:"count"`
+}
+
+type HostQuality struct {
+	Timestamp string           `json:"timestamp"`
+	Value     HostQualityValue `json:"value"`
 }
 
 func createFilter(key, value string) *Filter {
@@ -146,6 +171,37 @@ func getInternetNetQualityResultBySource(startTime, endTime time.Time, granulari
 	return netQualityResults, nil
 }
 
+func getHostQualityResult(startTime, endTime time.Time, granularity Granlarity, dataSourceUrl, dataSource string, filter *Filter) ([]*HostQualityRespond, error) {
+	dimSpec := []DimSpec{
+		"src",
+		"dst",
+	}
+	query := &QueryGroupBy{
+		DataSource:  dataSource,
+		Intervals:   toTimeIntervals(startTime, endTime),
+		Granularity: granularity,
+		Dimensions:  dimSpec,
+		Filter:      filter,
+		Aggregations: []Aggregation{
+			AggLongSum("count", "count"),
+			AggDoubleSum("packetLoss", "packetLoss"),
+			AggDoubleSum("rtt", "rtt"),
+		},
+	}
+
+	resp, err := clientQuery(dataSourceUrl, query)
+	if err != nil {
+		return nil, err
+	}
+
+	probeHostResults := make([]*HostQualityRespond, 0)
+	err = json.Unmarshal(resp, &probeHostResults)
+	if err != nil {
+		return nil, err
+	}
+	return probeHostResults, nil
+}
+
 type Thresholds struct {
 	loss map[string]float32
 	rtt  map[string]float32
@@ -160,7 +216,7 @@ func getQualityThreshold(dataSourceUrl string) (*Thresholds, error) {
 	endTime := time.Now()
 	//开始时间为当前时间前1周
 	startTime := endTime.Add(-7 * 24 * time.Hour)
-	granularity := GranDuration{Type:"duration", Duration: "604800000"}
+	granularity := GranDuration{Type: "duration", Duration: "604800000"}
 	resp, err := getInternetNetQualityResult(startTime,
 		endTime,
 		granularity,
@@ -209,7 +265,7 @@ func getQualityThreshold(dataSourceUrl string) (*Thresholds, error) {
 
 		if loss_val < default_loss_min {
 			loss_val = default_loss_min
-		}else if loss_val > default_loss_max{
+		} else if loss_val > default_loss_max {
 			loss_val = default_loss_max
 		}
 
@@ -243,7 +299,7 @@ func preTreatQualityData(data []*InternetNetQualityRespond) []*InternetNetQualit
 
 		formattedData = append(formattedData, &InternetNetQuality{
 			Timestamp: d.Timestamp,
-			Value: QualityValue{
+			Value: NetQualityValue{
 				SrcNetType:    d.Event.SrcNetType,
 				DstNetType:    d.Event.DstNetType,
 				SrcLocation:   d.Event.SrcLocation,
@@ -266,7 +322,7 @@ func queryNetQualityData(query_time time.Time, dataSourceUrl string) ([]*Interne
 	endTime := query_time
 	granularity := GranDuration{Type: "duration", Duration: "30000"}
 	data, err := getInternetNetQualityResult(startTime,
-		endTime, granularity, dataSourceUrl, internetNetQualityDataSource,nil)
+		endTime, granularity, dataSourceUrl, internetNetQualityDataSource, nil)
 
 	if err != nil {
 		return nil, err
@@ -290,7 +346,6 @@ func queryNetQualityDataByTarget(startTime, endTime time.Time, srcNetType, dstNe
 	return preTreatQualityData(data), nil
 }
 
-
 func queryNetQualityDataBySource(startTime, endTime time.Time, srcNetType, srcLocation, dataSourceUrl string) ([]*InternetNetQuality, error) {
 	//TODO:该参数尽量改为全局const 变量，减少操作
 	granularity := GranDuration{Type: "duration", Duration: "30000"}
@@ -308,7 +363,7 @@ func queryNetQualityDataBySource(startTime, endTime time.Time, srcNetType, srcLo
 	for _, d := range data {
 		formattedData = append(formattedData, &InternetNetQuality{
 			Timestamp: d.Timestamp,
-			Value: QualityValue{
+			Value: NetQualityValue{
 				SrcNetType:    d.Event.SrcNetType,
 				DstNetType:    d.Event.DstNetType,
 				SrcLocation:   d.Event.SrcLocation,
@@ -318,6 +373,36 @@ func queryNetQualityDataBySource(startTime, endTime time.Time, srcNetType, srcLo
 				Count:         d.Event.Count,
 				LossThreshold: summaryLossThreshold,
 				RttThreshold:  summaryDelayThreshold,
+			},
+		})
+	}
+
+	return formattedData, nil
+}
+
+func queryHostQualityData(startTime, endTime time.Time, srcNetType, dstNetType, srcLocation, dstLocation, dataSourceUrl string) ([]*HostQuality, error) {
+	//TODO:该参数尽量改为全局const 变量，减少操作
+	granularity := GranDuration{Type: "duration", Duration: "30000"}
+	filter := targetFilter(srcNetType, dstNetType, srcLocation, dstLocation)
+
+	data, err := getHostQualityResult(startTime,
+		endTime, granularity, dataSourceUrl,
+		internetNetQualityDataSource, filter)
+
+	if err != nil {
+		return nil, err
+	}
+
+	formattedData := make([]*HostQuality, 0)
+	for _, d := range data {
+		formattedData = append(formattedData, &HostQuality{
+			Timestamp: d.Timestamp,
+			Value: HostQualityValue{
+				Src:        d.Event.Src,
+				Dst:        d.Event.Dst,
+				Rtt:        d.Event.Rtt,
+				PacketLoss: d.Event.PacketLoss,
+				Count:      d.Event.Count,
 			},
 		})
 	}

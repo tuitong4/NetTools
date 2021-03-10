@@ -62,7 +62,7 @@ func NewAPIServer(config APIServerSetting) (*APIServer, error) {
 		ctx, cancel := native_context.WithTimeout(native_context.Background(), timeout)
 		defer cancel()
 		// close all hosts
-		api.i.Shutdown(ctx)
+		_ = api.i.Shutdown(ctx)
 	})
 
 	cfg := iris.Configuration{}
@@ -91,7 +91,7 @@ func (a *APIServer) Run() {
 
 	//设置APIServer自身日志
 	l, err, closeLogFile := initLogger(a.config.LogFile, "")
-	if err != nil{
+	if err != nil {
 		panic(err)
 	}
 	defer closeLogFile()
@@ -109,8 +109,8 @@ func (a *APIServer) Run() {
 	}()
 
 	//初始化日志记录，只能在此处初始化，否则defer close()将要在函数返回后执行，导致日志文件被关闭
-	r, close := newRequestLogger(a.config.AccessLogFile)
-	defer close()
+	r, _close := newRequestLogger(a.config.AccessLogFile)
+	defer _close()
 	a.i.Use(r)
 
 	a.log.Info("API Server is starting...")
@@ -149,7 +149,8 @@ func (a *APIServer) registerRoute() {
 	apiRoutes := a.i.Party("/api")
 	apiRoutes.Post("/netquality", a.queryQualityDataTotalHandler)
 	apiRoutes.Post("/netqualitydetail", a.queryQualityDataDetailHandler)
-	apiRoutes.Post("/netqualitysummay", a.queryQualityDataSummaryHandler)
+	apiRoutes.Post("/netqualitysummary", a.queryQualityDataSummaryHandler)
+	apiRoutes.Post("/hostquality", a.queryQualityDataByHostHandler)
 }
 
 func (a *APIServer) rootPageHandler(ctx iris.Context) {
@@ -180,51 +181,57 @@ type TimeStampFilterPayload struct {
 	TimeStamp int64 `json:"timestamp"`
 }
 
-type QualityDataResponse struct {
+type NetQualityDataResponse struct {
 	Code    int                   `json:"code"`
 	Message string                `json:"message"`
 	Data    []*InternetNetQuality `json:"data"`
 }
 
+type HostQualityDataResponse struct {
+	Code    int            `json:"code"`
+	Message string         `json:"message"`
+	Data    []*HostQuality `json:"data"`
+}
+
 /*
 	查询最近时刻时刻或者指定时刻的全量数据
- */
+*/
 func (a *APIServer) queryQualityDataTotalHandler(ctx iris.Context) {
 	var t TimeStampFilterPayload
 	if err := ctx.ReadJSON(&t); err != nil {
-		respBody := &QualityDataResponse{500, "Query parameters is parsed failed!", nil}
+		respBody := &NetQualityDataResponse{500, "Query parameters is parsed failed!", nil}
 		d, err := json.Marshal(respBody)
 		if err != nil {
 			a.log.Error(err)
 		}
 		//ctx.Write(d)
-		ctx.GzipResponseWriter().Write(d)
+		_, _ = ctx.GzipResponseWriter().Write(d)
 		return
 	}
 
 	if t.TimeStamp <= 0 {
-		ctx.Write(a.qualityDataCache)
+		_, _ = ctx.Write(a.qualityDataCache)
 	} else {
 		data, err := queryNetQualityData(time.Unix(t.TimeStamp, 0), a.config.DataSourceUrl)
 		if err != nil {
 			errMsg := fmt.Sprintf("Retrieved quality data failed. error : %v", err)
-			respBody := &QualityDataResponse{500, errMsg, nil}
+			respBody := &NetQualityDataResponse{500, errMsg, nil}
 			d, err := json.Marshal(respBody)
 			if err != nil {
 				a.log.Error(err)
 			}
 			//ctx.Write(d)
-			ctx.GzipResponseWriter().Write(d)
+			_, _ = ctx.GzipResponseWriter().Write(d)
 			return
 		}
 
-		respBody := &QualityDataResponse{200, "", data}
+		respBody := &NetQualityDataResponse{200, "", data}
 		d, err := json.Marshal(respBody)
 		if err != nil {
 			a.log.Error(err)
 		}
 		//ctx.Write(d)
-		ctx.GzipResponseWriter().Write(d)
+		_, _ = ctx.GzipResponseWriter().Write(d)
 	}
 
 }
@@ -240,17 +247,17 @@ type QueryDetailDataFilter struct {
 
 /*
 	查询给定条件下，一段时间内的详细数据
- */
+*/
 func (a *APIServer) queryQualityDataDetailHandler(ctx iris.Context) {
 	var t QueryDetailDataFilter
 	if err := ctx.ReadJSON(&t); err != nil {
-		respBody := &QualityDataResponse{500, "Query parameters is parsed failed!", nil}
+		respBody := &NetQualityDataResponse{500, "Query parameters is parsed failed!", nil}
 		d, err := json.Marshal(respBody)
 		if err != nil {
 			a.log.Error(err)
 		}
 		//ctx.Write(d)
-		ctx.GzipResponseWriter().Write(d)
+		_, _ = ctx.GzipResponseWriter().Write(d)
 		return
 	}
 
@@ -267,8 +274,8 @@ func (a *APIServer) queryQualityDataDetailHandler(ctx iris.Context) {
 	}
 
 	//最大查询时间不超过1天
-	if endTime.Sub(startTime) > 24*60*60 {
-		endTime = startTime.Add(24 * 60 * 60)
+	if endTime.Sub(startTime) > 24*time.Hour {
+		endTime = startTime.Add(24 * time.Hour)
 	}
 
 	data, err := queryNetQualityDataByTarget(
@@ -282,38 +289,38 @@ func (a *APIServer) queryQualityDataDetailHandler(ctx iris.Context) {
 	)
 	if err != nil {
 		errMsg := fmt.Sprintf("Retrieved quality data failed. error : %v", err)
-		respBody := &QualityDataResponse{500, errMsg, nil}
+		respBody := &NetQualityDataResponse{500, errMsg, nil}
 		d, err := json.Marshal(respBody)
 		if err != nil {
 			a.log.Error(err)
 		}
 		//ctx.Write(d)
-		ctx.GzipResponseWriter().Write(d)
+		_, _ = ctx.GzipResponseWriter().Write(d)
 		return
 	}
 
-	respBody := &QualityDataResponse{200, "", data}
+	respBody := &NetQualityDataResponse{200, "", data}
 	d, err := json.Marshal(respBody)
 	if err != nil {
 		a.log.Error(err)
 	}
 	//ctx.Write(d)
-	ctx.GzipResponseWriter().Write(d)
+	_, _ = ctx.GzipResponseWriter().Write(d)
 }
 
 /*
 	查询给定条件下，查询一段时间的汇总数据
- */
-func (a *APIServer) queryQualityDataSummaryHandler(ctx iris.Context){
+*/
+func (a *APIServer) queryQualityDataSummaryHandler(ctx iris.Context) {
 	var t QueryDetailDataFilter
 	if err := ctx.ReadJSON(&t); err != nil {
-		respBody := &QualityDataResponse{500, "Query parameters is parsed failed!", nil}
+		respBody := &NetQualityDataResponse{500, "Query parameters is parsed failed!", nil}
 		d, err := json.Marshal(respBody)
 		if err != nil {
 			a.log.Error(err)
 		}
 		//ctx.Write(d)
-		ctx.GzipResponseWriter().Write(d)
+		_, _ = ctx.GzipResponseWriter().Write(d)
 		return
 	}
 
@@ -323,14 +330,14 @@ func (a *APIServer) queryQualityDataSummaryHandler(ctx iris.Context){
 	//时间为0的时候，查询最新的数据。相当于客户端侧增量拉取数据
 	if t.StartTime <= 0 || t.EndTime <= 0 {
 		endTime = time.Now()
-		startTime = endTime.Add(-30*time.Second)
+		startTime = endTime.Add(-30 * time.Second)
 	} else {
 		endTime = time.Unix(t.EndTime, 0)
 		startTime = time.Unix(t.StartTime, 0)
 	}
 	//最大查询时间不超过1天，如果开始时间和结束事件相同，查询最近30s内的数据
-	if endTime.Sub(startTime) > 24*60*60 {
-		endTime = startTime.Add(24 * 60 * 60)
+	if endTime.Sub(startTime) > 24*time.Hour {
+		endTime = startTime.Add(24 * time.Hour)
 	}
 
 	data, err := queryNetQualityDataBySource(
@@ -342,35 +349,92 @@ func (a *APIServer) queryQualityDataSummaryHandler(ctx iris.Context){
 	)
 	if err != nil {
 		errMsg := fmt.Sprintf("Retrieved quality data failed. error : %v", err)
-		respBody := &QualityDataResponse{500, errMsg, nil}
+		respBody := &NetQualityDataResponse{500, errMsg, nil}
 		d, err := json.Marshal(respBody)
 		if err != nil {
 			a.log.Error(err)
 		}
 		//ctx.Write(d)
-		ctx.GzipResponseWriter().Write(d)
+		_, _ = ctx.GzipResponseWriter().Write(d)
 		return
 	}
 
-	respBody := &QualityDataResponse{200, "", data}
+	respBody := &NetQualityDataResponse{200, "", data}
 	d, err := json.Marshal(respBody)
 	if err != nil {
 		a.log.Error(err)
 	}
 	//ctx.Write(d)
-	ctx.GzipResponseWriter().Write(d)
+	_, _ = ctx.GzipResponseWriter().Write(d)
+}
+
+/*
+	查询质量探测的目标IP地址和对应的丢包率，只查询最近半分钟的
+*/
+func (a *APIServer) queryQualityDataByHostHandler(ctx iris.Context) {
+	var t QueryDetailDataFilter
+	if err := ctx.ReadJSON(&t); err != nil {
+		respBody := &NetQualityDataResponse{500, "Query parameters is parsed failed!", nil}
+		d, err := json.Marshal(respBody)
+		if err != nil {
+			a.log.Error(err)
+		}
+		//ctx.Write(d)
+		_, _ = ctx.GzipResponseWriter().Write(d)
+		return
+	}
+
+	var startTime time.Time
+	var endTime time.Time
+
+	//只取t.EndTime最近的30s内的数据，如果t.EndTime=0，则查询最新的数据
+	if t.EndTime <= 0 {
+		endTime = time.Now()
+	} else {
+		endTime = time.Unix(t.EndTime, 0)
+	}
+	startTime = endTime.Add(-30 * time.Second)
+
+	data, err := queryHostQualityData(
+		startTime,
+		endTime,
+		t.SrcNetType,
+		t.DstNetType,
+		t.SrcLocation,
+		t.DstLocation,
+		a.config.DataSourceUrl,
+	)
+	if err != nil {
+		errMsg := fmt.Sprintf("Retrieved quality data failed. error : %v", err)
+		respBody := &HostQualityDataResponse{500, errMsg, nil}
+		d, err := json.Marshal(respBody)
+		if err != nil {
+			a.log.Error(err)
+		}
+		//ctx.Write(d)
+		_, _ = ctx.GzipResponseWriter().Write(d)
+		return
+	}
+
+	respBody := &HostQualityDataResponse{200, "", data}
+	d, err := json.Marshal(respBody)
+	if err != nil {
+		a.log.Error(err)
+	}
+	//ctx.Write(d)
+	_, _ = ctx.GzipResponseWriter().Write(d)
 }
 
 func (a *APIServer) queryData() {
 	t := time.Now()
 	data, err := queryNetQualityData(t, a.config.DataSourceUrl)
 	//data, err := queryNetQualityDataMock("./mock_data.json")
-	var respBody *QualityDataResponse
+	var respBody *NetQualityDataResponse
 	if err != nil {
 		errMsg := fmt.Sprintf("Retrieved quality data failed. error : %v", err)
-		respBody = &QualityDataResponse{500, errMsg, nil}
+		respBody = &NetQualityDataResponse{500, errMsg, nil}
 	} else {
-		respBody = &QualityDataResponse{200, "", data}
+		respBody = &NetQualityDataResponse{200, "", data}
 	}
 
 	d, err := json.Marshal(respBody)
@@ -388,7 +452,7 @@ func (a *APIServer) queryData() {
 /*
 	周期性查询全量监控数据，然后分析告警。这里相当于把api接口和告警分析结合了起来
 	主要是避免数据多次查询，也是为了报警和和前端查询的结果一致。
- */
+*/
 func (a *APIServer) retrieveQualityDataAndAnalysisAuto(config *Configuration) {
 	// init interval ticker
 	ticker := time.NewTicker(a.queryInterval)
@@ -418,7 +482,7 @@ func (a *APIServer) retrieveQualityDataAndAnalysisAuto(config *Configuration) {
 	}
 }
 
-func (a *APIServer) Stop(){
+func (a *APIServer) Stop() {
 	go func() {
 		ch := make(chan os.Signal, 1)
 		signal.Notify(ch,
@@ -438,7 +502,7 @@ func (a *APIServer) Stop(){
 			timeout := 5 * time.Second
 			ctx, cancel := native_context.WithTimeout(native_context.Background(), timeout)
 			defer cancel()
-			a.i.Shutdown(ctx)
+			_ = a.i.Shutdown(ctx)
 		}
 	}()
 }
@@ -462,7 +526,7 @@ func newRequestLogger(logfile string) (h iris.Handler, close func() error) {
 		Columns: false,
 	}
 	logFile, err := openLogFile(logfile)
-	if err != nil{
+	if err != nil {
 		panic(err)
 	}
 
@@ -472,7 +536,7 @@ func newRequestLogger(logfile string) (h iris.Handler, close func() error) {
 
 	c.LogFunc = func(now time.Time, latency time.Duration, status, ip, method, path string, message interface{}, headerMessage interface{}) {
 		output := fmt.Sprintf("%s %s %s %s %s\n", now.Format("2006/01/02 - 15:04:05"), status, ip, method, path)
-		logFile.Write([]byte(output))
+		_, _ = logFile.Write([]byte(output))
 	}
 
 	c.AddSkipper(func(ctx iris.Context) bool {

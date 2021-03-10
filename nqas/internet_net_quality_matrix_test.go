@@ -74,4 +74,3 @@ package nqas
 //	fmt.Println("Data length:", len(data), data[0])
 //}
 //
-

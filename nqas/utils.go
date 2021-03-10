@@ -58,25 +58,25 @@ func SetLogger(prefix string, output io.Writer) {
 	log.SetOutput(output)
 }
 
-func initLogger(logFile, prefix string) (*log.Logger, error, func() error){
+func initLogger(logFile, prefix string) (*log.Logger, error, func() error) {
 	fd, err := openLogFile(logFile)
-	if err != nil{
+	if err != nil {
 		return nil, err, nil
 	}
 	return log.New(fd, prefix, log.LstdFlags), nil, fd.Close
 }
 
-func convertStringToMap(s string) (map[string]string, error){
+func convertStringToMap(s string) (map[string]string, error) {
 	// Format of s is 'BJ03:BJ04;BJ04:BJ03'
 	m := make(map[string]string)
 	ss := strings.Split(s, ",")
-	for _, section := range ss{
-		if section == ""{
+	for _, section := range ss {
+		if section == "" {
 			continue
 		}
 
 		key_val := strings.Split(section, ":")
-		if len(key_val) != 2{
+		if len(key_val) != 2 {
 			return nil, fmt.Errorf("Unavalible content about '%s'. Only one ':' is needed.", section)
 		}
 

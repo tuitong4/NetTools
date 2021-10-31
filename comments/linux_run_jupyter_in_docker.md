@@ -1,4 +1,5 @@
 1、选择合适的镜像
+``` shell
 jupyter/base-notebook
 jupyter/minimal-notebook
 jupyter/r-notebook
@@ -7,7 +8,7 @@ jupyter/tensorflow-notebook
 jupyter/datascience-notebook
 jupyter/pyspark-notebook
 jupyter/all-spark-notebook
-
+```
 
 2、获取密码, 拷贝输出内容
 ``` python

@@ -1,2 +1,4 @@
 nqas/web/node_modules
 nqas/web/dist
+node_modules
+dist

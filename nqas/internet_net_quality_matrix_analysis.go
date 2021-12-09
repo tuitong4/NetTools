@@ -392,10 +392,12 @@ func (a *NetQualityAnalyzer) eventCheck() {
 								a.eventPool[key].packetLoss = a.abnormalPool[key].data.data[idx].lossValue
 								a.eventPool[key].count = a.abnormalPool[key].data.data[idx].count
 
+								//TODO:这里使用了引用类型，可能底层数据被修改
 								event := a.eventPool[key]
 
 								//事件源做一定的调整
 								event.eventSource = eventNatSchedule
+
 								//发送至告警队列中
 								a.abnormalAlarmChannel <- event
 							}

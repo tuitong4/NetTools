@@ -392,15 +392,15 @@ func (a *AgentBroker) Run() {
 		go a.keepalive()
 
 		//准备输出环境
-		if err := a.setPrinterForWorker(); err != nil {
-			log.Errorf("%v", err)
-			return
-		}
-
-		//if err := a.setProducerForWorker(); err!= nil{
+		//if err := a.setPrinterForWorker(); err != nil {
 		//	log.Errorf("%v", err)
 		//	return
 		//}
+
+		if err := a.setProducerForWorker(); err!= nil{
+			log.Errorf("%v", err)
+			return
+		}
 
 		// 启动worker
 		if err := a.startWorker(); err != nil {

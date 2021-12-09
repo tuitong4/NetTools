@@ -143,8 +143,8 @@ func (a *APIServer) registerRoute() {
 	a.i.Get("/", a.rootPageHandler)
 
 	//Views
-	a.i.Get("/netqualitysummary", a.detailPageHandler)
-	a.i.Get("/netqualitydetail", a.summaryPageHandler)
+	a.i.Get("/netqualitydetail", a.detailPageHandler)
+	a.i.Get("/netqualitysummary", a.summaryPageHandler)
 
 	apiRoutes := a.i.Party("/api")
 	apiRoutes.Post("/netquality", a.queryQualityDataTotalHandler)

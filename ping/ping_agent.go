@@ -75,14 +75,6 @@ func NewPingAgent(config *AgentConfig) (*PingAgent, error) {
 	agent.TaskList = make([]*PingTarget, 0)
 	agent.TaskListLocker = sync.RWMutex{}
 
-	/*
-		agent.Producers, err = newProducer()
-		if err != nil {
-			log.Error("Create kafka producer err: " + err.Error())
-			log.DetailError(err)
-			return nil, err
-		}*/
-
 	return agent, nil
 }
 
@@ -405,7 +397,7 @@ func (a *PingAgent) Pinger(target *PingTarget, xid int) (*PingResponse, error) {
 			break
 		}
 
-		h, data, _ := ParseHeader(buf)
+		h, data, err := ParseHeader(buf)
 		//log.Debug("%s Parse ICMP Message %s -> %s", logHeader, h.Src.String(), h.Dst.String())
 
 		if err != nil{
@@ -436,14 +428,10 @@ func (a *PingAgent) Pinger(target *PingTarget, xid int) (*PingResponse, error) {
 		case ICMPv4EchoReply:
 			if a.SrcBind { //check source ip equal to specified.
 				if h.Src.String() != target.DstIP || h.Dst.String() != target.SrcIP {
-					//log.Debug("%s mistake receiving: utils m: %s, dst: %s, src_in_ip: %s, dst_in_ip: %s, id: %d, the wrong id: %d\n",
-					//	logHeader, target.SrcIP, target.DstIP, h.Dst.String(), h.Src.String(), xid, msg.Body.(*ICMPEcho).ID)
 					continue
 				}
 			} else { //skipp check source ip opton
 				if h.Src.String() != target.DstIP {
-					//log.Debug("%s mistake receiving: utils m: %s, dst: %s, src_in_ip: %s, dst_in_ip: %s, id: %d, the wrong id: %d\n",
-					//	logHeader, target.SrcIP, target.DstIP, h.Dst.String(), h.Src.String(), xid, msg.Body.(*ICMPEcho).ID)
 					continue
 				}
 			}
@@ -480,3 +468,139 @@ func (a *PingAgent) Pinger(target *PingTarget, xid int) (*PingResponse, error) {
 	return pr, nil
 }
 
+
+func (a *PingAgent) NewPinger(target *PingTarget, xid int) (*PingResponse, error) {
+	xseq := 1
+	rc := 0
+
+	// 本地化参数，避免资源竞争
+	srcBind := a.SrcBind
+	pingCount := a.PingCount
+
+	var conn net.Conn
+	var err error
+	rttSum := time.Duration(0)
+
+	if srcBind {
+		laddr := net.IPAddr{IP: net.ParseIP(target.SrcIP)}
+		raddr, _ := net.ResolveIPAddr("ip", target.DstIP)
+		conn, err = net.DialIP("ip4:icmp", &laddr, raddr)
+	} else {
+		conn, err = net.Dial("ip4:icmp", target.DstIP)
+	}
+
+	if err != nil {
+		errMsg := fmt.Sprintf("%s<0x%0x> Dial icmp error! %s.", target.DstIP, xid, err.Error())
+		return nil, errors.New(errMsg)
+	}
+
+	defer conn.Close()
+
+	pr := new(PingResponse)
+	pr.Timestamp = time.Now().Unix() * 1000
+	pr.MaxRTT = time.Duration(0)
+	pr.MinRTT = time.Duration(0)
+
+	for i := a.PingCount; i > 0; i-- {
+		if i != a.PingCount {
+			time.Sleep(time.Duration(a.PingIntervalMs) * time.Millisecond)
+		}
+		msg := &ICMPMessage{
+			Type: ICMPv4EchoRequest,
+			Code: 0,
+			Body: &ICMPEcho{
+				ID:        xid,
+				Seq:       xseq + i,
+				Timestamp: time.Now(),
+				Data:      bytes.Repeat([]byte(strings.Repeat("0", 21)), 2),
+			},
+		}
+
+		bs, err := msg.Marshal()
+		if err != nil {
+			errMsg := fmt.Sprintf("%s<0x%0x> ICMP message marshal err! %s.", target.DstIP, xid, err.Error())
+			return nil, errors.New(errMsg)
+		}
+		_, err = conn.Write(bs)
+		//log.Debug("%s ICMP count %d,send time %s,utils %s", logHeader, target.Count-i, time.Now(), target.SrcIP)
+		if err != nil {
+			errMsg := fmt.Sprintf("%s<0x%0x> ICMP conn write err! %s.", target.DstIP, xid, err.Error())
+			return nil, errors.New(errMsg)
+		}
+		_ = conn.SetReadDeadline(time.Now().Add(time.Duration(a.TimeOutMs) * time.Millisecond))
+
+		buf := make([]byte, 512)
+
+		REPEAT_RCV:
+		repeatCounter := 0
+		_, err = conn.Read(buf)
+		if err != nil {
+			//log.Debug("Read timeouts")
+			break
+		}
+
+		h, data, err := ParseHeader(buf)
+		//log.Debug("%s Parse ICMP Message %s -> %s", logHeader, h.Src.String(), h.Dst.String())
+
+		if err != nil{
+			//Parse header failed
+			continue
+		}
+
+		//因icmp rawsocket特性，可能会接收到其他进程的icmp报文。避免报文错误，这里我们多读取若干次
+		//数据，希望能读取到正确的数据包
+		if h.Src.String() != target.DstIP{
+			repeatCounter += 1
+			if repeatCounter <= 5{
+				goto REPEAT_RCV
+			}
+		}
+
+		bufmsg, err := ParseICMPMessage(data)
+		if err != nil {
+			errMsg := fmt.Sprintf("%s<0x%0x> Parse ICMP Message error! %s.", target.DstIP, xid, err.Error())
+			return nil, errors.New(errMsg)
+		}
+		switch bufmsg.Type {
+		case ICMPv4EchoReply:
+			if a.SrcBind { //check source ip equal to specified.
+				if h.Src.String() != target.DstIP || h.Dst.String() != target.SrcIP {
+					continue
+				}
+			} else { //skipp check source ip option
+				if h.Src.String() != target.DstIP {
+					continue
+				}
+			}
+			if xid != bufmsg.Body.(*ICMPEcho).ID {
+				//log.Debug("%s xid wrong. ID is %d, the wrong id is %d\n", logHeader, xid, msg.Body.(*ICMPEcho).ID)
+				continue
+			}
+			t := time.Now()
+			rtt := t.Sub(bufmsg.Body.(*ICMPEcho).Timestamp)
+			//log.Debug("%s send time:%s, receive time:%s, rtt:%d", logHeader, msg.Body.(*ICMPEcho).Timestamp, t, rtt)
+			rc++
+			if rc == 1 {
+				pr.TTL = h.TTL
+				pr.MaxRTT = rtt
+				pr.MinRTT = rtt
+			} else {
+				if rtt > pr.MaxRTT {
+					pr.MaxRTT = rtt
+				}
+				if rtt < pr.MinRTT {
+					pr.MinRTT = rtt
+				}
+			}
+			rttSum = rttSum + rtt
+			//log.Debug("%s receive ok. %s -> %s", logHeader, h.Src.String(), h.Dst.String())
+		}
+	}
+	pr.PacketLoss = (pingCount - rc) * 100 / pingCount
+	if rc == 0 {
+		pr.AvgRTT = time.Duration(0)
+	} else {
+		pr.AvgRTT = rttSum / time.Duration(rc)
+	}
+	return pr, nil
+}

@@ -17,7 +17,7 @@
 
 添加环境变量
 ^^^^^^^^^^^^^^^
-
+  export TCLTK_LIBS='-ltk8.5 -ltcl8.5'
   export CPPFLAGS="-I/usr/local/openssl/include"
 
   export LDFLAGS="-L/usr/local/openssl/lib"
